@@ -37,7 +37,7 @@
 #define FRAMES_CAPTURE  128
 
 DisplaySSD1331_96x64_SPI display(3, {-1, 4, 5});
-NanoEngine8 engine(display);
+NanoEngine8<DisplaySSD1331_96x64_SPI> engine(display);
 
 
 int x = 72;
