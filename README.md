@@ -14,25 +14,25 @@
 
 ## Introduction
 
-SSD1306 driver is Arduino style C/C++ library with unicode support. The library can be compiled for plain Linux
+SSD1306 driver is Arduino style C++ library with unicode support. The library can be compiled for plain Linux
 (for example, raspberry spi), or you can use it with plain avr-gcc compiler without Arduino IDE. It supports
 monochrome and RGB oleds and has debug mode, allowing to execute code on PC, using SDL2.0.
-Initially the library is intended for very small microcontrollers (with a little of RAM). It was developed to use as
+Initially the library was intended to run on very small microcontrollers (with a little of RAM). It was developed to use as
 few resources as possible, but still has powerful capabilities (NanoEngine), allowing to develop nice animation.
 It works on any powerful devices like raspberry pi, esp32; and can be easily ported to new platform.
 
 ## Key Features
 
- * Supports color, monochrome OLED displays, and VGA monitor
+ * Supports color, monochrome OLED displays
  * The library has modular structure, and some modules can be excluded from compilation at all to reduce flash usage.
  * Needs very little RAM (Attiny85 with Damellis package needs minimum 25 bytes of RAM to communicate with OLED)
  * Fast implementation to provide reasonable speed on slow microcontrollers
  * Supports i2c and spi interfaces:
    * i2c (software implementation, Wire library, AVR Twi, Linux i2c-dev)
    * spi (4-wire spi via Arduino SPI library, AVR Spi, AVR USI module)
- * Primitive graphics functions (lines, rectangles, pixels, bitmaps)
+ * Primitive graphics functions (lines, rectangles, pixels, bitmaps, drawing canvas)
  * Printing text to display (using fonts of different size, you can use GLCD Font Creator to create new fonts)
- * Includes [graphics engine](https://github.com/lexus2k/ssd1306/wiki/Using-NanoEngine-for-systems-with-low-resources) to support
+ * Includes [graphics engine](https://github.com/lexus2k/ssd1306/wiki/Using-NanoEngine-for-systems-with-low-resources2) to support
    double buffering on tiny microcontrollers.
  * Can be used for game development (bonus examples):
    * Arkanoid game ([arkanoid](examples/games/arkanoid) in old style API and [arkanoid8](examples/games/arkanoid8) in new style API)
