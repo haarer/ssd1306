@@ -10,7 +10,6 @@ COMPONENT_SRCDIRS := ./src \
                      ./sec/intf/vga/esp32 \
                      ./sec/intf/vga \
                      ./src/lcd \
-                     ./src/display \
                      ./src/canvas \
                      ./src/nano_engine
 

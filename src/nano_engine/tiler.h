@@ -31,7 +31,7 @@
 
 #include "canvas/rect.h"
 #include "canvas/canvas.h"
-#include "display/display.h"
+#include "lcd/base/display.h"
 //#include "object.h"
 #include "lcd/lcd_common.h"
 
