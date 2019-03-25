@@ -91,6 +91,18 @@ public:
     void fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2);
 
     /**
+     * Draws bitmap, located in Flash, on the display
+     * The bitmap should be in XBMP format
+     *
+     * @param x - horizontal position in pixels
+     * @param y - vertical position in blocks (pixels/8)
+     * @param w - width of bitmap in pixels
+     * @param h - height of bitmap in pixels (must be divided by 8)
+     * @param buf - pointer to data, located in Flash: each byte represents 8 vertical pixels.
+     */
+    void drawXBitmap(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+
+    /**
      * @brief Draws monochrome bitmap in color buffer using color, specified via setColor() method
      * Draws monochrome bitmap in color buffer using color, specified via setColor() method
      * @param x - position X in pixels
@@ -248,6 +260,18 @@ public:
     void fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2);
 
     /**
+     * Draws bitmap, located in Flash, on the display
+     * The bitmap should be in XBMP format
+     *
+     * @param x - horizontal position in pixels
+     * @param y - vertical position in blocks (pixels/8)
+     * @param w - width of bitmap in pixels
+     * @param h - height of bitmap in pixels (must be divided by 8)
+     * @param buf - pointer to data, located in Flash: each byte represents 8 vertical pixels.
+     */
+    void drawXBitmap(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+
+    /**
      * @brief Draws monochrome bitmap in color buffer using color, specified via setColor() method
      * Draws monochrome bitmap in color buffer using color, specified via setColor() method
      * @param x - position X in pixels
@@ -403,6 +427,18 @@ public:
      * @note color can be set via setColor()
      */
     void fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2);
+
+    /**
+     * Draws bitmap, located in Flash, on the display
+     * The bitmap should be in XBMP format
+     *
+     * @param x - horizontal position in pixels
+     * @param y - vertical position in blocks (pixels/8)
+     * @param w - width of bitmap in pixels
+     * @param h - height of bitmap in pixels (must be divided by 8)
+     * @param buf - pointer to data, located in Flash: each byte represents 8 vertical pixels.
+     */
+    void drawXBitmap(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
 
     /**
      * @brief Draws monochrome bitmap in color buffer using color, specified via setColor() method

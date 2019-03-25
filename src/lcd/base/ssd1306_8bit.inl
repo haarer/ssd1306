@@ -171,6 +171,12 @@ void NanoDisplayOps8<I>::clear()
 }
 
 template <class I>
+void NanoDisplayOps8<I>::drawXBitmap(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap)
+{
+    // TODO:
+}
+
+template <class I>
 void NanoDisplayOps8<I>::drawBitmap1(lcdint_t xpos, lcdint_t ypos, lcduint_t w, lcduint_t h, const uint8_t *bitmap)
 {
     uint8_t bit = 1;

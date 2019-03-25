@@ -711,6 +711,40 @@ void NanoDisplayOps1<I>::clear()
 }
 
 template <class I>
+void NanoDisplayOps1<I>::drawXBitmap(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap)
+{
+    uint8_t i, j;
+    lcduint_t pitch = (w + 7) >> 3;
+    this->m_intf.startBlock(x, y, w);
+    for(j=(h >> 3); j>0; j--)
+    {
+        uint8_t bit = 0;
+        for(i=w;i>0;i--)
+        {
+            uint8_t data = 0;
+            for (uint8_t k = 0; k<8; k++)
+            {
+                data |= ( ((pgm_read_byte(&bitmap[k*pitch]) >> bit) & 0x01) << k );
+            }
+            this->m_intf.send( s_ssd1306_invertByte^data );
+            bit++;
+            if (bit >= 8)
+            {
+                bitmap++;
+                bit=0;
+            }
+        }
+        if (bit)
+        {
+            bitmap++;
+        }
+        bitmap += pitch * 7;
+        this->m_intf.nextBlock();
+    }
+    this->m_intf.endBlock();
+}
+
+template <class I>
 void NanoDisplayOps1<I>::drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap)
 {
     lcduint_t origin_width = w;
