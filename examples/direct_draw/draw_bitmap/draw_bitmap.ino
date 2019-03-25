@@ -34,6 +34,8 @@
 
 #include "ssd1306.h"
 
+DisplaySSD1306_128x64_I2C display;
+
 const uint8_t Owl [] PROGMEM = {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -130,17 +132,17 @@ const uint8_t Soba [] PROGMEM = {
 
 void setup()
 {
-    ssd1306_128x64_i2c_init();
+    display.begin();
 }
 
 
 void loop()
 {
-    ssd1306_fillScreen(0x00);
-    ssd1306_drawBitmap(0, 0, 128, 64, Owl);
+    display.fill(0x00);
+    display.drawBitmap1(0, 0, 128, 64, Owl);
     delay(3000);
-    ssd1306_fillScreen(0x00);
-    ssd1306_drawXBitmap(0, 0, 40, 32, Soba);
+    display.fill(0x00);
+    display.drawXBitmap(0, 0, 40, 32, Soba);
     delay(3000);
 }
 
