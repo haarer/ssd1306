@@ -76,3 +76,65 @@ static const uint8_t PROGMEM s_oled128x32_initData[] =
     SSD1306_DISPLAYON,
 };
 
+template <class I>
+void InterfaceSSD1306<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
+{
+    commandStart();
+    this->send(SSD1306_COLUMNADDR);
+    this->send(x);
+    this->send(w ? (x + w - 1) : (m_base.width() - 1));
+    this->send(SSD1306_PAGEADDR);
+    this->send(y);
+    this->send((m_base.height() >> 3) - 1);
+    if (m_dc >= 0)
+    {
+        spiDataMode(1);
+    }
+    else
+    {
+        this->stop();
+        this->start();
+        this->send(0x40);
+    }
+}
+
+template <class I>
+void InterfaceSSD1306<I>::endBlock()
+{
+    this->stop();
+}
+
+template <class I>
+void InterfaceSSD1306<I>::spiDataMode(uint8_t mode)
+{
+    if (m_dc >= 0)
+    {
+        digitalWrite( m_dc, mode ? HIGH : LOW);
+    }
+}
+
+template <class I>
+void InterfaceSSD1306<I>::commandStart()
+{
+    this->start();
+    if (m_dc >= 0)
+        spiDataMode(0);
+    else
+        this->send(0x00);
+}
+
+template <class I>
+void InterfaceSSD1306<I>::setStartLine(uint8_t line)
+{
+    m_startLine = line;
+    commandStart();
+    this->send( SSD1306_SETSTARTLINE | (line & 0x3F) );
+    this->stop();
+}
+
+template <class I>
+uint8_t InterfaceSSD1306<I>::getStartLine()
+{
+    return m_startLine;
+}
+

@@ -33,8 +33,6 @@
 #include "base/display.h"
 #include "lcd/lcd_common.h"
 
-#include "oled_ssd1306.inl"
-
 /**
  * @ingroup LCD_INTERFACE_API
  * @{
@@ -77,26 +75,7 @@ public:
      * @warning - this function initiates session (i2c or spi) and does not close it.
      *            To close session, please, call endBlock().
      */
-    void startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
-    {
-        commandStart();
-        this->send(SSD1306_COLUMNADDR);
-        this->send(x);
-        this->send(w ? (x + w - 1) : (m_base.width() - 1));
-        this->send(SSD1306_PAGEADDR);
-        this->send(y);
-        this->send((m_base.height() >> 3) - 1);
-        if (m_dc >= 0)
-        {
-            spiDataMode(1);
-        }
-        else
-        {
-            this->stop();
-            this->start();
-            this->send(0x40);
-        }
-    }
+    void startBlock(lcduint_t x, lcduint_t y, lcduint_t w);
 
     /**
      * Switches to the start of next RAM page for the block, specified by
@@ -104,47 +83,44 @@ public:
      * For ssd1306 it does nothing, while for sh1106 the function moves cursor to
      * next page.
      */
-    void nextBlock()
-    {
-    }
+    void nextBlock() {}
 
     /**
      * Closes data send operation to lcd display.
      */
-    void endBlock()
-    {
-        this->stop();
-    }
+    void endBlock();
 
     /**
      * Enables either data or command mode on SPI bus
      * @param mode 1 to enable data mode, or 0 to enable command mode
      */
-    void spiDataMode(uint8_t mode)
-    {
-        if (m_dc >= 0)
-        {
-            digitalWrite( m_dc, mode ? HIGH : LOW);
-        }
-    }
+    void spiDataMode(uint8_t mode);
 
     /**
      * Starts communication with LCD display in command mode.
      * To stop communication use m_intf.end().
      */
-    void commandStart()
-    {
-        this->start();
-        if (m_dc >= 0)
-            spiDataMode(0);
-        else
-            this->send(0x00);
-    }
+    void commandStart();
+
+    /**
+     * Sets start line in gdram to start display content with
+     *
+     * @param line start line in range 0 - 63
+     */
+    void setStartLine(uint8_t line);
+
+    /**
+     * returns start line in gdram.
+     */
+    uint8_t getStartLine();
 
 private:
     int8_t m_dc = -1; ///< data/command pin for SPI, -1 for i2c
     NanoDisplayBase<InterfaceSSD1306<I>> &m_base; ///< basic lcd display support interface
+    uint8_t m_startLine = 0;
 };
+
+#include "oled_ssd1306.inl"
 
 /**
  * Generic interface to ssd1306-based controllers
@@ -248,6 +224,7 @@ public:
         this->m_intf.send( mode ? SSD1306_COMSCANINC : SSD1306_COMSCANDEC );
         this->m_intf.stop();
     }
+
 };
 
 /**

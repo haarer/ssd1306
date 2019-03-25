@@ -69,8 +69,15 @@ private:
 
 };
 
-// TODO
 #if 0
+
+/**
+ * ssd1306 console support function.
+ * @param ch character to print
+ * @warning only for SSD1306 based displays
+ */
+size_t ssd1306_consoleWriter(uint8_t ch);
+
 /**
  * Ssd1306Console represents object to work with LCD display.
  * Easy to use:
@@ -84,7 +91,7 @@ private:
  * }
  * ~~~~~~~~~~~~~~~
  */
-class Ssd1306Console: public LcdConsole<ssd1306_write>
+class Ssd1306Console: public LcdConsole<ssd1306_consoleWriter>
 {
 public:
     using LcdConsole::LcdConsole;
