@@ -82,7 +82,7 @@ public:
      * @param buffer - bytes to send
      * @param size - number of bytes to send
      */
-    void sendBuffer(const uint8_t *buffer, uint16_t size) override;
+    void sendBuffer(const uint8_t *buffer, uint16_t size);
 private:
     int8_t m_busId;
     uint8_t m_sa;

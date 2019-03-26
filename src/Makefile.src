@@ -58,6 +58,7 @@ SRCS_CPP = \
 	ssd1306_uart.cpp \
 	ssd1306_fonts.cpp \
 	canvas/canvas.cpp \
+	canvas/font.cpp \
 	nano_engine/core.cpp \
 	ssd1306_console.cpp \
 

@@ -52,22 +52,6 @@ extern "C" {
  */
 
 /**
- * Set position in terms of display.
- * @param x - horizontal position in pixels
- * @param y - vertical position in blocks (pixels/8)
- */
-void         ssd1306_setPos(uint8_t x, uint8_t y);
-
-/**
- * @brief Sets cursor position for text mode print functions.
- *
- * Sets cursor position for text mode print functions.
- * @param x xpos in pixels
- * @param y ypos in pixels
- */
-void ssd1306_setCursor(lcdint_t x, lcdint_t y);
-
-/**
  * Function allows to set another fixed font for the library.
  * By default, the font supports only first 128 - 32 ascii chars.
  * Please refer to github wiki on how to generate new fonts.
@@ -96,19 +80,6 @@ void ssd1306_setFreeFont(const uint8_t * progmemFont);
  *        ssd1306xled_font6x8_German as example).
  */
 void ssd1306_setSecondaryFont(const uint8_t * progmemUnicode);
-
-/**
- * Function allows to set another font for the library.
- * By default, the font supports only first 128 - 32 ascii chars.
- * First 32 chars of ascii table are non-printable, and removed
- * from the font table to reduce flash memory consumption.
- * Default font doesn't support russian characters. Using
- * this function you can implement your own fonts.
- * First font char must be started with \<space\> image.
- * @param progmemFont - font to setup located in Flash area
- * @deprecated Use ssd1306_setFixedFont() instead.
- */
-void ssd1306_setFont6x8(const uint8_t * progmemFont) __attribute__ ((deprecated));
 
 /**
  * @brief returns char data for currently set (active) font.
