@@ -39,23 +39,89 @@
 /** Flag means that more chars are required to decode utf-8 */
 #define SSD1306_MORE_CHARS_REQUIRED  0xffff
 
+/**
+ * NanoFont class implements work with fonts provided by
+ * ssd1306 library: loading fonts, providing their parameters
+ */
 class NanoFont
 {
 public:
+    /**
+     * Creates empty NanoFont object. Please, use loadFixedFont(),
+     * loadFreeFont(), loadSecondaryFont() functions after creating
+     * the object.
+     */
     NanoFont() {}
 
+    /**
+     * Creates NanoFont object and loads font of fixed type from flash memory
+     */
+    NanoFont(const uint8_t * progmemFont) { loadFixedFont( progmemFont ); }
+
+    /**
+     * Function allows to set another fixed font for the library.
+     * By default, the font supports only first 128 - 32 ascii chars.
+     * Please refer to github wiki on how to generate new fonts.
+     * @param progmemFont - font to setup located in Flash area
+     */
     void loadFixedFont(const uint8_t * progmemFont);
 
+    /**
+     * Function allows to set another free font for the library.
+     * By default, the font supports only first 128 - 32 ascii chars.
+     * Please refer to github wiki on how to generate new fonts.
+     * @param progmemFont - font to setup located in Flash area
+     * @note This function supports new fonts of ssd1306 library 1.7.8 and above
+     */
     void loadFreeFont(const uint8_t * progmemFont);
 
+    /**
+     * Function allows sets secondary font for specific language.
+     * Use it if you want to use additional font to combine capabilities of
+     * ascii fonts and language specific font.
+     * @param progmemUnicode font containing unicode table (refer to
+     *        ssd1306xled_font6x8_German as example).
+     */
     void loadSecondaryFont(const uint8_t * progmemUnicode);
 
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
     void loadFixedFont_oldStyle(const uint8_t * progmemFont);
+#endif
 
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
+    /**
+     * Function allows to set and use squix font.
+     * @param progmemFont - font to setup located in Flash area
+     * @note This function supports squix fonts for ssd1306 library 1.7.8 and above
+     * @warning Squix fonts are not fully supported, use them at your own risk
+     */
     void loadSquixFont(const uint8_t * progmemFont);
+#endif
 
+    /**
+     * @brief returns char data for currently set (active) font.
+     *
+     * Function returns char data for currently set font: pointer to progmem
+     * data for specified char, and width, height of the char. You can use these
+     * data to draw char manually using NanoDisplayOps1::drawBitmap1(),
+     * NanoDisplayOps8::drawBitmap1(), NanoDisplayOps16::drawBitmap1()
+     * or NanoCanvasOps::drawBitmap1().
+     *
+     * @param ch char to read from set font
+     * @param info pointer to SCharInfo structure to fill with char data
+     *
+     * @see loadFixedFont
+     */
     void getCharBitmap(uint16_t ch, SCharInfo *info);
 
+    /**
+     * @brief returns text width in pixels (and its height if height is requested)
+     *
+     * Returns text width in pixels (and its height if height is requested)
+     * @param text pointer to null-terminated string
+     * @param height pointer to lcduint_t variable to store height to. nullptr if
+     *        height is not required
+     */
     lcduint_t getTextSize(const char *text, lcduint_t *height);
 
     /**
@@ -67,10 +133,25 @@ public:
      */
     static uint16_t unicode16FromUtf8(uint8_t ch);
 
+    /**
+     * Returns reference to SFontHeaderRecord. This record contains
+     * some useful information on font like width, height, etc.
+     */
+    const SFontHeaderRecord &getHeader() { return m_fixedFont.h; }
+
+    /**
+     * Returns how many pages in terms of ssd1306 display are required for
+     * the font height.
+     */
+    uint8_t getPages() { return m_fixedFont.pages; }
+
 private:
     SFixedFontInfo m_fixedFont{};
+
     void (*m_getCharBitmap)(SFixedFontInfo &font,uint16_t unicode, SCharInfo *info) = nullptr;
 };
+
+extern NanoFont g_ssd1306_font;
 
 /**
  * @}

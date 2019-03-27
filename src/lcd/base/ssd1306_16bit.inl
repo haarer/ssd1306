@@ -29,7 +29,6 @@
 extern uint8_t s_ssd1306_invertByte;
 //extern lcduint_t ssd1306_cursorX;
 //extern lcduint_t ssd1306_cursorY;
-extern "C" SFixedFontInfo s_fixedFont;
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
 extern "C" uint8_t g_ssd1306_unicode;
 #endif
@@ -122,24 +121,24 @@ size_t ssd1306_write16(uint8_t ch)
         ssd1306_cursorX = 0;
         return 0;
     }
-    else if ( (ssd1306_cursorX > ssd1306_lcd.width - s_fixedFont.h.width) || (ch == '\n') )
+    else if ( (ssd1306_cursorX > ssd1306_lcd.width - m_font->getHeader().width) || (ch == '\n') )
     {
         ssd1306_cursorX = 0;
-        ssd1306_cursorY += s_fixedFont.h.height;
-        if ( ssd1306_cursorY > ssd1306_lcd.height - s_fixedFont.h.height )
+        ssd1306_cursorY += m_font->getHeader().height;
+        if ( ssd1306_cursorY > ssd1306_lcd.height - m_font->getHeader().height )
         {
             ssd1306_cursorY = 0;
         }
-        ssd1306_clearBlock16(0, ssd1306_cursorY, ssd1306_lcd.width, s_fixedFont.h.height);
+        ssd1306_clearBlock16(0, ssd1306_cursorY, ssd1306_lcd.width, m_font->getHeader().height);
         if (ch == '\n')
         {
             return 0;
         }
     }
-    uint16_t unicode = ssd1306_unicode16FromUtf8(ch);
+    uint16_t unicode = m_font->unicode16FromUtf8(ch);
     if (unicode == SSD1306_MORE_CHARS_REQUIRED) return 0;
     SCharInfo char_info;
-    ssd1306_getCharBitmap(unicode, &char_info);
+    m_font->getCharBitmap(unicode, &char_info);
     ssd1306_drawMonoBitmap16( ssd1306_cursorX,
                               ssd1306_cursorY,
                               char_info.width,

@@ -31,16 +31,16 @@
 #include "canvas/point.h"
 #include "canvas/rect.h"
 #include "canvas/canvas.h"
+#include "canvas/font.h"
 #include "ssd1306_hal/io.h"
 #include "nano_gfx_types.h"
 #include "lcd/lcd_common.h"
 #include "display_base.h"
 
 /**
- * @ingroup NANO_ENGINE_API
+ * @ingroup LCD_GENERIC_API
  * @{
  */
-
 
 /**
  * NanoDisplayOps1 is template class for 1-bit operations.
@@ -98,7 +98,7 @@ public:
      * @param y - vertical position in blocks (pixels/8)
      * @param w - width of bitmap in pixels
      * @param h - height of bitmap in pixels (must be divided by 8)
-     * @param buf - pointer to data, located in Flash: each byte represents 8 vertical pixels.
+     * @param bitmap - pointer to data, located in Flash: each byte represents 8 vertical pixels.
      */
     void drawXBitmap(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
 
@@ -267,7 +267,7 @@ public:
      * @param y - vertical position in blocks (pixels/8)
      * @param w - width of bitmap in pixels
      * @param h - height of bitmap in pixels (must be divided by 8)
-     * @param buf - pointer to data, located in Flash: each byte represents 8 vertical pixels.
+     * @param bitmap - pointer to data, located in Flash: each byte represents 8 vertical pixels.
      */
     void drawXBitmap(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
 
@@ -436,7 +436,7 @@ public:
      * @param y - vertical position in blocks (pixels/8)
      * @param w - width of bitmap in pixels
      * @param h - height of bitmap in pixels (must be divided by 8)
-     * @param buf - pointer to data, located in Flash: each byte represents 8 vertical pixels.
+     * @param bitmap - pointer to data, located in Flash: each byte represents 8 vertical pixels.
      */
     void drawXBitmap(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
 

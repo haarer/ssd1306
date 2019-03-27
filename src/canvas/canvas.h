@@ -31,6 +31,7 @@
 
 #include "point.h"
 #include "rect.h"
+#include "font.h"
 #include "ssd1306_hal/io.h"
 #include "ssd1306_hal/Print_internal.h"
 #include "nano_gfx_types.h"
@@ -281,6 +282,47 @@ public:
      */
     void setColor(uint16_t color) { m_color = color; }
 
+    /**
+     * Sets new font to use with print functions.
+     * If multiple canvases are used in single application,
+     * this method allows to use different fonts for different
+     * canvases.
+     *
+     * @param font reference to font object (NanoFont)
+     */
+    void setFont( NanoFont &font ) { m_font = &font; };
+
+    /**
+     * Sets new font to use with print functions.
+     * If multiple canvases are used in single application,
+     * this method can cause conflicts.
+     *
+     * @warning use this method only if single canvas is used in project
+     *
+     * @param progmemFont pointer to font data in flash (refer to NanoFont::loadFixedFont)
+     */
+    void setFixedFont( const uint8_t *progmemFont )
+    {
+        g_ssd1306_font.loadFixedFont( progmemFont );
+        setFont( g_ssd1306_font );
+    }
+
+    /**
+     * Sets new font to use with print functions.
+     * If multiple canvases are used in single application,
+     * this method can cause conflicts.
+     *
+     * @warning use this method only if single canvas is used in project
+     *
+     * @param progmemFont pointer to font data in flash (refer to NanoFont::loadFreeFont)
+     * @param secondaryFont pointer to font data in flash (refer to NanoFont::loadSecondaryFont)
+     */
+    void setFreeFont( const uint8_t *progmemFont, const uint8_t *secondaryFont = nullptr )
+    {
+        g_ssd1306_font.loadFreeFont( progmemFont );
+        setFont( g_ssd1306_font );
+    }
+
     /** Return pointer to canvas pixels data */
     uint8_t * getData() { return m_buf; }
 
@@ -300,6 +342,7 @@ protected:
     EFontStyle   m_fontStyle; ///< currently active font style
     uint8_t * m_buf;      ///< Canvas data
     uint16_t  m_color;    ///< current color for monochrome operations
+    NanoFont *m_font = nullptr; ///< current set font to use with NanoCanvas
 };
 
 /**

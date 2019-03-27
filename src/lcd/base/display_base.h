@@ -32,9 +32,10 @@
 #include "nano_gfx_types.h"
 #include "canvas/point.h"
 #include "canvas/rect.h"
+#include "canvas/font.h"
 
 /**
- * @ingroup NANO_ENGINE_API
+ * @ingroup LCD_GENERIC_API
  * @{
  */
 
@@ -126,6 +127,47 @@ public:
     I& getInterface() { return m_intf; }
 
     /**
+     * Sets new font to use with print functions.
+     * If multiple oled displays are used in single application,
+     * this method allows to use different fonts for different
+     * displays.
+     *
+     * @param font reference to font object (NanoFont)
+     */
+    void setFont( NanoFont &font ) { m_font = &font; };
+
+    /**
+     * Sets new font to use with print functions.
+     * If multiple oled displays are used in single application,
+     * this method can cause conflicts.
+     *
+     * @warning use this method only if single display is used in project
+     *
+     * @param progmemFont pointer to font data in flash (refer to NanoFont::loadFixedFont)
+     */
+    void setFixedFont( const uint8_t *progmemFont )
+    {
+        g_ssd1306_font.loadFixedFont( progmemFont );
+        setFont( g_ssd1306_font );
+    }
+
+    /**
+     * Sets new font to use with print functions.
+     * If multiple oled displays are used in single application,
+     * this method can cause conflicts.
+     *
+     * @warning use this method only if single display is used in project
+     *
+     * @param progmemFont pointer to font data in flash (refer to NanoFont::loadFreeFont)
+     * @param secondaryFont pointer to font data in flash (refer to NanoFont::loadSecondaryFont)
+     */
+    void setFreeFont( const uint8_t *progmemFont, const uint8_t *secondaryFont = nullptr )
+    {
+        g_ssd1306_font.loadFreeFont( progmemFont );
+        setFont( g_ssd1306_font );
+    }
+
+    /**
      * Prints single character on the display
      * @param ch character to print
      */
@@ -140,6 +182,7 @@ protected:
     uint8_t   m_textMode = 0; ///< Flags for current NanoCanvas mode
     EFontStyle   m_fontStyle; ///< currently active font style
     uint16_t  m_color = 0xFFFF;    ///< current color for monochrome operations
+    NanoFont *m_font = nullptr; ///< currently set font
 
     I& m_intf; ///< communication interface with the display
 };

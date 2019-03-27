@@ -32,7 +32,6 @@
 //const uint8_t *s_font6x8 = &ssd1306xled_font6x8[4];
 //extern lcduint_t ssd1306_cursorX;
 //extern lcduint_t ssd1306_cursorY;
-extern "C" SFixedFontInfo s_fixedFont;
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
 extern "C" uint8_t g_ssd1306_unicode;
 #endif
@@ -633,10 +632,10 @@ void NanoDisplayOps<O,I>::fillRect(const NanoRect &rect)
 template <class O, class I>
 uint8_t NanoDisplayOps<O,I>::printChar(uint8_t c)
 {
-    uint16_t unicode = ssd1306_unicode16FromUtf8(c);
+    uint16_t unicode = this->m_font->unicode16FromUtf8(c);
     if (unicode == SSD1306_MORE_CHARS_REQUIRED) return 0;
     SCharInfo char_info;
-    ssd1306_getCharBitmap(unicode, &char_info);
+    this->m_font->getCharBitmap(unicode, &char_info);
     uint8_t mode = this->m_textMode;
     for (uint8_t i = 0; i<(this->m_fontStyle == STYLE_BOLD ? 2: 1); i++)
     {
@@ -649,12 +648,15 @@ uint8_t NanoDisplayOps<O,I>::printChar(uint8_t c)
     }
     this->m_textMode = mode;
     this->m_cursorX += (lcdint_t)(char_info.width + char_info.spacing);
-    if ( ( (this->m_textMode & CANVAS_TEXT_WRAP_LOCAL) && (this->m_cursorX > ((lcdint_t)this->m_w - (lcdint_t)s_fixedFont.h.width) ) )
-       || ( (this->m_textMode & CANVAS_TEXT_WRAP) && (this->m_cursorX > ((lcdint_t)this->m_w - (lcdint_t)s_fixedFont.h.width)) ) )
+    if ( ( (this->m_textMode & CANVAS_TEXT_WRAP_LOCAL) &&
+           (this->m_cursorX > ((lcdint_t)this->m_w - (lcdint_t)this->m_font->getHeader().width) ) )
+       || ( (this->m_textMode & CANVAS_TEXT_WRAP) &&
+           (this->m_cursorX > ((lcdint_t)this->m_w - (lcdint_t)this->m_font->getHeader().width)) ) )
     {
-        this->m_cursorY += (lcdint_t)s_fixedFont.h.height;
+        this->m_cursorY += (lcdint_t)this->m_font->getHeader().height;
         this->m_cursorX = 0;
-        if ( (this->m_textMode & CANVAS_TEXT_WRAP_LOCAL) && (this->m_cursorY > ((lcdint_t)this->m_h - (lcdint_t)s_fixedFont.h.height)) )
+        if ( (this->m_textMode & CANVAS_TEXT_WRAP_LOCAL) &&
+             (this->m_cursorY > ((lcdint_t)this->m_h - (lcdint_t)this->m_font->getHeader().height)) )
         {
             this->m_cursorY = 0;
         }
@@ -667,7 +669,7 @@ size_t NanoDisplayOps<O,I>::write(uint8_t c)
 {
     if (c == '\n')
     {
-        this->m_cursorY += (lcdint_t)s_fixedFont.h.height;
+        this->m_cursorY += (lcdint_t)this->m_font->getHeader().height;
         this->m_cursorX = 0;
     }
     else if (c == '\r')

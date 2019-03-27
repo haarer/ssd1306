@@ -121,7 +121,7 @@ static void spriteDemo()
 
 static void textDemo()
 {
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
+    display.setFixedFont( ssd1306xled_font6x8 );
     display.clear();
     display.printFixed(0,  8, "Normal text", STYLE_NORMAL);
     display.printFixed(0, 16, "Bold text", STYLE_BOLD);
@@ -136,7 +136,7 @@ static void textDemo()
 static void canvasDemo()
 {
     NanoCanvas<64,16,1> canvas;
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
+    display.setFixedFont( ssd1306xled_font6x8 );
     display.clear();
     canvas.clear();
     canvas.setColor( 0xFF );
@@ -147,6 +147,7 @@ static void canvasDemo()
     canvas.fillRect(50, 1, 60, 15);
     display.drawCanvas((display.width()-64)/2, 1, canvas);
     delay(1500);
+    canvas.setFixedFont( ssd1306xled_font6x8 );
     canvas.printFixed(20, 1, " DEMO ", STYLE_BOLD );
     display.drawCanvas((display.width()-64)/2, 1, canvas);
     delay(3000);
@@ -170,7 +171,7 @@ static void drawLinesDemo()
 void setup()
 {
     /* Select the font to use with menu and all font functions */
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
+    display.setFixedFont( ssd1306xled_font6x8 );
 
     display.begin();
 

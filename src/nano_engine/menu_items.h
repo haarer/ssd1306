@@ -91,10 +91,10 @@ public:
      */
     void update() override
     {
-        if ( this->m_rect.width() <= 1 )
+        if ( this->m_rect.width() <= 1 && this->hasTiler() )
         {
             lcduint_t height;
-            lcduint_t width = ssd1306_getTextSize(m_name, &height);
+            lcduint_t width = this->getTiler()->getDisplay().getTextSize(m_name, &height);
             this->setSize( {width, height} );
         }
     }

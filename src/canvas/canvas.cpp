@@ -26,8 +26,6 @@
 #include "ssd1306_generic.h"
 #include "lcd/lcd_common.h"
 
-extern const uint8_t *s_font6x8;
-extern "C" SFixedFontInfo s_fixedFont;
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
 extern "C" uint8_t g_ssd1306_unicode;
 #endif
@@ -118,10 +116,10 @@ void NanoCanvasOps<BPP>::fillRect(const NanoRect &rect)
 template <uint8_t BPP>
 uint8_t NanoCanvasOps<BPP>::printChar(uint8_t c)
 {
-    uint16_t unicode = ssd1306_unicode16FromUtf8(c);
+    uint16_t unicode = m_font->unicode16FromUtf8(c);
     if (unicode == SSD1306_MORE_CHARS_REQUIRED) return 0;
     SCharInfo char_info;
-    ssd1306_getCharBitmap(unicode, &char_info);
+    m_font->getCharBitmap(unicode, &char_info);
     uint8_t mode = m_textMode;
     for (uint8_t i = 0; i<(m_fontStyle == STYLE_BOLD ? 2: 1); i++)
     {
@@ -134,12 +132,13 @@ uint8_t NanoCanvasOps<BPP>::printChar(uint8_t c)
     }
     m_textMode = mode;
     m_cursorX += (lcdint_t)(char_info.width + char_info.spacing);
-    if ( ( (m_textMode & CANVAS_TEXT_WRAP_LOCAL) && (m_cursorX > ((lcdint_t)m_w - (lcdint_t)s_fixedFont.h.width) ) )
+    if ( ( (m_textMode & CANVAS_TEXT_WRAP_LOCAL) &&
+           (m_cursorX > ((lcdint_t)m_w - (lcdint_t)m_font->getHeader().width) ) )
        /* TODO: || ( (m_textMode & CANVAS_TEXT_WRAP) && (m_cursorX > ((lcdint_t)ssd1306_lcd.width - (lcdint_t)s_fixedFont.h.width)) )*/ )
     {
-        m_cursorY += (lcdint_t)s_fixedFont.h.height;
+        m_cursorY += (lcdint_t)m_font->getHeader().height;
         m_cursorX = 0;
-        if ( (m_textMode & CANVAS_TEXT_WRAP_LOCAL) && (m_cursorY > ((lcdint_t)m_h - (lcdint_t)s_fixedFont.h.height)) )
+        if ( (m_textMode & CANVAS_TEXT_WRAP_LOCAL) && (m_cursorY > ((lcdint_t)m_h - (lcdint_t)m_font->getHeader().height)) )
         {
             m_cursorY = 0;
         }
@@ -152,7 +151,7 @@ size_t NanoCanvasOps<BPP>::write(uint8_t c)
 {
     if (c == '\n')
     {
-        m_cursorY += (lcdint_t)s_fixedFont.h.height;
+        m_cursorY += (lcdint_t)m_font->getHeader().height;
         m_cursorX = 0;
     }
     else if (c == '\r')

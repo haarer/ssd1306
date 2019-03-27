@@ -42,7 +42,6 @@
 //const uint8_t *s_font6x8 = &ssd1306xled_font6x8[4];
 //extern lcduint_t ssd1306_cursorX;
 //extern lcduint_t ssd1306_cursorY;
-extern "C" SFixedFontInfo s_fixedFont;
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
 extern "C" uint8_t g_ssd1306_unicode;
 #endif
@@ -575,7 +574,7 @@ void NanoDisplayOps1<I>::printFixed(lcdint_t xpos, lcdint_t y, const char *ch, E
     for(;;)
     {
         uint8_t ldata;
-        if ( (x > this->m_w - s_fixedFont.h.width) || (ch[j] == '\0') )
+        if ( (x > this->m_w - this->m_font->getHeader().width) || (ch[j] == '\0') )
         {
             x = xpos;
             y++;
@@ -584,7 +583,7 @@ void NanoDisplayOps1<I>::printFixed(lcdint_t xpos, lcdint_t y, const char *ch, E
                 break;
             }
             page_offset++;
-            if (page_offset == s_fixedFont.pages)
+            if (page_offset == this->m_font->getPages())
             {
                 text_index = j;
                 page_offset = 0;
@@ -603,11 +602,11 @@ void NanoDisplayOps1<I>::printFixed(lcdint_t xpos, lcdint_t y, const char *ch, E
         uint16_t unicode;
         do
         {
-            unicode = ssd1306_unicode16FromUtf8(ch[j]);
+            unicode = this->m_font->unicode16FromUtf8(ch[j]);
             j++;
         } while ( unicode == SSD1306_MORE_CHARS_REQUIRED );
         SCharInfo char_info;
-        ssd1306_getCharBitmap(unicode, &char_info);
+        this->m_font->getCharBitmap(unicode, &char_info);
         ldata = 0;
         x += char_info.width + char_info.spacing;
         if (char_info.height > page_offset * 8)
