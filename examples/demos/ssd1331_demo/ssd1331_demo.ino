@@ -145,10 +145,10 @@ static void spriteDemo()
 static void textDemo()
 {
     display.clear();
-    ssd1306_setFixedFont(digital_font5x7);
+    display.setFixedFont(digital_font5x7);
     display.setColor(RGB_COLOR8(0,64,255));
     display.printFixed(0,  0, "0123456789", STYLE_NORMAL);
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
+    display.setFixedFont(ssd1306xled_font6x8);
     display.setColor(RGB_COLOR8(255,255,0));
     display.printFixed(0,  8, "Normal text", STYLE_NORMAL);
     display.setColor(RGB_COLOR8(0,255,0));
@@ -166,7 +166,7 @@ static void canvasDemo()
 {
     NanoCanvas<64,16,1> canvas;
     display.setColor(RGB_COLOR8(0,255,0));
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
+    canvas.setFixedFont(ssd1306xled_font6x8);
     display.clear();
     canvas.clear();
     canvas.fillRect(10, 3, 80, 5);
@@ -198,7 +198,7 @@ static void drawLinesDemo()
 
 void setup()
 {
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
+    display.setFixedFont(ssd1306xled_font6x8);
     display.begin();
 //    ssd1331_96x64_spi_init(3, 4, 5);  // Use this line for Atmega328p
 //    ssd1331_96x64_spi_init(3, -1, 4); // Use this line for ATTINY
