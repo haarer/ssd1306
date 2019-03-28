@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2016-2018, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -22,12 +22,12 @@
     SOFTWARE.
 */
 
-#ifndef _SOVA_H_
-#define _SOVA_H_
+#ifndef _OWL_H_
+#define _OWL_H_
 
+// ----------------------------------------------------------------------------
 #include "ssd1306_hal/io.h"
-#include <stdint.h>
 
-extern const uint8_t Sova [] PROGMEM;
+extern const uint8_t Owl [] PROGMEM;
 
 #endif

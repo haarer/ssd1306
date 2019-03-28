@@ -31,7 +31,9 @@
 
 #include "ssd1306.h"
 #include "nano_engine.h"
-#include "sova.h"
+#include "owl.h"
+
+DisplaySSD1351_128x128_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
 
 /*
  * Heart image below is defined directly in flash memory.
@@ -76,11 +78,11 @@ const char *menuItems[] =
 
 static void bitmapDemo()
 {
-    ssd1306_setColor(RGB_COLOR16(64,64,255));
-    ssd1306_drawMonoBitmap16(0, 0, 128, 64, Sova);
-    ssd1306_drawBitmap8(0, 0, 8, 8, heartImage8);
-    ssd1306_setColor(RGB_COLOR16(255,64,64));
-    ssd1306_drawMonoBitmap16(0, 16, 8, 8, heartImage);
+    display.setColor(RGB_COLOR16(64,64,255));
+    display.drawBitmap1(0, 0, 128, 64, Owl);
+    display.drawBitmap8(0, 0, 8, 8, heartImage8);
+    display.setColor(RGB_COLOR16(255,64,64));
+    display.drawBitmap1(0, 16, 8, 8, heartImage);
     delay(3000);
 }
 
@@ -91,7 +93,7 @@ static void bitmapDemo()
  * Refer to C++ documentation.
  */
 NanoPoint sprite;
-NanoEngine16 engine;
+NanoEngine16<DisplaySSD1351_128x128_SPI> engine( display );
 static void spriteDemo()
 {
     // We not need to clear screen, engine will do it for us
@@ -100,9 +102,9 @@ static void spriteDemo()
     engine.refresh();
     // Set function to draw our sprite
     engine.drawCallback( []()->bool {
-        engine.canvas.clear();
-        engine.canvas.setColor( RGB_COLOR16(255, 32, 32) );
-        engine.canvas.drawBitmap1( sprite.x, sprite.y, 8, 8, heartImage );
+        engine.getCanvas().clear();
+        engine.getCanvas().setColor( RGB_COLOR16(255, 32, 32) );
+        engine.getCanvas().drawBitmap1( sprite.x, sprite.y, 8, 8, heartImage );
         return true;
     } );
     sprite.x = 0;
@@ -113,12 +115,12 @@ static void spriteDemo()
         // Tell the engine to refresh screen at old sprite position
         engine.refresh( sprite.x, sprite.y, sprite.x + 8 - 1, sprite.y + 8 - 1 );
         sprite.x++;
-        if (sprite.x >= ssd1306_displayWidth())
+        if (sprite.x >= display.width())
         {
             sprite.x = 0;
         }
         sprite.y++;
-        if (sprite.y >= ssd1306_displayHeight())
+        if (sprite.y >= display.height())
         {
             sprite.y = 0;
         }
@@ -131,75 +133,73 @@ static void spriteDemo()
 
 static void textDemo()
 {
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
-    ssd1306_clearScreen16();
-    ssd1306_setColor(RGB_COLOR16(255,255,0));
-    ssd1306_printFixed16(0,  8, "Normal text", STYLE_NORMAL);
-    ssd1306_setColor(RGB_COLOR16(0,255,0));
-    ssd1306_printFixed16(0, 16, "bold text?", STYLE_BOLD);
-    ssd1306_setColor(RGB_COLOR16(0,255,255));
-    ssd1306_printFixed16(0, 24, "Italic text?", STYLE_ITALIC);
-    ssd1306_negativeMode();
-    ssd1306_setColor(RGB_COLOR16(255,255,255));
-    ssd1306_printFixed16(0, 32, "Inverted bold?", STYLE_BOLD);
-    ssd1306_positiveMode();
+    display.setFixedFont(ssd1306xled_font6x8);
+    display.clear();
+    display.setColor(RGB_COLOR16(255,255,0));
+    display.printFixed(0,  8, "Normal text", STYLE_NORMAL);
+    display.setColor(RGB_COLOR16(0,255,0));
+    display.printFixed(0, 16, "bold text?", STYLE_BOLD);
+    display.setColor(RGB_COLOR16(0,255,255));
+    display.printFixed(0, 24, "Italic text?", STYLE_ITALIC);
+    display.negativeMode();
+    display.setColor(RGB_COLOR16(255,255,255));
+    display.printFixed(0, 32, "Inverted bold?", STYLE_BOLD);
+    display.positiveMode();
     delay(3000);
 }
 
 static void canvasDemo()
 {
-    uint8_t buffer[64*16/8];
-    NanoCanvas1_16 canvas(64,16, buffer);
-    ssd1306_setColor(RGB_COLOR16(0,255,0));
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
-    ssd1306_clearScreen16();
+    NanoCanvas<64,16,1> canvas;
+    display.setColor(RGB_COLOR16(0,255,0));
+    display.clear();
     canvas.clear();
     canvas.fillRect(10, 3, 80, 5);
-    canvas.blt((ssd1306_displayWidth()-64)/2, 1);
+    display.drawCanvas((display.width()-64)/2, 1, canvas);
     delay(500);
     canvas.fillRect(50, 1, 60, 15);
-    canvas.blt((ssd1306_displayWidth()-64)/2, 1);
+    display.drawCanvas((display.width()-64)/2, 1, canvas);
     delay(1500);
+    canvas.setFixedFont(ssd1306xled_font6x8);
     canvas.printFixed(20, 1, " DEMO ", STYLE_BOLD );
-    canvas.blt((ssd1306_displayWidth()-64)/2, 1);
+    display.drawCanvas((display.width()-64)/2, 1, canvas);
     delay(3000);
 }
 
 static void drawLinesDemo()
 {
-    ssd1306_clearScreen16();
-    ssd1306_setColor(RGB_COLOR16(255,0,0));
-    for (uint8_t y = 0; y < ssd1306_displayHeight(); y += 8)
+    display.clear();
+    display.setColor(RGB_COLOR16(255,0,0));
+    for (uint8_t y = 0; y < display.height(); y += 8)
     {
-        ssd1306_drawLine16(0,0, ssd1306_displayWidth() -1, y);
+        display.drawLine(0,0, display.width() -1, y);
     }
-    ssd1306_setColor(RGB_COLOR16(0,255,0));
-    for (uint8_t x = ssd1306_displayWidth() - 1; x > 7; x -= 8)
+    display.setColor(RGB_COLOR16(0,255,0));
+    for (uint8_t x = display.width() - 1; x > 7; x -= 8)
     {
-        ssd1306_drawLine16(0,0, x, ssd1306_displayHeight() - 1);
+        display.drawLine(0,0, x, display.height() - 1);
     }
     delay(3000);
 }
 
 void setup()
 {
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
-    ssd1351_128x128_spi_init(3, 4, 5);
+    display.begin();
+    display.setFixedFont(ssd1306xled_font6x8);
+//    ssd1351_128x128_spi_init(3, 4, 5);
 //    ssd1351_128x128_spi_init(24, 0, 23); // Use this line for Raspberry  (gpio24=RST, 0=CE, gpio23=D/C)
 //    ssd1351_128x128_spi_init(3, -1, 4);  // Use this line for ATTINY
 //    ssd1351_128x128_spi_init(22, 5, 21); // Use this line for ESP32 (VSPI)  (gpio22=RST, gpio5=CE for VSPI, gpio21=D/C)
 
-    // RGB functions do not work in default SSD1306 compatible mode
-    ssd1306_setMode( LCD_MODE_NORMAL );
-    ssd1306_fillScreen16( 0x0000 );
-    ssd1306_createMenu( &menu, menuItems, sizeof(menuItems) / sizeof(char *) );
-    ssd1306_showMenu16( &menu );
+    display.fill( 0x0000 );
+    display.createMenu( &menu, menuItems, sizeof(menuItems) / sizeof(char *) );
+    display.showMenu( &menu );
 }
 
 void loop()
 {
     delay(1000);
-    switch (ssd1306_menuSelection(&menu))
+    switch (display.menuSelection(&menu))
     {
         case 0:
             bitmapDemo();
@@ -224,10 +224,10 @@ void loop()
         default:
             break;
     }
-    ssd1306_fillScreen16( 0x00 );
-    ssd1306_setColor(RGB_COLOR16(255,255,255));
-    ssd1306_showMenu16(&menu);
+    display.fill( 0x00 );
+    display.setColor(RGB_COLOR16(255,255,255));
+    display.showMenu(&menu);
     delay(500);
-    ssd1306_menuDown(&menu);
-    ssd1306_updateMenu16(&menu);
+    display.menuDown(&menu);
+    display.updateMenu(&menu);
 }
