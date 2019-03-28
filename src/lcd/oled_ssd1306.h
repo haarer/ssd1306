@@ -134,8 +134,9 @@ public:
      *
      * @param intf reference to communication interface to use
      */
-    DisplaySSD1306(I &intf)
-        : NanoDisplayOps<NanoDisplayOps1<I>, I>(intf) { }
+    DisplaySSD1306(I &intf, int8_t rstPin = -1)
+        : NanoDisplayOps<NanoDisplayOps1<I>, I>(intf)
+        , m_rstPin( rstPin ) { }
 
 
     /**
@@ -225,6 +226,9 @@ public:
         this->m_intf.stop();
     }
 
+protected:
+    int8_t m_rstPin;
+
 };
 
 /**
@@ -242,6 +246,10 @@ public:
      */
     void begin() override
     {
+        if ( this->m_rstPin >= 0 )
+        {
+            ssd1306_resetController( this->m_rstPin, 10 );
+        }
         this->m_w = 128;
         this->m_h = 64;
         for( uint8_t i=0; i < sizeof(s_ssd1306_oled128x64_initData); i++)
@@ -275,6 +283,10 @@ public:
      */
     void begin() override
     {
+        if ( this->m_rstPin >= 0 )
+        {
+            ssd1306_resetController( this->m_rstPin, 10 );
+        }
         this->m_w = 128;
         this->m_h = 32;
         for( uint8_t i=0; i < sizeof(s_ssd1306_oled128x32_initData); i++)
@@ -414,6 +426,7 @@ public:
 
 private:
     InterfaceSSD1306<PlatformSpi> m_spi;
+    int8_t m_rstPin;
 };
 
 /**

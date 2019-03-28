@@ -128,50 +128,6 @@ typedef struct
     int8_t sda;
 } SPlatformSpiConfig;
 
-/**
- * Abstract class for system specific interface, used to control oled
- */
-class IWireInterface
-{
-public:
-    /**
-     * Initializes interface
-     */
-//    virtual void begin() = 0;
-
-    /**
-     * Deinitializes interface
-     */
-//    virtual void end() = 0;
-
-    /**
-     * Starts communication with SSD1306 display.
-     */
-//    virtual void start() = 0;
-
-    /**
-     * Ends communication with SSD1306 display.
-     */
-//    virtual void stop() = 0;
-
-    /**
-     * Sends byte to SSD1306 device
-     * @param data - byte to send
-     */
-//    virtual void send(uint8_t data) = 0;
-
-    /**
-     * @brief Sends bytes to SSD1306 device
-     *
-     * Sends bytes to SSD1306 device. This functions gives
-     * ~ 30% performance increase than ssd1306_intf.send.
-     *
-     * @param buffer - bytes to send
-     * @param size - number of bytes to send
-     */
-//    virtual void sendBuffer(const uint8_t *buffer, uint16_t size) = 0;
-};
-
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 extern "C" void ssd1306_resetController(int8_t rstPin, uint8_t delayMs);
 #endif

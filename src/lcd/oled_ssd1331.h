@@ -158,7 +158,8 @@ public:
      * @param rstPin pin to use as HW reset pin for LCD display
      */
     DisplaySSD1331(I &intf, int8_t rstPin)
-        : NanoDisplayOps<NanoDisplayOps8<I>, I>(intf) { }
+        : NanoDisplayOps<NanoDisplayOps8<I>, I>(intf)
+        , m_rstPin( rstPin ) { }
 
 protected:
     int8_t m_rstPin; ///< indicates hardware reset pin used, -1 if it is not required
@@ -225,7 +226,8 @@ public:
      * @param rstPin pin to use as HW reset pin for LCD display
      */
     DisplaySSD1331x16(I &intf, int8_t rstPin)
-        : NanoDisplayOps<NanoDisplayOps16<I>, I>(intf) { }
+        : NanoDisplayOps<NanoDisplayOps16<I>, I>(intf)
+        , m_rstPin( rstPin ) { }
 
 protected:
     int8_t m_rstPin; ///< reset pin number, -1 if reset pin is not used
