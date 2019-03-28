@@ -28,7 +28,7 @@
 #include "sdl_core.h"
 #endif
 
-static const uint8_t PROGMEM s_oled128x64_initData[] =
+static const uint8_t PROGMEM s_ssd1306_oled128x64_initData[] =
 {
 #ifdef SDL_EMULATION
     SDL_LCD_SSD1306,
@@ -52,7 +52,7 @@ static const uint8_t PROGMEM s_oled128x64_initData[] =
     SSD1306_DISPLAYON,
 };
 
-static const uint8_t PROGMEM s_oled128x32_initData[] =
+static const uint8_t PROGMEM s_ssd1306_oled128x32_initData[] =
 {
 #ifdef SDL_EMULATION
     SDL_LCD_SSD1306,

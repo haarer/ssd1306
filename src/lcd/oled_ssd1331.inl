@@ -29,9 +29,8 @@
 #include "sdl_core.h"
 #endif
 #include "nano_gfx_types.h"
-#include "oled_ssd1331.h"
 
-static const PROGMEM uint8_t s_oled96x64_initData[] =
+static const PROGMEM uint8_t s_ssd1331_oled96x64_initData[] =
 {
 #ifdef SDL_EMULATION
     SDL_LCD_SSD1331_X8,
@@ -58,7 +57,7 @@ static const PROGMEM uint8_t s_oled96x64_initData[] =
     SSD1331_DISPLAYON,
 };
 
-static const PROGMEM uint8_t s_oled96x64_initData16[] =
+static const PROGMEM uint8_t s_ssd1331_oled96x64_initData16[] =
 {
 #ifdef SDL_EMULATION
     SDL_LCD_SSD1331_X16,
@@ -86,6 +85,15 @@ static const PROGMEM uint8_t s_oled96x64_initData16[] =
 };
 
 template <class I>
+void InterfaceSSD1331<I>::spiDataMode(uint8_t mode)
+{
+    if ( m_dc >= 0 )
+    {
+        digitalWrite( m_dc, mode ? HIGH : LOW );
+    }
+}
+
+template <class I>
 void InterfaceSSD1331<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
 {
     uint8_t rx = w ? (x + w - 1) : (m_base.width() - 1);
@@ -109,22 +117,6 @@ template <class I>
 void InterfaceSSD1331<I>::endBlock()
 {
     this->stop();
-}
-
-template <class I>
-void InterfaceSSD1331<I>::spiDataMode(uint8_t mode)
-{
-    if ( m_dc >= 0 )
-    {
-        digitalWrite( m_dc, mode ? HIGH : LOW );
-    }
-}
-
-template <class I>
-void InterfaceSSD1331<I>::commandStart(void)
-{
-    this->start();
-    spiDataMode(0);
 }
 
 template <class I>
@@ -206,10 +198,11 @@ void DisplaySSD1331<I>::begin()
     }
     this->m_w = 96;
     this->m_h = 64;
-    for( uint8_t i=0; i < sizeof(s_oled96x64_initData); i++)
+    for( uint8_t i=0; i < sizeof(s_ssd1331_oled96x64_initData); i++)
     {
-        this->m_intf.commandStart();
-        this->m_intf.send(pgm_read_byte(&s_oled96x64_initData[i]));
+        this->m_intf.start();
+        this->m_intf.spiDataMode(0);
+        this->m_intf.send(pgm_read_byte(&s_ssd1331_oled96x64_initData[i]));
         this->m_intf.stop();
     }
 }
@@ -232,10 +225,11 @@ void DisplaySSD1331x16<I>::begin()
     }
     this->m_w = 96;
     this->m_h = 64;
-    for( uint8_t i=0; i < sizeof(s_oled96x64_initData16); i++)
+    for( uint8_t i=0; i < sizeof(s_ssd1331_oled96x64_initData16); i++)
     {
-        this->m_intf.commandStart();
-        this->m_intf.send(pgm_read_byte(&s_oled96x64_initData16[i]));
+        this->m_intf.start();
+        this->m_intf.spiDataMode(0);
+        this->m_intf.send(pgm_read_byte(&s_ssd1331_oled96x64_initData16[i]));
         this->m_intf.stop();
     }
 }

@@ -99,12 +99,6 @@ public:
     void spiDataMode(uint8_t mode);
 
     /**
-     * Starts communication with LCD display in command mode.
-     * To stop communication use m_intf.end().
-     */
-    void commandStart();
-
-    /**
      * @brief Sets screen orientation (rotation)
      *
      * Sets screen orientation (rotation): 0 - normal, 1 - 90 CW, 2 - 180 CW, 3 - 270 CW
@@ -165,39 +159,6 @@ public:
      */
     DisplaySSD1331(I &intf, int8_t rstPin)
         : NanoDisplayOps<NanoDisplayOps8<I>, I>(intf) { }
-
-    // Make software implementation of drawLine available for this type of display
-    using NanoDisplayOps<NanoDisplayOps8<I>,I>::drawLine;
-
-    /**
-     * Draws line using hardware accelerator capabilities
-     *
-     * @param x1 x position of first point
-     * @param y1 y position of first point
-     * @param x2 x position of second point
-     * @param y2 y position of second point
-     * @param color color to draw line with (refere RGB_COLOR8 macro)
-     */
-    void drawLine(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2, uint16_t color);
-
-    /**
-     * Copies block in GDRAM to new position using hardware accelerator
-     * features.
-     * @param left left position of block to copy
-     * @param top top position of block to copy
-     * @param right right position of block to copy
-     * @param bottom bottom position of block to copy
-     * @param newLeft new left position for block being copied
-     * @param newTop new top position for block being copied
-     *
-     * @note This API can be used only with ssd1331 RGB oled displays
-     * @note after copy command is sent, it takes some time from oled
-     *       controller to complete operation. So, it is HIGHLY recommended
-     *       to wait for reasonable time before send other graphics operations
-     *       (for example, use 250us delay). This time is required for
-     *       oled display to become ready to accept new commands.
-     */
-    void copyBlock(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t newLeft, uint8_t newTop);
 
 protected:
     int8_t m_rstPin; ///< indicates hardware reset pin used, -1 if it is not required

@@ -244,10 +244,10 @@ public:
     {
         this->m_w = 128;
         this->m_h = 64;
-        for( uint8_t i=0; i < sizeof(s_oled128x64_initData); i++)
+        for( uint8_t i=0; i < sizeof(s_ssd1306_oled128x64_initData); i++)
         {
             this->m_intf.commandStart();
-            this->m_intf.send(pgm_read_byte(&s_oled128x64_initData[i]));
+            this->m_intf.send(pgm_read_byte(&s_ssd1306_oled128x64_initData[i]));
             this->m_intf.stop();
         }
     }
@@ -277,10 +277,10 @@ public:
     {
         this->m_w = 128;
         this->m_h = 32;
-        for( uint8_t i=0; i < sizeof(s_oled128x32_initData); i++)
+        for( uint8_t i=0; i < sizeof(s_ssd1306_oled128x32_initData); i++)
         {
             this->m_intf.commandStart();
-            this->m_intf.send(pgm_read_byte(&s_oled128x32_initData[i]));
+            this->m_intf.send(pgm_read_byte(&s_ssd1306_oled128x32_initData[i]));
             this->m_intf.stop();
         }
     }
