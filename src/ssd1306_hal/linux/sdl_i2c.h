@@ -81,6 +81,16 @@ public:
      * @param size - number of bytes to send
      */
     void sendBuffer(const uint8_t *buffer, uint16_t size);
+
+    /**
+     * Sets i2c address for communication
+     * This API is required for some led displays having multiple
+     * i2c addresses for different types of data.
+     *
+     * @param addr i2c address to set (7 bits)
+     */
+    void setAddr(uint8_t addr) { m_sa = addr; }
+
 private:
     int8_t m_scl;
     int8_t m_sda;

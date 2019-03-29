@@ -79,7 +79,7 @@ void ssd1306_configureSpiDisplay(const uint8_t *config, uint8_t configSize);
  * for 10 milliseconds, then pulls down rstPin for delayMs milliseconds
  * and then finally pulls rstPin up.
  *
- * @param rstPin reset pin number
+ * @param rstPin reset pin number. If -1, then reset will not be performed
  * @param delayMs delay in milliseconds to hold rstPin in low state
  */
 void ssd1306_resetController(int8_t rstPin, uint8_t delayMs);

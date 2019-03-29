@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2017-2018, Alexey Dynda
+    Copyright (c) 2017-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -73,12 +73,15 @@ void ssd1306_configureSpiDisplay(const uint8_t *config, uint8_t configSize)
 
 void ssd1306_resetController(int8_t rstPin, uint8_t delayMs)
 {
-    pinMode(rstPin, OUTPUT);
-    digitalWrite(rstPin, HIGH);
-    /* Wait at least 10ms after VCC is up for LCD */
-    delay(10);
-    /* Perform reset operation of LCD display */
-    digitalWrite(rstPin, LOW);
-    delay(delayMs);
-    digitalWrite(rstPin, HIGH);
+    if ( rstPin >= 0 )
+    {
+        pinMode(rstPin, OUTPUT);
+        digitalWrite(rstPin, HIGH);
+        /* Wait at least 10ms after VCC is up for LCD */
+        delay(10);
+        /* Perform reset operation of LCD display */
+        digitalWrite(rstPin, LOW);
+        delay(delayMs);
+        digitalWrite(rstPin, HIGH);
+    }
 }

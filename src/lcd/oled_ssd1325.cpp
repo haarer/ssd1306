@@ -131,10 +131,7 @@ void    ssd1325_128x64_init()
 
 void   ssd1325_128x64_spi_init(int8_t rstPin, int8_t cesPin, int8_t dcPin)
 {
-    if (rstPin >=0)
-    {
-        ssd1306_resetController( rstPin, 10 );
-    }
+    ssd1306_resetController( rstPin, 10 );
     ssd1306_spiInit(cesPin, dcPin);
     ssd1325_128x64_init();
 }
