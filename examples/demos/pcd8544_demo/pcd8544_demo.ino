@@ -39,6 +39,10 @@
 #include "owl.h"
 
 DisplayPCD8544_84x48_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
+//DisplayPCD8544_84x48_SPI display(3,{-1, -1, 4, 0, -1, -1}); // FOR ATTINY
+//DisplayPCD8544_84x48_SPI display(-1,{-1, 0, 1, 0, -1, -1); // Use this line for nano pi (RST not used, 0=CE, gpio1=D/C)
+//DisplayPCD8544_84x48_SPI display(24,{-1, 0, 23, 0,-1,-1}); // Use this line for Raspberry  (gpio24=RST, 0=CE, gpio23=D/C)
+//DisplayPCD8544_84x48_SPI display(22,{-1, 5, 21, 0,-1,-1}); // Use this line for ESP32 (VSPI)  (gpio22=RST, gpio5=CE for VSPI, gpio21=D/C)
 
 /*
  * Heart image below is defined directly in flash memory.
@@ -160,10 +164,6 @@ void setup()
     display.begin();
     /* Select the font to use with menu and all font functions */
     display.setFixedFont(ssd1306xled_font6x8);
-
-//    pcd8544_84x48_spi_init(3, 4, 5);  // FOR ATMEGA
-//    pcd8544_84x48_spi_init(24, 0, 23); // Use this line for Raspberry  (gpio24=RST, 0=CE, gpio23=D/C)
-//    pcd8544_84x48_spi_init(3, -1, 4); // FOR ATTINY
 
     display.fill( 0x00 );
     display.createMenu( &menu, menuItems, sizeof(menuItems) / sizeof(char *) );

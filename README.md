@@ -54,7 +54,7 @@ through API.
 
 | **Display** | **I2C** | **SPI** | **Orientation** | **Comments** |
 | :-------- |:---:|:---:|:---:|:---------|
-| sh1106 128x64 | X |   |   | planned support |
+| sh1106 128x64 | X |   |   |   |
 | ssd1306 128x64 | X | X |   |   |
 | ssd1306 128x32 | X | X |   |   |
 | ssd1331 96x64 |   | X | X |   |
