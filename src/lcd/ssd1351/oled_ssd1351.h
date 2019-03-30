@@ -48,15 +48,13 @@ public:
     /**
      * Creates instance of interface to LCD display.
      *
-     * @param bits display bit mode: 8 or 16
      * @param base Reference to base class, which represents Display
      * @param dc Data/command control pin number, for i2c communication should be -1
      * @param data variable argument list, accepted by platform interface (PlatformI2c, PlatformSpi)
      */
     template <typename... Args>
-    InterfaceSSD1351(uint8_t bits, NanoDisplayBase<InterfaceSSD1351<I>> &base, int8_t dc, Args&&... data)
+    InterfaceSSD1351(NanoDisplayBase<InterfaceSSD1351<I>> &base, int8_t dc, Args&&... data)
         : I(data...)
-        , m_bits( bits )
         , m_dc( dc )
         , m_base(base)
     {
@@ -99,7 +97,6 @@ public:
     void spiDataMode(uint8_t mode);
 
 private:
-    const uint8_t m_bits;
     const int8_t m_dc = -1; ///< data/command pin for SPI, -1 for i2c
     NanoDisplayBase<InterfaceSSD1351<I>> &m_base; ///< basic lcd display support interface
 };
@@ -150,7 +147,7 @@ public:
      */
     DisplaySSD1351_128x128_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
         : DisplaySSD1351(m_spi, rstPin)
-        , m_spi( 8, *this, config.dc,
+        , m_spi( *this, config.dc,
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
                                      config.dc,
