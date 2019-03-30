@@ -114,6 +114,56 @@ public:
      */
     uint8_t getStartLine();
 
+    /**
+     * Switches display to normal mode. This feature is specific
+     * for ssd1306 based controllers.
+     */
+    void normalMode();
+
+    /**
+     * Switches display to normal mode. This feature is specific
+     * for ssd1306 based controllers.
+     */
+    void invertMode();
+
+    /**
+     * Set display contrast, ie light intensity
+     * @param contrast - contrast value to see, refer to ssd1306 datasheet
+     */
+    void setContrast(uint8_t contrast);
+
+    /**
+     * Turns off display
+     */
+    void displayOff();
+
+    /**
+     * Turns on display
+     */
+    void displayOn();
+
+    /**
+     * @brief performs horizontal flip
+     *
+     * Performs horizontal flip. If you need to turn display by 180 degree,
+     * please use both flipHorizontal() and flipVertical().
+     *
+     * @param mode - 0 to disable horizontal flip
+     *               1 to enable horizontal flip
+     */
+    void flipHorizontal(uint8_t mode);
+
+    /**
+     * @brief performs vertical flip
+     *
+     * Performs vertical flip. If you need to turn display by 180 degree,
+     * please use both flipHorizontal() and flipVertical().
+     *
+     * @param mode - 0 to disable vertical flip
+     *               1 to enable vertical flip
+     */
+    void flipVertical(uint8_t mode);
+
 private:
     int8_t m_dc = -1; ///< data/command pin for SPI, -1 for i2c
     NanoDisplayBase<InterfaceSSD1306<I>> &m_base; ///< basic lcd display support interface
@@ -137,94 +187,6 @@ public:
     DisplaySSD1306(I &intf, int8_t rstPin = -1)
         : NanoDisplayOps<NanoDisplayOps1<I>, I>(intf)
         , m_rstPin( rstPin ) { }
-
-
-    /**
-     * Switches display to normal mode. This feature is specific
-     * for ssd1306 based controllers.
-     */
-    void normalMode()
-    {
-        this->m_intf.commandStart();
-        this->m_intf.send(SSD1306_NORMALDISPLAY);
-        this->m_intf.stop();
-    }
-
-
-    /**
-     * Switches display to normal mode. This feature is specific
-     * for ssd1306 based controllers.
-     */
-    void invertMode()
-    {
-        this->m_intf.commandStart();
-        this->m_intf.send(SSD1306_INVERTDISPLAY);
-        this->m_intf.stop();
-    }
-
-    /**
-     * Set display contrast, ie light intensity
-     * @param contrast - contrast value to see, refer to ssd1306 datasheet
-     */
-    void setContrast(uint8_t contrast)
-    {
-        this->m_intf.commandStart();
-        this->m_intf.send(SSD1306_SETCONTRAST);
-        this->m_intf.send(contrast);
-        this->m_intf.stop();
-    }
-
-    /**
-     * Turns off display
-     */
-    void displayOff()
-    {
-        this->m_intf.commandStart();
-        this->m_intf.send(SSD1306_DISPLAYOFF);
-        this->m_intf.stop();
-    }
-
-    /**
-     * Turns on display
-     */
-    void displayOn()
-    {
-        this->m_intf.commandStart();
-        this->m_intf.send(SSD1306_DISPLAYON);
-        this->m_intf.stop();
-    }
-
-    /**
-     * @brief performs horizontal flip
-     *
-     * Performs horizontal flip. If you need to turn display by 180 degree,
-     * please use both flipHorizontal() and flipVertical().
-     *
-     * @param mode - 0 to disable horizontal flip
-     *               1 to enable horizontal flip
-     */
-    void flipHorizontal(uint8_t mode)
-    {
-        this->m_intf.commandStart();
-        this->m_intf.send( SSD1306_SEGREMAP | (mode ? 0x00: 0x01 ) );
-        this->m_intf.stop();
-    }
-
-    /**
-     * @brief performs vertical flip
-     *
-     * Performs vertical flip. If you need to turn display by 180 degree,
-     * please use both flipHorizontal() and flipVertical().
-     *
-     * @param mode - 0 to disable vertical flip
-     *               1 to enable vertical flip
-     */
-    void flipVertical(uint8_t mode)
-    {
-        this->m_intf.commandStart();
-        this->m_intf.send( mode ? SSD1306_COMSCANINC : SSD1306_COMSCANDEC );
-        this->m_intf.stop();
-    }
 
 protected:
     int8_t m_rstPin;

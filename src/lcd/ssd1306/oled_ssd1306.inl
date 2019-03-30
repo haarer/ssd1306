@@ -138,3 +138,60 @@ uint8_t InterfaceSSD1306<I>::getStartLine()
     return m_startLine;
 }
 
+template <class I>
+void InterfaceSSD1306<I>::normalMode()
+{
+    commandStart();
+    this->send(SSD1306_NORMALDISPLAY);
+    this->stop();
+}
+
+template <class I>
+void InterfaceSSD1306<I>::invertMode()
+{
+    commandStart();
+    this->send(SSD1306_INVERTDISPLAY);
+    this->stop();
+}
+
+template <class I>
+void InterfaceSSD1306<I>::setContrast(uint8_t contrast)
+{
+    commandStart();
+    this->send(SSD1306_SETCONTRAST);
+    this->send(contrast);
+    this->stop();
+}
+
+template <class I>
+void InterfaceSSD1306<I>::displayOff()
+{
+    commandStart();
+    this->send(SSD1306_DISPLAYOFF);
+    this->stop();
+}
+
+template <class I>
+void InterfaceSSD1306<I>::displayOn()
+{
+    commandStart();
+    this->send(SSD1306_DISPLAYON);
+    this->stop();
+}
+
+template <class I>
+void InterfaceSSD1306<I>::flipHorizontal(uint8_t mode)
+{
+    commandStart();
+    this->send( SSD1306_SEGREMAP | (mode ? 0x00: 0x01 ) );
+    this->stop();
+}
+
+template <class I>
+void InterfaceSSD1306<I>::flipVertical(uint8_t mode)
+{
+    commandStart();
+    this->send( mode ? SSD1306_COMSCANINC : SSD1306_COMSCANDEC );
+    this->stop();
+}
+

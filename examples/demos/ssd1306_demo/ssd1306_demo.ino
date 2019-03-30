@@ -87,9 +87,9 @@ static void bitmapDemo()
 {
     display.drawBitmap1(0, 0, 128, 64, Owl);
     delay(1000);
-    display.invertMode();
+    display.getInterface().invertMode();
     delay(2000);
-    display.normalMode();
+    display.getInterface().normalMode();
 }
 
 static void spriteDemo()

@@ -45,34 +45,6 @@ extern "C" {
  */
 
 /**
- * @brief Sends configuration being passed to lcd display i2c/spi controller.
- *
- * Sends configuration being passed to lcd display i2c/spi controller.
- * The data bytes are sent to lcd controller as is. In case of spi display
- * this function sends cmd arguments in command mode. If lcd controller requires
- * arguments to be sent in data mode, please use ssd1306_configureSpiDisplay().
- *
- * @param config configuration, located in flash, to send to i2c/spi controller.
- * @param configSize - size of configuration data in bytes.
- */
-void ssd1306_configureI2cDisplay(const uint8_t *config, uint8_t configSize);
-
-/**
- * @brief Sends configuration being passed to lcd display spi controller.
- *
- * Sends configuration being passed to lcd display spi controller. If data byte value
- * to be sent is less than 255, then data byte is sent in command mode. If data byte
- * is 0xFF, the function does't send it to controller, but switches to spi data mode,
- * and next byte after will be sent in data spi mode. Then the function will switch back
- * to command mode. If lcd controller requires cmd arguments to be sent in command mode,
- * please use ssd1306_configureI2cDisplay().
- *
- * @param config configuration, located in flash, to send to i2c/spi controller.
- * @param configSize - size of configuration data in bytes.
- */
-void ssd1306_configureSpiDisplay(const uint8_t *config, uint8_t configSize);
-
-/**
  * @brief Does hardware reset for oled controller.
  *
  * Does hardware reset for oled controller. The function pulls up rstPin
@@ -85,42 +57,6 @@ void ssd1306_configureSpiDisplay(const uint8_t *config, uint8_t configSize);
 void ssd1306_resetController(int8_t rstPin, uint8_t delayMs);
 
 #if 0
-
-/**
- * Macro SSD1306_COMPAT_SPI_BLOCK_8BIT_CMDS() generates 2 static functions,
- * applicable for many oled controllers with 8-bit commands:
- * set_block_compat(), next_page_compat(). These functions are to be used
- * when working in ssd1306 compatible mode.
- * @param column_cmd command opcode for setting column address according to
- *        oled controller datasheet
- * @param row_cmd command opcode for setting row address according to
- *        oled controller datasheet
- * @note It is assumed that column and row commands accept 2 single byte
- *       arguments: start and end of region
- */
-#define SSD1306_COMPAT_SPI_BLOCK_8BIT_CMDS(column_cmd, row_cmd) \
-    static uint8_t __s_column; \
-    static uint8_t __s_page; \
-    static void set_block_compat(lcduint_t x, lcduint_t y, lcduint_t w) \
-    { \
-        uint8_t rx = w ? (x + w - 1) : (ssd1306_lcd.width - 1); \
-        __s_column = x; \
-        __s_page = y; \
-        ssd1306_intf.start(); \
-        ssd1306_spiDataMode(0); \
-        ssd1306_intf.send(column_cmd); \
-        ssd1306_intf.send(x); \
-        ssd1306_intf.send(rx < ssd1306_lcd.width ? rx : (ssd1306_lcd.width - 1)); \
-        ssd1306_intf.send(row_cmd); \
-        ssd1306_intf.send(y<<3); \
-        ssd1306_intf.send(((y<<3) + 7) < ssd1306_lcd.height ? ((y<<3) + 7) : (ssd1306_lcd.height - 1)); \
-        ssd1306_spiDataMode(1); \
-    } \
-    static void next_page_compat(void) \
-    { \
-        ssd1306_intf.stop(); \
-        set_block_compat(__s_column,__s_page+1,0); \
-    } \
 
 /**
  * Macro CONTROLLER_NATIVE_SPI_BLOCK_8BIT_CMDS() generates 2 static functions,
