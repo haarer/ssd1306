@@ -39,7 +39,7 @@
  */
 
 /**
- * Class implements interface functions to SSD1306 displays
+ * Class implements interface functions to SSD1331 displays
  */
 template <class I>
 class InterfaceSSD1331: public I
@@ -66,7 +66,7 @@ public:
      * @brief Sets block in RAM of lcd display controller to write data to.
      *
      * Sets block in RAM of lcd display controller to write data to.
-     * For ssd1306 it uses horizontal addressing mode, while for
+     * For ssd1331 it uses horizontal addressing mode, while for
      * sh1106 the function uses page addressing mode.
      * Width can be specified as 0, thus the library will set the right boundary to
      * region of RAM block to the right column of the display.
@@ -82,7 +82,7 @@ public:
     /**
      * Switches to the start of next RAM page for the block, specified by
      * startBlock().
-     * For ssd1306 it does nothing, while for sh1106 the function moves cursor to
+     * For ssd1331 it does nothing, while for sh1106 the function moves cursor to
      * next page.
      */
     void nextBlock();

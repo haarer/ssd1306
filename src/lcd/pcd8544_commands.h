@@ -34,7 +34,7 @@ extern "C" {
 
 
 /** PCD8544 LCD driver commands */
-enum ESsd1306Commands
+enum EPcd8544Commands
 {
     PCD8544_NOP             = 0x00,
 
