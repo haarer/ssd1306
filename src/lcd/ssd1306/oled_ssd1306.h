@@ -170,8 +170,6 @@ private:
     uint8_t m_startLine = 0;
 };
 
-#include "oled_ssd1306.inl"
-
 /**
  * Generic interface to ssd1306-based controllers
  */
@@ -206,25 +204,12 @@ public:
      * Initializes 128x64 lcd display. Interface should be ready prior to
      * this function call
      */
-    void begin() override
-    {
-        ssd1306_resetController( this->m_rstPin, 10 );
-        this->m_w = 128;
-        this->m_h = 64;
-        for( uint8_t i=0; i < sizeof(s_ssd1306_oled128x64_initData); i++)
-        {
-            this->m_intf.commandStart();
-            this->m_intf.send(pgm_read_byte(&s_ssd1306_oled128x64_initData[i]));
-            this->m_intf.stop();
-        }
-    }
+    void begin() override;
 
     /**
      * Closes display connection
      */
-    void end() override
-    {
-    }
+    void end() override;
 };
 
 /**
@@ -240,28 +225,12 @@ public:
      * Initializes 128x32 lcd display. Interface should be ready prior to
      * this function call
      */
-    void begin() override
-    {
-        if ( this->m_rstPin >= 0 )
-        {
-            ssd1306_resetController( this->m_rstPin, 10 );
-        }
-        this->m_w = 128;
-        this->m_h = 32;
-        for( uint8_t i=0; i < sizeof(s_ssd1306_oled128x32_initData); i++)
-        {
-            this->m_intf.commandStart();
-            this->m_intf.send(pgm_read_byte(&s_ssd1306_oled128x32_initData[i]));
-            this->m_intf.stop();
-        }
-    }
+    void begin() override;
 
     /**
      * Closes display connection
      */
-    void end() override
-    {
-    }
+    void end() override;
 };
 
 /**
@@ -279,7 +248,7 @@ public:
      * @param config platform i2c configuration. Please refer to SPlatformI2cConfig.
      */
     DisplaySSD1306_128x64_I2C( const SPlatformI2cConfig &config = { -1, 0x3C, -1, -1, 0 } )
-        : DisplaySSD1306_128x64(m_i2c)
+        : DisplaySSD1306_128x64(m_i2c, -1)
         , m_i2c( *this, -1,
                  SPlatformI2cConfig{ config.busId,
                                      config.addr ?: (uint8_t)0x3C,
@@ -290,20 +259,12 @@ public:
     /**
      * Initializes LCD display over I2C.
      */
-    void begin() override
-    {
-        this->m_intf.begin();
-        DisplaySSD1306_128x64::begin();
-    }
+    void begin() override;
 
     /**
      * Closes display connection
      */
-    void end() override
-    {
-        DisplaySSD1306_128x64::end();
-        this->m_intf.end();
-    }
+    void end() override;
 
 private:
     InterfaceSSD1306<PlatformI2c> m_i2c;
@@ -324,7 +285,7 @@ public:
      * @param config platform i2c configuration. Please refer to SPlatformI2cConfig.
      */
     DisplaySSD1306_128x32_I2C( const SPlatformI2cConfig &config = { -1, 0x3C, -1, -1, 0 } )
-        : DisplaySSD1306_128x32(m_i2c)
+        : DisplaySSD1306_128x32(m_i2c, -1)
         , m_i2c( *this, -1,
                  SPlatformI2cConfig{ config.busId,
                                      config.addr ?: (uint8_t)0x3C,
@@ -332,17 +293,9 @@ public:
                                      config.sda,
                                      config.frequency } ) {}
 
-    void begin() override
-    {
-        m_i2c.begin();
-        DisplaySSD1306_128x32::begin();
-    }
+    void begin() override;
 
-    void end() override
-    {
-        DisplaySSD1306_128x32::end();
-        m_i2c.end();
-    }
+    void end() override;
 
 private:
     InterfaceSSD1306<PlatformI2c> m_i2c;
@@ -362,7 +315,7 @@ public:
      * @param config platform spi configuration. Please refer to SPlatformI2cConfig.
      */
     DisplaySSD1306_128x64_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
-        : DisplaySSD1306_128x64( m_spi )
+        : DisplaySSD1306_128x64( m_spi, rstPin )
         , m_spi( *this, config.dc,
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
@@ -371,17 +324,9 @@ public:
                                      config.scl,
                                      config.sda } ) {}
 
-    void begin() override
-    {
-        m_spi.begin();
-        DisplaySSD1306_128x64::begin();
-    }
+    void begin() override;
 
-    void end() override
-    {
-        DisplaySSD1306_128x64::end();
-        m_spi.end();
-    }
+    void end() override;
 
 private:
     InterfaceSSD1306<PlatformSpi> m_spi;
@@ -402,7 +347,7 @@ public:
      * @param config platform spi configuration. Please refer to SPlatformI2cConfig.
      */
     DisplaySSD1306_128x32_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
-        : DisplaySSD1306_128x32( m_spi )
+        : DisplaySSD1306_128x32( m_spi, rstPin )
         , m_spi( *this, config.dc,
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
@@ -411,21 +356,15 @@ public:
                                      config.scl,
                                      config.sda } ) {}
 
-    void begin() override
-    {
-        m_spi.begin();
-        DisplaySSD1306_128x32::begin();
-    }
+    void begin() override;
 
-    void end() override
-    {
-        DisplaySSD1306_128x32::end();
-        m_spi.end();
-    }
+    void end() override;
 
 private:
     InterfaceSSD1306<PlatformSpi> m_spi;
 };
+
+#include "oled_ssd1306.inl"
 
 /**
  * @}

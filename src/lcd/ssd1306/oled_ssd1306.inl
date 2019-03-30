@@ -195,3 +195,40 @@ void InterfaceSSD1306<I>::flipVertical(uint8_t mode)
     this->stop();
 }
 
+template <class I>
+void DisplaySSD1306_128x64<I>::begin()
+{
+    ssd1306_resetController( this->m_rstPin, 10 );
+    this->m_w = 128;
+    this->m_h = 64;
+    for( uint8_t i=0; i < sizeof(s_ssd1306_oled128x64_initData); i++)
+    {
+        this->m_intf.commandStart();
+        this->m_intf.send(pgm_read_byte(&s_ssd1306_oled128x64_initData[i]));
+        this->m_intf.stop();
+    }
+}
+
+template <class I>
+void DisplaySSD1306_128x64<I>::end()
+{
+}
+
+template <class I>
+void DisplaySSD1306_128x32<I>::begin()
+{
+    ssd1306_resetController( this->m_rstPin, 10 );
+    this->m_w = 128;
+    this->m_h = 32;
+    for( uint8_t i=0; i < sizeof(s_ssd1306_oled128x32_initData); i++)
+    {
+        this->m_intf.commandStart();
+        this->m_intf.send(pgm_read_byte(&s_ssd1306_oled128x32_initData[i]));
+        this->m_intf.stop();
+    }
+}
+
+template <class I>
+void DisplaySSD1306_128x32<I>::end()
+{
+}
