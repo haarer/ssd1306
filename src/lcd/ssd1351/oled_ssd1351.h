@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2017-2019, Alexey Dynda
+    Copyright (c) 2018-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -22,16 +22,16 @@
     SOFTWARE.
 */
 /**
- * @file lcd_pcd8544.h support for Monochrome lcd 84x48 display
+ * @file oled_ssd1351.h support for RGB OLED 128x128 display
  */
 
 
-#ifndef _LCD_PCD8544_H_
-#define _LCD_PCD8544_H_
+#ifndef _OLED_SSD1351_H_
+#define _OLED_SSD1351_H_
 
 #include "ssd1306_hal/io.h"
 #include "lcd/lcd_common.h"
-#include "base/display.h"
+#include "lcd/base/display.h"
 
 /**
  * @ingroup LCD_INTERFACE_API
@@ -39,10 +39,10 @@
  */
 
 /**
- * Class implements interface functions to PCD8544 displays
+ * Class implements interface functions to SSD1351 displays
  */
 template <class I>
-class InterfacePCD8544: public I
+class InterfaceSSD1351: public I
 {
 public:
     /**
@@ -54,8 +54,9 @@ public:
      * @param data variable argument list, accepted by platform interface (PlatformI2c, PlatformSpi)
      */
     template <typename... Args>
-    InterfacePCD8544(NanoDisplayBase<InterfacePCD8544<I>> &base, int8_t dc, Args&&... data)
+    InterfaceSSD1351(uint8_t bits, NanoDisplayBase<InterfaceSSD1351<I>> &base, int8_t dc, Args&&... data)
         : I(data...)
+        , m_bits( bits )
         , m_dc( dc )
         , m_base(base)
     {
@@ -65,7 +66,7 @@ public:
      * @brief Sets block in RAM of lcd display controller to write data to.
      *
      * Sets block in RAM of lcd display controller to write data to.
-     * For ssd1306 it uses horizontal addressing mode, while for
+     * For ssd1351 it uses horizontal addressing mode, while for
      * sh1106 the function uses page addressing mode.
      * Width can be specified as 0, thus the library will set the right boundary to
      * region of RAM block to the right column of the display.
@@ -81,7 +82,7 @@ public:
     /**
      * Switches to the start of next RAM page for the block, specified by
      * startBlock().
-     * For ssd1306 it does nothing, while for sh1106 the function moves cursor to
+     * For ssd1351 it does nothing, while for sh1106 the function moves cursor to
      * next page.
      */
     void nextBlock();
@@ -98,70 +99,67 @@ public:
     void spiDataMode(uint8_t mode);
 
 private:
+    const uint8_t m_bits;
     const int8_t m_dc = -1; ///< data/command pin for SPI, -1 for i2c
-    NanoDisplayBase<InterfacePCD8544<I>> &m_base; ///< basic lcd display support interface
-
-    uint8_t m_width;
-    uint8_t m_column;
-    uint8_t m_page;
+    NanoDisplayBase<InterfaceSSD1351<I>> &m_base; ///< basic lcd display support interface
 };
 
 /**
- * Class implements basic functions for 16-bit mode of pcd8544-based displays
+ * Class implements basic functions for 16-bit mode of ssd1351-based displays
  */
 template <class I>
-class DisplayPCD8544: public NanoDisplayOps<NanoDisplayOps1<I>,I>
+class DisplaySSD1351: public NanoDisplayOps<NanoDisplayOps16<I>,I>
 {
 public:
     /**
-     * Creates instance of PCD8544 controller class for 8-bit mode
+     * Creates instance of SSD1351 controller class for 8-bit mode
      *
      * @param intf interface to use
      * @param rstPin pin to use as HW reset pin for LCD display
      */
-    DisplayPCD8544(I &intf, int8_t rstPin)
-        : NanoDisplayOps<NanoDisplayOps1<I>, I>(intf)
+    DisplaySSD1351(I &intf, int8_t rstPin)
+        : NanoDisplayOps<NanoDisplayOps16<I>, I>(intf)
         , m_rstPin( rstPin ) { }
 
 protected:
     int8_t m_rstPin; ///< indicates hardware reset pin used, -1 if it is not required
 
     /**
-     * Basic PCD8544 initialization
+     * Basic SSD1351 initialization
      */
     void begin() override;
 
     /**
-     * Basic PCD8544 deinitialization
+     * Basic ssd1351 deinitialization
      */
     void end() override;
 };
 
 /**
- * Class implements pcd8544 84x48 oled display in 16 bit mode over SPI
+ * Class implements ssd1351 128x128 oled display in 16 bit mode over SPI
  */
-class DisplayPCD8544_84x48_SPI: public DisplayPCD8544<InterfacePCD8544<PlatformSpi>>
+class DisplaySSD1351_128x128_SPI: public DisplaySSD1351<InterfaceSSD1351<PlatformSpi>>
 {
 public:
     /**
-     * @brief Inits 84x48 OLED display over spi (based on PCD8544 controller): 16-bit mode.
+     * @brief Inits 128x128 OLED display over spi (based on SSD1351 controller): 16-bit mode.
      *
-     * Inits 84x48 OLED display over spi (based on PCD8544 controller): 16-bit mode
+     * Inits 128x128 OLED display over spi (based on SSD1351 controller): 16-bit mode
      * @param rstPin pin controlling LCD reset (-1 if not used)
      * @param config platform spi configuration. Please refer to SPlatformI2cConfig.
      */
-    DisplayPCD8544_84x48_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
-        : DisplayPCD8544(m_spi, rstPin)
-        , m_spi( *this, config.dc,
+    DisplaySSD1351_128x128_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
+        : DisplaySSD1351(m_spi, rstPin)
+        , m_spi( 8, *this, config.dc,
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
                                      config.dc,
-                                     config.frequency ?: 4000000,
+                                     config.frequency ?: 4400000,
                                      config.scl,
                                      config.sda } ) {}
 
     /**
-     * Initializes pcd8544 lcd in 8-bit mode
+     * Initializes ssd1351 lcd in 8-bit mode
      */
     void begin() override;
 
@@ -171,14 +169,14 @@ public:
     void end() override;
 
 private:
-    InterfacePCD8544<PlatformSpi> m_spi;
+    InterfaceSSD1351<PlatformSpi> m_spi;
 };
 
-#include "lcd_pcd8544.inl"
+#include "oled_ssd1351.inl"
 
 /**
  * @}
  */
 
 // ----------------------------------------------------------------------------
-#endif // _LCD_PCD8544_H_
+#endif // _OLED_SSD1351_H_

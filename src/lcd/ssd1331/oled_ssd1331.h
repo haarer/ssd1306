@@ -31,7 +31,7 @@
 
 #include "ssd1306_hal/io.h"
 #include "lcd/lcd_common.h"
-#include "base/display.h"
+#include "lcd/base/display.h"
 
 /**
  * @ingroup LCD_INTERFACE_API

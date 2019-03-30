@@ -22,7 +22,6 @@
     SOFTWARE.
 */
 
-#include "lcd_common.h"
 #include "ssd1351_commands.h"
 #include "ssd1306_hal/io.h"
 #ifdef SDL_EMULATION
