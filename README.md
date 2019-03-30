@@ -62,7 +62,7 @@ through API.
 | il9163 128x128 |   | X | X | planned support |
 | st7735 128x160 |   | X | X | planned support |
 | ili9341 240x320 |   | X | X | planned support |
-| pcd8544 84x48 |   | X  |   | Nokia 5110, planned support |
+| pcd8544 84x48 |   | X  |   | Nokia 5110 |
 | vga 96x40 color |   |   |   | direct D-sub output, atmega328p only, planned support |
 | vga 128x64 bw |   |   |   | direct D-sub output, atmega328p only, planned support |
 
