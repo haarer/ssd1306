@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,13 @@
 
 #include "ssd1306.h"
 #include "nano_engine.h"
-#include "sova.h"
+#include "owl.h"
+
+DisplayST7735_128x160x16_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
+//DisplayST7735_128x160x16_SPI display(3,{-1, -1, 4, 0, -1, -1}); // FOR ATTINY
+//DisplayST7735_128x160x16_SPI display(-1,{-1, 0, 1, 0, -1, -1); // Use this line for nano pi (RST not used, 0=CE, gpio1=D/C)
+//DisplayST7735_128x160x16_SPI display(24,{-1, 0, 23, 0,-1,-1}); // Use this line for Raspberry  (gpio24=RST, 0=CE, gpio23=D/C)
+//DisplayST7735_128x160x16_SPI display(22,{-1, 5, 21, 0,-1,-1}); // Use this line for ESP32 (VSPI)  (gpio22=RST, gpio5=CE for VSPI, gpio21=D/C)
 
 /*
  * Heart image below is defined directly in flash memory.
@@ -76,11 +82,11 @@ const char *menuItems[] =
 
 static void bitmapDemo()
 {
-    ssd1306_setColor(RGB_COLOR8(64,64,255));
-    ssd1306_drawMonoBitmap8(0, 0, 128, 64, Sova);
-    ssd1306_drawBitmap8(0, 0, 8, 8, heartImage8);
-    ssd1306_setColor(RGB_COLOR8(255,64,64));
-    ssd1306_drawMonoBitmap8(0, 16, 8, 8, heartImage);
+    display.setColor(RGB_COLOR16(64,64,255));
+    display.drawBitmap1(0, 0, 128, 64, Owl);
+    display.drawBitmap8(0, 0, 8, 8, heartImage8);
+    display.setColor(RGB_COLOR16(255,64,64));
+    display.drawBitmap1(0, 16, 8, 8, heartImage);
     delay(3000);
 }
 
@@ -91,7 +97,7 @@ static void bitmapDemo()
  * Refer to C++ documentation.
  */
 NanoPoint sprite;
-NanoEngine8 engine;
+NanoEngine16<DisplayST7735_128x160x16_SPI> engine( display );
 static void spriteDemo()
 {
     // We not need to clear screen, engine will do it for us
@@ -100,9 +106,9 @@ static void spriteDemo()
     engine.refresh();
     // Set function to draw our sprite
     engine.drawCallback( []()->bool {
-        engine.canvas.clear();
-        engine.canvas.setColor( RGB_COLOR8(255, 32, 32) );
-        engine.canvas.drawBitmap1( sprite.x, sprite.y, 8, 8, heartImage );
+        engine.getCanvas().clear();
+        engine.getCanvas().setColor( RGB_COLOR16(255, 32, 32) );
+        engine.getCanvas().drawBitmap1( sprite.x, sprite.y, 8, 8, heartImage );
         return true;
     } );
     sprite.x = 0;
@@ -113,12 +119,12 @@ static void spriteDemo()
         // Tell the engine to refresh screen at old sprite position
         engine.refresh( sprite.x, sprite.y, sprite.x + 8 - 1, sprite.y + 8 - 1 );
         sprite.x++;
-        if (sprite.x >= ssd1306_displayWidth())
+        if (sprite.x >= display.width())
         {
             sprite.x = 0;
         }
         sprite.y++;
-        if (sprite.y >= ssd1306_displayHeight())
+        if (sprite.y >= display.height())
         {
             sprite.y = 0;
         }
@@ -131,68 +137,67 @@ static void spriteDemo()
 
 static void textDemo()
 {
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
-    ssd1306_clearScreen8();
-    ssd1306_setColor(RGB_COLOR8(255,255,0));
-    ssd1306_printFixed8(0,  8, "Normal text", STYLE_NORMAL);
-    ssd1306_setColor(RGB_COLOR8(0,255,0));
-    ssd1306_printFixed8(0, 16, "bold text?", STYLE_BOLD);
-    ssd1306_setColor(RGB_COLOR8(0,255,255));
-    ssd1306_printFixed8(0, 24, "Italic text?", STYLE_ITALIC);
-    ssd1306_negativeMode();
-    ssd1306_setColor(RGB_COLOR8(255,255,255));
-    ssd1306_printFixed8(0, 32, "Inverted bold?", STYLE_BOLD);
-    ssd1306_positiveMode();
+    display.setFixedFont(ssd1306xled_font6x8);
+    display.clear();
+    display.setColor(RGB_COLOR16(255,255,0));
+    display.printFixed(0,  8, "Normal text", STYLE_NORMAL);
+    display.setColor(RGB_COLOR16(0,255,0));
+    display.printFixed(0, 16, "bold text?", STYLE_BOLD);
+    display.setColor(RGB_COLOR16(0,255,255));
+    display.printFixed(0, 24, "Italic text?", STYLE_ITALIC);
+    display.negativeMode();
+    display.setColor(RGB_COLOR16(255,255,255));
+    display.printFixed(0, 32, "Inverted bold?", STYLE_BOLD);
+    display.positiveMode();
     delay(3000);
 }
 
 static void canvasDemo()
 {
-    uint8_t buffer[64*16/8];
-    NanoCanvas1_8 canvas(64,16, buffer);
-    ssd1306_setColor(RGB_COLOR8(0,255,0));
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
-    ssd1306_clearScreen8();
+    NanoCanvas<64,16,1> canvas;
+    display.setColor(RGB_COLOR16(0,255,0));
+    display.clear();
     canvas.clear();
     canvas.fillRect(10, 3, 80, 5);
-    canvas.blt((ssd1306_displayWidth()-64)/2, 1);
+    display.drawCanvas((display.width()-64)/2, 1, canvas);
     delay(500);
     canvas.fillRect(50, 1, 60, 15);
-    canvas.blt((ssd1306_displayWidth()-64)/2, 1);
+    display.drawCanvas((display.width()-64)/2, 1, canvas);
     delay(1500);
+    canvas.setFixedFont(ssd1306xled_font6x8);
     canvas.printFixed(20, 1, " DEMO ", STYLE_BOLD );
-    canvas.blt((ssd1306_displayWidth()-64)/2, 1);
+    display.drawCanvas((display.width()-64)/2, 1, canvas);
     delay(3000);
 }
 
 static void drawLinesDemo()
 {
-    ssd1306_clearScreen8();
-    ssd1306_setColor(RGB_COLOR8(255,0,0));
-    for (uint8_t y = 0; y < ssd1306_displayHeight(); y += 8)
+    display.clear();
+    display.setColor(RGB_COLOR16(255,0,0));
+    for (uint8_t y = 0; y < display.height(); y += 8)
     {
-        ssd1306_drawLine8(0,0, ssd1306_displayWidth() -1, y);
+        display.drawLine(0,0, display.width() -1, y);
     }
-    ssd1306_setColor(RGB_COLOR8(0,255,0));
-    for (uint8_t x = ssd1306_displayWidth() - 1; x > 7; x -= 8)
+    display.setColor(RGB_COLOR16(0,255,0));
+    for (uint8_t x = display.width() - 1; x > 7; x -= 8)
     {
-        ssd1306_drawLine8(0,0, x, ssd1306_displayHeight() - 1);
+        display.drawLine(0,0, x, display.height() - 1);
     }
     delay(3000);
 }
 
 void setup()
 {
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
-    st7735_128x160_spi_init(3, 4, 5);
-//    st7735_128x160_spi_init(3, -1, 4); // Use this line for ATTINY
-//    st7735_128x160_spi_init(22, 5, 21); // Use this line for ESP32 (VSPI)  (gpio22=RST, gpio5=CE for VSPI, gpio21=D/C)
+    display.begin();
+    display.setFixedFont(ssd1306xled_font6x8);
+//    ssd1351_128x128_spi_init(3, 4, 5);
+//    ssd1351_128x128_spi_init(24, 0, 23); // Use this line for Raspberry  (gpio24=RST, 0=CE, gpio23=D/C)
+//    ssd1351_128x128_spi_init(3, -1, 4);  // Use this line for ATTINY
+//    ssd1351_128x128_spi_init(22, 5, 21); // Use this line for ESP32 (VSPI)  (gpio22=RST, gpio5=CE for VSPI, gpio21=D/C)
 
-    // RGB functions do not work in default SSD1306 compatible mode
-    ssd1306_setMode( LCD_MODE_NORMAL );
-    ssd1306_fillScreen8( 0x00 );
-    ssd1306_createMenu( &menu, menuItems, sizeof(menuItems) / sizeof(char *) );
-    ssd1306_showMenu8( &menu );
+    display.fill( 0x0000 );
+    display.createMenu( &menu, menuItems, sizeof(menuItems) / sizeof(char *) );
+    display.showMenu( &menu );
 }
 
 uint8_t rotation = 0;
@@ -200,7 +205,7 @@ uint8_t rotation = 0;
 void loop()
 {
     delay(1000);
-    switch (ssd1306_menuSelection(&menu))
+    switch (display.menuSelection(&menu))
     {
         case 0:
             bitmapDemo();
@@ -225,14 +230,14 @@ void loop()
         default:
             break;
     }
-    if ((menu.count - 1) == ssd1306_menuSelection(&menu))
+    if ((menu.count - 1) == display.menuSelection(&menu))
     {
-         st7735_setRotation((++rotation) & 0x03);
+         display.getInterface().setRotation((++rotation) & 0x03);
     }
-    ssd1306_fillScreen8( 0x00 );
-    ssd1306_setColor(RGB_COLOR16(255,255,255));
-    ssd1306_showMenu8(&menu);
+    display.fill( 0x00 );
+    display.setColor(RGB_COLOR16(255,255,255));
+    display.showMenu(&menu);
     delay(500);
-    ssd1306_menuDown(&menu);
-    ssd1306_updateMenu8(&menu);
+    display.menuDown(&menu);
+    display.updateMenu(&menu);
 }
