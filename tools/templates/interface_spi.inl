@@ -2,6 +2,7 @@
 template <class I>
 void Interface~CONTROLLER~<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
 {
+    // TODO: place code here
     lcduint_t rx = w ? (x + w - 1) : (m_base.width() - 1);
     this->start();
     spiDataMode(0);

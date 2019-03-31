@@ -112,10 +112,7 @@ inl.write( get_file_data('interface_spi.inl') )
 
 for t in types:
     g_bits = str(t["bits"])
-    if len(types) > 1:
-        g_exbits = "x" + g_bits
-    else:
-        g_exbits = ""
+    g_exbits = "x" + g_bits
     header.write( get_file_data( 'display.h' ) )
     inl.write( get_file_data( 'display.inl' ) )
     for res in t["resolution"]:
