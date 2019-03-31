@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2018-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -39,6 +39,15 @@ static int sdl_il9163_detect(uint8_t data)
 {
     if (detected)
     {
+        switch (data)
+        {
+            case 0b00000011:
+                sdl_il9163.width = 128;
+                sdl_il9163.height = 160;
+                break;
+            default:
+                break;
+        }
         return 1;
     }
     detected = (data == SDL_LCD_IL9163) || (data == SDL_LCD_ST7735);
