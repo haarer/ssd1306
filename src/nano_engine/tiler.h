@@ -40,7 +40,7 @@
  * @{
  */
 
-#define NE_MAX_TILES_NUM 16
+#define NE_MAX_TILES_NUM 24
 
 /**
  * Structure, holding currently set font.
