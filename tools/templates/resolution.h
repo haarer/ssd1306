@@ -2,24 +2,22 @@
  * Class implements basic functions for ~BITS~-bit mode of ~CONTROLLER~-based displays
  */
 template <class I>
-class Display~CONTROLLER~_~RESOLUTION~: public NanoDisplayOps<NanoDisplayOps~BITS~<I>,I>
+class Display~CONTROLLER~_~RESOLUTION~: public Display~CONTROLLER~~EXBITS~<I>
 {
 public:
     /**
-     * Creates instance of ~CONTROLLER~ controller class for ~BITS~-bit mode
+     * Creates instance of ~CONTROLLER~ ~RESOLUTION~ controller class for ~BITS~-bit mode
      *
      * @param intf interface to use
      * @param rstPin pin to use as HW reset pin for LCD display
      */
     Display~CONTROLLER~_~RESOLUTION~(I &intf, int8_t rstPin)
-        : NanoDisplayOps<NanoDisplayOps~BITS~<I>, I>(intf)
-        , m_rstPin( rstPin ) { }
+        : Display~CONTROLLER~~EXBITS~<I>(intf, rstPin) { }
 
 protected:
-    int8_t m_rstPin; ///< indicates hardware reset pin used, -1 if it is not required
 
     /**
-     * Basic ~CONTROLLER~ initialization
+     * Basic ~CONTROLLER~ ~RESOLUTION~ initialization
      */
     void begin() override;
 

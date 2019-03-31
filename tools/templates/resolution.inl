@@ -15,9 +15,9 @@ static const PROGMEM uint8_t s_~CONTROLLER~_lcd~RESOLUTION~_initData[] =
 template <class I>
 void Display~CONTROLLER~_~RESOLUTION~<I>::begin()
 {
-    ssd1306_resetController( m_rstPin, 20 );
-    this->m_w = 128;
-    this->m_h = 128;
+    ssd1306_resetController( this->m_rstPin, 20 );
+    this->m_w = ~WIDTH~;
+    this->m_h = ~HEIGHT~;
     this->m_intf.start();
     this->m_intf.spiDataMode(0);
     for( uint8_t i=0; i<sizeof(s_~CONTROLLER~_lcd~RESOLUTION~_initData); i++)

@@ -35,13 +35,23 @@ def print_help_and_exit():
     print "      -c name   controller name"
     print "      -r WxH    resolution"
     print "      -b bits   bits per pixel"
+    print "      -t template path source templates, templates by default"
     exit(1)
 
 if len(sys.argv) < 2:
     print_help_and_exit()
 
-controller=""
+g_controller=""
+g_lcontroller=""
+g_resolution=""
+g_bits=""
+g_exbits=""
+g_width=""
+g_height=""
+
 types=[]
+controller=""
+templates="templates"
 
 # parse args
 idx = 1
@@ -54,6 +64,9 @@ while idx < len(sys.argv):
         idx += 1
         bits = int(sys.argv[idx])
         types.append({"bits": bits, "resolution": []})
+    elif opt == "-t":
+        idx += 1
+        templates = sys.argv[idx]
     elif opt == "-r":
         idx += 1
         resolution = sys.argv[idx]
@@ -64,41 +77,56 @@ while idx < len(sys.argv):
         print_help_and_exit()
     idx += 1
 
-shutil.rmtree(controller,True)
-os.mkdir(controller)
-header = open(controller + "/lcd_" + controller + ".h", "w" )
-inl = open(controller + "/lcd_" + controller + ".inl", "w" )
-cpp = open(controller + "/lcd_" + controller + ".cpp", "w" )
+def get_file_data(fname):
+    with open(templates + fname, 'r') as myfile:
+        data=myfile.read().replace('~CONTROLLER~', g_controller).\
+                           replace('~controller~', g_lcontroller).\
+                           replace('~RESOLUTION~', g_resolution).\
+                           replace('~EXBITS~', g_exbits).\
+                           replace('~BITS~', g_bits).\
+                           replace('~WIDTH~', g_width).\
+                           replace('~HEIGHT~',g_height)
+    return data;
 
-with open('templates/interface_spi.h', 'r') as myfile:
-    data=myfile.read().replace('~CONTROLLER~', controller)
-header.write( data )
+templates = templates + "/"
+g_controller = controller.upper()
+g_lcontroller = controller.lower()
 
-with open('templates/interface_spi.inl', 'r') as myfile:
-    data=myfile.read().replace('~CONTROLLER~', controller)
-inl.write( data )
+shutil.rmtree(g_lcontroller,True)
+os.mkdir(g_lcontroller)
+header = open(g_lcontroller + "/lcd_" + g_lcontroller + ".h", "w" )
+inl = open(g_lcontroller + "/lcd_" + g_lcontroller + ".inl", "w" )
+cpp = open(g_lcontroller + "/lcd_" + g_lcontroller + ".cpp", "w" )
+
+header.write( get_file_data('copyright.txt') )
+inl.write( get_file_data('copyright.txt') )
+cpp.write( get_file_data('copyright.txt') )
+
+header.write( get_file_data('header.h') )
+inl.write( get_file_data('header.inl') )
+cpp.write( get_file_data('header.cpp') )
+
+header.write( get_file_data('interface_spi.h') )
+inl.write( get_file_data('interface_spi.inl') )
+
 
 for t in types:
+    g_bits = str(t["bits"])
+    if len(types) > 1:
+        g_exbits = "x" + g_bits
+    else:
+        g_exbits = ""
+    header.write( get_file_data( 'display.h' ) )
+    inl.write( get_file_data( 'display.inl' ) )
     for res in t["resolution"]:
-        resolution = res;
-        if len(types) > 1:
-            resolution = resolution + "x" + str(t["bits"])
-        with open('templates/resolution.h', 'r') as myfile:
-            data=myfile.read().replace('~CONTROLLER~', controller).\
-                replace('~BITS~',str(t["bits"])).replace('~RESOLUTION~',resolution)
-        header.write( data )
-        with open('templates/resolution.inl', 'r') as myfile:
-            data=myfile.read().replace('~CONTROLLER~', controller).\
-                replace('~BITS~',str(t["bits"])).replace('~RESOLUTION~',resolution)
-        inl.write( data )
-        with open('templates/display_spi.h', 'r') as myfile:
-            data=myfile.read().replace('~CONTROLLER~', controller).\
-                replace('~BITS~',str(t["bits"])).replace('~RESOLUTION~',resolution)
-        header.write( data )
-        with open('templates/display_spi.cpp', 'r') as myfile:
-            data=myfile.read().replace('~CONTROLLER~', controller).\
-                replace('~BITS~',str(t["bits"])).replace('~RESOLUTION~',resolution)
-        cpp.write( data )
+        g_resolution = res + g_exbits;
+        [ g_width, g_height ] = res.split('x')
+        header.write( get_file_data('resolution.h') )
+        inl.write( get_file_data('resolution.inl') )
+        header.write( get_file_data('display_spi.h') )
+        cpp.write( get_file_data('display_spi.cpp') )
+
+header.write( get_file_data('footer.h') )
 
 header.close()
 inl.close()

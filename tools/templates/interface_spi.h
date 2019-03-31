@@ -1,3 +1,4 @@
+
 /**
  * Class implements interface functions to SSD1351 displays
  */
