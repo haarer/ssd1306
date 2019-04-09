@@ -93,21 +93,6 @@ void InterfaceST7735<I>::setRotation(uint8_t rotation)
     this->send(0x28);
     this->send(0x36);
     spiDataMode(1);
-/*    switch (m_rotation)
-    {
-    case 0:
-        ram_mode = 0b00000000;
-        break;
-    case 1: // 90 degree CW
-        ram_mode = 0b01000000;
-        break;
-    case 2: // 180 degree CW
-        ram_mode = 0b11100000;
-        break;
-    default: // 270 degree CW
-        ram_mode = 0b10000000;
-        break;
-    }*/
     switch (m_rotation)
     {
     case 0:
@@ -247,35 +232,6 @@ static const PROGMEM uint8_t s_ST7735_lcd128x160x16_initData[] =
     0x36,  CMD_ARG,  0b00000000,
     0x29,
 };
-
-
-/*
-     case 0: // 0
-        ram_mode = 0b00000000;
-        break;
--    case 1: // 90 degree CW
--        ram_mode = 0b01000000;
--        break;
--    case 2: // 180 degree CW
--        ram_mode = 0b11100000;
--        break;
--    case 3: // 270 degree CW
--        ram_mode = 0b10000000;
--        break;
--    case 4:
--        ram_mode = 0b00000000;
--        break;
--    case 5: // 90 degree CW
--        ram_mode = 0b01100000;
--        break;
--    case 6: // 180 degree CW
--        ram_mode = 0b11000000;
--        break;
--    default: // 270 degree CW
--        ram_mode = 0b10100000;
--        break;
--    }
-*/
 
 ////////////////////////////////////////////////////////////////////////////////
 //             ST7735 basic 16-bit implementation
