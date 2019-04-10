@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2018-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -22,12 +22,33 @@
     SOFTWARE.
 */
 
-#ifndef _SOVA_H_
-#define _SOVA_H_
-
+#include "lcd_il9163.h"
 #include "ssd1306_hal/io.h"
-#include <stdint.h>
-
-extern const uint8_t Sova [] PROGMEM;
-
+#ifdef SDL_EMULATION
+#include "sdl_core.h"
 #endif
+
+
+void DisplayIL9163_128x128x16_SPI::begin()
+{
+    m_spi.begin();
+    DisplayIL9163_128x128x16::begin();
+}
+
+void DisplayIL9163_128x128x16_SPI::end()
+{
+    DisplayIL9163_128x128x16::end();
+    m_spi.end();
+}
+
+void DisplayIL9163_128x160x16_SPI::begin()
+{
+    m_spi.begin();
+    DisplayIL9163_128x160x16::begin();
+}
+
+void DisplayIL9163_128x160x16_SPI::end()
+{
+    DisplayIL9163_128x160x16::end();
+    m_spi.end();
+}

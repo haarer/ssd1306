@@ -51,7 +51,7 @@ SRCS_CPP = \
 	lcd/ssd1331/oled_ssd1331.cpp \
 	lcd/ssd1351/oled_ssd1351.cpp \
 	lcd/st7735/lcd_st7735.cpp \
-	lcd/lcd_il9163.cpp \
+	lcd/il9163/lcd_il9163.cpp \
 	lcd/lcd_ili9341.cpp \
 	lcd/oled_ssd1325.cpp \
 	lcd/oled_template.cpp \

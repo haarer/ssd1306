@@ -16,6 +16,7 @@ COMPONENT_SRCDIRS := ./src \
                      ./src/lcd/ssd1331 \
                      ./src/lcd/ssd1351 \
                      ./src/lcd/st7735 \
+                     ./src/lcd/il9163 \
                      ./src/canvas \
                      ./src/nano_engine
 

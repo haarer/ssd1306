@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2016-2019, Alexey Dynda
+    Copyright (c) 2016-2018, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -21,29 +21,13 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-/**
- * @file ssd1306.h SSD1306 basic draw functions
- */
 
-#ifndef _SSD1306_H_
-#define _SSD1306_H_
+#ifndef _OWL_H_
+#define _OWL_H_
 
-#include "nano_gfx_types.h"
-#include "ssd1306_generic.h"
-#include "ssd1306_fonts.h"
+// ----------------------------------------------------------------------------
+#include "ssd1306_hal/io.h"
 
-#include "lcd/lcd_common.h"
-#include "lcd/pcd8544/lcd_pcd8544.h"
-#include "lcd/sh1106/oled_sh1106.h"
-#include "lcd/ssd1306/oled_ssd1306.h"
-#include "lcd/ssd1331/oled_ssd1331.h"
-#include "lcd/ssd1351/oled_ssd1351.h"
-#include "lcd/st7735/lcd_st7735.h"
-#include "lcd/il9163/lcd_il9163.h"
-#include "lcd/oled_ssd1325.h"
-#include "lcd/lcd_ili9341.h"
-#include "lcd/composite_video.h"
+extern const uint8_t Owl [] PROGMEM;
 
-#include "lcd/oled_template.h"
-
-#endif // _SSD1306_H_
+#endif
