@@ -36,7 +36,7 @@
  *   STM32: B7(SDA), B6(SCL)
  */
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "owl.h"
 
 DisplaySH1106_128x64_I2C display;

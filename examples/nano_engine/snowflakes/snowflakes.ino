@@ -36,7 +36,7 @@
  *   ESP32     I2C PINS: 21/22
  */
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "nano_engine.h"
 
 DisplaySSD1306_128x64_I2C display;

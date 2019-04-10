@@ -29,7 +29,7 @@
 
 /* !!! THIS DEMO RUNS in SSD1306 COMPATIBLE MODE */
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "nano_gfx.h"
 #include "sova.h"
 

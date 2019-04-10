@@ -36,7 +36,7 @@
  *   ESP32     I2C PINS: 21/22
  */
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "nano_engine.h"
 
 NanoEngine1 engine;

@@ -26,7 +26,7 @@
 // This sketch will run on Arduboy HW (compile for Leonardo board)
 //////////////////////////////////////////////////////////////////////
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "nano_engine.h"
 
 NanoEngine1 engine;

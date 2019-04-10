@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "intf/ssd1306_interface.h"
 #include "intf/i2c/ssd1306_i2c.h"
 

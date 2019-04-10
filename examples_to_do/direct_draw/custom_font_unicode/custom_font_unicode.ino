@@ -32,7 +32,7 @@
  *   Atmega328 PINS: connect LCD to A4/A5
  */
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 
 #ifndef CONFIG_SSD1306_UNICODE_ENABLE
 #error "This sketch requires CONFIG_SSD1306_UNICODE_ENABLE to be enabled in UserSettings.h"

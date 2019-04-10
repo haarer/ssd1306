@@ -33,7 +33,7 @@
  *   Z-keypad ADC module on A0 pin.
  */
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "buttons.h"
 
 #ifndef A0

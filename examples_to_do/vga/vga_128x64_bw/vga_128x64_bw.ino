@@ -34,7 +34,7 @@
  *   Controlling VGA requires local frame buffer to be located in RAM. Enabling VGA needs 1024 bytes (half of Atmega328p RAM).
  *   So, be careful with application stack.
  */
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "nano_gfx.h"
 #include "sova.h"
 #define DEJITTER_OFFSET -3

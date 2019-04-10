@@ -36,7 +36,7 @@
 // !!! Don't forget to install AdafruitGFX library to your Arduino IDE !!!
 #define CONFIG_ADAFRUIT_GFX_ENABLE
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "nano_engine.h"
 
 // No need to include this for Arduino sketch

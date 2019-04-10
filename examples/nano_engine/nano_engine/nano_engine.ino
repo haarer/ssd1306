@@ -30,7 +30,7 @@
  *   ESP8266: connect LCD to D1(D/C), D2(CS), RX(RES), D7(DIN), D5(CLK)
  */
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "nano_engine.h"
 #include "nano_bitmaps.h"
 

@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "levels.h"
 
 const uint8_t blockColors[]=

@@ -28,7 +28,7 @@
 #ifndef _SSD1306_CONSOLE_H_
 #define _SSD1306_CONSOLE_H_
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "ssd1306_hal/io.h"
 #include "ssd1306_hal/Print_internal.h"
 

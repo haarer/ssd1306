@@ -39,7 +39,7 @@
  *
  */
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 //#define VGA_CONTROLLER_DEBUG
 //#define SSD1306_VGA_SLEEP_MODE
 #define CONFIG_VGA_96X40_ENABLE

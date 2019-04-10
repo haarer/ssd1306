@@ -30,7 +30,6 @@
 #include "ssd1306_generic.h"
 
 #if 0
-#include "ssd1306.h"
 #include "ssd1306_fonts.h"
 #include "lcd/lcd_common.h"
 

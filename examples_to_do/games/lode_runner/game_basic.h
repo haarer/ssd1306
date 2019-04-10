@@ -24,7 +24,7 @@
 
 #pragma once
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "nano_engine.h"
 
 typedef NanoEngine<TILE_16x16_RGB8> GraphicsEngine;

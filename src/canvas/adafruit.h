@@ -39,7 +39,7 @@
 
 #if defined(CONFIG_ADAFRUIT_GFX_ENABLE)
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "ssd1306_hal/Print_internal.h"
 #include "nano_gfx_types.h"
 

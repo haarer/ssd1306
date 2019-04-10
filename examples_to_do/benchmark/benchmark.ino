@@ -41,7 +41,7 @@
 
 
 #if SSD1306_DIRECT_TEST(1) || SSD1306_ENGINE_TEST(1) || SSD1306_GFX_TEST(1)
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #if SSD1306_GFX_TEST(1)
 #include "nano_gfx.h"
 #if TEST_OLED == OLED_SSD1306

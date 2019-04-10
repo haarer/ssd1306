@@ -24,7 +24,7 @@
 
 #include "buttons.h"
 
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 
 uint8_t getPressedButton(uint8_t analogPin)
 {

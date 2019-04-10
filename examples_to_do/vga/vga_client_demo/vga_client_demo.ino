@@ -30,7 +30,7 @@
  *     TX - connect TX pin to RX pin of Additional vga controller board.
  *
  */
-#include "ssd1306.h"
+#include "ssd1306v2.h"
 #include "nano_gfx.h"
 #include "sova.h"
 #include "intf/uart/ssd1306_uart_builtin.h"
