@@ -313,106 +313,6 @@ uint8_t ssd1306_printFixed2x(uint8_t xpos, uint8_t y, const char ch[], EFontStyl
 }
 
 
-uint8_t ssd1306_printFixedN(uint8_t xpos, uint8_t y, const char ch[], EFontStyle style, uint8_t factor)
-{
-    uint8_t i, j=0;
-    uint8_t text_index = 0;
-    uint8_t page_offset = 0;
-    uint8_t x = xpos;
-    y >>= 3;
-    ssd1306_lcd.set_block(xpos, y, ssd1306_lcd.width - xpos);
-    for(;;)
-    {
-        uint8_t ldata;
-        if( (x > ssd1306_lcd.width - (s_fixedFont.h.width << factor)) || (ch[j] == '\0') )
-        {
-            x = xpos;
-            y++;
-            if (y >= (ssd1306_lcd.height >> 3))
-            {
-                break;
-            }
-            page_offset++;
-            if (page_offset == (s_fixedFont.pages << factor))
-            {
-                text_index = j;
-                page_offset = 0;
-                if (ch[j] == '\0')
-                {
-                    break;
-                }
-            }
-            else
-            {
-                j = text_index;
-            }
-            ssd1306_intf.stop();
-            ssd1306_lcd.set_block(xpos, y, ssd1306_lcd.width - xpos);
-        }
-        uint16_t unicode;
-        do
-        {
-            unicode = ssd1306_unicode16FromUtf8(ch[j]);
-            j++;
-        } while ( unicode == SSD1306_MORE_CHARS_REQUIRED );
-        SCharInfo char_info;
-        ssd1306_getCharBitmap(unicode, &char_info);
-        ldata = 0;
-        x += ((char_info.width + char_info.spacing) << factor);
-        if (char_info.height > (page_offset >> factor) * 8)
-        {
-            char_info.glyph += (page_offset >> factor) * char_info.width;
-            for( i=char_info.width; i>0; i--)
-            {
-                uint8_t data;
-                if ( style == STYLE_NORMAL )
-                {
-                    data = pgm_read_byte(char_info.glyph);
-                }
-                else if ( style == STYLE_BOLD )
-                {
-                    uint8_t temp = pgm_read_byte(char_info.glyph);
-                    data = temp | ldata;
-                    ldata = temp;
-                }
-                else
-                {
-                    uint8_t temp = pgm_read_byte(char_info.glyph+1);
-                    data = (temp & 0xF0) | ldata;
-                    ldata = (temp & 0x0F);
-                }
-                if ( factor > 0 )
-                {
-                    uint8_t accum = 0;
-                    uint8_t mask = ~((0xFF) << (1<<factor));
-                    // N=0  ->   right shift is always 0
-                    // N=1  ->   right shift goes through 0, 4
-                    // N=2  ->   right shift goes through 0, 2, 4, 6
-                    // N=3  ->   right shift goes through 0, 1, 2, 3, 4, 5, 6, 7
-                    data >>= ((page_offset & ((1<<factor) - 1))<<(3-factor));
-                    for (uint8_t idx = 0; idx < 1<<(3-factor); idx++)
-                    {
-                         accum |= (((data>>idx) & 0x01) ? (mask<<(idx<<factor)) : 0);
-                    }
-                    data = accum;
-                }
-                for (uint8_t z=(1<<factor); z>0; z--)
-                {
-                    ssd1306_lcd.send_pixels1(data^s_ssd1306_invertByte);
-                }
-                char_info.glyph++;
-            }
-        }
-        else
-        {
-            char_info.spacing += char_info.width;
-        }
-        for (i = 0; i < (char_info.spacing << factor); i++)
-            ssd1306_lcd.send_pixels1(s_ssd1306_invertByte);
-    }
-    ssd1306_intf.stop();
-    return j;
-}
 
 void         ssd1306_putPixel_delayed(uint8_t x, uint8_t y, uint8_t complete)
 {
@@ -642,6 +542,107 @@ void NanoDisplayOps1<I>::printFixed(lcdint_t xpos, lcdint_t y, const char *ch, E
             this->m_intf.send(s_ssd1306_invertByte);
     }
     this->m_intf.endBlock();
+}
+
+template <class I>
+void NanoDisplayOps1<I>::printFixedN(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style, uint8_t factor)
+{
+    uint8_t i, j=0;
+    uint8_t text_index = 0;
+    uint8_t page_offset = 0;
+    uint8_t x = xpos;
+    y >>= 3;
+    this->m_intf.startBlock(xpos, y, this->m_w - xpos);
+    for(;;)
+    {
+        uint8_t ldata;
+        if( (x > this->m_w - (this->m_font->getHeader().width << factor)) || (ch[j] == '\0') )
+        {
+            x = xpos;
+            y++;
+            if (y >= (this->m_h >> 3))
+            {
+                break;
+            }
+            page_offset++;
+            if (page_offset == (this->m_font->getPages() << factor))
+            {
+                text_index = j;
+                page_offset = 0;
+                if (ch[j] == '\0')
+                {
+                    break;
+                }
+            }
+            else
+            {
+                j = text_index;
+            }
+            this->m_intf.endBlock();
+            this->m_intf.startBlock(xpos, y, this->m_w - xpos);
+        }
+        uint16_t unicode;
+        do
+        {
+            unicode = this->m_font->unicode16FromUtf8(ch[j]);
+            j++;
+        } while ( unicode == SSD1306_MORE_CHARS_REQUIRED );
+        SCharInfo char_info;
+        this->m_font->getCharBitmap(unicode, &char_info);
+        ldata = 0;
+        x += ((char_info.width + char_info.spacing) << factor);
+        if (char_info.height > (page_offset >> factor) * 8)
+        {
+            char_info.glyph += (page_offset >> factor) * char_info.width;
+            for( i=char_info.width; i>0; i--)
+            {
+                uint8_t data;
+                if ( style == STYLE_NORMAL )
+                {
+                    data = pgm_read_byte(char_info.glyph);
+                }
+                else if ( style == STYLE_BOLD )
+                {
+                    uint8_t temp = pgm_read_byte(char_info.glyph);
+                    data = temp | ldata;
+                    ldata = temp;
+                }
+                else
+                {
+                    uint8_t temp = pgm_read_byte(char_info.glyph+1);
+                    data = (temp & 0xF0) | ldata;
+                    ldata = (temp & 0x0F);
+                }
+                if ( factor > 0 )
+                {
+                    uint8_t accum = 0;
+                    uint8_t mask = ~((0xFF) << (1<<factor));
+                    // N=0  ->   right shift is always 0
+                    // N=1  ->   right shift goes through 0, 4
+                    // N=2  ->   right shift goes through 0, 2, 4, 6
+                    // N=3  ->   right shift goes through 0, 1, 2, 3, 4, 5, 6, 7
+                    data >>= ((page_offset & ((1<<factor) - 1))<<(3-factor));
+                    for (uint8_t idx = 0; idx < 1<<(3-factor); idx++)
+                    {
+                         accum |= (((data>>idx) & 0x01) ? (mask<<(idx<<factor)) : 0);
+                    }
+                    data = accum;
+                }
+                for (uint8_t z=(1<<factor); z>0; z--)
+                {
+                    this->m_intf.send(data^s_ssd1306_invertByte);
+                }
+                char_info.glyph++;
+            }
+        }
+        else
+        {
+            char_info.spacing += char_info.width;
+        }
+        for (i = 0; i < (char_info.spacing << factor); i++)
+            this->m_intf.send(s_ssd1306_invertByte);
+    }
+    this->m_intf.stop();
 }
 
 template <class I>

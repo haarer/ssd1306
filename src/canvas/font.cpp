@@ -155,10 +155,13 @@ static void _ssd1306_newFormatGetBitmap(SFixedFontInfo &font, uint16_t unicode, 
         const uint8_t *data = font.primary_table;
         while (data)
         {
+//            printf("%p\n", data);
             SUnicodeBlockRecord r;
             data = ssd1306_readUnicodeRecord( &r, data );
+//            printf("%d, %d\n", r.start_code, r.count);
             if (!data)
             {
+//            printf("SSSSSSSS %p\n", data);
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
                 if ( table_index == 0 )
                 {

@@ -158,12 +158,36 @@ public:
      *
      * @warning use this method only if single display is used in project
      *
+     * @param progmemFont pointer to font data in flash (refer to NanoFont::loadFixedFont)
+     * @param secondaryFont pointer to font data in flash (refer to NanoFont::loadSecondaryFont)
+     */
+    void setFixedFont( const uint8_t *progmemFont, const uint8_t *secondaryFont )
+    {
+        g_ssd1306_font.loadFixedFont( progmemFont );
+        if ( secondaryFont )
+        {
+            g_ssd1306_font.loadSecondaryFont( secondaryFont );
+        }
+        setFont( g_ssd1306_font );
+    }
+
+    /**
+     * Sets new font to use with print functions.
+     * If multiple oled displays are used in single application,
+     * this method can cause conflicts.
+     *
+     * @warning use this method only if single display is used in project
+     *
      * @param progmemFont pointer to font data in flash (refer to NanoFont::loadFreeFont)
      * @param secondaryFont pointer to font data in flash (refer to NanoFont::loadSecondaryFont)
      */
     void setFreeFont( const uint8_t *progmemFont, const uint8_t *secondaryFont = nullptr )
     {
         g_ssd1306_font.loadFreeFont( progmemFont );
+        if ( secondaryFont )
+        {
+            g_ssd1306_font.loadSecondaryFont( secondaryFont );
+        }
         setFont( g_ssd1306_font );
     }
 

@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2016-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -34,24 +34,47 @@
 
 #include "ssd1306v2.h"
 
+DisplaySSD1306_128x64_I2C display;
+//DisplaySSD1306_128x64_SPI display(-1,{-1, 0, 1, 0, -1, -1); // Use this line for nano pi (RST not used, 0=CE, gpio1=D/C)
+//DisplaySSD1306_128x64_SPI display(3,{-1, 4, 5, 0,-1,-1});   // Use this line for Atmega328p (3=RST, 4=CE, 5=D/C)
+//DisplaySSD1306_128x64_SPI display(24,{-1, 0, 23, 0,-1,-1}); // Use this line for Raspberry  (gpio24=RST, 0=CE, gpio23=D/C)
+//DisplaySSD1306_128x64_SPI display(22,{-1, 5, 21, 0,-1,-1}); // Use this line for ESP32 (VSPI)  (gpio22=RST, gpio5=CE for VSPI, gpio21=D/C)
+
+const uint8_t g_customFont_5x8[] PROGMEM =
+{
+    0x00,  // 0x00 means fixed font type - the only supported by the library
+    0x05,  // 0x05 = 5 - font width in pixels
+    0x08,  // 0x08 = 8 - font height in pixels
+    0x30,  // 0x30 = 48 - first ascii character number in the font ('0' = ascii code 48)
+    // '0'
+    0b00000000,
+    0b00111110,
+    0b01000001,
+    0b01000001,
+    0b00111110,
+    // '1'
+    0b00000000,
+    0b01000010,
+    0b01111111,
+    0b01000000,
+    0b00000000,
+
+    0x00, // End of font
+};
+
 void setup()
 {
-    /* Replace the line below with ssd1306_128x32_i2c_init() if you need to use 128x32 display */
-    ssd1306_128x64_i2c_init();
-    ssd1306_fillScreen(0x00);
-    ssd1306_setFreeFont(free_calibri11x12);
-    ssd1306_setSecondaryFont(free_calibri11x12_cyrillic);
-    ssd1306_printFixed(0,  8, u8"This is Русский", STYLE_NORMAL);
-
-    ssd1306_setSecondaryFont(free_calibri11x12_latin);
-    ssd1306_printFixed(0, 24, u8"This is Deutsch Länder", STYLE_NORMAL);
+    display.begin();
+    display.fill(0x00);
+    display.setFixedFont( g_customFont_5x8 );
+    display.printFixed (0,  8,  "01100011", STYLE_NORMAL );
+    display.printFixedN (0, 16, "1001", STYLE_ITALIC, FONT_SIZE_2X);
 }
 
 
 void loop()
 {
 }
-
 
 
 
