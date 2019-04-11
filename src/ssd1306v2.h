@@ -44,6 +44,4 @@
 #include "lcd/lcd_ili9341.h"
 #include "lcd/composite_video.h"
 
-#include "lcd/oled_template.h"
-
 #endif // _SSD1306_H_
