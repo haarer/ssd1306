@@ -39,9 +39,10 @@ NanoFont g_ssd1306_font;
 
 static const uint8_t * ssd1306_readUnicodeRecord(SUnicodeBlockRecord *r, const uint8_t *p)
 {
-    r->start_code =( pgm_read_byte(&p[0]) << 8) | (pgm_read_byte(&p[1]));
+    r->start_code =( (static_cast<uint16_t>(pgm_read_byte(&p[0])) << 8)) |
+                     static_cast<uint16_t>(pgm_read_byte(&p[1]) );
     r->count = pgm_read_byte(&p[2]);
-    return (r->count > 0) ? (&p[3]): NULL;
+    return (r->count > 0) ? (&p[3]): nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -155,13 +156,10 @@ static void _ssd1306_newFormatGetBitmap(SFixedFontInfo &font, uint16_t unicode, 
         const uint8_t *data = font.primary_table;
         while (data)
         {
-//            printf("%p\n", data);
             SUnicodeBlockRecord r;
             data = ssd1306_readUnicodeRecord( &r, data );
-//            printf("%d, %d\n", r.start_code, r.count);
             if (!data)
             {
-//            printf("SSSSSSSS %p\n", data);
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
                 if ( table_index == 0 )
                 {
@@ -176,9 +174,13 @@ static void _ssd1306_newFormatGetBitmap(SFixedFontInfo &font, uint16_t unicode, 
             if ( ( unicode < r.start_code) || ( unicode >= (r.start_code + r.count) ) )
             {
                 // skip jump table
-                data += r.count * 4;
+                data += static_cast<uint16_t>(r.count) * 4;
                 // skip block bitmap data
-                data += ((pgm_read_byte(&data[0]) << 8) | (pgm_read_byte(&data[1]))) + 2;
+                uint16_t offset = ( (static_cast<uint16_t>(pgm_read_byte(&data[0])) << 8) |
+                                     static_cast<uint16_t>(pgm_read_byte(&data[1])) ) + 2;
+//                printf("JMP OFFSET: %d\n", offset);
+                data += offset;
+//                printf("JMP DONE: %02X %02X %02X\n", data[0], data[1], data[2]);
                 continue;
             }
             /* At this point data points to jump table (offset|offset|bytes|width) */
