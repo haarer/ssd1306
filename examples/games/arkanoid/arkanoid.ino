@@ -56,9 +56,6 @@
  */
 
 #include "ssd1306v2.h"
-#include "intf/ssd1306_interface.h"
-#include "intf/i2c/ssd1306_i2c.h"
-#include "lcd/lcd_common.h"
 
 #include <stdlib.h>
 
@@ -73,6 +70,14 @@
 #include "arkanoid.h"
 #include "buttons.h"
 
+#ifdef ARKANOID_SSD1331
+DisplaySSD1331_96x64_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
+#elif defined(__AVR_ATtiny85__)
+DisplaySSD1306_128x64_I2C display;
+#else
+DisplaySSD1306_128x64_I2C display;
+#endif
+
 typedef struct
 {
     SPRITE  sprite;
@@ -80,6 +85,10 @@ typedef struct
     uint8_t extra;
 } GameObject;
 
+SPRITE       ssd1306_createSprite(uint8_t x, uint8_t y, uint8_t w, const uint8_t *data)
+{
+    return (SPRITE){x,y,w,x,y,data,NULL};
+}
 
 uint16_t *EEPROM_ADDR = (uint16_t*)0;
 
@@ -151,31 +160,16 @@ void arkanoidUtoa(uint16_t b)
 
 void drawIntro()
 {
-#ifdef ARKANOID_SSD1331
-    ssd1331_96x64_spi_init(3,4,5);
-#elif defined(__AVR_ATtiny85__)
-    ssd1306_i2cInitEx(-1,-1,0);
-#elif defined(CONFIG_SOFTWARE_I2C_AVAILABLE)
-    ssd1306_i2cInit_Embedded(-1,-1,0);
-#elif defined(CONFIG_PLATFORM_I2C_AVAILABLE)
-    ssd1306_platform_i2cInit(-1,0,-1);
-#elif defined(CONFIG_TWI_I2C_AVAILABLE)
-    ssd1306_i2cInit_Twi(0);
-#else
-    #error "Not supported microcontroller or board"
-#endif
-#ifndef ARKANOID_SSD1331
-    ssd1306_128x64_init();
-#endif
-    ssd1306_clearScreen( );
-    ssd1306_setColor(RGB_COLOR8(255,0,0));
+    display.begin();
+    display.clear( );
+    display.setColor(RGB_COLOR8(255,0,0));
     for (int8_t y=-24; y<16; y++)
     {
-        gfx_drawMonoBitmap(16 - OUTPUT_OFFSET, y, 96, 24, arkanoid_2);
+        display.gfx_drawMonoBitmap(16 - OUTPUT_OFFSET, y, 96, 24, arkanoid_2);
         delay(20);
     }
-    ssd1306_setColor(RGB_COLOR8(255,255,0));
-    ssd1306_printFixed_oldStyle(40 - OUTPUT_OFFSET, 40, "BREAKOUT", STYLE_NORMAL);
+    display.setColor(RGB_COLOR8(255,255,0));
+    display.printFixed_oldStyle(40 - OUTPUT_OFFSET, 40, "BREAKOUT", STYLE_NORMAL);
     beep(200,600);
     beep(300,200);
     beep(400,300);
@@ -183,82 +177,81 @@ void drawIntro()
 
 void drawStatusPanel()
 {
-    ssd1306_setColor(RGB_COLOR8(255,0,0));
+    display.setColor(RGB_COLOR8(255,0,0));
     for(uint8_t i=0; i<min(hearts,3); i++)
     {
-        SPRITE heart = ssd1306_createSprite( RIGHT_EDGE + 4, 16 + (i<<3), 8, heartSprite );
-        heart.draw();
+        display.drawBitmap1( RIGHT_EDGE + 4, 16 + (i<<3), 8, 8, heartSprite );
     }
-    ssd1306_setColor(RGB_COLOR8(255,255,0));
+    display.setColor(RGB_COLOR8(255,255,0));
     arkanoidUtoa(score);
     tempStr[2] = '\0';
-    ssd1306_printFixed_oldStyle(RIGHT_EDGE + 1, 8, tempStr, STYLE_NORMAL);
-    ssd1306_setColor(RGB_COLOR8(0,255,255));
-    SPRITE power = ssd1306_createSprite( RIGHT_EDGE + 4, 40, 8, powerSprite );
+    display.printFixed_oldStyle(RIGHT_EDGE + 1, 8, tempStr, STYLE_NORMAL);
     if (platformPower)
-        power.draw();
+        display.setColor(RGB_COLOR8(0,255,255));
     else
-        power.erase();
+        display.setColor(RGB_COLOR8(0,0,0));
+    display.drawBitmap1( RIGHT_EDGE + 4, 40, 8, 8, powerSprite );
 }
 
 /* Draws and clears platform */
 void drawPlatform()
 {
     uint8_t pos = (platformPos < PLATFORM_SPEED) ? 0: (platformPos - PLATFORM_SPEED);
-    ssd1306_setColor(RGB_COLOR8(255,255,0));
-    ssd1306_lcd.set_block( pos + LEFT_EDGE + 1, PLATFORM_ROW, platformWidth + PLATFORM_SPEED * 2 );
+    display.setColor(RGB_COLOR8(255,255,0));
+    display.getInterface().startBlock( pos + LEFT_EDGE + 1, PLATFORM_ROW, platformWidth + PLATFORM_SPEED * 2 );
     while (pos < platformPos)
     {
-       ssd1306_lcd.send_pixels1(0B00000000);
+       display.getInterface().send(0B00000000);
        pos++;
     }
-    ssd1306_lcd.send_pixels1(0B00001110);
+    display.getInterface().send(0B00001110);
     pos++;
     while (pos < platformPos + platformWidth - 1)
     {
-      ssd1306_lcd.send_pixels1(0B00000111);
+      display.getInterface().send(0B00000111);
       pos++;
     }
-    ssd1306_lcd.send_pixels1(0B00001110);
+    display.getInterface().send(0B00001110);
     while (pos < platformPos + platformWidth + PLATFORM_SPEED - 1)
     {
        if (pos >= (RIGHT_EDGE - LEFT_EDGE - 2))
        {
           break;
        }
-       ssd1306_lcd.send_pixels1(0B00000000);
+       display.getInterface().send(0B00000000);
        pos++;
     }
-    ssd1306_intf.stop();
+    display.getInterface().endBlock();
 }
 
 void drawFieldEdges()
 {
     uint8_t i=8;
-    ssd1306_setColor(RGB_COLOR8(255,0,0));
+    display.setColor(RGB_COLOR8(255,0,0));
     while (i)
     {
         i--;
-        ssd1306_lcd.set_block(LEFT_EDGE, i, 1);
-        ssd1306_lcd.send_pixels1( 0B01010101 );
-        ssd1306_intf.stop();
-        ssd1306_lcd.set_block(RIGHT_EDGE, i, 1);
-        ssd1306_lcd.send_pixels1( 0B01010101 );
-        ssd1306_intf.stop();
+        display.getInterface().startBlock(LEFT_EDGE, i, 1);
+        display.getInterface().send( 0B01010101 );
+        display.getInterface().endBlock();
+        display.getInterface().startBlock(RIGHT_EDGE, i, 1);
+        display.getInterface().send( 0B01010101 );
+        display.getInterface().endBlock();
     }
 }
 
 void drawBlock(uint8_t x, uint8_t y)
 {
     uint8_t block = gameField[y][x];
+    display.setColor(RGB_COLOR8(64,64,255));
     switch(block)
     {
-        case 1: ssd1306_setColor(RGB_COLOR8(64,64,255)); break;
-        case 2: ssd1306_setColor(RGB_COLOR8(64,255,255)); break;
-        case 3: ssd1306_setColor(RGB_COLOR8(64,255,64)); break;
-        default: ssd1306_setColor(RGB_COLOR8(64,64,255)); break;
+        case 1: display.setColor(RGB_COLOR8(64,64,255)); break;
+        case 2: display.setColor(RGB_COLOR8(64,255,255)); break;
+        case 3: display.setColor(RGB_COLOR8(64,255,64)); break;
+        default: display.setColor(RGB_COLOR8(64,64,255)); break;
     }
-    ssd1306_drawSpriteEx(LEFT_EDGE + 1 + (x << 4), y, 16, &blockImages[block][0]);
+    display.drawBitmap1( LEFT_EDGE + 1 + (x << 4), y << 3, 16, 8, &blockImages[block][0]);
 }
 
 
@@ -295,7 +288,7 @@ void drawBlocks()
 
 void drawStartScreen()
 {
-    ssd1306_clearScreen( );
+    display.clear( );
     drawBlocks();
     drawFieldEdges();
     updateStatusPanel = true;
@@ -303,11 +296,11 @@ void drawStartScreen()
 
 void startLevel()
 {
-    ssd1306_setColor(RGB_COLOR8(255,128,0));
+    display.setColor(RGB_COLOR8(255,128,0));
     arkanoidUtoa(level);
-    ssd1306_clearScreen();
-    ssd1306_printFixed_oldStyle(40 - OUTPUT_OFFSET, 24, "LEVEL ", STYLE_BOLD);
-    ssd1306_printFixed_oldStyle(76 - OUTPUT_OFFSET, 24, tempStr, STYLE_BOLD);
+    display.clear();
+    display.printFixed_oldStyle(40 - OUTPUT_OFFSET, 24, "LEVEL ", STYLE_BOLD);
+    display.printFixed_oldStyle(76 - OUTPUT_OFFSET, 24, tempStr, STYLE_BOLD);
     delay(2000);
     resetBlocks();
     hSpeed = INITIAL_H_SPEED;
@@ -333,40 +326,20 @@ void resetGame()
 
 void setup()
 {
-    ssd1306_setFixedFont_oldStyle(ssd1306xled_font6x8_AB);
+    display.setFixedFont_oldStyle(ssd1306xled_font6x8_AB);
     randomSeed(analogRead(0));
-#if defined(CONFIG_PLATFORM_I2C_AVAILABLE)
-    // no need to do anything here
-#elif defined(ARKANOID_SSD1331)
     #ifndef USE_Z_KEYPAD
         pinMode(LEFT_BTN, INPUT);
         pinMode(RIGHT_BTN, INPUT);
     #endif
     pinMode(BUZZER, OUTPUT);
+#if defined(__AVR_ATmega328p__)
     sei();                      // enable all interrupts
 #elif defined(__AVR_ATtiny85__)
     DDRB |= 0b00011010;         // set PB1 as output (for the speaker), PB0 and PB2 as input
     sei();                      // enable all interrupts
-#elif defined(CONFIG_ARDUINO_WIRE_LIBRARY_AVAILABLE)
-    Wire.begin();
-    #ifdef SSD1306_WIRE_CLOCK_CONFIGURABLE
-        Wire.setClock( 400000 );
-    #endif
-    #ifndef USE_Z_KEYPAD
-        pinMode(LEFT_BTN, INPUT);
-        pinMode(RIGHT_BTN, INPUT);
-    #endif
-    pinMode(BUZZER, OUTPUT);
-    sei();                      // enable all interrupts
-#elif defined(CONFIG_SOFTWARE_I2C_AVAILABLE)
-    #ifndef USE_Z_KEYPAD
-        pinMode(LEFT_BTN, INPUT);
-        pinMode(RIGHT_BTN, INPUT);
-    #endif
-    pinMode(BUZZER, OUTPUT);
-    sei();                      // enable all interrupts
 #else
-    #error "Not supported microcontroller or board"
+    // Add support for other platforms
 #endif
     resetGame();
 }
@@ -405,22 +378,21 @@ void drawBall(uint8_t lastx, uint8_t lasty)
     uint8_t newy = bally >> SPEED_SHIFT;
     uint8_t temp;
     temp = 0B00000001 << (newy & 0x07);
-    ssd1306_setColor(RGB_COLOR8(255,255,255));
-    ssd1306_lcd.set_block(LEFT_EDGE + 1 + newx, newy >> 3, 1);
-    ssd1306_lcd.send_pixels1( temp );
-    ssd1306_intf.stop();
+    display.setColor(RGB_COLOR8(255,255,255));
+    display.getInterface().startBlock(LEFT_EDGE + 1 + newx, newy >> 3, 1);
+    display.getInterface().send( temp );
+    display.getInterface().endBlock();
     if ((newx != lastx) || ((newy >> 3) != (lasty >> 3)))
     {
-        ssd1306_lcd.set_block(LEFT_EDGE + 1 + lastx, lasty >> 3, 1);
-        ssd1306_lcd.send_pixels1( 0B00000000 );
-        ssd1306_intf.stop();
+        display.getInterface().startBlock(LEFT_EDGE + 1 + lastx, lasty >> 3, 1);
+        display.getInterface().send( 0B00000000 );
+        display.getInterface().endBlock();
     }
 }
 
 
 void drawObjects()
 {
-    ssd1306_setColor(RGB_COLOR8(255,0,192));
     for(uint8_t i=0; i<MAX_GAME_OBJECTS; i++)
     {
        if (objects[i].type == 0)
@@ -428,13 +400,21 @@ void drawObjects()
        }
        else if (objects[i].type == 1)
        {
-           objects[i].sprite.erase();
+           display.setColor(RGB_COLOR8(0,0,0));
+           display.gfx_drawMonoBitmap( objects[i].sprite.x, objects[i].sprite.y, objects[i].sprite.w, 8,
+                                       objects[i].sprite.data );
            objects[i].type = 0;
        }
        else
        {
-           objects[i].sprite.eraseTrace();
-           objects[i].sprite.draw();
+           display.setColor(RGB_COLOR8(0,0,0));
+           display.gfx_drawMonoBitmap( objects[i].sprite.lx, objects[i].sprite.ly, objects[i].sprite.w, 8,
+                                       objects[i].sprite.data );
+           display.setColor(RGB_COLOR8(255,0,192));
+           display.gfx_drawMonoBitmap( objects[i].sprite.x, objects[i].sprite.y, objects[i].sprite.w, 8,
+                                       objects[i].sprite.data );
+           objects[i].sprite.lx = objects[i].sprite.x;
+           objects[i].sprite.ly = objects[i].sprite.y;
        }
     }
 }
@@ -619,7 +599,7 @@ void movePlatform()
 
 void gameOver()
 {
-    ssd1306_setColor(RGB_COLOR8(255,255,255));
+    display.setColor(RGB_COLOR8(255,255,255));
 #if defined(ESP32) || defined(ESP8266)
     uint16_t topScore = score;
 #else
@@ -635,14 +615,14 @@ void gameOver()
         eeprom_write_word(EEPROM_ADDR, topScore);
     }
 #endif
-    ssd1306_clearScreen( );
-    ssd1306_printFixed_oldStyle(32 - OUTPUT_OFFSET, 16, "GAME OVER", STYLE_NORMAL);
-    ssd1306_printFixed_oldStyle(32 - OUTPUT_OFFSET, 32, "SCORE ", STYLE_NORMAL);
+    display.clear( );
+    display.printFixed_oldStyle(32 - OUTPUT_OFFSET, 16, "GAME OVER", STYLE_NORMAL);
+    display.printFixed_oldStyle(32 - OUTPUT_OFFSET, 32, "SCORE ", STYLE_NORMAL);
     arkanoidUtoa(score);
-    ssd1306_printFixed_oldStyle(70 - OUTPUT_OFFSET, 32, tempStr, STYLE_NORMAL);
-    ssd1306_printFixed_oldStyle(32 - OUTPUT_OFFSET, 40, "TOP SCORE ", STYLE_NORMAL);
+    display.printFixed_oldStyle(70 - OUTPUT_OFFSET, 32, tempStr, STYLE_NORMAL);
+    display.printFixed_oldStyle(32 - OUTPUT_OFFSET, 40, "TOP SCORE ", STYLE_NORMAL);
     arkanoidUtoa(topScore);
-    ssd1306_printFixed_oldStyle(90 - OUTPUT_OFFSET, 40, tempStr, STYLE_NORMAL);
+    display.printFixed_oldStyle(90 - OUTPUT_OFFSET, 40, tempStr, STYLE_NORMAL);
     for (int i = 0; i<1000; i++)
     {
        beep(1,random(0,i*2));
@@ -656,9 +636,10 @@ void platformCrashAnimation()
     {
         for ( uint8_t i = 0; i < platformWidth >> 2; i++ )
         {
-            ssd1306_lcd.set_block( platformPos + ((j & 0x01)<<1) + ((j & 0x02)>>1) + (i<<2) + LEFT_EDGE + 1, PLATFORM_ROW, platformWidth );
-            ssd1306_lcd.send_pixels1( 0B00000000 );
-            ssd1306_intf.stop();
+            display.getInterface().startBlock( platformPos + ((j & 0x01)<<1) + ((j & 0x02)>>1) + (i<<2) + LEFT_EDGE + 1,
+                                               PLATFORM_ROW, platformWidth );
+            display.getInterface().send( 0B00000000 );
+            display.getInterface().endBlock();
         }
         delay(150);
     }
@@ -786,15 +767,15 @@ void system_sleep()
 #else
 void system_sleep()
 {
-  ssd1306_clearScreen( );
-  ssd1306_displayOff();
+  display.clear( );
+  display.getInterface().displayOff();
   ADCSRA &= ~(1<<ADEN);
   set_sleep_mode(SLEEP_MODE_PWR_DOWN); // sleep mode is set here
   sleep_enable();
   sleep_mode();                        // System actually sleeps here
   sleep_disable();                     // System continues execution here when watchdog timed out
   ADCSRA |= (1<<ADEN);
-  ssd1306_displayOn();
+  display.getInterface().displayOn();
 }
 #endif
 
