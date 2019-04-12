@@ -151,6 +151,14 @@ public:
         setFont( g_ssd1306_font );
     }
 
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
+    void setFixedFont_oldStyle( const uint8_t *progmemFont )
+    {
+        g_ssd1306_font.loadFixedFont_oldStyle( progmemFont );
+        setFont( g_ssd1306_font );
+    }
+#endif
+
     /**
      * Sets new font to use with print functions.
      * If multiple oled displays are used in single application,

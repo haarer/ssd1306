@@ -119,6 +119,18 @@ public:
     void drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
 
     /**
+     * Draws bitmap, located in Flash, on the display
+     *
+     * @param x - horizontal position in pixels
+     * @param y - vertical position in pixels
+     * @param w - width of bitmap in pixels
+     * @param h - height of bitmap in pixels (must be divided by 8)
+     * @param buf - pointer to data, located in Flash: each byte represents 8 vertical pixels.
+     * @warning only for monochrome displays
+     */
+    void gfx_drawMonoBitmap(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buf);
+
+    /**
      * @brief Draws 8-bit color bitmap in color buffer.
      * Draws 8-bit color bitmap in color buffer.
      * @param x - position X in pixels
@@ -207,6 +219,10 @@ public:
      * @note Supports only STYLE_NORMAL and STYLE_BOLD
      */
     void printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL);
+
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
+    void printFixed_oldStyle(uint8_t xpos, uint8_t y, const char *ch, EFontStyle style);
+#endif
 
     /**
      * Prints text to screen using size fixed font, scaled by factor value. <br>

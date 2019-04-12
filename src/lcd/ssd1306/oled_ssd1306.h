@@ -254,7 +254,7 @@ public:
                                      config.addr ?: (uint8_t)0x3C,
                                      config.scl,
                                      config.sda,
-                                     config.frequency } ) {}
+                                     config.frequency ?: 400000 } ) {}
 
     /**
      * Initializes LCD display over I2C.
@@ -291,7 +291,7 @@ public:
                                      config.addr ?: (uint8_t)0x3C,
                                      config.scl,
                                      config.sda,
-                                     config.frequency } ) {}
+                                     config.frequency ?: 400000 } ) {}
 
     void begin() override;
 
