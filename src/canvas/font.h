@@ -145,6 +145,10 @@ public:
      */
     uint8_t getPages() { return m_fixedFont.pages; }
 
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
+    const uint8_t *getPrimaryTable() { return m_fixedFont.primary_table; }
+#endif
+
 private:
     SFixedFontInfo m_fixedFont{};
 
