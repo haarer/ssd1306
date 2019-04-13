@@ -46,7 +46,6 @@
  * Structure, holding currently set font.
  * @warning Only for internal use.
  */
-extern "C" SFixedFontInfo s_fixedFont;
 
 /* The table below defines arguments for NanoEngineTiler.          *
  *                            canvas                    bits   */
@@ -498,7 +497,8 @@ void NanoEngineTiler<C,D>::displayPopup(const char *msg)
 {
     NanoRect rect = { {8, (m_display.height()>>1) - 8}, {m_display.width() - 8, (m_display.height()>>1) + 8} };
     // TODO: It would be nice to calculate message height
-    NanoPoint textPos = { (m_display.width() - (lcdint_t)strlen(msg)*s_fixedFont.h.width) >> 1, (m_display.height()>>1) - 4 };
+    NanoPoint textPos = { (m_display.width() - (lcdint_t)strlen(msg)*m_display.getFont().getHeader().width) >> 1,
+                                               (m_display.height()>>1) - 4 };
     refresh(rect);
     for (lcduint_t y = 0; y < m_display.height(); y = y + canvas.height())
     {

@@ -134,7 +134,9 @@ public:
      *
      * @param font reference to font object (NanoFont)
      */
-    void setFont( NanoFont &font ) { m_font = &font; };
+    void setFont( NanoFont &font ) { m_font = &font; }
+
+    NanoFont &getFont() { return *m_font; }
 
     /**
      * Sets new font to use with print functions.
