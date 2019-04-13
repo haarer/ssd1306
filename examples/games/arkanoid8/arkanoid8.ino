@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2018-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,14 @@
 
 #define PIX_BITS  2
 
-NanoEngine8 engine;
+DisplaySSD1331_96x64_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
+    /* ssd1351 must be initialized in Horizontal addressing mode */
+//    ssd1351_128x128_spi_init(3, 4, 5);
+    /* il9163 must be initialized in Horizontal addressing mode */
+//    il9163_128x128_spi_init(3, 4, 5);
+
+
+NanoEngine8<DisplaySSD1331_96x64_SPI> engine(display);
 
 static uint8_t g_level = 0;
 static uint8_t g_score = 0;
@@ -71,9 +78,10 @@ void startBattleField(bool reload);
 
 bool drawIntro(void)
 {
-    engine.canvas.clear();
-    engine.canvas.setColor(RGB_COLOR8(255,0,0));
-    engine.canvas.drawBitmap1(0, gameState.intro.intro_y, 96, 24, arkanoid_2);
+    engine.localCoordinates();
+    engine.getCanvas().clear();
+    engine.getCanvas().setColor(RGB_COLOR8(255,0,0));
+    engine.getCanvas().drawBitmap1(0, gameState.intro.intro_y, 96, 24, arkanoid_2);
     return true;
 }
 
@@ -107,27 +115,28 @@ void startIntro(void)
 
 bool drawBattleField(void)
 {
+    engine.localCoordinates();
     /* If engine requests to redraw main game field */
-    if (gameArea.contains(engine.canvas.rect()))
+    if (gameArea.contains(engine.getCanvas().rect()))
     {
         /* Set non-transparent mode */
-        engine.canvas.setMode(CANVAS_MODE_BASIC);
-        engine.canvas.setColor(RGB_COLOR8(0,0,64));
-        NanoRect tileBlocks = engine.canvas.rect() >> 3;
+        engine.getCanvas().setMode(CANVAS_MODE_BASIC);
+        engine.getCanvas().setColor(RGB_COLOR8(0,0,64));
+        NanoRect tileBlocks = engine.getCanvas().rect() >> 3;
         tileBlocks.crop(gameArea >> 3);
         for (uint8_t row = tileBlocks.p1.y; row <= tileBlocks.p2.y; row++)
             for (uint8_t col = tileBlocks.p1.x; col <= tileBlocks.p2.x; col++)
-                engine.canvas.drawBitmap1(col << 3, row << 3, 8, 8, bgTile);
-        engine.canvas.setColor(RGB_COLOR8(255,255,255));
-        engine.canvas.drawHLine(gameArea.p1.x,gameArea.p1.y,gameArea.p2.x);
+                engine.getCanvas().drawBitmap1(col << 3, row << 3, 8, 8, bgTile);
+        engine.getCanvas().setColor(RGB_COLOR8(255,255,255));
+        engine.getCanvas().drawHLine(gameArea.p1.x,gameArea.p1.y,gameArea.p2.x);
 
         /* Now draw everything in game coordinates */
         engine.worldCoordinates();
-        engine.canvas.setColor(RGB_COLOR8(0,128,255));
-        engine.canvas.drawRect(gameState.battleField.platform);
-        engine.canvas.setColor(RGB_COLOR8(0,0,0));
-        engine.canvas.putPixel(gameState.battleField.platform.p1);
-        engine.canvas.putPixel(gameState.battleField.platform.p2.x,
+        engine.getCanvas().setColor(RGB_COLOR8(0,128,255));
+        engine.getCanvas().drawRect(gameState.battleField.platform);
+        engine.getCanvas().setColor(RGB_COLOR8(0,0,0));
+        engine.getCanvas().putPixel(gameState.battleField.platform.p1);
+        engine.getCanvas().putPixel(gameState.battleField.platform.p2.x,
                                gameState.battleField.platform.p1.y);
         for (uint8_t r = 0; r<BLOCK_NUM_ROWS; r++)
         {
@@ -138,26 +147,27 @@ bool drawBattleField(void)
                 {
                      NanoRect rect = {{bl*8, r*4}, {bl*8 + 8, r*4+4}};
                      rect += blockArea.p1;
-                     engine.canvas.setColor(blockColors[block]);
-                     engine.canvas.fillRect(rect);
-                     engine.canvas.setColor(0);
-                     engine.canvas.drawRect(rect);
+                     engine.getCanvas().setColor(blockColors[block]);
+                     engine.getCanvas().fillRect(rect);
+                     engine.getCanvas().setColor(0);
+                     engine.getCanvas().drawRect(rect);
                 }
             }
          }
-         engine.canvas.setColor(RGB_COLOR8(255,255,255));
-         engine.canvas.putPixel(gameState.battleField.ball);
+         engine.getCanvas().setColor(RGB_COLOR8(255,255,255));
+         engine.getCanvas().putPixel(gameState.battleField.ball);
     }
     else
     {
         char str[8] = {0};
-        engine.canvas.clear();
-        engine.canvas.setColor(RGB_COLOR8(255,255,255));
-        engine.canvas.drawVLine(gameArea.p1.x-1,0,64);
-        engine.canvas.drawVLine(gameArea.p2.x+1,0,64);
+        engine.getCanvas().clear();
+        engine.getCanvas().setColor(RGB_COLOR8(255,255,255));
+        engine.getCanvas().drawVLine(gameArea.p1.x-1,0,64);
+        engine.getCanvas().drawVLine(gameArea.p2.x+1,0,64);
         utoa(g_score, str, 10);
-        engine.canvas.setColor(RGB_COLOR8(192,192,192));
-        engine.canvas.printFixed(gameArea.p2.x+3, 16, str );
+        engine.getCanvas().setColor(RGB_COLOR8(192,192,192));
+        engine.getCanvas().setFixedFont( ssd1306xled_font6x8_AB );
+        engine.getCanvas().printFixed(gameArea.p2.x+3, 16, str );
     }
     return true;
 }
@@ -195,7 +205,7 @@ bool checkBlockHit(void)
     gameState.battleField.blocks[row][column] = 0;
     gameState.battleField.blocksLeft--;
     g_score++;
-    engine.refreshWorld( gameArea.p2.x + 1, 0, 95, 63 );
+    engine.refresh( gameArea.p2.x + 1, 0, 95, 63 );
     if (((p.y & 3) == 2) || (p.y & 3) == 1)
     {
         gameState.battleField.ballSpeed.x = -gameState.battleField.ballSpeed.x;
@@ -340,19 +350,9 @@ void startBattleField(bool reload)
 
 void setup()
 {
+    display.begin();
     /* Set font to use in the game. The font has only capital letters and digits */
-    ssd1306_setFixedFont(ssd1306xled_font6x8_AB);
-
-    /* Init SPI oled display. 3 - RESET, 4 - CS (can be omitted, oled CS must be pulled down), 5 - D/C */
-
-    /* ssd1351 must be initialized in Horizontal addressing mode */
-//    ssd1351_128x128_spi_init(3, 4, 5);
-
-    /* il9163 must be initialized in Horizontal addressing mode */
-//    il9163_128x128_spi_init(3, 4, 5);
-
-    /* ssd1331 must be initialized in Horizontal addressing mode */
-    ssd1331_96x64_spi_init(3, 4, 5);
+    display.setFixedFont( ssd1306xled_font6x8_AB );
 
     /* Configure engine to use ZKeypand on A0 as control board. */
     engine.connectZKeypad(0);
