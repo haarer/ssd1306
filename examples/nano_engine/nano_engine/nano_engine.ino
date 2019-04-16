@@ -55,6 +55,7 @@ void displayStats()
         engine.getCanvas().setMode(0);
         utoa(totalDuration/frames,bufStr,10);
         engine.getCanvas().setColor(RGB_COLOR8(255,0,255));
+        engine.getCanvas().setFixedFont(ssd1306xled_font6x8);
         engine.getCanvas().printFixed(0, 0, "MS: ");
         engine.getCanvas().printFixed(24, 0, bufStr);
         utoa(1000/(totalDuration/frames),bufStr,10);
@@ -74,6 +75,7 @@ bool drawAll()
     engine.getCanvas().setColor(RGB_COLOR8(0,255,255));
     engine.getCanvas().drawBitmap1(b_x, b_y, 128, 64, Sova);
     engine.getCanvas().setColor(RGB_COLOR8(255,0,0));
+    engine.getCanvas().setFixedFont(ssd1306xled_font6x8);
     engine.getCanvas().printFixed(textx, 30, "This is example of text output");
     displayStats();
     return true;
@@ -82,7 +84,7 @@ bool drawAll()
 void setup()
 {
     display.begin();
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
+    display.setFixedFont(ssd1306xled_font6x8);
 
     /* Set draw callback, it will be called by engine every time, *
      * when it needs to refresh some area on the lcd display.     */
