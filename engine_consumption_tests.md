@@ -1,6 +1,6 @@
 # Memory consumption, based on Arduino Nano board
 
-| **sketch** | **engine_test Flash** | **1.7.12 Flash** | **engine_test RAM** | **1.7.12 RAM** |
+| **sketch** | **2.0.0 Flash** | **1.7.12 Flash** | **2.0.0 RAM** | **1.7.12 RAM** |
 | :-------- |:---:|:---:|:---:|:---------|
 | nano_engine/nano_engine | 8812 | 8554 | 690 | 689 |
 | nano_engine/snowflakes | 4836 | 6306 | 486 | 814 |
