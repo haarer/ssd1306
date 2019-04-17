@@ -201,15 +201,6 @@ public:
         setFont( g_ssd1306_font );
     }
 
-#if 0
-// TODO:
-    /**
-     * Prints single character on the display
-     * @param ch character to print
-     */
-    virtual size_t write(uint8_t ch) = 0;
-#endif
-
 protected:
     lcduint_t m_w = 0;    ///< width of NanoCanvas area in pixels
     lcduint_t m_h = 0;    ///< height of NanoCanvas area in pixels

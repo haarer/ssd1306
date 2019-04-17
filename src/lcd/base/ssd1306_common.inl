@@ -630,74 +630,6 @@ void NanoDisplayOps<O,I>::fillRect(const NanoRect &rect)
 }
 
 template <class O, class I>
-uint8_t NanoDisplayOps<O,I>::printChar(uint8_t c)
-{
-    uint16_t unicode = this->m_font->unicode16FromUtf8(c);
-    if (unicode == SSD1306_MORE_CHARS_REQUIRED) return 0;
-    SCharInfo char_info;
-    this->m_font->getCharBitmap(unicode, &char_info);
-    uint8_t mode = this->m_textMode;
-    for (uint8_t i = 0; i<(this->m_fontStyle == STYLE_BOLD ? 2: 1); i++)
-    {
-        this->drawBitmap1(this->m_cursorX + i,
-                    this->m_cursorY,
-                    char_info.width,
-                    char_info.height,
-                    char_info.glyph );
-        this->m_textMode |= CANVAS_MODE_TRANSPARENT;
-    }
-    this->m_textMode = mode;
-    this->m_cursorX += (lcdint_t)(char_info.width + char_info.spacing);
-    if ( ( (this->m_textMode & CANVAS_TEXT_WRAP_LOCAL) &&
-           (this->m_cursorX > ((lcdint_t)this->m_w - (lcdint_t)this->m_font->getHeader().width) ) )
-       || ( (this->m_textMode & CANVAS_TEXT_WRAP) &&
-           (this->m_cursorX > ((lcdint_t)this->m_w - (lcdint_t)this->m_font->getHeader().width)) ) )
-    {
-        this->m_cursorY += (lcdint_t)this->m_font->getHeader().height;
-        this->m_cursorX = 0;
-        if ( (this->m_textMode & CANVAS_TEXT_WRAP_LOCAL) &&
-             (this->m_cursorY > ((lcdint_t)this->m_h - (lcdint_t)this->m_font->getHeader().height)) )
-        {
-            this->m_cursorY = 0;
-        }
-    }
-    return 1;
-}
-
-template <class O, class I>
-size_t NanoDisplayOps<O,I>::write(uint8_t c)
-{
-    if (c == '\n')
-    {
-        this->m_cursorY += (lcdint_t)this->m_font->getHeader().height;
-        this->m_cursorX = 0;
-    }
-    else if (c == '\r')
-    {
-        // skip non-printed char
-    }
-    else
-    {
-        return printChar( c );
-    }
-    return 1;
-}
-
-/*
-template <class O, class I>
-void NanoDisplayOps<O,I>::printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style)
-{
-    this->m_fontStyle = style;
-    this->m_cursorX = xpos;
-    this->m_cursorY = y;
-    while (*ch)
-    {
-        this->write(*ch);
-        ch++;
-    }
-}*/
-
-template <class O, class I>
 void NanoDisplayOps<O,I>::printFixedPgm(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style)
 {
     this->m_fontStyle = style;
@@ -833,7 +765,7 @@ void NanoDisplayOps<O,I>::menuUp(SAppMenu *menu)
 template <class O, class I>
 void NanoDisplayOps<O,I>::drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<1> &canvas)
 {
-    this->drawBuffer1( x, y, canvas.width(), canvas.height(), canvas.getData() );
+    this->drawBuffer1Fast( x, y, canvas.width(), canvas.height(), canvas.getData() );
 }
 
 template <class O, class I>

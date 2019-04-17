@@ -171,6 +171,8 @@ public:
      */
     void __attribute__ ((noinline)) drawBuffer1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
 
+    void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buf);
+
     /**
      * Draws 8-bit bitmap, located in RAM, on the display
      * Each byte represents one pixel in 2-2-3 format:
@@ -207,6 +209,19 @@ public:
      * @param color color to fill display with
      */
     void fill(uint16_t color);
+
+    /**
+     * Draws single character to canvas
+     * @param c - character code to print
+     * @returns 0 if char is not printed
+     */
+    uint8_t printChar(uint8_t c);
+
+    /**
+     * Writes single character to canvas
+     * @param c - character code to print
+     */
+    size_t __attribute__ ((noinline)) write(uint8_t c);
 
     /**
      * Print text at specified position to canvas
@@ -365,6 +380,8 @@ public:
      */
     void drawBuffer1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
 
+    void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buf);
+
     /**
      * Draws 8-bit bitmap, located in RAM, on the display
      * Each byte represents one pixel in 2-2-3 format:
@@ -401,6 +418,19 @@ public:
      * @param color color to fill display with
      */
     void fill(uint16_t color);
+
+    /**
+     * Draws single character to canvas
+     * @param c - character code to print
+     * @returns 0 if char is not printed
+     */
+    uint8_t printChar(uint8_t c);
+
+    /**
+     * Writes single character to canvas
+     * @param c - character code to print
+     */
+    size_t __attribute__ ((noinline)) write(uint8_t c);
 
     /**
      * Print text at specified position to canvas
@@ -534,6 +564,8 @@ public:
      */
     void drawBuffer1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
 
+    void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buf);
+
     /**
      * Draws 8-bit bitmap, located in RAM, on the display
      * Each byte represents one pixel in 2-2-3 format:
@@ -570,6 +602,19 @@ public:
      * @param color color to fill display with
      */
     void fill(uint16_t color);
+
+    /**
+     * Draws single character to canvas
+     * @param c - character code to print
+     * @returns 0 if char is not printed
+     */
+    uint8_t printChar(uint8_t c);
+
+    /**
+     * Writes single character to canvas
+     * @param c - character code to print
+     */
+    size_t __attribute__ ((noinline)) write(uint8_t c);
 
     /**
      * Print text at specified position to canvas
@@ -672,19 +717,6 @@ public:
      * @param canvas 16-bit canvas to draw on the screen.
      */
     void __attribute__ ((noinline)) drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<16> &canvas);
-
-    /**
-     * Writes single character to canvas
-     * @param c - character code to print
-     */
-    size_t __attribute__ ((noinline)) write(uint8_t c);
-
-    /**
-     * Draws single character to canvas
-     * @param c - character code to print
-     * @returns 0 if char is not printed
-     */
-    uint8_t printChar(uint8_t c);
 
     /**
      * Print text at specified position to canvas

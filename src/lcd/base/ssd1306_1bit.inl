@@ -674,6 +674,20 @@ void NanoDisplayOps1<I>::drawBuffer1(lcdint_t x, lcdint_t y, lcduint_t w, lcduin
 }
 
 template <class I>
+void NanoDisplayOps1<I>::drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buf)
+{
+    uint8_t j;
+    this->m_intf.startBlock(x, y >> 3, w);
+    for(j=(h >> 3); j>0; j--)
+    {
+        this->m_intf.sendBuffer( buf, w );
+        buf+=w;
+        this->m_intf.nextBlock();
+    }
+    this->m_intf.endBlock();
+}
+
+template <class I>
 void NanoDisplayOps1<I>::drawBuffer8(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer)
 {
     // NOT IMPLEMENTED

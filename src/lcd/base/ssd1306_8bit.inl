@@ -259,6 +259,12 @@ void NanoDisplayOps8<I>::drawBuffer1(lcdint_t xpos, lcdint_t ypos, lcduint_t w, 
 }
 
 template <class I>
+void NanoDisplayOps8<I>::drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buf)
+{
+    this->drawBuffer1( x, y, w, h, buf );
+}
+
+template <class I>
 void NanoDisplayOps8<I>::drawBuffer8(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer)
 {
     this->m_intf.startBlock(x, y, w);
@@ -275,6 +281,60 @@ template <class I>
 void NanoDisplayOps8<I>::drawBuffer16(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer)
 {
     // NOT IMPLEMENTED
+}
+
+template <class I>
+uint8_t NanoDisplayOps8<I>::printChar(uint8_t c)
+{
+    uint16_t unicode = this->m_font->unicode16FromUtf8(c);
+    if (unicode == SSD1306_MORE_CHARS_REQUIRED) return 0;
+    SCharInfo char_info;
+    this->m_font->getCharBitmap(unicode, &char_info);
+    uint8_t mode = this->m_textMode;
+    for (uint8_t i = 0; i<(this->m_fontStyle == STYLE_BOLD ? 2: 1); i++)
+    {
+        this->drawBitmap1(this->m_cursorX + i,
+                    this->m_cursorY,
+                    char_info.width,
+                    char_info.height,
+                    char_info.glyph );
+        this->m_textMode |= CANVAS_MODE_TRANSPARENT;
+    }
+    this->m_textMode = mode;
+    this->m_cursorX += (lcdint_t)(char_info.width + char_info.spacing);
+    if ( ( (this->m_textMode & CANVAS_TEXT_WRAP_LOCAL) &&
+           (this->m_cursorX > ((lcdint_t)this->m_w - (lcdint_t)this->m_font->getHeader().width) ) )
+       || ( (this->m_textMode & CANVAS_TEXT_WRAP) &&
+           (this->m_cursorX > ((lcdint_t)this->m_w - (lcdint_t)this->m_font->getHeader().width)) ) )
+    {
+        this->m_cursorY += (lcdint_t)this->m_font->getHeader().height;
+        this->m_cursorX = 0;
+        if ( (this->m_textMode & CANVAS_TEXT_WRAP_LOCAL) &&
+             (this->m_cursorY > ((lcdint_t)this->m_h - (lcdint_t)this->m_font->getHeader().height)) )
+        {
+            this->m_cursorY = 0;
+        }
+    }
+    return 1;
+}
+
+template <class I>
+size_t NanoDisplayOps8<I>::write(uint8_t c)
+{
+    if (c == '\n')
+    {
+        this->m_cursorY += (lcdint_t)this->m_font->getHeader().height;
+        this->m_cursorX = 0;
+    }
+    else if (c == '\r')
+    {
+        // skip non-printed char
+    }
+    else
+    {
+        return printChar( c );
+    }
+    return 1;
 }
 
 template <class I>
