@@ -75,7 +75,7 @@ public:
      * @warning - this function initiates session (i2c or spi) and does not close it.
      *            To close session, please, call endBlock().
      */
-    void startBlock(lcduint_t x, lcduint_t y, lcduint_t w);
+    void __attribute__ ((noinline)) startBlock(lcduint_t x, lcduint_t y, lcduint_t w);
 
     /**
      * Switches to the start of next RAM page for the block, specified by
