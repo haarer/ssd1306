@@ -432,61 +432,6 @@ void NanoCanvasOps<1>::begin(lcdint_t w, lcdint_t h, uint8_t *bytes)
     clear();
 }
 
-#if 0
-
-//                 NANO CANVAS 1
-
-void NanoCanvas1::blt(NanoDisplayOps<1> &display, lcdint_t x, lcdint_t y)
-{
-    display.drawBitmap1(x, y, m_w, m_h, m_buf);
-}
-
-void NanoCanvas1::blt(NanoDisplayOps<1> &display)
-{
-    display.drawBitmap1(offset.x, offset.y, m_w, m_h, m_buf);
-}
-
-void NanoCanvas1::blt(NanoDisplayOps<1> &display, const NanoRect &rect)
-{
-    // TODO: NOT IMPLEMENTED
-}
-
-//                 NANO CANVAS 1_8
-
-void NanoCanvas1_8::blt(lcdint_t x, lcdint_t y)
-{
-    ssd1306_drawMonoBuffer8(x, y, m_w, m_h, m_buf);
-}
-
-void NanoCanvas1_8::blt()
-{
-    ssd1306_drawMonoBuffer8(offset.x, offset.y, m_w, m_h, m_buf);
-}
-
-void NanoCanvas1_8::blt(const NanoRect &rect)
-{
-    // TODO: NOT IMPLEMENTED
-}
-
-//                 NANO CANVAS 1_16
-
-void NanoCanvas1_16::blt(lcdint_t x, lcdint_t y)
-{
-    ssd1306_drawMonoBuffer16(x, y, m_w, m_h, m_buf);
-}
-
-void NanoCanvas1_16::blt()
-{
-    ssd1306_drawMonoBuffer16(offset.x, offset.y, m_w, m_h, m_buf);
-}
-
-void NanoCanvas1_16::blt(const NanoRect &rect)
-{
-    // TODO: NOT IMPLEMENTED
-}
-
-#endif
-
 /////////////////////////////////////////////////////////////////////////////////
 //
 //                             8-BIT GRAPHICS
@@ -713,30 +658,6 @@ void NanoCanvasOps<8>::begin(lcdint_t w, lcdint_t h, uint8_t *bytes)
     m_buf = bytes;
     clear();
 }
-
-#if 0
-//                NANO CANVAS 8
-
-void NanoCanvas8::blt(lcdint_t x, lcdint_t y)
-{
-    ssd1306_drawBufferFast8(x, y, m_w, m_h, m_buf);
-}
-
-void NanoCanvas8::blt()
-{
-    ssd1306_drawBufferFast8(offset.x, offset.y, m_w, m_h, m_buf);
-}
-
-void NanoCanvas8::blt(const NanoRect &rect)
-{
-    ssd1306_drawBufferEx8(offset.x + rect.p1.x,
-                          offset.y + rect.p1.y,
-                          rect.width(),
-                          rect.height(),
-                          m_w,
-                          m_buf + rect.p1.x + rect.p1.y * m_w );
-}
-#endif
 
 /////////////////////////////////////////////////////////////////////////////////
 //
@@ -988,27 +909,3 @@ template class NanoCanvasOps<1>;
 template class NanoCanvasOps<8>;
 template class NanoCanvasOps<16>;
 
-#if 0
-//              NANO CANVAS 16
-
-void NanoCanvas16::blt(lcdint_t x, lcdint_t y)
-{
-    ssd1306_drawBufferFast16(x, y, m_w, m_h, m_buf);
-}
-
-void NanoCanvas16::blt()
-{
-    ssd1306_drawBufferFast16(offset.x, offset.y, m_w, m_h, m_buf);
-}
-
-void NanoCanvas16::blt(const NanoRect &rect)
-{
-    ssd1306_drawBufferEx16(offset.x + rect.p1.x,
-                           offset.y + rect.p1.y,
-                           rect.width(),
-                           rect.height(),
-                           m_w<<1,
-                           m_buf + (rect.p1.x<<1) + rect.p1.y * (m_w<<1) );
-}
-
-#endif

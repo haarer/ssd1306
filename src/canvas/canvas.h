@@ -353,31 +353,6 @@ class NanoCanvasBase: public NanoCanvasOps<BPP>
 {
 public:
     using NanoCanvasOps<BPP>::NanoCanvasOps;
-
-    /**
-     * Draws canvas on the LCD display
-     * @param x - horizontal position in pixels
-     * @param y - vertical position in blocks (pixels/8)
-     */
-//    virtual void blt(lcdint_t x, lcdint_t y) = 0;
-
-    /**
-     * Draws canvas on the LCD display using offset values.
-     */
-//    virtual void blt(NanoDisplayOps<BPP>) = 0;
-
-    /**
-     * Draws only part of canvas on the LCD display.
-     * This method uses Canvas offset field as top-left point of whole canvas
-     * content. First point of specified rectangle defines the actual top-left
-     * point on the screen to be refreshed.
-     * For example, `blt({{8,0},{15,7}});` will copy canvas area {8,0}-{15,7}
-     * to screen starting at {8,0} if canvas offset is {0,0}.
-     * If canvas offset is {12,3}, then canvas area {8,0}-{15,7} will be copied
-     * to screen at position {20,3}.
-     * @param rect rectagle describing part of canvas to move to display.
-     */
-//    virtual void blt(const NanoRect &rect) = 0;
 };
 
 /**
@@ -418,33 +393,6 @@ class NanoCanvas1: public NanoCanvasBase<1>
 {
 public:
     using NanoCanvasBase::NanoCanvasBase;
-
-#if 0
-    /**
-     * Draws canvas on the LCD display
-     * @param x - horizontal position in pixels
-     * @param y - vertical position in pixels
-     */
-    void blt(NanoDisplayOps<1> &display, lcdint_t x, lcdint_t y);
-
-    /**
-     * Draws canvas on the LCD display using offset values.
-     */
-    void blt(NanoDisplayOps<1> &display);
-
-    /**
-     * Draws only part of canvas on the LCD display.
-     * This method uses Canvas offset field as top-left point of whole canvas
-     * content. First point of specified rectangle defines the actual top-left
-     * point on the screen to be refreshed.
-     * For example, `blt({{8,0},{15,7}});` will copy canvas area {8,0}-{15,7}
-     * to screen starting at {8,0} if canvas offset is {0,0}.
-     * If canvas offset is {12,3}, then canvas area {8,0}-{15,7} will be copied
-     * to screen at position {20,3}.
-     * @param rect rectagle describing part of canvas to move to display.
-     */
-    void blt(NanoDisplayOps<1> &display, const NanoRect &rect);
-#endif
 };
 
 /**
@@ -456,33 +404,6 @@ class NanoCanvas1_8: public NanoCanvasBase<1>
 {
 public:
     using NanoCanvasBase::NanoCanvasBase;
-
-#if 0
-    /**
-     * Draws canvas on the LCD display
-     * @param x - horizontal position in pixels
-     * @param y - vertical position in pixels
-     */
-    void blt(lcdint_t x, lcdint_t y);
-
-    /**
-     * Draws canvas on the LCD display using offset values.
-     */
-    void blt();
-
-    /**
-     * Draws only part of canvas on the LCD display.
-     * This method uses Canvas offset field as top-left point of whole canvas
-     * content. First point of specified rectangle defines the actual top-left
-     * point on the screen to be refreshed.
-     * For example, `blt({{8,0},{15,7}});` will copy canvas area {8,0}-{15,7}
-     * to screen starting at {8,0} if canvas offset is {0,0}.
-     * If canvas offset is {12,3}, then canvas area {8,0}-{15,7} will be copied
-     * to screen at position {20,3}.
-     * @param rect rectagle describing part of canvas to move to display.
-     */
-    void blt(const NanoRect &rect);
-#endif
 };
 
 /**
@@ -494,33 +415,6 @@ class NanoCanvas1_16: public NanoCanvasBase<1>
 {
 public:
     using NanoCanvasBase::NanoCanvasBase;
-
-#if 0
-    /**
-     * Draws canvas on the LCD display
-     * @param x - horizontal position in pixels
-     * @param y - vertical position in pixels
-     */
-    void blt(lcdint_t x, lcdint_t y);
-
-    /**
-     * Draws canvas on the LCD display using offset values.
-     */
-    void blt();
-
-    /**
-     * Draws only part of canvas on the LCD display.
-     * This method uses Canvas offset field as top-left point of whole canvas
-     * content. First point of specified rectangle defines the actual top-left
-     * point on the screen to be refreshed.
-     * For example, `blt({{8,0},{15,7}});` will copy canvas area {8,0}-{15,7}
-     * to screen starting at {8,0} if canvas offset is {0,0}.
-     * If canvas offset is {12,3}, then canvas area {8,0}-{15,7} will be copied
-     * to screen at position {20,3}.
-     * @param rect rectagle describing part of canvas to move to display.
-     */
-    void blt(const NanoRect &rect);
-#endif
 };
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -538,33 +432,6 @@ class NanoCanvas8: public NanoCanvasBase<8>
 {
 public:
     using NanoCanvasBase::NanoCanvasBase;
-
-#if 0
-    /**
-     * Draws canvas on the LCD display
-     * @param x - horizontal position in pixels
-     * @param y - vertical position in pixels
-     */
-    void blt(lcdint_t x, lcdint_t y);
-
-    /**
-     * Draws canvas on the LCD display using offset values.
-     */
-    void blt();
-
-    /**
-     * Draws only part of canvas on the LCD display.
-     * This method uses Canvas offset field as top-left point of whole canvas
-     * content. First point of specified rectangle defines the actual top-left
-     * point on the screen to be refreshed.
-     * For example, `blt({{8,0},{15,7}});` will copy canvas area {8,0}-{15,7}
-     * to screen starting at {8,0} if canvas offset is {0,0}.
-     * If canvas offset is {12,3}, then canvas area {8,0}-{15,7} will be copied
-     * to screen at position {20,3}.
-     * @param rect rectagle describing part of canvas to move to display.
-     */
-    void blt(const NanoRect &rect);
-#endif
 };
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -582,33 +449,6 @@ class NanoCanvas16: public NanoCanvasBase<16>
 {
 public:
     using NanoCanvasBase::NanoCanvasBase;
-
-#if 0
-    /**
-     * Draws canvas on the LCD display
-     * @param x - horizontal position in pixels
-     * @param y - vertical position in pixels
-     */
-    void blt(lcdint_t x, lcdint_t y);
-
-    /**
-     * Draws canvas on the LCD display using offset values.
-     */
-    void blt();
-
-    /**
-     * Draws only part of canvas on the LCD display.
-     * This method uses Canvas offset field as top-left point of whole canvas
-     * content. First point of specified rectangle defines the actual top-left
-     * point on the screen to be refreshed.
-     * For example, `blt({{8,0},{15,7}});` will copy canvas area {8,0}-{15,7}
-     * to screen starting at {8,0} if canvas offset is {0,0}.
-     * If canvas offset is {12,3}, then canvas area {8,0}-{15,7} will be copied
-     * to screen at position {20,3}.
-     * @param rect rectagle describing part of canvas to move to display.
-     */
-    void blt(const NanoRect &rect);
-#endif
 };
 
 /**
