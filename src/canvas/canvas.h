@@ -174,7 +174,7 @@ public:
      * @param y2 - position Y
      * @note color can be set via setColor()
      */
-    void drawRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2);
+    void __attribute__ ((noinline)) drawRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2);
 
     /**
      * Draws rectangle
@@ -191,7 +191,7 @@ public:
      * @param y2 - position Y
      * @note color can be set via setColor()
      */
-    void fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2);
+    void __attribute__ ((noinline)) fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2);
 
     /**
      * Fills rectangle area
@@ -214,7 +214,7 @@ public:
      *       In transparent mode, those pixels of source monochrome image, which are black, do not overwrite pixels
      *       in the screen buffer.
      */
-    void drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+    void __attribute__ ((noinline)) drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
 
     /**
      * @brief Draws 8-bit color bitmap in color buffer.
@@ -225,12 +225,12 @@ public:
      * @param h - height in pixels
      * @param bitmap - 8-bit color bitmap data, located in flash
      */
-    void drawBitmap8(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+    void __attribute__ ((noinline)) drawBitmap8(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
 
     /**
      * Clears canvas
      */
-    void clear();
+    void __attribute__ ((noinline)) clear();
 
     /**
      * Writes single character to canvas
@@ -255,7 +255,7 @@ public:
      *
      * @note Supports only STYLE_NORMAL and STYLE_BOLD
      */
-    void printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL);
+    void __attribute__ ((noinline)) printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL);
 
     /**
      * Print text at specified position to canvas
