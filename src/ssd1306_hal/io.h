@@ -43,6 +43,7 @@
 
 #if defined(ARDUINO)
 #include "arduino/io.h"
+#ifdef __cplusplus
 #include "arduino/arduino_spi.h"
 #include "arduino/arduino_wire.h"
 #include "avr/avr_spi.h"
@@ -51,31 +52,39 @@
 #include "avr/ssd1306_i2c_embedded.h"
 #include "esp/esp32_i2c.h"
 #include "esp/esp32_spi.h"
+#endif
 #elif defined(__AVR__) && !defined(ARDUINO)
 #include "avr/io.h"
+#ifdef __cplusplus
 #include "avr/avr_spi.h"
 #include "avr/avr_twi.h"
 #include "avr/ssd1306_spi_usi.h"
 #include "avr/ssd1306_i2c_embedded.h"
+#endif
 #elif defined(__XTENSA__) && !defined(ARDUINO)
 #include "esp/io.h"
+#ifdef __cplusplus
 #include "esp/esp32_i2c.h"
 #include "esp/esp32_spi.h"
+#endif
 #elif defined(STM32F1) || defined(STM32F2) || defined(STM32F4)
 #include "stm32/io.h"
 #elif defined(__linux__)
 #include "linux/io.h"
+#ifdef __cplusplus
 #include "linux/linux_i2c.h"
 #include "linux/linux_spi.h"
 #include "linux/sdl_i2c.h"
 #include "linux/sdl_spi.h"
+#endif
 #elif defined(__MINGW32__)
 #include "mingw/io.h"
+#ifdef __cplusplus
 #include "linux/sdl_i2c.h"
 #include "linux/sdl_spi.h"
+#endif
 #else
 #warning "Platform is not supported. Use template to add support"
-#include "template/io.h"
 #endif
 
 #ifndef LCDINT_TYPES_DEFINED
@@ -305,7 +314,7 @@ public:
 
 
 extern "C" {
-#endif
+#endif // end ifdef __cplusplus
 
 // !!! PLATFORM I2C IMPLEMENTATION OPTIONAL !!!
 #if defined(CONFIG_PLATFORM_I2C_AVAILABLE) && defined(CONFIG_PLATFORM_I2C_ENABLE)

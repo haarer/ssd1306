@@ -24,7 +24,7 @@
 
 #include "ssd1306_hal/io.h"
 
-#if defined(CONFIG_ESP32_I2C_AVAILABLE) && defined(CONFIG_PLATFORM_I2C_ENABLE)
+#if defined(CONFIG_ESP32_I2C_AVAILABLE) && defined(CONFIG_ESP32_I2C_ENABLE)
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"

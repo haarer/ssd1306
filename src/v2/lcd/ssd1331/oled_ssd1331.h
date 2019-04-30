@@ -21,17 +21,17 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-
 /**
- * @file lcd_il9163.h support for LCD IL9163 display
+ * @file oled_ssd1331.h support for RGB OLED 96x64 display
  */
 
-#ifndef _LCD_IL9163_H_
-#define _LCD_IL9163_H_
+
+#ifndef _OLED_SSD1331_H_
+#define _OLED_SSD1331_H_
 
 #include "ssd1306_hal/io.h"
 #include "lcd/lcd_common.h"
-#include "lcd/base/display.h"
+#include "v2/lcd/base/display.h"
 
 /**
  * @ingroup LCD_INTERFACE_API
@@ -39,22 +39,24 @@
  */
 
 /**
- * Class implements interface functions to SSD1351 displays
+ * Class implements interface functions to SSD1331 displays
  */
 template <class I>
-class InterfaceIL9163: public I
+class InterfaceSSD1331: public I
 {
 public:
     /**
      * Creates instance of interface to LCD display.
      *
+     * @param bits display bit mode: 8 or 16
      * @param base Reference to base class, which represents Display
      * @param dc Data/command control pin number, for i2c communication should be -1
      * @param data variable argument list, accepted by platform interface (PlatformI2c, PlatformSpi)
      */
     template <typename... Args>
-    InterfaceIL9163(NanoDisplayBase<InterfaceIL9163<I>> &base, int8_t dc, Args&&... data)
+    InterfaceSSD1331(uint8_t bits, NanoDisplayBase<InterfaceSSD1331<I>> &base, int8_t dc, Args&&... data)
         : I(data...)
+        , m_bits( bits )
         , m_dc( dc )
         , m_base(base)
     {
@@ -64,12 +66,12 @@ public:
      * @brief Sets block in RAM of lcd display controller to write data to.
      *
      * Sets block in RAM of lcd display controller to write data to.
-     * For IL9163 it uses horizontal addressing mode, while for
+     * For ssd1331 it uses horizontal addressing mode, while for
      * sh1106 the function uses page addressing mode.
      * Width can be specified as 0, thus the library will set the right boundary to
      * region of RAM block to the right column of the display.
      * @param x - column (left region)
-     * @param y - row (top region)
+     * @param y - page (top page of the block)
      * @param w - width of the block in pixels to control
      *
      * @warning - this function initiates session (i2c or spi) and does not close it.
@@ -80,7 +82,7 @@ public:
     /**
      * Switches to the start of next RAM page for the block, specified by
      * startBlock().
-     * For IL9163 it does nothing, while for sh1106 the function moves cursor to
+     * For ssd1331 it does nothing, while for sh1106 the function moves cursor to
      * next page.
      */
     void nextBlock();
@@ -104,100 +106,100 @@ public:
      */
     void setRotation(uint8_t rotation);
 
-private:
-    const int8_t m_dc = -1; ///< data/command pin for SPI, -1 for i2c
-    NanoDisplayBase<InterfaceIL9163<I>> &m_base; ///< basic lcd display support interface
+    /**
+     * Draws line using hardware accelerator capabilities
+     *
+     * @param x1 x position of first point
+     * @param y1 y position of first point
+     * @param x2 x position of second point
+     * @param y2 y position of second point
+     * @param color color to draw line with (refere RGB_COLOR16 macro)
+     */
+    void drawLine(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2, uint16_t color);
 
-    uint8_t m_rotation = 0x00;
-    static const uint8_t m_rgb_bit = 0b00000000;
+    /**
+     * Copies block in GDRAM to new position using hardware accelerator
+     * features.
+     * @param left left position of block to copy
+     * @param top top position of block to copy
+     * @param right right position of block to copy
+     * @param bottom bottom position of block to copy
+     * @param newLeft new left position for block being copied
+     * @param newTop new top position for block being copied
+     *
+     * @note This API can be used only with ssd1331 RGB oled displays
+     * @note after copy command is sent, it takes some time from oled
+     *       controller to complete operation. So, it is HIGHLY recommended
+     *       to wait for reasonable time before send other graphics operations
+     *       (for example, use 250us delay). This time is required for
+     *       oled display to become ready to accept new commands.
+     */
+    void copyBlock(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t newLeft, uint8_t newTop);
+
+private:
+    const uint8_t m_bits;
+    const int8_t m_dc = -1; ///< data/command pin for SPI, -1 for i2c
+    NanoDisplayBase<InterfaceSSD1331<I>> &m_base; ///< basic lcd display support interface
+
+    uint8_t m_rotation = 0x00;  ///< Indicates display orientation: 0, 1, 2, 3. refer to setRotation
 };
 
-
 /**
- * Class implements basic functions for 16-bit mode of IL9163-based displays
+ * Class implements basic functions for 8-bit mode of ssd1331-based displays
  */
 template <class I>
-class DisplayIL9163x16: public NanoDisplayOps<NanoDisplayOps16<I>,I>
+class DisplaySSD1331: public NanoDisplayOps<NanoDisplayOps8<I>,I>
 {
 public:
     /**
-     * Creates instance of IL9163 controller class for 16-bit mode
+     * Creates instance of SSD1331 controller class for 8-bit mode
      *
      * @param intf interface to use
      * @param rstPin pin to use as HW reset pin for LCD display
      */
-    DisplayIL9163x16(I &intf, int8_t rstPin)
-        : NanoDisplayOps<NanoDisplayOps16<I>, I>(intf)
+    DisplaySSD1331(I &intf, int8_t rstPin)
+        : NanoDisplayOps<NanoDisplayOps8<I>, I>(intf)
         , m_rstPin( rstPin ) { }
 
 protected:
     int8_t m_rstPin; ///< indicates hardware reset pin used, -1 if it is not required
 
     /**
-     * Basic IL9163 initialization
+     * Basic ssd1331 initialization
      */
     void begin() override;
 
     /**
-     * Basic IL9163 deinitialization
+     * Basic ssd1331 deinitialization
      */
     void end() override;
 };
 
 /**
- * Class implements basic functions for 16-bit mode of IL9163-based displays
+ * Class implements ssd1331 96x64 oled display in 8 bit mode over SPI
  */
-template <class I>
-class DisplayIL9163_128x128x16: public DisplayIL9163x16<I>
+class DisplaySSD1331_96x64_SPI: public DisplaySSD1331<InterfaceSSD1331<PlatformSpi>>
 {
 public:
     /**
-     * Creates instance of IL9163 128x128x16 controller class for 16-bit mode
+     * @brief Inits 96x64 OLED display over spi (based on SSD1331 controller): 8-bit mode.
      *
-     * @param intf interface to use
-     * @param rstPin pin to use as HW reset pin for LCD display
-     */
-    DisplayIL9163_128x128x16(I &intf, int8_t rstPin)
-        : DisplayIL9163x16<I>(intf, rstPin) { }
-
-protected:
-
-    /**
-     * Basic IL9163 128x128x16 initialization
-     */
-    void begin() override;
-
-    /**
-     * Basic IL9163 deinitialization
-     */
-    void end() override;
-};
-
-/**
- * Class implements IL9163 128x128x16 lcd display in 16 bit mode over SPI
- */
-class DisplayIL9163_128x128x16_SPI: public DisplayIL9163_128x128x16<InterfaceIL9163<PlatformSpi>>
-{
-public:
-    /**
-     * @brief Inits 128x128x16 lcd display over spi (based on IL9163 controller): 16-bit mode.
-     *
-     * Inits 128x128x16 lcd display over spi (based on IL9163 controller): 16-bit mode
+     * Inits 96x64 OLED display over spi (based on SSD1331 controller): 8-bit mode
      * @param rstPin pin controlling LCD reset (-1 if not used)
      * @param config platform spi configuration. Please refer to SPlatformI2cConfig.
      */
-    DisplayIL9163_128x128x16_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
-        : DisplayIL9163_128x128x16(m_spi, rstPin)
-        , m_spi( *this, config.dc,
+    DisplaySSD1331_96x64_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
+        : DisplaySSD1331(m_spi, rstPin)
+        , m_spi( 8, *this, config.dc,
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
                                      config.dc,
-                                     config.frequency ?: 8000000,
+                                     config.frequency ?: 6000000,
                                      config.scl,
                                      config.sda } ) {}
 
     /**
-     * Initializes IL9163 lcd in 16-bit mode
+     * Initializes ssd1331 lcd in 8-bit mode
      */
     void begin() override;
 
@@ -207,63 +209,65 @@ public:
     void end() override;
 
 private:
-    InterfaceIL9163<PlatformSpi> m_spi;
+    InterfaceSSD1331<PlatformSpi> m_spi;
 };
 
 /**
- * Class implements basic functions for 16-bit mode of IL9163-based displays
+ * Class implements basic functions for 16-bit mode of ssd1331-based displays
  */
 template <class I>
-class DisplayIL9163_128x160x16: public DisplayIL9163x16<I>
+class DisplaySSD1331x16: public NanoDisplayOps<NanoDisplayOps16<I>,I>
 {
 public:
     /**
-     * Creates instance of IL9163 128x160x16 controller class for 16-bit mode
+     * Creates instance of SSD1331 controller class for 16-bit mode
      *
      * @param intf interface to use
      * @param rstPin pin to use as HW reset pin for LCD display
      */
-    DisplayIL9163_128x160x16(I &intf, int8_t rstPin)
-        : DisplayIL9163x16<I>(intf, rstPin) { }
+    DisplaySSD1331x16(I &intf, int8_t rstPin)
+        : NanoDisplayOps<NanoDisplayOps16<I>, I>(intf)
+        , m_rstPin( rstPin ) { }
 
 protected:
+    int8_t m_rstPin; ///< reset pin number, -1 if reset pin is not used
 
     /**
-     * Basic IL9163 128x160x16 initialization
+     * Initializes ssd1331 lcd in 16-bit mode
      */
     void begin() override;
 
     /**
-     * Basic IL9163 deinitialization
+     * Closes connection to display
      */
     void end() override;
 };
 
 /**
- * Class implements IL9163 128x160x16 lcd display in 16 bit mode over SPI
+ * Class implements ssd1331 96x64 oled display in 16 bit mode over SPI
  */
-class DisplayIL9163_128x160x16_SPI: public DisplayIL9163_128x160x16<InterfaceIL9163<PlatformSpi>>
+class DisplaySSD1331_96x64x16_SPI: public DisplaySSD1331x16<InterfaceSSD1331<PlatformSpi>>
 {
 public:
     /**
-     * @brief Inits 128x160x16 lcd display over spi (based on IL9163 controller): 16-bit mode.
+     * @brief Inits 96x64 OLED display over spi (based on SSD1331 controller): 16-bit mode.
      *
-     * Inits 128x160x16 lcd display over spi (based on IL9163 controller): 16-bit mode
+     * Inits 96x64 OLED display over spi (based on SSD1331 controller): 16-bit mode
      * @param rstPin pin controlling LCD reset (-1 if not used)
      * @param config platform spi configuration. Please refer to SPlatformI2cConfig.
      */
-    DisplayIL9163_128x160x16_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
-        : DisplayIL9163_128x160x16(m_spi, rstPin)
-        , m_spi( *this, config.dc,
+    DisplaySSD1331_96x64x16_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
+        : DisplaySSD1331x16(m_spi, rstPin)
+        , m_spi( 16, *this, config.dc,
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
                                      config.dc,
-                                     config.frequency ?: 8000000,
+                                     config.frequency ?: 6000000,
                                      config.scl,
                                      config.sda } ) {}
 
     /**
-     * Initializes IL9163 lcd in 16-bit mode
+     * Initializes ssd1331 lcd in 16-bit mode
      */
     void begin() override;
 
@@ -273,15 +277,14 @@ public:
     void end() override;
 
 private:
-    InterfaceIL9163<PlatformSpi> m_spi;
+    InterfaceSSD1331<PlatformSpi> m_spi;
 };
 
-#include "lcd_il9163.inl"
+#include "oled_ssd1331.inl"
 
 /**
  * @}
  */
 
 // ----------------------------------------------------------------------------
-
-#endif // _LCD_IL9163_H_
+#endif // _OLED_SSD1331_H_

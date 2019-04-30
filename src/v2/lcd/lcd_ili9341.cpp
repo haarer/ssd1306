@@ -23,7 +23,6 @@
 */
 
 #include "lcd_ili9341.h"
-#include "lcd_common.h"
 #include "ssd1306_hal/io.h"
 #include "nano_gfx_types.h"
 #ifdef SDL_EMULATION

@@ -1,22 +1,20 @@
 # This is Makefile for ESP32 IDF
 
-COMPONENT_ADD_INCLUDEDIRS := ./src
+COMPONENT_ADD_INCLUDEDIRS := ./src \
+                             ./src/v2 \
+
 COMPONENT_SRCDIRS := ./src \
                      ./src/ssd1306_hal \
                      ./src/ssd1306_hal/esp \
-                     ./src/intf \
-                     ./src/intf/i2c \
-                     ./src/intf/spi \
-                     ./sec/intf/vga/esp32 \
-                     ./sec/intf/vga \
                      ./src/lcd \
-                     ./src/lcd/pcd8544 \
-                     ./src/lcd/ssd1306 \
-                     ./src/lcd/sh1106 \
-                     ./src/lcd/ssd1331 \
-                     ./src/lcd/ssd1351 \
-                     ./src/lcd/st7735 \
-                     ./src/lcd/il9163 \
+                     ./src/v2/lcd \
+                     ./src/v2/lcd/pcd8544 \
+                     ./src/v2/lcd/ssd1306 \
+                     ./src/v2/lcd/sh1106 \
+                     ./src/v2/lcd/ssd1331 \
+                     ./src/v2/lcd/ssd1351 \
+                     ./src/v2/lcd/st7735 \
+                     ./src/v2/lcd/il9163 \
                      ./src/canvas \
-                     ./src/nano_engine
+                     ./src/v2/nano_engine \
 

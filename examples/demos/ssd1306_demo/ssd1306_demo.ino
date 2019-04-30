@@ -37,7 +37,6 @@
  */
 
 #include "ssd1306v2.h"
-#include "nano_engine.h"
 #include "owl.h"
 
 DisplaySSD1306_128x64_I2C display;

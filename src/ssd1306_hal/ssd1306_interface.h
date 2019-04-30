@@ -30,6 +30,10 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @defgroup LCD_HW_INTERFACE_API I2C/SPI: physical interface functions
  * @{
@@ -129,7 +133,11 @@ typedef struct
 } SPlatformSpiConfig;
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
-extern "C" void ssd1306_resetController(int8_t rstPin, uint8_t delayMs);
+void ssd1306_resetController(int8_t rstPin, uint8_t delayMs);
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 /**

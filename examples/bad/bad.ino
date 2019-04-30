@@ -1,7 +1,4 @@
 #include "ssd1306.h"
-#include "nano_engine.h"
-
-
 
 NanoEngine1 engine;
 NanoRect rect = { {20,30}, {50,60} };

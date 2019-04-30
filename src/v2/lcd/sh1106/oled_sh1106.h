@@ -30,7 +30,7 @@
 #define _OLED_SH1106_H_
 
 #include "ssd1306_hal/io.h"
-#include "lcd/base/display.h"
+#include "v2/lcd/base/display.h"
 #include "lcd/lcd_common.h"
 
 /**

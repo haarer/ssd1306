@@ -69,7 +69,8 @@ endif
 # ************* Common defines ********************
 
 INCLUDES += \
-        -I.
+        -I. \
+        -I./v2 \
 
 CCFLAGS += -MD -g -Os $(INCLUDES) -Wall -Werror -ffunction-sections -fdata-sections \
 	-fno-exceptions

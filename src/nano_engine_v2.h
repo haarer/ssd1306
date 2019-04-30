@@ -31,12 +31,12 @@
 
 #include "canvas/canvas.h"
 #include "canvas/adafruit.h"
-#include "nano_engine/tiler.h"
-#include "nano_engine/object.h"
-#include "nano_engine/sprite.h"
-#include "nano_engine/menu.h"
-#include "nano_engine/menu_items.h"
-#include "nano_engine/core.h"
+#include "v2/nano_engine/tiler.h"
+#include "v2/nano_engine/object.h"
+#include "v2/nano_engine/sprite.h"
+#include "v2/nano_engine/menu.h"
+#include "v2/nano_engine/menu_items.h"
+#include "v2/nano_engine/core.h"
 
 // DO NOT DECLARE NanoEngine8, NanoEngine16, NanoEngine1 as class NAME: public NanoEngine<T>
 // This causes flash and RAM memory consumption in compiled ELF
