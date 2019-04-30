@@ -88,6 +88,6 @@ void SdlI2c::sendBuffer(const uint8_t *buffer, uint16_t size)
     }
 }
 
-#endif // CONFIG_PLATFORM_I2C_AVAILABLE
+#endif
 
 #endif // __linux__
