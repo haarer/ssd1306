@@ -23,6 +23,9 @@
 
 SRCS_C = \
 	lcd/lcd_common.c \
+	ssd1306_fonts.c \
+	ssd1306_generic.c \
+	ssd1306_uart.c \
 
 SRCS_CPP = \
 	ssd1306_hal/avr/platform.cpp \
@@ -48,9 +51,6 @@ SRCS_CPP = \
 	v2/lcd/lcd_ili9341.cpp \
 	v2/lcd/oled_ssd1325.cpp \
 	lcd/vga_monitor.cpp \
-	ssd1306_generic.cpp \
-	ssd1306_uart.cpp \
-	ssd1306_fonts.cpp \
 	canvas/canvas.cpp \
 	canvas/font.cpp \
 	v2/nano_engine/core.cpp \
