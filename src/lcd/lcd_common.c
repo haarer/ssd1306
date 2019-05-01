@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 
-#include "lcd/lcd_common.h"
+#include "v2/lcd/lcd_common.h"
 #include <stddef.h>
 
 void ssd1306_resetController(int8_t rstPin, uint8_t delayMs)

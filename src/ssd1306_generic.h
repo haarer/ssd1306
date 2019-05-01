@@ -30,7 +30,7 @@
 #define _SSD1306_GENERIC_H_
 
 #include "nano_gfx_types.h"
-#include "lcd/lcd_common.h"
+#include "v2/lcd/lcd_common.h"
 
 #ifdef __cplusplus
 extern "C" {

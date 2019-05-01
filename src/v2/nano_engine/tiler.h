@@ -32,7 +32,6 @@
 #include "canvas/rect.h"
 #include "canvas/canvas.h"
 #include "v2/lcd/base/display.h"
-#include "lcd/lcd_common.h"
 
 /**
  * @ingroup NANO_ENGINE_API

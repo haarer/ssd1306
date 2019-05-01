@@ -25,19 +25,18 @@
  * @file oled_ssd1325.h support for SSD1325 OLED 128x64 display
  */
 
-
-#ifndef _OLED_SSD1325_H_
-#define _OLED_SSD1325_H_
+#ifndef _OLED_SSD1325_V2_H_
+#define _OLED_SSD1325_V2_H_
 
 #include "ssd1306_hal/io.h"
-#include "lcd/lcd_common.h"
+#include "v2/lcd/lcd_common.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /**
- * @ingroup LCD_INTERFACE_API
+ * @ingroup LCD_INTERFACE_API_V2
  * @{
  */
 
@@ -89,4 +88,4 @@ void ssd1325_128x64_spi_init(int8_t rstPin, int8_t cesPin, int8_t dcPin);
 #endif
 
 // ----------------------------------------------------------------------------
-#endif // _OLED_SSD1325_H_
+#endif // _OLED_SSD1325_V2_H_

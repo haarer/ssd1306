@@ -24,7 +24,7 @@
 
 #include "vga_monitor.h"
 #include "vga_commands.h"
-#include "lcd_common.h"
+#include "v2/lcd/lcd_common.h"
 #include "ssd1306_hal/io.h"
 
 #if 0

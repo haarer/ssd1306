@@ -25,12 +25,11 @@
  * @file oled_ssd1351.h support for RGB OLED 128x128 display
  */
 
-
-#ifndef _OLED_SSD1351_H_
-#define _OLED_SSD1351_H_
+#ifndef _OLED_SSD1351_V2_H_
+#define _OLED_SSD1351_V2_H_
 
 #include "ssd1306_hal/io.h"
-#include "lcd/lcd_common.h"
+#include "v2/lcd/lcd_common.h"
 #include "v2/lcd/base/display.h"
 
 /**
@@ -176,4 +175,4 @@ private:
  */
 
 // ----------------------------------------------------------------------------
-#endif // _OLED_SSD1351_H_
+#endif // _OLED_SSD1351_V2_H_

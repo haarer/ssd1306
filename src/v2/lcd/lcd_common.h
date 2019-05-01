@@ -25,8 +25,8 @@
  * @file lcd_common.h global lcd settings
  */
 
-#ifndef _LCD_COMMON_H_
-#define _LCD_COMMON_H_
+#ifndef _LCD_COMMON_V2_H_
+#define _LCD_COMMON_V2_H_
 
 #include "ssd1306_hal/io.h"
 
@@ -35,9 +35,9 @@ extern "C" {
 #endif
 
 /**
- * @defgroup LCD_INTERFACE_API OLEDs: initialization and service functions
+ * @defgroup LCD_INTERFACE_API_V2 OLEDs: initialization and service functions
  * @{
- * @brief LCD initialization and service functions
+ * @brief LCD initialization classes and service functions for 2.0.0 and higher
  *
  * @details This group contains API functions for OLED displays initialization and
  *          direct programming of GDRAM. This API can be used to create your own
@@ -64,4 +64,4 @@ void ssd1306_resetController(int8_t rstPin, uint8_t delayMs);
 }
 #endif
 
-#endif /* _LCD_COMMON_H_ */
+#endif /* _LCD_COMMON_V2_H_ */

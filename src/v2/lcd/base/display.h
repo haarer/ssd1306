@@ -34,7 +34,6 @@
 #include "canvas/font.h"
 #include "ssd1306_hal/io.h"
 #include "nano_gfx_types.h"
-#include "lcd/lcd_common.h"
 #include "display_base.h"
 
 /**

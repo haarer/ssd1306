@@ -26,15 +26,15 @@
  */
 
 
-#ifndef _OLED_SH1106_H_
-#define _OLED_SH1106_H_
+#ifndef _OLED_SH1106_V2_H_
+#define _OLED_SH1106_V2_H_
 
 #include "ssd1306_hal/io.h"
 #include "v2/lcd/base/display.h"
-#include "lcd/lcd_common.h"
+#include "v2/lcd/lcd_common.h"
 
 /**
- * @ingroup LCD_INTERFACE_API
+ * @ingroup LCD_INTERFACE_API_V2
  * @{
  */
 
@@ -289,4 +289,4 @@ private:
  */
 
 // ----------------------------------------------------------------------------
-#endif // _OLED_SH1106_H_
+#endif // _OLED_SH1106_V2_H_

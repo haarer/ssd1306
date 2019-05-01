@@ -26,15 +26,15 @@
  */
 
 
-#ifndef _LCD_PCD8544_H_
-#define _LCD_PCD8544_H_
+#ifndef _LCD_PCD8544_V2_H_
+#define _LCD_PCD8544_V2_H_
 
 #include "ssd1306_hal/io.h"
-#include "lcd/lcd_common.h"
+#include "v2/lcd/lcd_common.h"
 #include "v2/lcd/base/display.h"
 
 /**
- * @ingroup LCD_INTERFACE_API
+ * @ingroup LCD_INTERFACE_API_V2
  * @{
  */
 

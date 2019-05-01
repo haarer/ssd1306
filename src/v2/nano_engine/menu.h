@@ -32,7 +32,6 @@
 #include "canvas/rect.h"
 #include "object.h"
 #include "ssd1306_hal/io.h"
-#include "lcd/lcd_common.h"
 
 /**
  * @ingroup NANO_ENGINE_API

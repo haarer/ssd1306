@@ -26,11 +26,11 @@
  * @file lcd_il9163.h support for LCD IL9163 display
  */
 
-#ifndef _LCD_IL9163_H_
-#define _LCD_IL9163_H_
+#ifndef _LCD_IL9163_V2_H_
+#define _LCD_IL9163_V2_H_
 
 #include "ssd1306_hal/io.h"
-#include "lcd/lcd_common.h"
+#include "v2/lcd/lcd_common.h"
 #include "v2/lcd/base/display.h"
 
 /**
@@ -284,4 +284,4 @@ private:
 
 // ----------------------------------------------------------------------------
 
-#endif // _LCD_IL9163_H_
+#endif // _LCD_IL9163_V2_H_

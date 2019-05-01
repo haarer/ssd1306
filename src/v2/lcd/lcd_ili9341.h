@@ -26,18 +26,18 @@
  */
 
 
-#ifndef _TFT_ILI9341_H_
-#define _TFT_ILI9341_H_
+#ifndef _TFT_ILI9341_V2_H_
+#define _TFT_ILI9341_V2_H_
 
 #include "ssd1306_hal/io.h"
-#include "lcd/lcd_common.h"
+#include "v2/lcd/lcd_common.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /**
- * @ingroup LCD_INTERFACE_API
+ * @ingroup LCD_INTERFACE_API_V2
  * @{
  */
 
@@ -118,4 +118,4 @@ void ili9341_rotateOutput(uint8_t on);
 #endif
 
 // ----------------------------------------------------------------------------
-#endif // _TFT_ILI9141_H_
+#endif // _TFT_ILI9141_V2_H_
