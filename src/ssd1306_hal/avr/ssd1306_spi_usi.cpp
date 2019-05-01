@@ -80,13 +80,6 @@ void UsiSpi::stop()
     {
         digitalWrite( m_cs, HIGH);
     }
-    // TODO:
-//    if (ssd1306_lcd.type == LCD_TYPE_PCD8544)
-//    {
-//        digitalWrite(s_ssd1306_dc, LOW);
-//        ssd1306_spiSendByte_Usi( 0x00 ); // Send NOP command to allow last data byte to pass (bug in PCD8544?)
-//                                         // ssd1306 E3h is NOP command
-//    }
 //    NOT TODO:
 //    USICR &= ~((1<<USIWM1) | (1<<USIWM0));
 }

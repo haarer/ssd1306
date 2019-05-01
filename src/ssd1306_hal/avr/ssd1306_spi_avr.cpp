@@ -101,13 +101,6 @@ void AvrSpi::start()
 
 void AvrSpi::stop()
 {
-// TODO: PCD8544
-//    if (ssd1306_lcd.type == LCD_TYPE_PCD8544)
-//    {
-//        digitalWrite(s_ssd1306_dc, LOW);
-//        ssd1306_spiSendByte_avr( 0x00 ); // Send NOP command to allow last data byte to pass (bug in PCD8544?)
-//                                         // ssd1306 E3h is NOP command
-//    }
     if ( m_cs >= 0 )
     {
         digitalWrite( m_cs, HIGH );

@@ -24,7 +24,6 @@
 
 #include "intf/vga/vga.h"
 // Never include vga128x64_isr.h here!!!
-#include "lcd/lcd_common.h"
 #include "lcd/vga_commands.h"
 
 #if 0

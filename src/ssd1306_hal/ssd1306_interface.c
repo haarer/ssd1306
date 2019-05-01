@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2016-2019, Alexey Dynda
+    Copyright (c) 2017-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -22,31 +22,58 @@
     SOFTWARE.
 */
 
-///////////////////////////////////////////////////////////////////////////////
-////// GENERIC FUNCTIONS APPLICABLE FOR ALL DISPLAY TYPES /////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-#include "ssd1306_generic.h"
-#include "ssd1306_fonts.h"
 #include "ssd1306_hal/io.h"
-#include "nano_gfx_types.h"
+#include <stddef.h>
 
-uint8_t s_ssd1306_invertByte = 0x00000000;
-#ifdef CONFIG_SSD1306_UNICODE_ENABLE
-extern uint8_t g_ssd1306_unicode;
-#endif
+int8_t s_ssd1306_cs = 4;
+int8_t s_ssd1306_dc = 5;
+uint32_t s_ssd1306_spi_clock = 8000000;
 
-void ssd1306_enableUtf8Mode(void)
+static void ssd1306_send_buffer_generic(const uint8_t* buffer, uint16_t size);
+
+ssd1306_interface_t ssd1306_intf =
 {
-#ifdef CONFIG_SSD1306_UNICODE_ENABLE
-    g_ssd1306_unicode = 1;
-#endif
+    .send_buffer = ssd1306_send_buffer_generic
+};
+
+void ssd1306_spiDataMode(uint8_t mode)
+{
+    if (s_ssd1306_dc)
+    {
+        digitalWrite(s_ssd1306_dc, mode ? HIGH : LOW);
+    }
 }
 
-void ssd1306_enableAsciiMode(void)
+void ssd1306_commandStart(void)
 {
-#ifdef CONFIG_SSD1306_UNICODE_ENABLE
-    g_ssd1306_unicode = 0;
-#endif
+    ssd1306_intf.start();
+    if (ssd1306_intf.spi)
+        ssd1306_spiDataMode(0);
+    else
+        ssd1306_intf.send(0x00);
 }
 
+void ssd1306_dataStart(void)
+{
+    ssd1306_intf.start();
+    if (ssd1306_intf.spi)
+        ssd1306_spiDataMode(1);
+    else
+        ssd1306_intf.send(0x40);
+}
+
+void ssd1306_sendCommand(uint8_t command)
+{
+    ssd1306_commandStart();
+    ssd1306_intf.send(command);
+    ssd1306_intf.stop();
+}
+
+void ssd1306_send_buffer_generic(const uint8_t* buffer, uint16_t size)
+{
+    while (size--)
+    {
+        ssd1306_intf.send(*buffer);
+        buffer++;
+    }
+}

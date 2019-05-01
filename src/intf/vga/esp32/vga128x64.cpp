@@ -23,7 +23,6 @@
 */
 
 #include "intf/vga/vga.h"
-#include "lcd/lcd_common.h"
 #include "lcd/vga_commands.h"
 
 #if 0

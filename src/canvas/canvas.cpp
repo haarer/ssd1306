@@ -24,7 +24,6 @@
 
 #include "canvas.h"
 #include "ssd1306_generic.h"
-#include "lcd/lcd_common.h"
 
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
 extern "C" uint8_t g_ssd1306_unicode;
