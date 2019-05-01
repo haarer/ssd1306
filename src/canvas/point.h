@@ -32,7 +32,7 @@
 #include "ssd1306_hal/io.h"
 
 /**
- * @ingroup NANO_ENGINE_API
+ * @ingroup NANO_ENGINE_API_V2
  * @{
  */
 

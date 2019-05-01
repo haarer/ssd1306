@@ -75,7 +75,7 @@ public:
      * @warning - this function initiates session (i2c or spi) and does not close it.
      *            To close session, please, call endBlock().
      */
-    void __attribute__ ((noinline)) startBlock(lcduint_t x, lcduint_t y, lcduint_t w);
+    void startBlock(lcduint_t x, lcduint_t y, lcduint_t w) __attribute__ ((noinline));
 
     /**
      * Switches to the start of next RAM page for the block, specified by
@@ -181,13 +181,14 @@ public:
      * Created object instance to control ssd1306-based displays
      *
      * @param intf reference to communication interface to use
+     * @param rstPin reset pin number, or -1 if not used
      */
     DisplaySSD1306(I &intf, int8_t rstPin = -1)
         : NanoDisplayOps<NanoDisplayOps1<I>, I>(intf)
         , m_rstPin( rstPin ) { }
 
 protected:
-    int8_t m_rstPin;
+    int8_t m_rstPin; ///< Reset pin number if used
 
 };
 

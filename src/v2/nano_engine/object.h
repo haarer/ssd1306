@@ -34,7 +34,7 @@
 #include "tiler.h"
 
 /**
- * @ingroup NANO_ENGINE_API
+ * @ingroup NANO_ENGINE_API_V2
  * @{
  */
 

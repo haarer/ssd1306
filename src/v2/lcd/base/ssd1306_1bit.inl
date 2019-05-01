@@ -215,6 +215,7 @@ void NanoDisplayOps1<I>::printFixed(lcdint_t xpos, lcdint_t y, const char *ch, E
     this->m_intf.endBlock();
 }
 
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
 template <class I>
 void NanoDisplayOps1<I>::printFixed_oldStyle(uint8_t xpos, uint8_t y, const char *ch, EFontStyle style)
 {
@@ -288,6 +289,7 @@ void NanoDisplayOps1<I>::printFixed_oldStyle(uint8_t xpos, uint8_t y, const char
     }
     this->m_intf.endBlock();
 }
+#endif
 
 template <class I>
 void NanoDisplayOps1<I>::printFixedN(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style, uint8_t factor)

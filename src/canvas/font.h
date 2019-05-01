@@ -32,7 +32,7 @@
 #include "nano_gfx_types.h"
 
 /**
- * @ingroup NANO_ENGINE_API
+ * @ingroup NANO_ENGINE_API_V2
  * @{
  */
 

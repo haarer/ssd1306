@@ -136,6 +136,9 @@ public:
      */
     void setFont( NanoFont &font ) { m_font = &font; }
 
+    /**
+     * Returns reference to NanoFont object, currently used by Display
+     */
     NanoFont &getFont() { return *m_font; }
 
     /**

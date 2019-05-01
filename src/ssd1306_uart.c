@@ -21,9 +21,6 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-/**
- * @file nano_engine.h Small graphics engine, based on SSD1331 functions
- */
 
 #include "ssd1306_uart.h"
 

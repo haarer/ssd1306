@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 /**
- * @file ssd1306.h SSD1306 basic draw functions
+ * @file ssd1306v2.h SSD1306 basic draw functions
  */
 
 #ifndef _SSD1306_H_

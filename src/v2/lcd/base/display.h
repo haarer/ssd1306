@@ -59,7 +59,7 @@ public:
      * @param y - position Y
      * @note color can be set via setColor()
      */
-    void __attribute__ ((noinline)) putPixel(lcdint_t x, lcdint_t y);
+    void putPixel(lcdint_t x, lcdint_t y) __attribute__ ((noinline));
 
     /**
      * Draws horizontal or vertical line
@@ -115,7 +115,7 @@ public:
      *       In transparent mode, those pixels of source monochrome image, which are black, do not overwrite pixels
      *       in the screen buffer.
      */
-    void __attribute__ ((noinline)) drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+    void drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap) __attribute__ ((noinline));
 
     /**
      * Draws bitmap, located in Flash, on the display
@@ -168,9 +168,18 @@ public:
      * @param h height of bitmap in pixels (must be divided by 8)
      * @param buffer pointer to data, located in SRAM: each byte represents 8 vertical pixels.
      */
-    void __attribute__ ((noinline)) drawBuffer1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+    void drawBuffer1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
 
-    void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buf);
+    /**
+     * Implements the same behavior as drawBuffer1, but much faster. This method has some limitations
+     *
+     * @param x horizontal position in pixels
+     * @param y vertical position in pixels
+     * @param w width of bitmap in pixels
+     * @param h height of bitmap in pixels (must be divided by 8)
+     * @param buffer pointer to data, located in SRAM: each byte represents 8 vertical pixels.
+     */
+    void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
 
     /**
      * Draws 8-bit bitmap, located in RAM, on the display
@@ -183,7 +192,7 @@ public:
      * @param h height of bitmap in pixels
      * @param buffer pointer to data, located in SRAM.
      */
-    void drawBuffer8(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+    void drawBuffer8(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
 
     /**
      * Draws 16-bit bitmap, located in RAM, on the display
@@ -195,7 +204,7 @@ public:
      * @param h height of bitmap in pixels
      * @param buffer pointer to data, located in RAM.
      */
-    void drawBuffer16(lcdint_t xpos, lcdint_t ypos, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+    void drawBuffer16(lcdint_t xpos, lcdint_t ypos, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
 
     /**
      * Clears canvas
@@ -220,7 +229,7 @@ public:
      * Writes single character to canvas
      * @param c - character code to print
      */
-    size_t __attribute__ ((noinline)) write(uint8_t c);
+    size_t write(uint8_t c) __attribute__ ((noinline));
 
     /**
      * Print text at specified position to canvas
@@ -232,10 +241,10 @@ public:
      *
      * @note Supports only STYLE_NORMAL and STYLE_BOLD
      */
-    void __attribute__ ((noinline)) printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL);
+    void printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL) __attribute__ ((noinline));
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
-    void __attribute__ ((noinline)) printFixed_oldStyle(uint8_t xpos, uint8_t y, const char *ch, EFontStyle style);
+    void printFixed_oldStyle(uint8_t xpos, uint8_t y, const char *ch, EFontStyle style) __attribute__ ((noinline));
 #endif
 
     /**
@@ -257,7 +266,7 @@ public:
      *          ssd1306_printFixedN() uses much flash: ~474 bytes, ssd1306_printFixed() needs 388 bytes.
      *          Placing both of these functions to your sketch will consume almost 1KiB.
      */
-    void __attribute__ ((noinline)) printFixedN(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style, uint8_t factor);
+    void printFixedN(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style, uint8_t factor) __attribute__ ((noinline));
 
 protected:
 };
@@ -280,7 +289,7 @@ public:
      * @param y - position Y
      * @note color can be set via setColor()
      */
-    void putPixel(lcdint_t x, lcdint_t y);
+    void putPixel(lcdint_t x, lcdint_t y) __attribute__ ((noinline));
 
     /**
      * Draws horizontal or vertical line
@@ -336,7 +345,7 @@ public:
      *       In transparent mode, those pixels of source monochrome image, which are black, do not overwrite pixels
      *       in the screen buffer.
      */
-    void __attribute__ ((noinline)) drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+    void drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap) __attribute__ ((noinline));
 
     /**
      * @brief Draws 8-bit color bitmap in color buffer.
@@ -377,9 +386,18 @@ public:
      * @param h height of bitmap in pixels (must be divided by 8)
      * @param buffer pointer to data, located in SRAM: each byte represents 8 vertical pixels.
      */
-    void drawBuffer1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+    void drawBuffer1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
 
-    void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buf);
+    /**
+     * Implements the same behavior as drawBuffer1, but much faster. This method has some limitations
+     *
+     * @param x horizontal position in pixels
+     * @param y vertical position in pixels
+     * @param w width of bitmap in pixels
+     * @param h height of bitmap in pixels (must be divided by 8)
+     * @param buffer pointer to data, located in SRAM: each byte represents 8 vertical pixels.
+     */
+    void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
 
     /**
      * Draws 8-bit bitmap, located in RAM, on the display
@@ -404,7 +422,7 @@ public:
      * @param h height of bitmap in pixels
      * @param buffer pointer to data, located in RAM.
      */
-    void drawBuffer16(lcdint_t xpos, lcdint_t ypos, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+    void drawBuffer16(lcdint_t xpos, lcdint_t ypos, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
 
     /**
      * Clears canvas
@@ -429,7 +447,7 @@ public:
      * Writes single character to canvas
      * @param c - character code to print
      */
-    size_t __attribute__ ((noinline)) write(uint8_t c);
+    size_t write(uint8_t c) __attribute__ ((noinline));
 
     /**
      * Print text at specified position to canvas
@@ -441,7 +459,7 @@ public:
      *
      * @note Supports only STYLE_NORMAL and STYLE_BOLD
      */
-    void __attribute__ ((noinline)) printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL);
+    void printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL) __attribute__ ((noinline));
 
 protected:
 };
@@ -464,7 +482,7 @@ public:
      * @param y - position Y
      * @note color can be set via setColor()
      */
-    void putPixel(lcdint_t x, lcdint_t y);
+    void putPixel(lcdint_t x, lcdint_t y) __attribute__ ((noinline));
 
     /**
      * Draws horizontal or vertical line
@@ -520,7 +538,7 @@ public:
      *       In transparent mode, those pixels of source monochrome image, which are black, do not overwrite pixels
      *       in the screen buffer.
      */
-    void __attribute__ ((noinline)) drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+    void drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap) __attribute__ ((noinline));
 
     /**
      * @brief Draws 8-bit color bitmap in color buffer.
@@ -561,9 +579,18 @@ public:
      * @param h height of bitmap in pixels (must be divided by 8)
      * @param buffer pointer to data, located in SRAM: each byte represents 8 vertical pixels.
      */
-    void drawBuffer1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+    void drawBuffer1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
 
-    void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buf);
+    /**
+     * Implements the same behavior as drawBuffer1, but much faster. This method has some limitations
+     *
+     * @param x horizontal position in pixels
+     * @param y vertical position in pixels
+     * @param w width of bitmap in pixels
+     * @param h height of bitmap in pixels (must be divided by 8)
+     * @param buffer pointer to data, located in SRAM: each byte represents 8 vertical pixels.
+     */
+    void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
 
     /**
      * Draws 8-bit bitmap, located in RAM, on the display
@@ -588,7 +615,7 @@ public:
      * @param h height of bitmap in pixels
      * @param buffer pointer to data, located in RAM.
      */
-    void drawBuffer16(lcdint_t xpos, lcdint_t ypos, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+    void drawBuffer16(lcdint_t xpos, lcdint_t ypos, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
 
     /**
      * Clears canvas
@@ -613,7 +640,7 @@ public:
      * Writes single character to canvas
      * @param c - character code to print
      */
-    size_t __attribute__ ((noinline)) write(uint8_t c);
+    size_t write(uint8_t c) __attribute__ ((noinline));
 
     /**
      * Print text at specified position to canvas
@@ -625,7 +652,7 @@ public:
      *
      * @note Supports only STYLE_NORMAL and STYLE_BOLD
      */
-    void __attribute__ ((noinline)) printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL);
+    void printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL) __attribute__ ((noinline));
 
 protected:
 };
@@ -697,7 +724,7 @@ public:
      * @param y y position in pixels
      * @param canvas 1-bit canvas to draw on the screen.
      */
-    void __attribute__ ((noinline)) drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<1> &canvas);
+    void drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<1> &canvas) __attribute__ ((noinline));
 
     /**
      * Draws 8-bit canvas on lcd display
@@ -706,7 +733,7 @@ public:
      * @param y y position in pixels
      * @param canvas 8-bit canvas to draw on the screen.
      */
-    void __attribute__ ((noinline)) drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<8> &canvas);
+    void drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<8> &canvas) __attribute__ ((noinline));
 
     /**
      * Draws 16-bit canvas on lcd display
@@ -715,7 +742,7 @@ public:
      * @param y y position in pixels
      * @param canvas 16-bit canvas to draw on the screen.
      */
-    void __attribute__ ((noinline)) drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<16> &canvas);
+    void drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<16> &canvas) __attribute__ ((noinline));
 
     /**
      * Print text at specified position to canvas
@@ -727,7 +754,7 @@ public:
      *
      * @note Supports only STYLE_NORMAL and STYLE_BOLD
      */
-    void __attribute__ ((noinline)) printFixedPgm(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL);
+    void printFixedPgm(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL) __attribute__ ((noinline));
 
     /**
      * Creates menu object with the provided list of menu items.

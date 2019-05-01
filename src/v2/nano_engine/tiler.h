@@ -34,7 +34,7 @@
 #include "v2/lcd/base/display.h"
 
 /**
- * @ingroup NANO_ENGINE_API
+ * @ingroup NANO_ENGINE_API_V2
  * @{
  */
 
@@ -205,7 +205,7 @@ public:
      * Mark specified area in pixels for redrawing by NanoEngine.
      * Actual update will take place in display() method.
      */
-    void __attribute__ ((noinline)) refresh(const NanoPoint &point)
+    void refresh(const NanoPoint &point) __attribute__ ((noinline))
     {
         if ((point.x<0)||(point.y<0) || ((point.y/canvas.height())>=NE_MAX_TILES_NUM)) return;
         m_refreshFlags[(point.y/canvas.height())] |= (1<<(point.x/canvas.width()));
@@ -215,7 +215,7 @@ public:
      * Mark specified area in pixels for redrawing by NanoEngine.
      * Actual update will take place in display() method.
      */
-    void __attribute__ ((noinline)) refresh(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2)
+    void refresh(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2) __attribute__ ((noinline))
     {
         if (y2 < 0 || x2 < 0) return;
         if (y1 < 0) y1 = 0;
@@ -246,7 +246,7 @@ public:
      * global (World) coordinates. If engine offset is (0,0), then this function
      * refreshes the same area as refresh().
      */
-    void __attribute__ ((noinline)) refreshWorld(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2)
+    void refreshWorld(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2) __attribute__ ((noinline))
     {
         refresh(x1 - offset.x, y1 - offset.y, x2 - offset.x, y2 - offset.y);
     }
@@ -340,9 +340,9 @@ public:
      * Inserts new NanoEngineObject. This object will be displayed during next call
      * to update()/draw() methods.
      *
-     * @param object object to place to NanoEngine
+     * @param object reference to object to place to NanoEngine
      */
-    void __attribute__ ((noinline)) insert(NanoEngineObject<TilerT> &object)
+    void insert(NanoEngineObject<TilerT> &object) __attribute__ ((noinline))
     {
         object.m_next = this->m_first;
         object.setTiler( this );
@@ -357,7 +357,7 @@ public:
      *
      * @param object object to remove from NanoEngine
      */
-    void __attribute__ ((noinline)) remove(NanoEngineObject<TilerT> &object)
+    void remove(NanoEngineObject<TilerT> &object) __attribute__ ((noinline))
     {
         if ( this->m_first == nullptr )
         {
@@ -390,7 +390,7 @@ public:
     /**
      * Updates all objects. This method doesn't refresh screen content
      */
-    void __attribute__ ((noinline)) update()
+    void update() __attribute__ ((noinline))
     {
         NanoEngineObject<TilerT> *p = m_first;
         while (p)
@@ -431,7 +431,7 @@ protected:
      * Engine will update only those areas, which are marked by refresh()
      * methods.
      */
-    void __attribute__ ((noinline)) displayBuffer();
+    void displayBuffer() __attribute__ ((noinline));
 
     /**
      * @brief prints popup message over display content
@@ -448,7 +448,7 @@ private:
 
     NanoEngineObject<TilerT>  *m_first;
 
-    void __attribute__ ((noinline)) draw()
+    void draw() __attribute__ ((noinline))
     {
         NanoEngineObject<TilerT> *p = m_first;
         while (p)

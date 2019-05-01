@@ -22,12 +22,12 @@
     SOFTWARE.
 */
 /**
- * @file nano_engine.h Small graphics engine, based on SSD1331 functions
+ * @file nano_engine_v2.h Small graphics engine, based on SSD1331 functions
  */
 
 
-#ifndef _NANO_ENGINE_H_
-#define _NANO_ENGINE_H_
+#ifndef _NANO_ENGINE_V2_H_
+#define _NANO_ENGINE_V2_H_
 
 #include "canvas/canvas.h"
 #include "canvas/adafruit.h"
@@ -42,7 +42,7 @@
 // This causes flash and RAM memory consumption in compiled ELF
 
 /**
- * @defgroup NANO_ENGINE_API NANO_ENGINE: Nano Engine description
+ * @defgroup NANO_ENGINE_API_V2 NANO_ENGINE: Nano Engine description
  * @{
  * @brief Nano Engine description
  *

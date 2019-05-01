@@ -57,7 +57,7 @@
 #endif // DOXYGEN_SHOULD_SKIP_THIS
 
 /**
- * @ingroup NANO_ENGINE_API
+ * @ingroup NANO_ENGINE_API_V2
  * @{
  */
 

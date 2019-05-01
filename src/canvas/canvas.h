@@ -37,7 +37,7 @@
 #include "nano_gfx_types.h"
 
 /**
- * @ingroup NANO_ENGINE_API
+ * @ingroup NANO_ENGINE_API_V2
  * @{
  */
 
@@ -174,7 +174,7 @@ public:
      * @param y2 - position Y
      * @note color can be set via setColor()
      */
-    void __attribute__ ((noinline)) drawRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2);
+    void drawRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2) __attribute__ ((noinline));
 
     /**
      * Draws rectangle
@@ -191,7 +191,7 @@ public:
      * @param y2 - position Y
      * @note color can be set via setColor()
      */
-    void __attribute__ ((noinline)) fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2);
+    void fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2) __attribute__ ((noinline));
 
     /**
      * Fills rectangle area
@@ -214,7 +214,7 @@ public:
      *       In transparent mode, those pixels of source monochrome image, which are black, do not overwrite pixels
      *       in the screen buffer.
      */
-    void __attribute__ ((noinline)) drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+    void drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap) __attribute__ ((noinline));
 
     /**
      * @brief Draws 8-bit color bitmap in color buffer.
@@ -225,12 +225,12 @@ public:
      * @param h - height in pixels
      * @param bitmap - 8-bit color bitmap data, located in flash
      */
-    void __attribute__ ((noinline)) drawBitmap8(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+    void drawBitmap8(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap) __attribute__ ((noinline));
 
     /**
      * Clears canvas
      */
-    void __attribute__ ((noinline)) clear();
+    void clear() __attribute__ ((noinline));
 
     /**
      * Writes single character to canvas
@@ -255,7 +255,7 @@ public:
      *
      * @note Supports only STYLE_NORMAL and STYLE_BOLD
      */
-    void __attribute__ ((noinline)) printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL);
+    void printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL) __attribute__ ((noinline));
 
     /**
      * Print text at specified position to canvas

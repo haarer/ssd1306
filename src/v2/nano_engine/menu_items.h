@@ -33,7 +33,7 @@
 #include "ssd1306_generic.h"
 
 /**
- * @ingroup NANO_ENGINE_API
+ * @ingroup NANO_ENGINE_API_V2
  * @{
  */
 
