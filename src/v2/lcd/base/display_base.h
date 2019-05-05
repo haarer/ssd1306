@@ -30,9 +30,9 @@
 
 #include "ssd1306_hal/io.h"
 #include "nano_gfx_types.h"
-#include "canvas/point.h"
-#include "canvas/rect.h"
-#include "canvas/font.h"
+#include "v2/canvas/point.h"
+#include "v2/canvas/rect.h"
+#include "v2/canvas/font.h"
 
 /**
  * @ingroup LCD_GENERIC_API

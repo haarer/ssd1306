@@ -28,8 +28,8 @@
 #ifndef _NANO_MENU_H_
 #define _NANO_MENU_H_
 
-#include "canvas/point.h"
-#include "canvas/rect.h"
+#include "v2/canvas/point.h"
+#include "v2/canvas/rect.h"
 #include "object.h"
 #include "ssd1306_hal/io.h"
 

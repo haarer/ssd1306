@@ -52,10 +52,10 @@ SRCS_CPP = \
 	v2/lcd/il9163/lcd_il9163.cpp \
 	v2/lcd/lcd_ili9341.cpp \
 	v2/lcd/oled_ssd1325.cpp \
-	lcd/vga_monitor.cpp \
-	canvas/canvas.cpp \
-	canvas/font.cpp \
+	v2/canvas/canvas.cpp \
+	v2/canvas/font.cpp \
 	v2/nano_engine/core.cpp \
+	lcd/vga_monitor.cpp \
 	ssd1306_console.cpp \
 
 SRCS = $(SRCS_C) $(SRCS_CPP)

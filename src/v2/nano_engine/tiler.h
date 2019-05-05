@@ -29,8 +29,8 @@
 #ifndef _NANO_ENGINE_TILER_H_
 #define _NANO_ENGINE_TILER_H_
 
-#include "canvas/rect.h"
-#include "canvas/canvas.h"
+#include "v2/canvas/rect.h"
+#include "v2/canvas/canvas.h"
 #include "v2/lcd/base/display.h"
 
 /**

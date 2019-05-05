@@ -29,8 +29,8 @@
 #ifndef _NANO_ENGINE_V2_H_
 #define _NANO_ENGINE_V2_H_
 
-#include "canvas/canvas.h"
-#include "canvas/adafruit.h"
+#include "v2/canvas/canvas.h"
+#include "v2/canvas/adafruit.h"
 #include "v2/nano_engine/tiler.h"
 #include "v2/nano_engine/object.h"
 #include "v2/nano_engine/sprite.h"
