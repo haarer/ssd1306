@@ -87,7 +87,7 @@ typedef struct
 
 SPRITE       ssd1306_createSprite(uint8_t x, uint8_t y, uint8_t w, const uint8_t *data)
 {
-    return (SPRITE){x,y,w,x,y,data,NULL};
+    return (SPRITE){x,y,w,x,y,data};
 }
 
 uint16_t *EEPROM_ADDR = (uint16_t*)0;

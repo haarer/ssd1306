@@ -26,7 +26,7 @@
 #include "vga_commands.h"
 #include "v2/lcd/lcd_common.h"
 #include "ssd1306_hal/io.h"
-#include "intf/vga/vga.h"
+#include "v1/intf/vga/vga.h"
 
 #if 0
 

@@ -33,7 +33,7 @@ enum
 };
 
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
-uint8_t g_ssd1306_unicode = 1;
+uint8_t g_ssd1306_unicode2 = 1;
 #endif
 NanoFont g_ssd1306_font;
 
@@ -89,7 +89,7 @@ static const uint8_t *ssd1306_getU16CharGlyph(SFixedFontInfo &font, uint16_t uni
 {
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
     const uint8_t * glyph = NULL;
-    if (g_ssd1306_unicode)
+    if (g_ssd1306_unicode2)
     {
         if ((unicode < 128) && (font.h.type == 0x00) && (font.primary_table != NULL))
         {

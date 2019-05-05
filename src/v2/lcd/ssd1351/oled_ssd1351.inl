@@ -112,7 +112,7 @@ void InterfaceSSD1351<I>::spiDataMode(uint8_t mode)
 template <class I>
 void DisplaySSD1351<I>::begin()
 {
-    ssd1306_resetController( m_rstPin, 20 );
+    ssd1306_resetController2( m_rstPin, 20 );
     this->m_w = 128;
     this->m_h = 128;
     this->m_intf.start();

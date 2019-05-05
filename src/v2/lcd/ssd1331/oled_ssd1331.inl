@@ -191,7 +191,7 @@ void InterfaceSSD1331<I>::copyBlock(uint8_t left, uint8_t top,
 template <class I>
 void DisplaySSD1331<I>::begin()
 {
-    ssd1306_resetController( m_rstPin, 10 );
+    ssd1306_resetController2( m_rstPin, 10 );
     this->m_w = 96;
     this->m_h = 64;
     for( uint8_t i=0; i < sizeof(s_ssd1331_oled96x64_initData); i++)
@@ -215,7 +215,7 @@ void DisplaySSD1331<I>::end()
 template <class I>
 void DisplaySSD1331x16<I>::begin()
 {
-    ssd1306_resetController( m_rstPin, 10 );
+    ssd1306_resetController2( m_rstPin, 10 );
     this->m_w = 96;
     this->m_h = 64;
     for( uint8_t i=0; i < sizeof(s_ssd1331_oled96x64_initData16); i++)

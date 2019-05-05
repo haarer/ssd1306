@@ -31,7 +31,7 @@
 
 #if defined(CONFIG_AVR_UART_AVAILABLE) && defined(CONFIG_AVR_UART_ENABLE)
 
-#include "ssd1306_uart.h"
+#include "v1/ssd1306_uart.h"
 
 static void ssd1306_uartStart(void)
 {

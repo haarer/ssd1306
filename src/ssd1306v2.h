@@ -29,8 +29,10 @@
 #define _SSD1306_H_
 
 #include "nano_gfx_types.h"
-#include "ssd1306_generic.h"
-#include "ssd1306_fonts.h"
+#include "fonts/ssd1306_fonts.h"
+
+#ifdef __cplusplus
+#include "v2/canvas/canvas.h"
 #include "nano_engine_v2.h"
 
 #include "v2/lcd/pcd8544/lcd_pcd8544.h"
@@ -42,5 +44,35 @@
 #include "v2/lcd/il9163/lcd_il9163.h"
 #include "v2/lcd/oled_ssd1325.h"
 #include "v2/lcd/lcd_ili9341.h"
+
+extern "C" {
+#endif
+
+/**
+ * @defgroup LCD_GENERIC_API Generic API functions, common for all displays and all display modes.
+ * @{
+ * @brief Generic API functions, common for all displays and all display modes.
+ *
+ * @details Generic API functions, common for all displays and all display modes.
+ */
+
+/**
+ * Enables utf8 support for all text-functions.
+ * @note Unicode-16 only supported in text decoding functions.
+ */
+void ssd1306_enableUtf8Mode2(void);
+
+/**
+ * Enables ascii mode for all text-functions. No any decoding will be performed
+ */
+void ssd1306_enableAsciiMode2(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+/**
+ * @}
+ */
 
 #endif // _SSD1306_H_

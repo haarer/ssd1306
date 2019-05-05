@@ -23,15 +23,11 @@
 */
 
 #include "ssd1306_hal/io.h"
-#include "ssd1306_generic.h"
 
 //extern uint16_t ssd1306_color;
 extern uint8_t s_ssd1306_invertByte;
 //extern lcduint_t ssd1306_cursorX;
 //extern lcduint_t ssd1306_cursorY;
-#ifdef CONFIG_SSD1306_UNICODE_ENABLE
-extern "C" uint8_t g_ssd1306_unicode;
-#endif
 
 #if 0
 void    ssd1306_setRgbColor16(uint8_t r, uint8_t g, uint8_t b)

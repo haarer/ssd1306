@@ -36,7 +36,7 @@
 #ifndef _SSD1306_VGA_ATMEGA328P_ISR_H_
 #define _SSD1306_VGA_ATMEGA328P_ISR_H_
 
-#include "intf/vga/vga.h"
+#include "v1/intf/vga/vga.h"
 #include "ssd1306_hal/io.h"
 
 #ifdef __cplusplus

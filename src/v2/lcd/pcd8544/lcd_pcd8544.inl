@@ -94,7 +94,7 @@ void InterfacePCD8544<I>::endBlock()
 template <class I>
 void DisplayPCD8544<I>::begin()
 {
-    ssd1306_resetController( m_rstPin, 20 );
+    ssd1306_resetController2( m_rstPin, 20 );
 
     this->m_w = 84;
     this->m_h = 48;

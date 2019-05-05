@@ -195,7 +195,7 @@ void InterfaceSSD1306<I>::flipVertical(uint8_t mode)
 template <class I>
 void DisplaySSD1306_128x64<I>::begin()
 {
-    ssd1306_resetController( this->m_rstPin, 10 );
+    ssd1306_resetController2( this->m_rstPin, 10 );
     this->m_w = 128;
     this->m_h = 64;
     for( uint8_t i=0; i < sizeof(s_ssd1306_oled128x64_initData); i++)
@@ -214,7 +214,7 @@ void DisplaySSD1306_128x64<I>::end()
 template <class I>
 void DisplaySSD1306_128x32<I>::begin()
 {
-    ssd1306_resetController( this->m_rstPin, 10 );
+    ssd1306_resetController2( this->m_rstPin, 10 );
     this->m_w = 128;
     this->m_h = 32;
     for( uint8_t i=0; i < sizeof(s_ssd1306_oled128x32_initData); i++)

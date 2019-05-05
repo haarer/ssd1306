@@ -169,7 +169,7 @@ static const PROGMEM uint8_t s_IL9163_lcd128x128x16_initData[] =
 template <class I>
 void DisplayIL9163_128x128x16<I>::begin()
 {
-    ssd1306_resetController( this->m_rstPin, 20 );
+    ssd1306_resetController2( this->m_rstPin, 20 );
     /* Give 120ms display to initialize */
     delay(120);
     this->m_w = 128;
@@ -239,7 +239,7 @@ static const PROGMEM uint8_t s_IL9163_lcd128x160x16_initData[] =
 template <class I>
 void DisplayIL9163_128x160x16<I>::begin()
 {
-    ssd1306_resetController( this->m_rstPin, 20 );
+    ssd1306_resetController2( this->m_rstPin, 20 );
     /* Give 120ms display to initialize */
     delay(120);
     this->m_w = 128;

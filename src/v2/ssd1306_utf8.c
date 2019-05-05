@@ -26,27 +26,26 @@
 ////// GENERIC FUNCTIONS APPLICABLE FOR ALL DISPLAY TYPES /////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "ssd1306_generic.h"
-#include "ssd1306_fonts.h"
-#include "ssd1306_hal/io.h"
+#include "ssd1306v2.h"
 #include "nano_gfx_types.h"
+#include "ssd1306_hal/io.h"
 
 uint8_t s_ssd1306_invertByte = 0x00000000;
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
-extern uint8_t g_ssd1306_unicode;
+extern uint8_t g_ssd1306_unicode2;
 #endif
 
-void ssd1306_enableUtf8Mode(void)
+void ssd1306_enableUtf8Mode2(void)
 {
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
-    g_ssd1306_unicode = 1;
+    g_ssd1306_unicode2 = 1;
 #endif
 }
 
-void ssd1306_enableAsciiMode(void)
+void ssd1306_enableAsciiMode2(void)
 {
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
-    g_ssd1306_unicode = 0;
+    g_ssd1306_unicode2 = 0;
 #endif
 }
 

@@ -54,7 +54,7 @@ extern "C" {
  * @param rstPin reset pin number. If -1, then reset will not be performed
  * @param delayMs delay in milliseconds to hold rstPin in low state
  */
-void ssd1306_resetController(int8_t rstPin, uint8_t delayMs);
+void ssd1306_resetController2(int8_t rstPin, uint8_t delayMs);
 
 /**
  * @}

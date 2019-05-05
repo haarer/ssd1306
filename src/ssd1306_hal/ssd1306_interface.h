@@ -225,6 +225,7 @@ void ssd1306_spiDataMode(uint8_t mode);
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 void ssd1306_resetController(int8_t rstPin, uint8_t delayMs);
+void ssd1306_resetController2(int8_t rstPin, uint8_t delayMs);
 #endif
 
 #ifdef __cplusplus

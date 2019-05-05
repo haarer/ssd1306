@@ -23,7 +23,7 @@
 */
 
 #include "ssd1306_hal/io.h"
-#include "lcd/lcd_common.h"
+#include "v1/lcd/lcd_common.h"
 
 #if defined(ARDUINO)
 

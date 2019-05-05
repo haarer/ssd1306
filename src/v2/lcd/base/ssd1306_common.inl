@@ -27,14 +27,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "ssd1306_hal/io.h"
-#include "ssd1306_generic.h"
 
 //const uint8_t *s_font6x8 = &ssd1306xled_font6x8[4];
 //extern lcduint_t ssd1306_cursorX;
 //extern lcduint_t ssd1306_cursorY;
-#ifdef CONFIG_SSD1306_UNICODE_ENABLE
-extern "C" uint8_t g_ssd1306_unicode;
-#endif
 
 #if 0
 void ssd1306_fillScreen(uint8_t fill_Data)

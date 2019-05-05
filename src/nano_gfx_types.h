@@ -30,6 +30,9 @@
 
 #include "ssd1306_hal/io.h"
 
+/** Flag means that more chars are required to decode utf-8 */
+#define SSD1306_MORE_CHARS_REQUIRED  0xffff
+
 #ifndef min
 /** Macros returning minimum of 2 numbers */
 #define min(a,b) ((a)<(b)?(a):(b))
@@ -162,8 +165,6 @@ typedef struct SPRITE
     uint8_t ly;
     /// Pointer to PROGMEM data, representing sprite image
     const uint8_t * data;
-    /// Pointer to PROGMEM data, representing sprite transparencyMask (can be nullptr)
-    const uint8_t * transparentMask;
 
 #ifdef __cplusplus
     /**
