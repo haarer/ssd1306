@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -75,8 +75,9 @@ Inheritance diagram for ArduinoI2c:</div>
  <div class="center">
   <img src="class_arduino_i2c.png" usemap="#ArduinoI2c_map" alt=""/>
   <map id="ArduinoI2c_map" name="ArduinoI2c_map">
-<area href="class_i_wire_interface.html" alt="IWireInterface" shape="rect" coords="0,0,91,24"/>
-<area href="class_platform_i2c.html" alt="PlatformI2c" shape="rect" coords="0,112,91,136"/>
+<area href="class_platform_i2c.html" alt="PlatformI2c" shape="rect" coords="106,56,308,80"/>
+<area href="class_interface_s_h1106.html" alt="InterfaceSH1106&lt; PlatformI2c &gt;" shape="rect" coords="0,112,202,136"/>
+<area href="class_interface_s_s_d1306.html" alt="InterfaceSSD1306&lt; PlatformI2c &gt;" shape="rect" coords="212,112,414,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -84,19 +85,21 @@ Inheritance diagram for ArduinoI2c:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a231ada629e5bd1bb9d1db0c91f41ef00"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#a231ada629e5bd1bb9d1db0c91f41ef00">ArduinoI2c</a> (int8_t scl=-1, int8_t sda=-1, uint8_t sa=0x00)</td></tr>
 <tr class="separator:a231ada629e5bd1bb9d1db0c91f41ef00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef4c243d5aa13a21da996f69a9a1637a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#aef4c243d5aa13a21da996f69a9a1637a">begin</a> () override</td></tr>
-<tr class="separator:aef4c243d5aa13a21da996f69a9a1637a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0f508b273cea8624069ed911cd2db55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#ae0f508b273cea8624069ed911cd2db55">end</a> () override</td></tr>
-<tr class="separator:ae0f508b273cea8624069ed911cd2db55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65f520bdb1f13da2e1e94b9f4bf00913"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#a65f520bdb1f13da2e1e94b9f4bf00913">start</a> () override</td></tr>
-<tr class="separator:a65f520bdb1f13da2e1e94b9f4bf00913"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2d3310b13b35404e82912b820710feb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#ad2d3310b13b35404e82912b820710feb">stop</a> () override</td></tr>
-<tr class="separator:ad2d3310b13b35404e82912b820710feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40c946a1871e6a563bff2e9c9838d7d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#a40c946a1871e6a563bff2e9c9838d7d0">send</a> (uint8_t data) override</td></tr>
-<tr class="separator:a40c946a1871e6a563bff2e9c9838d7d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f342893a8ef7eb2ee255f18c75d12fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#a8f342893a8ef7eb2ee255f18c75d12fb">sendBuffer</a> (const uint8_t *buffer, uint16_t size) override</td></tr>
-<tr class="memdesc:a8f342893a8ef7eb2ee255f18c75d12fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends bytes to SSD1306 device.  <a href="#a8f342893a8ef7eb2ee255f18c75d12fb">More...</a><br /></td></tr>
-<tr class="separator:a8f342893a8ef7eb2ee255f18c75d12fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a414e55c2d12806e5bb8de28ebdf12946"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#a414e55c2d12806e5bb8de28ebdf12946">begin</a> ()</td></tr>
+<tr class="separator:a414e55c2d12806e5bb8de28ebdf12946"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2faa137e7b818cdfe403f9402e9ec801"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#a2faa137e7b818cdfe403f9402e9ec801">end</a> ()</td></tr>
+<tr class="separator:a2faa137e7b818cdfe403f9402e9ec801"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b64a9af8a6f15628c8d0aca88d36db7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#a6b64a9af8a6f15628c8d0aca88d36db7">start</a> ()</td></tr>
+<tr class="separator:a6b64a9af8a6f15628c8d0aca88d36db7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a067b13413316205aca92c1eecc7c1cb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#a067b13413316205aca92c1eecc7c1cb3">stop</a> ()</td></tr>
+<tr class="separator:a067b13413316205aca92c1eecc7c1cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1d79e62d47981f81990f1573f62ee8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#ae1d79e62d47981f81990f1573f62ee8d">send</a> (uint8_t data)</td></tr>
+<tr class="separator:ae1d79e62d47981f81990f1573f62ee8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8627a076dab24e5d29ba869ee582e81f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#a8627a076dab24e5d29ba869ee582e81f">sendBuffer</a> (const uint8_t *buffer, uint16_t size)</td></tr>
+<tr class="memdesc:a8627a076dab24e5d29ba869ee582e81f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends bytes to SSD1306 device.  <a href="#a8627a076dab24e5d29ba869ee582e81f">More...</a><br /></td></tr>
+<tr class="separator:a8627a076dab24e5d29ba869ee582e81f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ae4a9df2df4456ae2c3de5a87fd0b63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_i2c.html#a5ae4a9df2df4456ae2c3de5a87fd0b63">setAddr</a> (uint8_t addr)</td></tr>
+<tr class="separator:a5ae4a9df2df4456ae2c3de5a87fd0b63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class implements i2c support via Wire library for Arduino platforms </p>
@@ -146,14 +149,11 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aef4c243d5aa13a21da996f69a9a1637a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef4c243d5aa13a21da996f69a9a1637a">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="a414e55c2d12806e5bb8de28ebdf12946"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a414e55c2d12806e5bb8de28ebdf12946">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ArduinoI2c::begin </td>
@@ -162,26 +162,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Initializes interface </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#a4e161e59bd27e21202559febb6088bcd">IWireInterface</a>.</p>
+<p>Initializes i2c interface </p>
 
 </div>
 </div>
-<a id="ae0f508b273cea8624069ed911cd2db55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0f508b273cea8624069ed911cd2db55">&#9670;&nbsp;</a></span>end()</h2>
+<a id="a2faa137e7b818cdfe403f9402e9ec801"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2faa137e7b818cdfe403f9402e9ec801">&#9670;&nbsp;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ArduinoI2c::end </td>
@@ -190,26 +180,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Deinitializes interface </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#aa36c3640097e1ffa9a47bc25fa36f0eb">IWireInterface</a>.</p>
+<p>Closes i2c interface </p>
 
 </div>
 </div>
-<a id="a40c946a1871e6a563bff2e9c9838d7d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40c946a1871e6a563bff2e9c9838d7d0">&#9670;&nbsp;</a></span>send()</h2>
+<a id="ae1d79e62d47981f81990f1573f62ee8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1d79e62d47981f81990f1573f62ee8d">&#9670;&nbsp;</a></span>send()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ArduinoI2c::send </td>
@@ -219,11 +199,6 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Sends byte to SSD1306 device </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -232,18 +207,13 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a9d5573dee232e187fcefed0001adfec0">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="a8f342893a8ef7eb2ee255f18c75d12fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f342893a8ef7eb2ee255f18c75d12fb">&#9670;&nbsp;</a></span>sendBuffer()</h2>
+<a id="a8627a076dab24e5d29ba869ee582e81f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8627a076dab24e5d29ba869ee582e81f">&#9670;&nbsp;</a></span>sendBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ArduinoI2c::sendBuffer </td>
@@ -263,11 +233,6 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Sends bytes to SSD1306 device. </p>
@@ -280,18 +245,48 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a101c2dc04c567366ce84fd5fd22969e7">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="a65f520bdb1f13da2e1e94b9f4bf00913"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65f520bdb1f13da2e1e94b9f4bf00913">&#9670;&nbsp;</a></span>start()</h2>
+<a id="a5ae4a9df2df4456ae2c3de5a87fd0b63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ae4a9df2df4456ae2c3de5a87fd0b63">&#9670;&nbsp;</a></span>setAddr()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ArduinoI2c::setAddr </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets i2c address for communication This API is required for some led displays having multiple i2c addresses for different types of data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>i2c address to set (7 bits) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="arduino__wire_8h_source.html#l00092">92</a> of file <a class="el" href="arduino__wire_8h_source.html">arduino_wire.h</a>.</p>
+
+</div>
+</div>
+<a id="a6b64a9af8a6f15628c8d0aca88d36db7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b64a9af8a6f15628c8d0aca88d36db7">&#9670;&nbsp;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void ArduinoI2c::start </td>
@@ -300,26 +295,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Starts communication with SSD1306 display. </p>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a9d19cf03b2f861b3e8ee513ac3573549">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="ad2d3310b13b35404e82912b820710feb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2d3310b13b35404e82912b820710feb">&#9670;&nbsp;</a></span>stop()</h2>
+<a id="a067b13413316205aca92c1eecc7c1cb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a067b13413316205aca92c1eecc7c1cb3">&#9670;&nbsp;</a></span>stop()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ArduinoI2c::stop </td>
@@ -328,15 +313,8 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Ends communication with SSD1306 display. </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#a14f671fcec23533cc592b8fd3d82289b">IWireInterface</a>.</p>
 
 </div>
 </div>

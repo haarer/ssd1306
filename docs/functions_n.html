@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -66,20 +66,23 @@ $(function() {
 <li>NanoCanvasOps()
 : <a class="el" href="class_nano_canvas_ops.html#aad8023365b19eeb58fc3e8b488a8c49a">NanoCanvasOps&lt; BPP &gt;</a>
 </li>
-<li>NanoDisplayOps()
-: <a class="el" href="class_nano_display_ops.html#a406d05c345488b0ca550d06b87f25519">NanoDisplayOps&lt; BPP &gt;</a>
+<li>NanoDisplayBase()
+: <a class="el" href="class_nano_display_base.html#aad76783b5e2ca5f41c4bdb008e96a6a2">NanoDisplayBase&lt; I &gt;</a>
 </li>
 <li>NanoEngine()
-: <a class="el" href="class_nano_engine.html#a51afe7d7f0f68ee068a105317f7d28af">NanoEngine&lt; C, B &gt;</a>
+: <a class="el" href="class_nano_engine.html#af3cd2d2e72c11e0907a9a4529000cc93">NanoEngine&lt; C, D &gt;</a>
 </li>
 <li>NanoEngineInputs()
 : <a class="el" href="class_nano_engine_inputs.html#a0235b5b7094b0ca2e75214e0d808e3ba">NanoEngineInputs</a>
 </li>
 <li>NanoEngineTiler()
-: <a class="el" href="class_nano_engine_tiler.html#aa1c621d4f6843b3f043a16a03f1f9f9f">NanoEngineTiler&lt; C, B &gt;</a>
+: <a class="el" href="class_nano_engine_tiler.html#a957ecf4bdb3a257133cbd3a2300beb70">NanoEngineTiler&lt; C, D &gt;</a>
 </li>
 <li>NanoFixedWidthMenu()
 : <a class="el" href="class_nano_fixed_width_menu.html#a41bc3d1aef7c1e07fbdcd04a54177e3c">NanoFixedWidthMenu&lt; T &gt;</a>
+</li>
+<li>NanoFont()
+: <a class="el" href="class_nano_font.html#a7e96fe14324acf7d2cf9c82eb3fe7f70">NanoFont</a>
 </li>
 <li>NanoMenu()
 : <a class="el" href="class_nano_menu.html#acd7f024af3f712528e25521cfe8300fc">NanoMenu&lt; T &gt;</a>
@@ -94,25 +97,29 @@ $(function() {
 : <a class="el" href="class_nano_text_menu_item.html#a6090a2618c59881a22765c0d706895d7">NanoTextMenuItem&lt; T &gt;</a>
 </li>
 <li>negativeMode()
-: <a class="el" href="class_nano_display_ops.html#a1c7add0ca5b3e4bb27dfec8d16b9e375">NanoDisplayOps&lt; BPP &gt;</a>
+: <a class="el" href="class_nano_display_base.html#a8f4ff62537037b2cf904da30275ccc32">NanoDisplayBase&lt; I &gt;</a>
 </li>
 <li>next_page
 : <a class="el" href="structssd1306__lcd__t.html#ae7513c1cb9a358f0d333b5ca73c3b7a7">ssd1306_lcd_t</a>
 </li>
-<li>nextFrame()
-: <a class="el" href="class_nano_engine_core.html#ae5143d19cd03914f667f625735c63ec0">NanoEngineCore</a>
+<li>nextBlock()
+: <a class="el" href="class_interface_i_l9163.html#aeef1dbb185aefa908fa94b03fef15260">InterfaceIL9163&lt; I &gt;</a>
+, <a class="el" href="class_interface_p_c_d8544.html#af316c02b2e204e7e0a7e6397f6437f4b">InterfacePCD8544&lt; I &gt;</a>
+, <a class="el" href="class_interface_s_h1106.html#a8f9241722631b8032ec866725da2c8e4">InterfaceSH1106&lt; I &gt;</a>
+, <a class="el" href="class_interface_s_s_d1306.html#a5fcf9b526ef9303e7dbd8a935edd94f2">InterfaceSSD1306&lt; I &gt;</a>
+, <a class="el" href="class_interface_s_s_d1331.html#a89053ddb8a6adb2699c456c427f73e78">InterfaceSSD1331&lt; I &gt;</a>
+, <a class="el" href="class_interface_s_s_d1351.html#af8c2360c8645ff8b77a67ece30549933">InterfaceSSD1351&lt; I &gt;</a>
+, <a class="el" href="class_interface_s_t7735.html#a1109f485e29f801719dd3e66d4aba542">InterfaceST7735&lt; I &gt;</a>
 </li>
-<li>nextPage()
-: <a class="el" href="class_display_s_s_d1306.html#a6a7375409857bb58a9f3818cabfe6a40">DisplaySSD1306</a>
-, <a class="el" href="class_display_s_s_d1331.html#a5459730f1b25e7ded96a7156d1606a26">DisplaySSD1331</a>
-, <a class="el" href="class_display_s_s_d1331x16.html#a245bf449e9e38c25133cc0f931bd8d19">DisplaySSD1331x16</a>
-, <a class="el" href="class_nano_display_ops.html#a714f8a49a2d6b81712239ce732d09565">NanoDisplayOps&lt; BPP &gt;</a>
+<li>nextFrame()
+: <a class="el" href="class_nano_engine_core.html#aaa77980b870fb444ad1bdadd3b16803b">NanoEngineCore</a>
 </li>
 <li>normalMode()
-: <a class="el" href="class_display_s_s_d1306.html#a1dfb4ddfd5b778dcd187b1409eb39865">DisplaySSD1306</a>
+: <a class="el" href="class_interface_s_h1106.html#a589173b0c70d363a05635c4d80363ce1">InterfaceSH1106&lt; I &gt;</a>
+, <a class="el" href="class_interface_s_s_d1306.html#a7384a1f93a872fd1ad52b4d30cd47b3a">InterfaceSSD1306&lt; I &gt;</a>
 </li>
 <li>notify()
-: <a class="el" href="class_nano_engine.html#adba369ab63e91154cf288cd93ff4f0fb">NanoEngine&lt; C, B &gt;</a>
+: <a class="el" href="class_nano_engine.html#abeceac62e5f0701c3cf50d8b24867a7a">NanoEngine&lt; C, D &gt;</a>
 </li>
 <li>notPressed()
 : <a class="el" href="class_nano_engine_inputs.html#aeaf2995c49b0256b18412ef38dd0891e">NanoEngineInputs</a>

@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['lcd_5fcommon_2eh',['lcd_common.h',['../lcd__common_8h.html',1,'']]],
+  ['lcd_5fcommon_2eh',['lcd_common.h',['../v1_2lcd_2lcd__common_8h.html',1,'(Global Namespace)'],['../v2_2lcd_2lcd__common_8h.html',1,'(Global Namespace)']]],
   ['lcd_5fil9163_2eh',['lcd_il9163.h',['../lcd__il9163_8h.html',1,'']]],
   ['lcd_5fili9341_2eh',['lcd_ili9341.h',['../lcd__ili9341_8h.html',1,'']]],
   ['lcd_5fpcd8544_2eh',['lcd_pcd8544.h',['../lcd__pcd8544_8h.html',1,'']]],
+  ['lcd_5fst7735_2eh',['lcd_st7735.h',['../lcd__st7735_8h.html',1,'']]],
   ['lcd_5ftype_5fcustom',['LCD_TYPE_CUSTOM',['../group___l_c_d___i_n_t_e_r_f_a_c_e___a_p_i.html#ggaf4b71961185e1fa00ee5962123a349aea7f073223bcb6fab923d8da961abc1a7d',1,'lcd_common.h']]],
   ['lcd_5ftype_5fpcd8544',['LCD_TYPE_PCD8544',['../group___l_c_d___i_n_t_e_r_f_a_c_e___a_p_i.html#ggaf4b71961185e1fa00ee5962123a349aea846490e1ce898baebea443873c666786',1,'lcd_common.h']]],
   ['lcd_5ftype_5fsh1106',['LCD_TYPE_SH1106',['../group___l_c_d___i_n_t_e_r_f_a_c_e___a_p_i.html#ggaf4b71961185e1fa00ee5962123a349aeaecd840f4bc28d78905c61044b139e73c',1,'lcd_common.h']]],
@@ -18,8 +19,11 @@ var searchData=
   ['left',['left',['../struct_s_s_d1306___r_e_c_t.html#a596b6b6cce11df484877b63db7d0a5b5',1,'SSD1306_RECT::left()'],['../class_nano_object.html#ae4a4019fa9b7c87f292edb48092580ee',1,'NanoObject::left()']]],
   ['linuxi2c',['LinuxI2c',['../class_linux_i2c.html',1,'LinuxI2c'],['../class_linux_i2c.html#a6eb86d8e0b11df79979b00e7bd0e2ce7',1,'LinuxI2c::LinuxI2c()']]],
   ['linuxspi',['LinuxSpi',['../class_linux_spi.html',1,'LinuxSpi'],['../class_linux_spi.html#af3e8c2402d5f7ef7d1b63e0c7d7db097',1,'LinuxSpi::LinuxSpi()']]],
-  ['localcoordinates',['localCoordinates',['../class_nano_engine_tiler.html#a07b0650f62948cf42468154188e698bc',1,'NanoEngineTiler']]],
-  ['loopcallback',['loopCallback',['../class_nano_engine_core.html#a0361b8a56589feb5bd2c4f6f1473a5fa',1,'NanoEngineCore']]],
+  ['loadfixedfont',['loadFixedFont',['../class_nano_font.html#ae97ddc20766f4cd78fddba8e834d9f04',1,'NanoFont']]],
+  ['loadfreefont',['loadFreeFont',['../class_nano_font.html#a2446da1b38259e51ad68f3651b03b2af',1,'NanoFont']]],
+  ['loadsecondaryfont',['loadSecondaryFont',['../class_nano_font.html#ae5a8f572d1a4269051676baaa5d2b601',1,'NanoFont']]],
+  ['localcoordinates',['localCoordinates',['../class_nano_engine_tiler.html#a9f897860d9b19729fb60df20788b0791',1,'NanoEngineTiler']]],
+  ['loopcallback',['loopCallback',['../class_nano_engine_core.html#a61c0097d516d330051fad7aa358deb76',1,'NanoEngineCore']]],
   ['lx',['lx',['../struct_s_p_r_i_t_e.html#afc5ed686d6064db045512fc72bc02dd3',1,'SPRITE']]],
   ['ly',['ly',['../struct_s_p_r_i_t_e.html#aab3453c2a4cf02976c6d53fa79e5e051',1,'SPRITE']]]
 ];

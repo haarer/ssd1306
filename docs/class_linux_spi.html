@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -69,33 +69,24 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="linux__spi_8h_source.html">linux_spi.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for LinuxSpi:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_linux_spi.png" usemap="#LinuxSpi_map" alt=""/>
-  <map id="LinuxSpi_map" name="LinuxSpi_map">
-<area href="class_i_wire_interface.html" alt="IWireInterface" shape="rect" coords="0,0,91,24"/>
-</map>
- </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af3e8c2402d5f7ef7d1b63e0c7d7db097"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#af3e8c2402d5f7ef7d1b63e0c7d7db097">LinuxSpi</a> (int busId, int8_t devId, int8_t dcPin, uint32_t frequency)</td></tr>
 <tr class="separator:af3e8c2402d5f7ef7d1b63e0c7d7db097"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5652e9364adaed59fb6f5c16a1bb7aad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#a5652e9364adaed59fb6f5c16a1bb7aad">begin</a> () override</td></tr>
-<tr class="separator:a5652e9364adaed59fb6f5c16a1bb7aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57c97e0412a51272629c1ab720d26aab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#a57c97e0412a51272629c1ab720d26aab">end</a> () override</td></tr>
-<tr class="separator:a57c97e0412a51272629c1ab720d26aab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b327dcd4d492811de42347e68a9be57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#a2b327dcd4d492811de42347e68a9be57">start</a> () override</td></tr>
-<tr class="separator:a2b327dcd4d492811de42347e68a9be57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cf7a8ac8608d0e53ecde59ddf1e9256"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#a5cf7a8ac8608d0e53ecde59ddf1e9256">stop</a> () override</td></tr>
-<tr class="separator:a5cf7a8ac8608d0e53ecde59ddf1e9256"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0680ffa7c5b711a40335b1099c03d2a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#a0680ffa7c5b711a40335b1099c03d2a5">send</a> (uint8_t data) override</td></tr>
-<tr class="separator:a0680ffa7c5b711a40335b1099c03d2a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41d54a78a30ac837d173691f45da1b24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#a41d54a78a30ac837d173691f45da1b24">sendBuffer</a> (const uint8_t *buffer, uint16_t size) override</td></tr>
-<tr class="memdesc:a41d54a78a30ac837d173691f45da1b24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends bytes to SSD1306 device.  <a href="#a41d54a78a30ac837d173691f45da1b24">More...</a><br /></td></tr>
-<tr class="separator:a41d54a78a30ac837d173691f45da1b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad291b6a9d8d785eae653a7fdfbeeebb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#ad291b6a9d8d785eae653a7fdfbeeebb3">begin</a> ()</td></tr>
+<tr class="separator:ad291b6a9d8d785eae653a7fdfbeeebb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dfb4145ac61171846a0db94c4dbb188"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#a8dfb4145ac61171846a0db94c4dbb188">end</a> ()</td></tr>
+<tr class="separator:a8dfb4145ac61171846a0db94c4dbb188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2a10a3ccd2e991d79b195785aa67953"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#ab2a10a3ccd2e991d79b195785aa67953">start</a> ()</td></tr>
+<tr class="separator:ab2a10a3ccd2e991d79b195785aa67953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bf20403f7aea176b0068fc8917c2756"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#a2bf20403f7aea176b0068fc8917c2756">stop</a> ()</td></tr>
+<tr class="separator:a2bf20403f7aea176b0068fc8917c2756"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acede633c0db58c0572e26141688d5a1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#acede633c0db58c0572e26141688d5a1a">send</a> (uint8_t data)</td></tr>
+<tr class="separator:acede633c0db58c0572e26141688d5a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcf0d249be603fea6184a42f824d30b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_spi.html#adcf0d249be603fea6184a42f824d30b4">sendBuffer</a> (const uint8_t *buffer, uint16_t size)</td></tr>
+<tr class="memdesc:adcf0d249be603fea6184a42f824d30b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends bytes to SSD1306 device.  <a href="#adcf0d249be603fea6184a42f824d30b4">More...</a><br /></td></tr>
+<tr class="separator:adcf0d249be603fea6184a42f824d30b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class implements spi bus for linux via spidev interface </p>
@@ -153,14 +144,11 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5652e9364adaed59fb6f5c16a1bb7aad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5652e9364adaed59fb6f5c16a1bb7aad">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="ad291b6a9d8d785eae653a7fdfbeeebb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad291b6a9d8d785eae653a7fdfbeeebb3">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LinuxSpi::begin </td>
@@ -169,26 +157,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Initializes interface </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#a4e161e59bd27e21202559febb6088bcd">IWireInterface</a>.</p>
+<p>Initializes spi interface </p>
 
 </div>
 </div>
-<a id="a57c97e0412a51272629c1ab720d26aab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57c97e0412a51272629c1ab720d26aab">&#9670;&nbsp;</a></span>end()</h2>
+<a id="a8dfb4145ac61171846a0db94c4dbb188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dfb4145ac61171846a0db94c4dbb188">&#9670;&nbsp;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LinuxSpi::end </td>
@@ -197,26 +175,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Deinitializes interface </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#aa36c3640097e1ffa9a47bc25fa36f0eb">IWireInterface</a>.</p>
+<p>Closes spi interface </p>
 
 </div>
 </div>
-<a id="a0680ffa7c5b711a40335b1099c03d2a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0680ffa7c5b711a40335b1099c03d2a5">&#9670;&nbsp;</a></span>send()</h2>
+<a id="acede633c0db58c0572e26141688d5a1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acede633c0db58c0572e26141688d5a1a">&#9670;&nbsp;</a></span>send()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LinuxSpi::send </td>
@@ -226,11 +194,6 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Sends byte to SSD1306 device </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -239,18 +202,13 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a9d5573dee232e187fcefed0001adfec0">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="a41d54a78a30ac837d173691f45da1b24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41d54a78a30ac837d173691f45da1b24">&#9670;&nbsp;</a></span>sendBuffer()</h2>
+<a id="adcf0d249be603fea6184a42f824d30b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcf0d249be603fea6184a42f824d30b4">&#9670;&nbsp;</a></span>sendBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LinuxSpi::sendBuffer </td>
@@ -270,11 +228,6 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Sends bytes to SSD1306 device. </p>
@@ -287,18 +240,13 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a101c2dc04c567366ce84fd5fd22969e7">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="a2b327dcd4d492811de42347e68a9be57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b327dcd4d492811de42347e68a9be57">&#9670;&nbsp;</a></span>start()</h2>
+<a id="ab2a10a3ccd2e991d79b195785aa67953"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2a10a3ccd2e991d79b195785aa67953">&#9670;&nbsp;</a></span>start()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LinuxSpi::start </td>
@@ -307,26 +255,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Starts communication with SSD1306 display. </p>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a9d19cf03b2f861b3e8ee513ac3573549">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="a5cf7a8ac8608d0e53ecde59ddf1e9256"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5cf7a8ac8608d0e53ecde59ddf1e9256">&#9670;&nbsp;</a></span>stop()</h2>
+<a id="a2bf20403f7aea176b0068fc8917c2756"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bf20403f7aea176b0068fc8917c2756">&#9670;&nbsp;</a></span>stop()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LinuxSpi::stop </td>
@@ -335,15 +273,8 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Ends communication with SSD1306 display. </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#a14f671fcec23533cc592b8fd3d82289b">IWireInterface</a>.</p>
 
 </div>
 </div>

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -111,15 +111,15 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ab4cdd5d7a37746ecfa50844f4780547e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_object.html#ab4cdd5d7a37746ecfa50844f4780547e">setTiler</a> (void *tiler)</td></tr>
-<tr class="separator:ab4cdd5d7a37746ecfa50844f4780547e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bbbc30c00bd403facb9793f3ed14283"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_object.html#a3bbbc30c00bd403facb9793f3ed14283">setTiler</a> (T *tiler)</td></tr>
+<tr class="separator:a3bbbc30c00bd403facb9793f3ed14283"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a19398c34c50884f981973fb5fca3abb3"><td class="memItemLeft" align="right" valign="top"><a id="a19398c34c50884f981973fb5fca3abb3"></a>
-void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_object.html#a19398c34c50884f981973fb5fca3abb3">m_tiler</a> = nullptr</td></tr>
-<tr class="memdesc:a19398c34c50884f981973fb5fca3abb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Active tiler, assigned to the <a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>. <br /></td></tr>
-<tr class="separator:a19398c34c50884f981973fb5fca3abb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a222c78af0f91e3b65d1a2da083f12529"><td class="memItemLeft" align="right" valign="top"><a id="a222c78af0f91e3b65d1a2da083f12529"></a>
+T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_object.html#a222c78af0f91e3b65d1a2da083f12529">m_tiler</a> = nullptr</td></tr>
+<tr class="memdesc:a222c78af0f91e3b65d1a2da083f12529"><td class="mdescLeft">&#160;</td><td class="mdescRight">Active tiler, assigned to the <a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>. <br /></td></tr>
+<tr class="separator:a222c78af0f91e3b65d1a2da083f12529"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a054e0329e752bad931d107493481ee6b"><td class="memItemLeft" align="right" valign="top"><a id="a054e0329e752bad931d107493481ee6b"></a>
 <a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>&lt; T &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_object.html#a054e0329e752bad931d107493481ee6b">m_next</a> = nullptr</td></tr>
 <tr class="memdesc:a054e0329e752bad931d107493481ee6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Next <a class="el" href="class_nano_engine_object.html">NanoEngineObject</a> in the list. <br /></td></tr>
@@ -128,7 +128,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:a0e46520b82ee2a7651728d41fd98e94d"><td class="memTemplParams" colspan="2"><a id="a0e46520b82ee2a7651728d41fd98e94d"></a>
-template&lt;class C , uint8_t B&gt; </td></tr>
+template&lt;class C , class D &gt; </td></tr>
 <tr class="memitem:a0e46520b82ee2a7651728d41fd98e94d"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><b>NanoEngineTiler</b></td></tr>
 <tr class="separator:a0e46520b82ee2a7651728d41fd98e94d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -138,7 +138,7 @@ class NanoEngineObject&lt; T &gt;</h3>
 
 <p>Template class for all <a class="el" href="class_nano_engine.html">NanoEngine</a> objects </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00085">85</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00082">82</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a189ba65c0accfb60d745792ce6c3351a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a189ba65c0accfb60d745792ce6c3351a">&#9670;&nbsp;</a></span>defocus()</h2>
@@ -166,7 +166,7 @@ template&lt;class T&gt; </div>
 </div><div class="memdoc">
 <p>Clears logic focus from <a class="el" href="class_nano_engine_object.html">NanoEngineObject</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00121">121</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00118">118</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -226,7 +226,7 @@ template&lt;class T&gt; </div>
 </div><div class="memdoc">
 <p>Sets logic focus on <a class="el" href="class_nano_engine_object.html">NanoEngineObject</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00112">112</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00109">109</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -256,7 +256,7 @@ template&lt;class T&gt; </div>
 </div><div class="memdoc">
 <p>Returns reference to <a class="el" href="class_nano_engine.html">NanoEngine</a>. Before call to this function, please check that <a class="el" href="class_nano_engine.html">NanoEngine</a> is valid via <a class="el" href="class_nano_engine_object.html#ab3241ba98792e5af469d21e48ef9d65b">hasTiler()</a> function. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00145">145</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00142">142</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -286,7 +286,7 @@ template&lt;class T&gt; </div>
 </div><div class="memdoc">
 <p>Returns true if <a class="el" href="class_nano_engine_object.html">NanoEngineObject</a> is bound to <a class="el" href="class_nano_engine.html">NanoEngine</a> instance </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00139">139</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00136">136</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -316,7 +316,7 @@ template&lt;class T&gt; </div>
 </div><div class="memdoc">
 <p>Returns true if logic focus points to the object. At present <a class="el" href="class_nano_engine.html">NanoEngine</a> allows many objects to be in focus at once </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00131">131</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00128">128</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -350,8 +350,8 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a id="ab4cdd5d7a37746ecfa50844f4780547e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4cdd5d7a37746ecfa50844f4780547e">&#9670;&nbsp;</a></span>setTiler()</h2>
+<a id="a3bbbc30c00bd403facb9793f3ed14283"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bbbc30c00bd403facb9793f3ed14283">&#9670;&nbsp;</a></span>setTiler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -364,7 +364,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>&lt; T &gt;::setTiler </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
+          <td class="paramtype">T *&#160;</td>
           <td class="paramname"><em>tiler</em></td><td>)</td>
           <td></td>
         </tr>
@@ -383,7 +383,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00156">156</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00153">153</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -418,7 +418,7 @@ template&lt;class T&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>nano_engine/<a class="el" href="tiler_8h_source.html">tiler.h</a></li>
+<li>v2/nano_engine/<a class="el" href="tiler_8h_source.html">tiler.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

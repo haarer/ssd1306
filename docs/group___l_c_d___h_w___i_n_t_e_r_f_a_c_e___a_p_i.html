@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -62,7 +62,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -75,33 +74,32 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_usi_spi.html">UsiSpi</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_platform_i2c_config.html">SPlatformI2cConfig</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_platform_spi_config.html">SPlatformSpiConfig</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_wire_interface.html">IWireInterface</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structssd1306__interface__t.html">ssd1306_interface_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga05d1c9f1ad427b445574bddab25583ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#ga05d1c9f1ad427b445574bddab25583ab">SSD1306_SA</a>&#160;&#160;&#160;0x3C</td></tr>
-<tr class="separator:ga05d1c9f1ad427b445574bddab25583ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaa20f0b4b8d87d4663fae2246b47ec699"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#gaa20f0b4b8d87d4663fae2246b47ec699">ssd1306_i2cInit_Embedded</a> (int8_t scl, int8_t sda, uint8_t sa)</td></tr>
-<tr class="separator:gaa20f0b4b8d87d4663fae2246b47ec699"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0e21371367897c0f86480cfccc100b5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#ga0e21371367897c0f86480cfccc100b5c">ssd1306_spiInit</a> (int8_t cesPin, int8_t dcPin)</td></tr>
-<tr class="separator:ga0e21371367897c0f86480cfccc100b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf63dd3db50389223a46d7c4eb716ef83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#gaf63dd3db50389223a46d7c4eb716ef83">ssd1306_sendCommand</a> (uint8_t command)</td></tr>
+<tr class="separator:gaf63dd3db50389223a46d7c4eb716ef83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6496dfa0de1c422f00889c1341c522a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#ga6496dfa0de1c422f00889c1341c522a6">ssd1306_commandStart</a> (void)</td></tr>
+<tr class="separator:ga6496dfa0de1c422f00889c1341c522a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3df07368356ac5f5af1acc77055a4aa2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#ga3df07368356ac5f5af1acc77055a4aa2">ssd1306_dataStart</a> (void)</td></tr>
+<tr class="separator:ga3df07368356ac5f5af1acc77055a4aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa6e3e3fd6e5bc89180176c40f9455ea2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#gaa6e3e3fd6e5bc89180176c40f9455ea2">ssd1306_spiDataMode</a> (uint8_t mode)</td></tr>
 <tr class="separator:gaa6e3e3fd6e5bc89180176c40f9455ea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafca371e5a797bd7a1639ed0b06846a8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#gafca371e5a797bd7a1639ed0b06846a8d">ssd1306_spiInit_Usi</a> (int8_t cesPin, int8_t dcPin)</td></tr>
-<tr class="separator:gafca371e5a797bd7a1639ed0b06846a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab8f6528f3aa977d02549bfd7c4009282"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#gab8f6528f3aa977d02549bfd7c4009282">ssd1306_uartInit_Builtin</a> (uint32_t baud)</td></tr>
 <tr class="separator:gab8f6528f3aa977d02549bfd7c4009282"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:ga15909bf29819391d35ecb7f4e37fbea3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structssd1306__interface__t.html">ssd1306_interface_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#ga15909bf29819391d35ecb7f4e37fbea3">ssd1306_intf</a></td></tr>
+<tr class="separator:ga15909bf29819391d35ecb7f4e37fbea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafc2040aa9a00f51d7a3302009c32be6a"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#gafc2040aa9a00f51d7a3302009c32be6a">s_ssd1306_cs</a></td></tr>
 <tr class="separator:gafc2040aa9a00f51d7a3302009c32be6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa6c559e035be91c9c57a53120c55e023"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#gaa6c559e035be91c9c57a53120c55e023">s_ssd1306_dc</a></td></tr>
@@ -112,66 +110,73 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>i2c/spi initialization functions for different platforms </p>
 <p>This group of API functions serves to prepare the library to work via specific hardware interface. There are a bunch of functions for different platforms. In general display initialization goes in two steps: hardware interface initialization, and then display driver initialization. But there are functions, which combine 2 steps in single call: ssd1306_128x64_i2c_initEx(), ssd1351_128x128_spi_init(), etc. </p>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ga05d1c9f1ad427b445574bddab25583ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga05d1c9f1ad427b445574bddab25583ab">&#9670;&nbsp;</a></span>SSD1306_SA</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SSD1306_SA&#160;&#160;&#160;0x3C</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>SSD1306_SA defines default i2c address of LCD display. Please, check your device. If you LCD device has different address, you can set different one via ssd1306_i2cInit_Wire() or <a class="el" href="group___l_c_d___h_w___i_n_t_e_r_f_a_c_e___a_p_i.html#gaa20f0b4b8d87d4663fae2246b47ec699">ssd1306_i2cInit_Embedded()</a> functions. Write command will be SSD1306_SA&lt;&lt;1 and read will be SSD1306_SA&lt;&lt;1 | 1 </p>
-
-<p class="definition">Definition at line <a class="el" href="ssd1306__i2c__conf_8h_source.html#l00047">47</a> of file <a class="el" href="ssd1306__i2c__conf_8h_source.html">ssd1306_i2c_conf.h</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gaa20f0b4b8d87d4663fae2246b47ec699"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa20f0b4b8d87d4663fae2246b47ec699">&#9670;&nbsp;</a></span>ssd1306_i2cInit_Embedded()</h2>
+<a id="ga6496dfa0de1c422f00889c1341c522a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6496dfa0de1c422f00889c1341c522a6">&#9670;&nbsp;</a></span>ssd1306_commandStart()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ssd1306_i2cInit_Embedded </td>
+          <td class="memname">void ssd1306_commandStart </td>
           <td>(</td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>scl</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>sda</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>sa</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes software implementation of i2c. If you do not know i2c parameters, try ssd1306_i2cInit_Embedded(0,0,0). </p><dl class="section warning"><dt>Warning</dt><dd>the function disables interrupts. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Starts transaction for sending commands. </p><dl class="section warning"><dt>Warning</dt><dd>C-style API only </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8c_source.html#l00047">47</a> of file <a class="el" href="ssd1306__interface_8c_source.html">ssd1306_interface.c</a>.</p>
+
+</div>
+</div>
+<a id="ga3df07368356ac5f5af1acc77055a4aa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3df07368356ac5f5af1acc77055a4aa2">&#9670;&nbsp;</a></span>ssd1306_dataStart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ssd1306_dataStart </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Starts transaction for sending bitmap data. </p><dl class="section warning"><dt>Warning</dt><dd>C-style API only </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8c_source.html#l00056">56</a> of file <a class="el" href="ssd1306__interface_8c_source.html">ssd1306_interface.c</a>.</p>
+
+</div>
+</div>
+<a id="gaf63dd3db50389223a46d7c4eb716ef83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf63dd3db50389223a46d7c4eb716ef83">&#9670;&nbsp;</a></span>ssd1306_sendCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ssd1306_sendCommand </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>command</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sends command to SSD1306 device: includes initiating of transaction, sending data and completing transaction. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">scl</td><td>- i2c clock pin. Use -1 if you don't need to change default pin number </td></tr>
-    <tr><td class="paramname">sda</td><td>- i2c data pin. Use -1 if you don't need to change default pin number </td></tr>
-    <tr><td class="paramname">sa</td><td>- i2c address of lcd display. Use 0 to leave default</td></tr>
+    <tr><td class="paramname">command</td><td>- command to send </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>: after call to this function you need to initialize lcd display. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>C-style API only </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8c_source.html#l00065">65</a> of file <a class="el" href="ssd1306__interface_8c_source.html">ssd1306_interface.c</a>.</p>
 
 </div>
 </div>
@@ -196,81 +201,9 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>C-style API only </dd></dl>
 
-</div>
-</div>
-<a id="ga0e21371367897c0f86480cfccc100b5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0e21371367897c0f86480cfccc100b5c">&#9670;&nbsp;</a></span>ssd1306_spiInit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ssd1306_spiInit </td>
-          <td>(</td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>cesPin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>dcPin</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Inits lcd interface to use hardware spi for communication. The function automatically selects available type of spi implementation</p><ol type="1">
-<li>SPI library (ssd1306_spiInit_hw()) <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cesPin</td><td>- pin, controlling chip enable of LCD </td></tr>
-    <tr><td class="paramname">dcPin</td><td>- pin, controlling data/command mode of LCD</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>: after call to this function you need to initialize lcd display. </dd></dl>
-</li>
-</ol>
-
-</div>
-</div>
-<a id="gafca371e5a797bd7a1639ed0b06846a8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gafca371e5a797bd7a1639ed0b06846a8d">&#9670;&nbsp;</a></span>ssd1306_spiInit_Usi()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ssd1306_spiInit_Usi </td>
-          <td>(</td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>cesPin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>dcPin</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Inits lcd interface to use USI for SPI communication. It uses standard USI CLK, USI DO, USI DI pins to send data to LCD. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cesPin</td><td>- pin, controlling chip enable of LCD </td></tr>
-    <tr><td class="paramname">dcPin</td><td>- pin, controlling data/command mode of LCD</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>: after call to this function you need to initialize lcd display. </dd></dl>
+<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8c_source.html#l00039">39</a> of file <a class="el" href="ssd1306__interface_8c_source.html">ssd1306_interface.c</a>.</p>
 
 </div>
 </div>
@@ -311,7 +244,9 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>chip enable pin to controll lcd display over spi </p>
+<p>chip enable pin to controll lcd display over spi </p><dl class="section warning"><dt>Warning</dt><dd>C-style API only </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8c_source.html#l00028">28</a> of file <a class="el" href="ssd1306__interface_8c_source.html">ssd1306_interface.c</a>.</p>
 
 </div>
 </div>
@@ -326,7 +261,9 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>data/command control pin for spi interface of lcd display </p>
+<p>data/command control pin for spi interface of lcd display </p><dl class="section warning"><dt>Warning</dt><dd>C-style API only </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8c_source.html#l00029">29</a> of file <a class="el" href="ssd1306__interface_8c_source.html">ssd1306_interface.c</a>.</p>
 
 </div>
 </div>
@@ -341,7 +278,26 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>maximum SPI clock, supported by OLED display </p>
+<p>maximum SPI clock, supported by OLED display </p><dl class="section warning"><dt>Warning</dt><dd>C-style API only </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8c_source.html#l00030">30</a> of file <a class="el" href="ssd1306__interface_8c_source.html">ssd1306_interface.c</a>.</p>
+
+</div>
+</div>
+<a id="ga15909bf29819391d35ecb7f4e37fbea3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga15909bf29819391d35ecb7f4e37fbea3">&#9670;&nbsp;</a></span>ssd1306_intf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structssd1306__interface__t.html">ssd1306_interface_t</a> ssd1306_intf</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Holds pointers to functions of currently initialized interface. </p>
+
+<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8c_source.html#l00034">34</a> of file <a class="el" href="ssd1306__interface_8c_source.html">ssd1306_interface.c</a>.</p>
 
 </div>
 </div>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SSD1306 OLED display driver: lcd/pcd8544_commands.h File Reference</title>
+<title>SSD1306 OLED display driver: v2/lcd/pcd8544/pcd8544_commands.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -60,7 +60,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_7539740a674fe554df3e16c8629ce56f.html">lcd</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_f3be2d6567fbd32180d9d7d49d8e608d.html">v2</a></li><li class="navelem"><a class="el" href="dir_4180a5e994dc267f07adc1dbdccf5e1b.html">lcd</a></li><li class="navelem"><a class="el" href="dir_89a49b2b9810d04f21b20cf3236d05ea.html">pcd8544</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -75,7 +75,7 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a17072415863307f9ad2ccfc1970dcde9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pcd8544__commands_8h.html#a17072415863307f9ad2ccfc1970dcde9">ESsd1306Commands</a> { <br />
+<tr class="memitem:a3891f52b3bba9e07bbc31c3ba47149c1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pcd8544__commands_8h.html#a3891f52b3bba9e07bbc31c3ba47149c1">EPcd8544Commands</a> { <br />
 &#160;&#160;<b>PCD8544_NOP</b> = 0x00, 
 <b>PCD8544_FUNCTIONSET</b> = 0x20, 
 <b>PCD8544_DISPLAYCONTROL</b> = 0x08, 
@@ -84,44 +84,10 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>PCD8544_SETXADDR</b> = 0x80, 
 <b>PCD8544_SETTEMP</b> = 0x04, 
 <b>PCD8544_SETBIAS</b> = 0x10, 
-<b>PCD8544_SETVOP</b> = 0x80, 
-<br />
-&#160;&#160;<b>SSD1306_SETLOWCOLUMN</b> = 0x00, 
-<b>SSD1306_SETHIGHCOLUMN</b> = 0x10, 
-<b>SSD1306_MEMORYMODE</b> = 0x20, 
-<b>SSD1306_COLUMNADDR</b> = 0x21, 
-<br />
-&#160;&#160;<b>SSD1306_PAGEADDR</b> = 0x22, 
-<b>SSD1306_SETSTARTLINE</b> = 0x40, 
-<b>SSD1306_DEFAULT_ADDRESS</b> = 0x78, 
-<b>SSD1306_SETCONTRAST</b> = 0x81, 
-<br />
-&#160;&#160;<b>SSD1306_CHARGEPUMP</b> = 0x8D, 
-<b>SSD1306_SEGREMAP</b> = 0xA0, 
-<b>SSD1306_DISPLAYALLON_RESUME</b> = 0xA4, 
-<b>SSD1306_DISPLAYALLON</b> = 0xA5, 
-<br />
-&#160;&#160;<b>SSD1306_NORMALDISPLAY</b> = 0xA6, 
-<b>SSD1306_INVERTDISPLAY</b> = 0xA7, 
-<b>SSD1306_SETMULTIPLEX</b> = 0xA8, 
-<b>SSD1306_DISPLAYOFF</b> = 0xAE, 
-<br />
-&#160;&#160;<b>SSD1306_DISPLAYON</b> = 0xAF, 
-<b>SSD1306_SETPAGE</b> = 0xB0, 
-<b>SSD1306_COMSCANINC</b> = 0xC0, 
-<b>SSD1306_COMSCANDEC</b> = 0xC8, 
-<br />
-&#160;&#160;<b>SSD1306_SETDISPLAYOFFSET</b> = 0xD3, 
-<b>SSD1306_SETDISPLAYCLOCKDIV</b> = 0xD5, 
-<b>SSD1306_SETPRECHARGE</b> = 0xD9, 
-<b>SSD1306_SETCOMPINS</b> = 0xDA, 
-<br />
-&#160;&#160;<b>SSD1306_SETVCOMDETECT</b> = 0xDB, 
-<b>SSD1306_SWITCHCAPVCC</b> = 0x02, 
-<b>SSD1306_NOP</b> = 0xE3
+<b>PCD8544_SETVOP</b> = 0x80
 <br />
  }</td></tr>
-<tr class="separator:a17072415863307f9ad2ccfc1970dcde9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a3891f52b3bba9e07bbc31c3ba47149c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a690e6d030da4ba01db54d4a55c140337"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pcd8544__commands_8h.html#a690e6d030da4ba01db54d4a55c140337">EPcd8544FunctionMode</a> { <b>PCD8544_POWERDOWN</b> = 0x04, 
 <b>PCD8544_VERTICAL_ADDR_MODE</b> = 0x02, 
 <b>PCD8544_EXTENDEDINSTRUCTION</b> = 0x01
@@ -139,6 +105,23 @@ Enumerations</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="pcd8544__commands_8h_source.html">pcd8544_commands.h</a>.</p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a3891f52b3bba9e07bbc31c3ba47149c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3891f52b3bba9e07bbc31c3ba47149c1">&#9670;&nbsp;</a></span>EPcd8544Commands</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="pcd8544__commands_8h.html#a3891f52b3bba9e07bbc31c3ba47149c1">EPcd8544Commands</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>PCD8544 LCD driver commands </p>
+
+<p class="definition">Definition at line <a class="el" href="pcd8544__commands_8h_source.html#l00037">37</a> of file <a class="el" href="pcd8544__commands_8h_source.html">pcd8544_commands.h</a>.</p>
+
+</div>
+</div>
 <a id="aaf039e90032f99220d95ce92e204888d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaf039e90032f99220d95ce92e204888d">&#9670;&nbsp;</a></span>EPcd8544DisplayMode</h2>
 
@@ -170,23 +153,6 @@ Enumerations</h2></td></tr>
 <p>PCD8544 supported function modes. </p>
 
 <p class="definition">Definition at line <a class="el" href="pcd8544__commands_8h_source.html#l00055">55</a> of file <a class="el" href="pcd8544__commands_8h_source.html">pcd8544_commands.h</a>.</p>
-
-</div>
-</div>
-<a id="a17072415863307f9ad2ccfc1970dcde9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17072415863307f9ad2ccfc1970dcde9">&#9670;&nbsp;</a></span>ESsd1306Commands</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="pcd8544__commands_8h.html#a17072415863307f9ad2ccfc1970dcde9">ESsd1306Commands</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>PCD8544 LCD driver commands </p>
-
-<p class="definition">Definition at line <a class="el" href="pcd8544__commands_8h_source.html#l00037">37</a> of file <a class="el" href="pcd8544__commands_8h_source.html">pcd8544_commands.h</a>.</p>
 
 </div>
 </div>

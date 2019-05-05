@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -75,39 +75,45 @@ Inheritance diagram for PlatformSpi:</div>
  <div class="center">
   <img src="class_platform_spi.png" usemap="#PlatformSpi_map" alt=""/>
   <map id="PlatformSpi_map" name="PlatformSpi_map">
-<area href="class_avr_spi.html" alt="AvrSpi" shape="rect" coords="0,56,91,80"/>
-<area href="class_i_wire_interface.html" alt="IWireInterface" shape="rect" coords="0,0,91,24"/>
+<area href="class_avr_spi.html" alt="AvrSpi" shape="rect" coords="642,0,846,24"/>
+<area href="class_interface_i_l9163.html" alt="InterfaceIL9163&lt; PlatformSpi &gt;" shape="rect" coords="0,112,204,136"/>
+<area href="class_interface_p_c_d8544.html" alt="InterfacePCD8544&lt; PlatformSpi &gt;" shape="rect" coords="214,112,418,136"/>
+<area href="class_interface_s_h1106.html" alt="InterfaceSH1106&lt; PlatformSpi &gt;" shape="rect" coords="428,112,632,136"/>
+<area href="class_interface_s_s_d1306.html" alt="InterfaceSSD1306&lt; PlatformSpi &gt;" shape="rect" coords="642,112,846,136"/>
+<area href="class_interface_s_s_d1331.html" alt="InterfaceSSD1331&lt; PlatformSpi &gt;" shape="rect" coords="856,112,1060,136"/>
+<area href="class_interface_s_s_d1351.html" alt="InterfaceSSD1351&lt; PlatformSpi &gt;" shape="rect" coords="1070,112,1274,136"/>
+<area href="class_interface_s_t7735.html" alt="InterfaceST7735&lt; PlatformSpi &gt;" shape="rect" coords="1284,112,1488,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a26a7c802b47d7e4bcc87735ab0215dc5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_platform_spi.html#a26a7c802b47d7e4bcc87735ab0215dc5">PlatformSpi</a> (int8_t csPin=-1, int8_t dcPin=-1, uint32_t frequency=8000000)</td></tr>
-<tr class="separator:a26a7c802b47d7e4bcc87735ab0215dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb3f42b0f6c2f6028aa61e81fee89ef1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_platform_spi.html#acb3f42b0f6c2f6028aa61e81fee89ef1">PlatformSpi</a> (const <a class="el" href="struct_s_platform_spi_config.html">SPlatformSpiConfig</a> &amp;config)</td></tr>
+<tr class="separator:acb3f42b0f6c2f6028aa61e81fee89ef1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_avr_spi"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_avr_spi')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_avr_spi.html">AvrSpi</a></td></tr>
 <tr class="memitem:ad9c958a2b38d5e3a11b2984b6e94de4d inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#ad9c958a2b38d5e3a11b2984b6e94de4d">AvrSpi</a> (int8_t csPin, int8_t dcPin, uint32_t frequency)</td></tr>
 <tr class="separator:ad9c958a2b38d5e3a11b2984b6e94de4d inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae461fb42c06a2581f1663c721de9ab35 inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#ae461fb42c06a2581f1663c721de9ab35">begin</a> () override</td></tr>
-<tr class="separator:ae461fb42c06a2581f1663c721de9ab35 inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02b6e7d79c776787eb3fb78b4102543c inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#a02b6e7d79c776787eb3fb78b4102543c">end</a> () override</td></tr>
-<tr class="separator:a02b6e7d79c776787eb3fb78b4102543c inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb2900ff24c255ec72cec78d5a6400ac inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#afb2900ff24c255ec72cec78d5a6400ac">start</a> () override</td></tr>
-<tr class="separator:afb2900ff24c255ec72cec78d5a6400ac inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af53162cd0975afa18748efe855a08319 inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#af53162cd0975afa18748efe855a08319">stop</a> () override</td></tr>
-<tr class="separator:af53162cd0975afa18748efe855a08319 inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a500e746bf58e43aad9b5a0df4f339ace inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#a500e746bf58e43aad9b5a0df4f339ace">send</a> (uint8_t data) override</td></tr>
-<tr class="separator:a500e746bf58e43aad9b5a0df4f339ace inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8ee1b0643a96bd4b41f4b16d87a2405 inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#ae8ee1b0643a96bd4b41f4b16d87a2405">sendBuffer</a> (const uint8_t *buffer, uint16_t size) override</td></tr>
-<tr class="memdesc:ae8ee1b0643a96bd4b41f4b16d87a2405 inherit pub_methods_class_avr_spi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends bytes to SSD1306 device.  <a href="class_avr_spi.html#ae8ee1b0643a96bd4b41f4b16d87a2405">More...</a><br /></td></tr>
-<tr class="separator:ae8ee1b0643a96bd4b41f4b16d87a2405 inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa5dcc0908f7b36fda07849d5426bf6f inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#aaa5dcc0908f7b36fda07849d5426bf6f">begin</a> ()</td></tr>
+<tr class="separator:aaa5dcc0908f7b36fda07849d5426bf6f inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f6958ada9ee3022f2c004df94fc5198 inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#a8f6958ada9ee3022f2c004df94fc5198">end</a> ()</td></tr>
+<tr class="separator:a8f6958ada9ee3022f2c004df94fc5198 inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12046dd33c17638fc2feb6629585c099 inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#a12046dd33c17638fc2feb6629585c099">start</a> ()</td></tr>
+<tr class="separator:a12046dd33c17638fc2feb6629585c099 inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9b773f78548d4aacdb7888e6a49f56e inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#aa9b773f78548d4aacdb7888e6a49f56e">stop</a> ()</td></tr>
+<tr class="separator:aa9b773f78548d4aacdb7888e6a49f56e inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0e536c958a9859c324bdaf3475136a4 inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#ae0e536c958a9859c324bdaf3475136a4">send</a> (uint8_t data)</td></tr>
+<tr class="separator:ae0e536c958a9859c324bdaf3475136a4 inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b2450f2e854031901ef3b1ec7a56ec9 inherit pub_methods_class_avr_spi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#a3b2450f2e854031901ef3b1ec7a56ec9">sendBuffer</a> (const uint8_t *buffer, uint16_t size)</td></tr>
+<tr class="memdesc:a3b2450f2e854031901ef3b1ec7a56ec9 inherit pub_methods_class_avr_spi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends bytes to SSD1306 device.  <a href="class_avr_spi.html#a3b2450f2e854031901ef3b1ec7a56ec9">More...</a><br /></td></tr>
+<tr class="separator:a3b2450f2e854031901ef3b1ec7a56ec9 inherit pub_methods_class_avr_spi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="class_platform_spi.html">PlatformSpi</a> implementation for AVR platforms </p>
+<div class="textblock"><p><a class="el" href="class_platform_spi.html">PlatformSpi</a> implementation for current platform </p>
 
-<p class="definition">Definition at line <a class="el" href="io_8h_source.html#l00188">188</a> of file <a class="el" href="io_8h_source.html">io.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="io_8h_source.html#l00218">218</a> of file <a class="el" href="io_8h_source.html">io.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a26a7c802b47d7e4bcc87735ab0215dc5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26a7c802b47d7e4bcc87735ab0215dc5">&#9670;&nbsp;</a></span>PlatformSpi()</h2>
+<a id="acb3f42b0f6c2f6028aa61e81fee89ef1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb3f42b0f6c2f6028aa61e81fee89ef1">&#9670;&nbsp;</a></span>PlatformSpi()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -118,25 +124,9 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">PlatformSpi::PlatformSpi </td>
           <td>(</td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>csPin</em> = <code>-1</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const <a class="el" href="struct_s_platform_spi_config.html">SPlatformSpiConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>dcPin</em> = <code>-1</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>frequency</em> = <code>8000000</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -145,17 +135,14 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Creates instance of <a class="el" href="class_platform_spi.html">PlatformSpi</a> implementation for AVR controllers</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Creates instance of <a class="el" href="class_platform_spi.html">PlatformSpi</a> implementation for current platform </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">csPin</td><td>chip select pin to enable display controller, or -1 if not needed </td></tr>
-    <tr><td class="paramname">dcPin</td><td>data/command control pin </td></tr>
-    <tr><td class="paramname">frequency</td><td>frequency in HZ to run SPI bus on. </td></tr>
+    <tr><td class="paramname">config</td><td>spi platform configuration. Refer to <a class="el" href="struct_s_platform_spi_config.html">SPlatformSpiConfig</a>. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="io_8h_source.html#l00198">198</a> of file <a class="el" href="io_8h_source.html">io.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="io_8h_source.html#l00225">225</a> of file <a class="el" href="io_8h_source.html">io.h</a>.</p>
 
 </div>
 </div>

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -75,8 +75,14 @@ Inheritance diagram for AvrSpi:</div>
  <div class="center">
   <img src="class_avr_spi.png" usemap="#AvrSpi_map" alt=""/>
   <map id="AvrSpi_map" name="AvrSpi_map">
-<area href="class_i_wire_interface.html" alt="IWireInterface" shape="rect" coords="0,0,91,24"/>
-<area href="class_platform_spi.html" alt="PlatformSpi" shape="rect" coords="0,112,91,136"/>
+<area href="class_platform_spi.html" alt="PlatformSpi" shape="rect" coords="642,56,846,80"/>
+<area href="class_interface_i_l9163.html" alt="InterfaceIL9163&lt; PlatformSpi &gt;" shape="rect" coords="0,112,204,136"/>
+<area href="class_interface_p_c_d8544.html" alt="InterfacePCD8544&lt; PlatformSpi &gt;" shape="rect" coords="214,112,418,136"/>
+<area href="class_interface_s_h1106.html" alt="InterfaceSH1106&lt; PlatformSpi &gt;" shape="rect" coords="428,112,632,136"/>
+<area href="class_interface_s_s_d1306.html" alt="InterfaceSSD1306&lt; PlatformSpi &gt;" shape="rect" coords="642,112,846,136"/>
+<area href="class_interface_s_s_d1331.html" alt="InterfaceSSD1331&lt; PlatformSpi &gt;" shape="rect" coords="856,112,1060,136"/>
+<area href="class_interface_s_s_d1351.html" alt="InterfaceSSD1351&lt; PlatformSpi &gt;" shape="rect" coords="1070,112,1274,136"/>
+<area href="class_interface_s_t7735.html" alt="InterfaceST7735&lt; PlatformSpi &gt;" shape="rect" coords="1284,112,1488,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -84,19 +90,19 @@ Inheritance diagram for AvrSpi:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad9c958a2b38d5e3a11b2984b6e94de4d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#ad9c958a2b38d5e3a11b2984b6e94de4d">AvrSpi</a> (int8_t csPin, int8_t dcPin, uint32_t frequency)</td></tr>
 <tr class="separator:ad9c958a2b38d5e3a11b2984b6e94de4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae461fb42c06a2581f1663c721de9ab35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#ae461fb42c06a2581f1663c721de9ab35">begin</a> () override</td></tr>
-<tr class="separator:ae461fb42c06a2581f1663c721de9ab35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02b6e7d79c776787eb3fb78b4102543c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#a02b6e7d79c776787eb3fb78b4102543c">end</a> () override</td></tr>
-<tr class="separator:a02b6e7d79c776787eb3fb78b4102543c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb2900ff24c255ec72cec78d5a6400ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#afb2900ff24c255ec72cec78d5a6400ac">start</a> () override</td></tr>
-<tr class="separator:afb2900ff24c255ec72cec78d5a6400ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af53162cd0975afa18748efe855a08319"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#af53162cd0975afa18748efe855a08319">stop</a> () override</td></tr>
-<tr class="separator:af53162cd0975afa18748efe855a08319"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a500e746bf58e43aad9b5a0df4f339ace"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#a500e746bf58e43aad9b5a0df4f339ace">send</a> (uint8_t data) override</td></tr>
-<tr class="separator:a500e746bf58e43aad9b5a0df4f339ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8ee1b0643a96bd4b41f4b16d87a2405"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#ae8ee1b0643a96bd4b41f4b16d87a2405">sendBuffer</a> (const uint8_t *buffer, uint16_t size) override</td></tr>
-<tr class="memdesc:ae8ee1b0643a96bd4b41f4b16d87a2405"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends bytes to SSD1306 device.  <a href="#ae8ee1b0643a96bd4b41f4b16d87a2405">More...</a><br /></td></tr>
-<tr class="separator:ae8ee1b0643a96bd4b41f4b16d87a2405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa5dcc0908f7b36fda07849d5426bf6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#aaa5dcc0908f7b36fda07849d5426bf6f">begin</a> ()</td></tr>
+<tr class="separator:aaa5dcc0908f7b36fda07849d5426bf6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f6958ada9ee3022f2c004df94fc5198"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#a8f6958ada9ee3022f2c004df94fc5198">end</a> ()</td></tr>
+<tr class="separator:a8f6958ada9ee3022f2c004df94fc5198"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12046dd33c17638fc2feb6629585c099"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#a12046dd33c17638fc2feb6629585c099">start</a> ()</td></tr>
+<tr class="separator:a12046dd33c17638fc2feb6629585c099"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9b773f78548d4aacdb7888e6a49f56e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#aa9b773f78548d4aacdb7888e6a49f56e">stop</a> ()</td></tr>
+<tr class="separator:aa9b773f78548d4aacdb7888e6a49f56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0e536c958a9859c324bdaf3475136a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#ae0e536c958a9859c324bdaf3475136a4">send</a> (uint8_t data)</td></tr>
+<tr class="separator:ae0e536c958a9859c324bdaf3475136a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b2450f2e854031901ef3b1ec7a56ec9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_avr_spi.html#a3b2450f2e854031901ef3b1ec7a56ec9">sendBuffer</a> (const uint8_t *buffer, uint16_t size)</td></tr>
+<tr class="memdesc:a3b2450f2e854031901ef3b1ec7a56ec9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends bytes to SSD1306 device.  <a href="#a3b2450f2e854031901ef3b1ec7a56ec9">More...</a><br /></td></tr>
+<tr class="separator:a3b2450f2e854031901ef3b1ec7a56ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class implements AVR spi support via hardware module. </p>
@@ -147,14 +153,11 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae461fb42c06a2581f1663c721de9ab35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae461fb42c06a2581f1663c721de9ab35">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="aaa5dcc0908f7b36fda07849d5426bf6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa5dcc0908f7b36fda07849d5426bf6f">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void AvrSpi::begin </td>
@@ -163,26 +166,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Initializes interface </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#a4e161e59bd27e21202559febb6088bcd">IWireInterface</a>.</p>
+<p>Initializes spi interface </p>
 
 </div>
 </div>
-<a id="a02b6e7d79c776787eb3fb78b4102543c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02b6e7d79c776787eb3fb78b4102543c">&#9670;&nbsp;</a></span>end()</h2>
+<a id="a8f6958ada9ee3022f2c004df94fc5198"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f6958ada9ee3022f2c004df94fc5198">&#9670;&nbsp;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void AvrSpi::end </td>
@@ -191,26 +184,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Deinitializes interface </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#aa36c3640097e1ffa9a47bc25fa36f0eb">IWireInterface</a>.</p>
+<p>Closes spi interface </p>
 
 </div>
 </div>
-<a id="a500e746bf58e43aad9b5a0df4f339ace"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a500e746bf58e43aad9b5a0df4f339ace">&#9670;&nbsp;</a></span>send()</h2>
+<a id="ae0e536c958a9859c324bdaf3475136a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0e536c958a9859c324bdaf3475136a4">&#9670;&nbsp;</a></span>send()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void AvrSpi::send </td>
@@ -220,11 +203,6 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Sends byte to SSD1306 device </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -233,18 +211,13 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a9d5573dee232e187fcefed0001adfec0">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="ae8ee1b0643a96bd4b41f4b16d87a2405"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8ee1b0643a96bd4b41f4b16d87a2405">&#9670;&nbsp;</a></span>sendBuffer()</h2>
+<a id="a3b2450f2e854031901ef3b1ec7a56ec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b2450f2e854031901ef3b1ec7a56ec9">&#9670;&nbsp;</a></span>sendBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void AvrSpi::sendBuffer </td>
@@ -264,11 +237,6 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Sends bytes to SSD1306 device. </p>
@@ -281,18 +249,13 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a101c2dc04c567366ce84fd5fd22969e7">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="afb2900ff24c255ec72cec78d5a6400ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb2900ff24c255ec72cec78d5a6400ac">&#9670;&nbsp;</a></span>start()</h2>
+<a id="a12046dd33c17638fc2feb6629585c099"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12046dd33c17638fc2feb6629585c099">&#9670;&nbsp;</a></span>start()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void AvrSpi::start </td>
@@ -301,26 +264,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Starts communication with SSD1306 display. </p>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a9d19cf03b2f861b3e8ee513ac3573549">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="af53162cd0975afa18748efe855a08319"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af53162cd0975afa18748efe855a08319">&#9670;&nbsp;</a></span>stop()</h2>
+<a id="aa9b773f78548d4aacdb7888e6a49f56e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9b773f78548d4aacdb7888e6a49f56e">&#9670;&nbsp;</a></span>stop()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void AvrSpi::stop </td>
@@ -329,15 +282,8 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Ends communication with SSD1306 display. </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#a14f671fcec23533cc592b8fd3d82289b">IWireInterface</a>.</p>
 
 </div>
 </div>

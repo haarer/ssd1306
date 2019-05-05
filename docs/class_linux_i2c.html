@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -69,33 +69,26 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="linux__i2c_8h_source.html">linux_i2c.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for LinuxI2c:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_linux_i2c.png" usemap="#LinuxI2c_map" alt=""/>
-  <map id="LinuxI2c_map" name="LinuxI2c_map">
-<area href="class_i_wire_interface.html" alt="IWireInterface" shape="rect" coords="0,0,91,24"/>
-</map>
- </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6eb86d8e0b11df79979b00e7bd0e2ce7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#a6eb86d8e0b11df79979b00e7bd0e2ce7">LinuxI2c</a> (int8_t busId=-1, uint8_t sa=0x00)</td></tr>
 <tr class="separator:a6eb86d8e0b11df79979b00e7bd0e2ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0443fb97cd429af7219784401ac94ec0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#a0443fb97cd429af7219784401ac94ec0">begin</a> () override</td></tr>
-<tr class="separator:a0443fb97cd429af7219784401ac94ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f7093435e1a813b8784b15a07f28971"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#a6f7093435e1a813b8784b15a07f28971">end</a> () override</td></tr>
-<tr class="separator:a6f7093435e1a813b8784b15a07f28971"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d5fe7baca82424a663942605312c29d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#a3d5fe7baca82424a663942605312c29d">start</a> () override</td></tr>
-<tr class="separator:a3d5fe7baca82424a663942605312c29d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fb26ab0af1b5396f446cef9327e8918"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#a8fb26ab0af1b5396f446cef9327e8918">stop</a> () override</td></tr>
-<tr class="separator:a8fb26ab0af1b5396f446cef9327e8918"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40bf2774885a4eefc221fb9b9644282f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#a40bf2774885a4eefc221fb9b9644282f">send</a> (uint8_t data) override</td></tr>
-<tr class="separator:a40bf2774885a4eefc221fb9b9644282f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9280c20d80a1721aca170e7e6d6c04a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#a9280c20d80a1721aca170e7e6d6c04a0">sendBuffer</a> (const uint8_t *buffer, uint16_t size) override</td></tr>
-<tr class="memdesc:a9280c20d80a1721aca170e7e6d6c04a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends bytes to SSD1306 device.  <a href="#a9280c20d80a1721aca170e7e6d6c04a0">More...</a><br /></td></tr>
-<tr class="separator:a9280c20d80a1721aca170e7e6d6c04a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bd663953dff56f90613e0004236a891"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#a5bd663953dff56f90613e0004236a891">begin</a> ()</td></tr>
+<tr class="separator:a5bd663953dff56f90613e0004236a891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84ee7f31d9f93676da9239c5b06b4a1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#a84ee7f31d9f93676da9239c5b06b4a1c">end</a> ()</td></tr>
+<tr class="separator:a84ee7f31d9f93676da9239c5b06b4a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af05e0892519ea68c5ba06d79e104fca4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#af05e0892519ea68c5ba06d79e104fca4">start</a> ()</td></tr>
+<tr class="separator:af05e0892519ea68c5ba06d79e104fca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dccf012e7555508a13226b14522f868"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#a2dccf012e7555508a13226b14522f868">stop</a> ()</td></tr>
+<tr class="separator:a2dccf012e7555508a13226b14522f868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b8658348c001628304392ce4fd7db2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#a0b8658348c001628304392ce4fd7db2e">send</a> (uint8_t data)</td></tr>
+<tr class="separator:a0b8658348c001628304392ce4fd7db2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23e244a651e65e56da0ff1936bdf968e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#a23e244a651e65e56da0ff1936bdf968e">sendBuffer</a> (const uint8_t *buffer, uint16_t size)</td></tr>
+<tr class="memdesc:a23e244a651e65e56da0ff1936bdf968e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends bytes to SSD1306 device.  <a href="#a23e244a651e65e56da0ff1936bdf968e">More...</a><br /></td></tr>
+<tr class="separator:a23e244a651e65e56da0ff1936bdf968e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7820d1e43b893f5b6780a56a5f099fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linux_i2c.html#ab7820d1e43b893f5b6780a56a5f099fa">setAddr</a> (uint8_t addr)</td></tr>
+<tr class="separator:ab7820d1e43b893f5b6780a56a5f099fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class implements i2c interface for Linux via i2c-dev </p>
@@ -139,14 +132,11 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0443fb97cd429af7219784401ac94ec0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0443fb97cd429af7219784401ac94ec0">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="a5bd663953dff56f90613e0004236a891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bd663953dff56f90613e0004236a891">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LinuxI2c::begin </td>
@@ -155,26 +145,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Initializes interface </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#a4e161e59bd27e21202559febb6088bcd">IWireInterface</a>.</p>
+<p>Initializes i2c interface </p>
 
 </div>
 </div>
-<a id="a6f7093435e1a813b8784b15a07f28971"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f7093435e1a813b8784b15a07f28971">&#9670;&nbsp;</a></span>end()</h2>
+<a id="a84ee7f31d9f93676da9239c5b06b4a1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84ee7f31d9f93676da9239c5b06b4a1c">&#9670;&nbsp;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LinuxI2c::end </td>
@@ -183,26 +163,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Deinitializes interface </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#aa36c3640097e1ffa9a47bc25fa36f0eb">IWireInterface</a>.</p>
+<p>Closes i2c interface </p>
 
 </div>
 </div>
-<a id="a40bf2774885a4eefc221fb9b9644282f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40bf2774885a4eefc221fb9b9644282f">&#9670;&nbsp;</a></span>send()</h2>
+<a id="a0b8658348c001628304392ce4fd7db2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b8658348c001628304392ce4fd7db2e">&#9670;&nbsp;</a></span>send()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LinuxI2c::send </td>
@@ -212,11 +182,6 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Sends byte to SSD1306 device </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -225,18 +190,13 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a9d5573dee232e187fcefed0001adfec0">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="a9280c20d80a1721aca170e7e6d6c04a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9280c20d80a1721aca170e7e6d6c04a0">&#9670;&nbsp;</a></span>sendBuffer()</h2>
+<a id="a23e244a651e65e56da0ff1936bdf968e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23e244a651e65e56da0ff1936bdf968e">&#9670;&nbsp;</a></span>sendBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LinuxI2c::sendBuffer </td>
@@ -256,11 +216,6 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Sends bytes to SSD1306 device. </p>
@@ -273,18 +228,48 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a101c2dc04c567366ce84fd5fd22969e7">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="a3d5fe7baca82424a663942605312c29d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d5fe7baca82424a663942605312c29d">&#9670;&nbsp;</a></span>start()</h2>
+<a id="ab7820d1e43b893f5b6780a56a5f099fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7820d1e43b893f5b6780a56a5f099fa">&#9670;&nbsp;</a></span>setAddr()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinuxI2c::setAddr </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets i2c address for communication This API is required for some led displays having multiple i2c addresses for different types of data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>i2c address to set (7 bits) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="linux__i2c_8h_source.html#l00094">94</a> of file <a class="el" href="linux__i2c_8h_source.html">linux_i2c.h</a>.</p>
+
+</div>
+</div>
+<a id="af05e0892519ea68c5ba06d79e104fca4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af05e0892519ea68c5ba06d79e104fca4">&#9670;&nbsp;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void LinuxI2c::start </td>
@@ -293,26 +278,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Starts communication with SSD1306 display. </p>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a9d19cf03b2f861b3e8ee513ac3573549">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="a8fb26ab0af1b5396f446cef9327e8918"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fb26ab0af1b5396f446cef9327e8918">&#9670;&nbsp;</a></span>stop()</h2>
+<a id="a2dccf012e7555508a13226b14522f868"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dccf012e7555508a13226b14522f868">&#9670;&nbsp;</a></span>stop()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LinuxI2c::stop </td>
@@ -321,15 +296,8 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Ends communication with SSD1306 display. </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#a14f671fcec23533cc592b8fd3d82289b">IWireInterface</a>.</p>
 
 </div>
 </div>

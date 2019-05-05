@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -92,6 +92,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:abed91b24933cbc8ba18dab9cd9f92e08"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nano__gfx__types_8h.html#abed91b24933cbc8ba18dab9cd9f92e08">SSD1306_MORE_CHARS_REQUIRED</a>&#160;&#160;&#160;0xffff</td></tr>
+<tr class="separator:abed91b24933cbc8ba18dab9cd9f92e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6afabdc09a49a433ee19d8a9486056d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nano__gfx__types_8h.html#ac6afabdc09a49a433ee19d8a9486056d">min</a>(a,  b)&#160;&#160;&#160;((a)&lt;(b)?(a):(b))</td></tr>
 <tr class="separator:ac6afabdc09a49a433ee19d8a9486056d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affe776513b24d84b39af8ab0930fef7f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nano__gfx__types_8h.html#affe776513b24d84b39af8ab0930fef7f">max</a>(a,  b)&#160;&#160;&#160;((a)&gt;(b)?(a):(b))</td></tr>
@@ -119,6 +121,12 @@ Enumerations</h2></td></tr>
 <b>STYLE_ITALIC</b>
  }</td></tr>
 <tr class="separator:a4ceb6be9200d0bb016cbbb87dcf5ed88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>CANVAS_MODE_BASIC</b> = 0x00, 
+<a class="el" href="nano__gfx__types_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba0f8baf412154ca8af0a985f1eac3853c">CANVAS_TEXT_WRAP</a> = 0x01, 
+<a class="el" href="nano__gfx__types_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba98772cc8a02f04e00b7503800d2ab9ab">CANVAS_MODE_TRANSPARENT</a> = 0x02, 
+<a class="el" href="nano__gfx__types_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba2c6c98a4735704fd9e10e68e00a05363">CANVAS_TEXT_WRAP_LOCAL</a> = 0x04
+ }</td></tr>
+<tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a153dd3fa628c68400edc68fa1949e696"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nano__gfx__types_8h.html#a153dd3fa628c68400edc68fa1949e696">EFontSize</a> { <b>FONT_SIZE_NORMAL</b> = 0, 
 <b>FONT_SIZE_2X</b> = 1, 
 <b>FONT_SIZE_4X</b> = 2, 
@@ -158,7 +166,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <p>Macros returning maximum of 2 numbers </p>
 
-<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00040">40</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00043">43</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
 
 </div>
 </div>
@@ -189,7 +197,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <p>Macros returning minimum of 2 numbers </p>
 
-<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00035">35</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00038">38</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
 
 </div>
 </div>
@@ -210,7 +218,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">( ((uint16_t)(c &gt;&gt; 8) &amp; 0b11100000) | \</div><div class="line">                               ((uint16_t)(c &gt;&gt; 6) &amp; 0b00011100) | \</div><div class="line">                               ((uint16_t)(c &gt;&gt; 3) &amp; 0b00000011) )</div></div><!-- fragment --><p>Macro to convert 5-6-5 color to 3-3-2 color </p>
 
-<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00055">55</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00058">58</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
 
 </div>
 </div>
@@ -231,7 +239,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">( (((uint16_t)c &amp; 0b11100000) &lt;&lt; 8) | \</div><div class="line">                               (((uint16_t)c &amp; 0b00011100) &lt;&lt; 6) | \</div><div class="line">                               (((uint16_t)c &amp; 0b00000011) &lt;&lt; 3) )</div></div><!-- fragment --><p>Macro to convert 3-3-2 color to 5-6-5 color </p>
 
-<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00050">50</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00053">53</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
 
 </div>
 </div>
@@ -268,7 +276,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <p>Macro to generate 16-bit color for SSD1351 OLED display </p>
 
-<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00047">47</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00050">50</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
 
 </div>
 </div>
@@ -305,7 +313,24 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <p>Macro to generate 8-bit color for SSD1331 OLED display </p>
 
-<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00044">44</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00047">47</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
+
+</div>
+</div>
+<a id="abed91b24933cbc8ba18dab9cd9f92e08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abed91b24933cbc8ba18dab9cd9f92e08">&#9670;&nbsp;</a></span>SSD1306_MORE_CHARS_REQUIRED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SSD1306_MORE_CHARS_REQUIRED&#160;&#160;&#160;0xffff</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Flag means that more chars are required to decode utf-8 </p>
+
+<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00034">34</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
 
 </div>
 </div>
@@ -323,7 +348,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <p>Pointer type to LCD display initialization function </p>
 
-<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00060">60</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00063">63</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
 
 </div>
 </div>
@@ -343,6 +368,30 @@ Enumerations</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a06fc87d81c62e9abb8790b6e5713c55b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06fc87d81c62e9abb8790b6e5713c55b">&#9670;&nbsp;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba0f8baf412154ca8af0a985f1eac3853c"></a>CANVAS_TEXT_WRAP&#160;</td><td class="fielddoc"><p>If the flag is specified, text cursor is moved to new line when end of screen is reached </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba98772cc8a02f04e00b7503800d2ab9ab"></a>CANVAS_MODE_TRANSPARENT&#160;</td><td class="fielddoc"><p>This flag make bitmaps transparent (Black color) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba2c6c98a4735704fd9e10e68e00a05363"></a>CANVAS_TEXT_WRAP_LOCAL&#160;</td><td class="fielddoc"><p>If the flag is specified, text cursor is moved to new line when end of canvas is reached </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00073">73</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
+
+</div>
+</div>
 <a id="a153dd3fa628c68400edc68fa1949e696"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a153dd3fa628c68400edc68fa1949e696">&#9670;&nbsp;</a></span>EFontSize</h2>
 
@@ -356,7 +405,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <p>Supported scale font values </p>
 
-<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00071">71</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00085">85</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
 
 </div>
 </div>
@@ -373,7 +422,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <p>Supported font styles </p>
 
-<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00063">63</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nano__gfx__types_8h_source.html#l00066">66</a> of file <a class="el" href="nano__gfx__types_8h_source.html">nano_gfx_types.h</a>.</p>
 
 </div>
 </div>

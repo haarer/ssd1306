@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SSD1306 OLED display driver: nano_engine/core.h File Reference</title>
+<title>SSD1306 OLED display driver: v2/nano_engine/core.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -60,7 +60,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_416dcb43af7fcdc1a2eacec9468204be.html">nano_engine</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_f3be2d6567fbd32180d9d7d49d8e608d.html">v2</a></li><li class="navelem"><a class="el" href="dir_2cda741db82801e21842b188eec9a8f8.html">nano_engine</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="tiler_8h_source.html">tiler.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="canvas_8h_source.html">canvas.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="canvas_8h_source.html">v2/canvas/canvas.h</a>&quot;</code><br />
 </div>
 <p><a href="core_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -81,9 +81,11 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_core.html">NanoEngineCore</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine.html">NanoEngine&lt; C, B &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine.html">NanoEngine&lt; C, D &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf764cbdea00d65edcd07bb9953ad2b7"><td class="memItemLeft" align="right" valign="top"><a id="adf764cbdea00d65edcd07bb9953ad2b7"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+<tr class="memitem:ga1004b306c94b283439b1137948d57e02"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga1004b306c94b283439b1137948d57e02">ENGINE_DEFAULT_FPS</a>&#160;&#160;&#160;(30)</td></tr>
+<tr class="separator:ga1004b306c94b283439b1137948d57e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc29c2ff13d900c2f185ee95427fb06c"><td class="memItemLeft" align="right" valign="top"><a id="gadc29c2ff13d900c2f185ee95427fb06c"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
 &#160;&#160;<b>BUTTON_NONE</b> = 0B00000000, 
 <b>BUTTON_DOWN</b> = 0B00000001, 
 <b>BUTTON_LEFT</b> = 0B00000010, 
@@ -94,35 +96,17 @@ Classes</h2></td></tr>
 <b>BUTTON_B</b> = 0B00100000
 <br />
  }</td></tr>
-<tr class="separator:adf764cbdea00d65edcd07bb9953ad2b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaff4934f12cf7a86959c46e57aac5ae5d"><td class="memItemLeft" align="right" valign="top">typedef uint8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#gaff4934f12cf7a86959c46e57aac5ae5d">TNanoEngineGetButtons</a>) (void)</td></tr>
+<tr class="separator:gadc29c2ff13d900c2f185ee95427fb06c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaff4934f12cf7a86959c46e57aac5ae5d"><td class="memItemLeft" align="right" valign="top">typedef uint8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#gaff4934f12cf7a86959c46e57aac5ae5d">TNanoEngineGetButtons</a>) (void)</td></tr>
 <tr class="separator:gaff4934f12cf7a86959c46e57aac5ae5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f670b824fb6b10883cd4283f800310f"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="core_8h.html#a9f670b824fb6b10883cd4283f800310f">TLoopCallback</a>) (void)</td></tr>
-<tr class="separator:a9f670b824fb6b10883cd4283f800310f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f670b824fb6b10883cd4283f800310f"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga9f670b824fb6b10883cd4283f800310f">TLoopCallback</a>) (void)</td></tr>
+<tr class="separator:ga9f670b824fb6b10883cd4283f800310f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Small graphics engine, based on SSD1331 functions </p>
 
 <p class="definition">Definition in file <a class="el" href="core_8h_source.html">core.h</a>.</p>
-</div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="a9f670b824fb6b10883cd4283f800310f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f670b824fb6b10883cd4283f800310f">&#9670;&nbsp;</a></span>TLoopCallback</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(* TLoopCallback) (void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Type of user-specified loop callback </p>
-
-<p class="definition">Definition at line <a class="el" href="core_8h_source.html#l00044">44</a> of file <a class="el" href="core_8h_source.html">core.h</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

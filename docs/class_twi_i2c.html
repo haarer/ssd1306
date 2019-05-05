@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -69,33 +69,26 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="avr__twi_8h_source.html">avr_twi.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for TwiI2c:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_twi_i2c.png" usemap="#TwiI2c_map" alt=""/>
-  <map id="TwiI2c_map" name="TwiI2c_map">
-<area href="class_i_wire_interface.html" alt="IWireInterface" shape="rect" coords="0,0,91,24"/>
-</map>
- </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a66f812900288542c2559881898583705"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#a66f812900288542c2559881898583705">TwiI2c</a> (uint8_t sa=0x00)</td></tr>
 <tr class="separator:a66f812900288542c2559881898583705"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a446ee1924d673b13caa3efe9468138d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#a446ee1924d673b13caa3efe9468138d4">begin</a> () override</td></tr>
-<tr class="separator:a446ee1924d673b13caa3efe9468138d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a08e67b667563e0e7bc1332d4ef84a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#a3a08e67b667563e0e7bc1332d4ef84a4">end</a> () override</td></tr>
-<tr class="separator:a3a08e67b667563e0e7bc1332d4ef84a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a803e96df60796ad2e4afa03055346119"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#a803e96df60796ad2e4afa03055346119">start</a> () override</td></tr>
-<tr class="separator:a803e96df60796ad2e4afa03055346119"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4737a0e4e12a91293edf2f03c352c47f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#a4737a0e4e12a91293edf2f03c352c47f">stop</a> () override</td></tr>
-<tr class="separator:a4737a0e4e12a91293edf2f03c352c47f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6899622397180d05e61bc790e53e214"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#ac6899622397180d05e61bc790e53e214">send</a> (uint8_t data) override</td></tr>
-<tr class="separator:ac6899622397180d05e61bc790e53e214"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5651e716066590f6fb009e81f9bff69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#ab5651e716066590f6fb009e81f9bff69">sendBuffer</a> (const uint8_t *buffer, uint16_t size) override</td></tr>
-<tr class="memdesc:ab5651e716066590f6fb009e81f9bff69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends bytes to SSD1306 device.  <a href="#ab5651e716066590f6fb009e81f9bff69">More...</a><br /></td></tr>
-<tr class="separator:ab5651e716066590f6fb009e81f9bff69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d9cdbb323053cc7585d5a0d6f57ebdb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#a9d9cdbb323053cc7585d5a0d6f57ebdb">begin</a> ()</td></tr>
+<tr class="separator:a9d9cdbb323053cc7585d5a0d6f57ebdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7072af5e68e428c1823111fa5bab5f22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#a7072af5e68e428c1823111fa5bab5f22">end</a> ()</td></tr>
+<tr class="separator:a7072af5e68e428c1823111fa5bab5f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78cff92899445e211132b6922c0de722"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#a78cff92899445e211132b6922c0de722">start</a> ()</td></tr>
+<tr class="separator:a78cff92899445e211132b6922c0de722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79ef6eecceeeb6a29f997a1fe37f420d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#a79ef6eecceeeb6a29f997a1fe37f420d">stop</a> ()</td></tr>
+<tr class="separator:a79ef6eecceeeb6a29f997a1fe37f420d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a570b8517164dddf00333bd1e89f3eb19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#a570b8517164dddf00333bd1e89f3eb19">send</a> (uint8_t data)</td></tr>
+<tr class="separator:a570b8517164dddf00333bd1e89f3eb19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa096d7dd4c7a3ff4836227ee946e5719"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#aa096d7dd4c7a3ff4836227ee946e5719">sendBuffer</a> (const uint8_t *buffer, uint16_t size)</td></tr>
+<tr class="memdesc:aa096d7dd4c7a3ff4836227ee946e5719"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends bytes to SSD1306 device.  <a href="#aa096d7dd4c7a3ff4836227ee946e5719">More...</a><br /></td></tr>
+<tr class="separator:aa096d7dd4c7a3ff4836227ee946e5719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58bf852700178b18ec64bc6e58cdda55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_twi_i2c.html#a58bf852700178b18ec64bc6e58cdda55">setAddr</a> (uint8_t addr)</td></tr>
+<tr class="separator:a58bf852700178b18ec64bc6e58cdda55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class implements AVR i2c support via TWI hardware block. </p>
@@ -136,14 +129,11 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a446ee1924d673b13caa3efe9468138d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a446ee1924d673b13caa3efe9468138d4">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="a9d9cdbb323053cc7585d5a0d6f57ebdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d9cdbb323053cc7585d5a0d6f57ebdb">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void TwiI2c::begin </td>
@@ -152,26 +142,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Initializes interface </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#a4e161e59bd27e21202559febb6088bcd">IWireInterface</a>.</p>
+<p>Initializes i2c interface </p>
 
 </div>
 </div>
-<a id="a3a08e67b667563e0e7bc1332d4ef84a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a08e67b667563e0e7bc1332d4ef84a4">&#9670;&nbsp;</a></span>end()</h2>
+<a id="a7072af5e68e428c1823111fa5bab5f22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7072af5e68e428c1823111fa5bab5f22">&#9670;&nbsp;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void TwiI2c::end </td>
@@ -180,26 +160,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Deinitializes interface </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#aa36c3640097e1ffa9a47bc25fa36f0eb">IWireInterface</a>.</p>
+<p>Closes i2c interface </p>
 
 </div>
 </div>
-<a id="ac6899622397180d05e61bc790e53e214"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6899622397180d05e61bc790e53e214">&#9670;&nbsp;</a></span>send()</h2>
+<a id="a570b8517164dddf00333bd1e89f3eb19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a570b8517164dddf00333bd1e89f3eb19">&#9670;&nbsp;</a></span>send()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void TwiI2c::send </td>
@@ -209,11 +179,6 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Sends byte to SSD1306 device </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -222,18 +187,13 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a9d5573dee232e187fcefed0001adfec0">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="ab5651e716066590f6fb009e81f9bff69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5651e716066590f6fb009e81f9bff69">&#9670;&nbsp;</a></span>sendBuffer()</h2>
+<a id="aa096d7dd4c7a3ff4836227ee946e5719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa096d7dd4c7a3ff4836227ee946e5719">&#9670;&nbsp;</a></span>sendBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void TwiI2c::sendBuffer </td>
@@ -253,11 +213,6 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Sends bytes to SSD1306 device. </p>
@@ -270,18 +225,48 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a101c2dc04c567366ce84fd5fd22969e7">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="a803e96df60796ad2e4afa03055346119"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a803e96df60796ad2e4afa03055346119">&#9670;&nbsp;</a></span>start()</h2>
+<a id="a58bf852700178b18ec64bc6e58cdda55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58bf852700178b18ec64bc6e58cdda55">&#9670;&nbsp;</a></span>setAddr()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TwiI2c::setAddr </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets i2c address for communication This API is required for some led displays having multiple i2c addresses for different types of data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>i2c address to set (7 bits) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="avr__twi_8h_source.html#l00094">94</a> of file <a class="el" href="avr__twi_8h_source.html">avr_twi.h</a>.</p>
+
+</div>
+</div>
+<a id="a78cff92899445e211132b6922c0de722"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78cff92899445e211132b6922c0de722">&#9670;&nbsp;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void TwiI2c::start </td>
@@ -290,26 +275,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Starts communication with SSD1306 display. </p>
 
-<p>Implements <a class="el" href="class_i_wire_interface.html#a9d19cf03b2f861b3e8ee513ac3573549">IWireInterface</a>.</p>
-
 </div>
 </div>
-<a id="a4737a0e4e12a91293edf2f03c352c47f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4737a0e4e12a91293edf2f03c352c47f">&#9670;&nbsp;</a></span>stop()</h2>
+<a id="a79ef6eecceeeb6a29f997a1fe37f420d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79ef6eecceeeb6a29f997a1fe37f420d">&#9670;&nbsp;</a></span>stop()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void TwiI2c::stop </td>
@@ -318,15 +293,8 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Ends communication with SSD1306 display. </p>
-
-<p>Implements <a class="el" href="class_i_wire_interface.html#a14f671fcec23533cc592b8fd3d82289b">IWireInterface</a>.</p>
 
 </div>
 </div>

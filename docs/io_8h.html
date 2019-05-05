@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -67,14 +67,14 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">io.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="_user_settings_8h_source.html">UserSettings.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ssd1306__interface_8h_source.html">ssd1306_interface.h</a>&quot;</code><br />
-<code>#include &quot;template/io.h&quot;</code><br />
 </div>
 <p><a href="io_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -83,6 +83,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_platform_i2c.html">PlatformI2c</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_platform_spi.html">PlatformSpi</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structssd1306__platform__i2c_config__t.html">ssd1306_platform_i2cConfig_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -98,6 +100,15 @@ Typedefs</h2></td></tr>
 <tr class="separator:ga609c6ba2ba635102cd316b7b59af8351"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3de6a212815ee8499f4042db94992210"><td class="memItemLeft" align="right" valign="top">typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga3de6a212815ee8499f4042db94992210">lcduint_t</a></td></tr>
 <tr class="separator:ga3de6a212815ee8499f4042db94992210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gabfbc35d9ad49ecfab95ccb34afb0ef81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#gabfbc35d9ad49ecfab95ccb34afb0ef81">ssd1306_platform_i2cInit</a> (int8_t busId, uint8_t addr, <a class="el" href="structssd1306__platform__i2c_config__t.html">ssd1306_platform_i2cConfig_t</a> *cfg)</td></tr>
+<tr class="memdesc:gabfbc35d9ad49ecfab95ccb34afb0ef81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes i2c interface for platform being used.  <a href="group___s_s_d1306___h_a_l___a_p_i.html#gabfbc35d9ad49ecfab95ccb34afb0ef81">More...</a><br /></td></tr>
+<tr class="separator:gabfbc35d9ad49ecfab95ccb34afb0ef81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga48b3e1e6fc7eec0e0634370746d31c22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga48b3e1e6fc7eec0e0634370746d31c22">ssd1306_platform_spiInit</a> (int8_t busId, int8_t cesPin, int8_t dcPin)</td></tr>
+<tr class="memdesc:ga48b3e1e6fc7eec0e0634370746d31c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes spi interface for platform being used.  <a href="group___s_s_d1306___h_a_l___a_p_i.html#ga48b3e1e6fc7eec0e0634370746d31c22">More...</a><br /></td></tr>
+<tr class="separator:ga48b3e1e6fc7eec0e0634370746d31c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>SSD1306 HAL IO communication functions </p>

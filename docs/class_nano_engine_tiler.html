@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SSD1306 OLED display driver: NanoEngineTiler&lt; C, B &gt; Class Template Reference</title>
+<title>SSD1306 OLED display driver: NanoEngineTiler&lt; C, D &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SSD1306 OLED display driver
-   &#160;<span id="projectnumber">1.8.0.1</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">This library is developed to control SSD1306/SSD1331/SSD1351/IL9163/PCD8554 RGB i2c/spi LED displays</div>
   </td>
@@ -61,115 +61,141 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_nano_engine_tiler-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">NanoEngineTiler&lt; C, B &gt; Class Template Reference</div>  </div>
+<div class="title">NanoEngineTiler&lt; C, D &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="tiler_8h_source.html">tiler.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for NanoEngineTiler&lt; C, B &gt;:</div>
+Inheritance diagram for NanoEngineTiler&lt; C, D &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="class_nano_engine_tiler.png" usemap="#NanoEngineTiler_3C_20C_2C_20B_20_3E_map" alt=""/>
-  <map id="NanoEngineTiler_3C_20C_2C_20B_20_3E_map" name="NanoEngineTiler_3C_20C_2C_20B_20_3E_map">
-<area href="class_nano_engine.html" alt="NanoEngine&lt; C, B &gt;" shape="rect" coords="0,56,218,80"/>
-<area href="class_nano_engine.html" alt="NanoEngine&lt; TILE_8x8_MONO_8 &gt;" shape="rect" coords="228,56,446,80"/>
-<area href="class_nano_engine1__8.html" alt="NanoEngine1_8" shape="rect" coords="228,112,446,136"/>
+  <img src="class_nano_engine_tiler.png" usemap="#NanoEngineTiler_3C_20C_2C_20D_20_3E_map" alt=""/>
+  <map id="NanoEngineTiler_3C_20C_2C_20D_20_3E_map" name="NanoEngineTiler_3C_20C_2C_20D_20_3E_map">
+<area href="class_nano_engine.html" alt="NanoEngine&lt; C, D &gt;" shape="rect" coords="0,56,236,80"/>
+<area href="class_nano_engine.html" alt="NanoEngine&lt; TILE_8x8_MONO_8, D &gt;" shape="rect" coords="246,56,482,80"/>
+<area href="class_nano_engine1__8.html" alt="NanoEngine1_8&lt; D &gt;" shape="rect" coords="246,112,482,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a27aa224eaeeaba811e6688bf3a43c881"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a27aa224eaeeaba811e6688bf3a43c881">TilerT</a></td></tr>
+<tr class="separator:a27aa224eaeeaba811e6688bf3a43c881"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a876d04901d2dcf3df6f137080e2fffe0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a876d04901d2dcf3df6f137080e2fffe0">refresh</a> ()</td></tr>
-<tr class="separator:a876d04901d2dcf3df6f137080e2fffe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ab528c728eeee350a90bf966a13fd3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a2ab528c728eeee350a90bf966a13fd3d">refresh</a> (const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga4a82780f66e02834d957e77e70cc17d7">NanoRect</a> &amp;rect)</td></tr>
-<tr class="separator:a2ab528c728eeee350a90bf966a13fd3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a639b1789868cab29301759573a2e46c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a639b1789868cab29301759573a2e46c4">refresh</a> (const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;point)</td></tr>
-<tr class="separator:a639b1789868cab29301759573a2e46c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a423956a5b8b4ebdf4c46f8cdb0028ec5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a423956a5b8b4ebdf4c46f8cdb0028ec5">refresh</a> (<a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> x1, <a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> y1, <a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> x2, <a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> y2)</td></tr>
-<tr class="separator:a423956a5b8b4ebdf4c46f8cdb0028ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab490be1a946245f401a54986b0f55158"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ab490be1a946245f401a54986b0f55158">refreshWorld</a> (const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga4a82780f66e02834d957e77e70cc17d7">NanoRect</a> &amp;rect)</td></tr>
-<tr class="separator:ab490be1a946245f401a54986b0f55158"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8de6d0b74fab3efa2f4d1f9fba657147"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a8de6d0b74fab3efa2f4d1f9fba657147">refreshWorld</a> (<a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> x1, <a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> y1, <a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> x2, <a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> y2)</td></tr>
-<tr class="separator:a8de6d0b74fab3efa2f4d1f9fba657147"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a258d7e07cbc57801dc3385ce0162ccd2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a258d7e07cbc57801dc3385ce0162ccd2">refreshWorld</a> (const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;point)</td></tr>
-<tr class="separator:a258d7e07cbc57801dc3385ce0162ccd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07b0650f62948cf42468154188e698bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a07b0650f62948cf42468154188e698bc">localCoordinates</a> ()</td></tr>
-<tr class="separator:a07b0650f62948cf42468154188e698bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23ed5c262124fb7dd3f630aac687dbc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a23ed5c262124fb7dd3f630aac687dbc8">worldCoordinates</a> ()</td></tr>
-<tr class="separator:a23ed5c262124fb7dd3f630aac687dbc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94f5725c46ba1be16f1cf9502ba10bc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a94f5725c46ba1be16f1cf9502ba10bc4">moveTo</a> (const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;position)</td></tr>
-<tr class="separator:a94f5725c46ba1be16f1cf9502ba10bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f989d7bb06919e486eaaca7dcc5af34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a2f989d7bb06919e486eaaca7dcc5af34">moveToAndRefresh</a> (const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;position)</td></tr>
-<tr class="separator:a2f989d7bb06919e486eaaca7dcc5af34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04c0ff9f6d00b694935aca8e888a558c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a04c0ff9f6d00b694935aca8e888a558c">getPosition</a> () const</td></tr>
-<tr class="separator:a04c0ff9f6d00b694935aca8e888a558c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c71ecdeacfee7d0c79d704d7c0419be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a4c71ecdeacfee7d0c79d704d7c0419be">drawCallback</a> (<a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga5db298dc5fe7132d3190e5e423b6da6a">TNanoEngineOnDraw</a> callback)</td></tr>
-<tr class="separator:a4c71ecdeacfee7d0c79d704d7c0419be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49e9413444e6da21cd9ae27f80f2fc78"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a49e9413444e6da21cd9ae27f80f2fc78">collision</a> (<a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;p, <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga4a82780f66e02834d957e77e70cc17d7">NanoRect</a> &amp;rect)</td></tr>
-<tr class="memdesc:a49e9413444e6da21cd9ae27f80f2fc78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if point is inside the rectangle area. Returns true if point is inside the rectangle area.  <a href="#a49e9413444e6da21cd9ae27f80f2fc78">More...</a><br /></td></tr>
-<tr class="separator:a49e9413444e6da21cd9ae27f80f2fc78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40c37ac36e1d72c1e4ec705347be90eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a40c37ac36e1d72c1e4ec705347be90eb">insert</a> (<a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>&lt; <a class="el" href="class_nano_engine.html">NanoEngine</a>&lt; C, B &gt;&gt; &amp;object)</td></tr>
-<tr class="separator:a40c37ac36e1d72c1e4ec705347be90eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41e6207c0a9a2d4ac0ae2051ddbe4363"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a41e6207c0a9a2d4ac0ae2051ddbe4363">remove</a> (<a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>&lt; <a class="el" href="class_nano_engine.html">NanoEngine</a>&lt; C, B &gt;&gt; &amp;object)</td></tr>
-<tr class="separator:a41e6207c0a9a2d4ac0ae2051ddbe4363"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e0e6144c711fbcebdc379f6aaa13368"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a9e0e6144c711fbcebdc379f6aaa13368">update</a> ()</td></tr>
-<tr class="separator:a9e0e6144c711fbcebdc379f6aaa13368"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e5770280f97e37f77b3f65823ff9ac8"><td class="memItemLeft" align="right" valign="top">C &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a1e5770280f97e37f77b3f65823ff9ac8">getCanvas</a> ()</td></tr>
-<tr class="separator:a1e5770280f97e37f77b3f65823ff9ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8d8bb43b6a02536b487dfcadbd7defb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_nano_display_ops.html">NanoDisplayOps</a>&lt; B &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ae8d8bb43b6a02536b487dfcadbd7defb">getDisplay</a> ()</td></tr>
-<tr class="separator:ae8d8bb43b6a02536b487dfcadbd7defb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad465542210563583e80984107285460b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ad465542210563583e80984107285460b">refresh</a> ()</td></tr>
+<tr class="separator:ad465542210563583e80984107285460b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d6a05eeedc1343cce5a99581204fc95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a2d6a05eeedc1343cce5a99581204fc95">refresh</a> (const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga4a82780f66e02834d957e77e70cc17d7">NanoRect</a> &amp;rect)</td></tr>
+<tr class="separator:a2d6a05eeedc1343cce5a99581204fc95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addb8fda2b5f4d2aac9f74f1440a6d4f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#addb8fda2b5f4d2aac9f74f1440a6d4f5">refresh</a> (const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;point) __attribute__((noinline))</td></tr>
+<tr class="separator:addb8fda2b5f4d2aac9f74f1440a6d4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22c70012177a7306900fad1013478cc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a22c70012177a7306900fad1013478cc6">refresh</a> (<a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> x1, <a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> y1, <a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> x2, <a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> y2) __attribute__((noinline))</td></tr>
+<tr class="separator:a22c70012177a7306900fad1013478cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42e2b5d5aa4f8a1be2c337ebca9e0155"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a42e2b5d5aa4f8a1be2c337ebca9e0155">refreshWorld</a> (const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga4a82780f66e02834d957e77e70cc17d7">NanoRect</a> &amp;rect)</td></tr>
+<tr class="separator:a42e2b5d5aa4f8a1be2c337ebca9e0155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c5593aba4a6a4c00f09bf16cb4c56a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a6c5593aba4a6a4c00f09bf16cb4c56a2">refreshWorld</a> (<a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> x1, <a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> y1, <a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> x2, <a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a> y2) __attribute__((noinline))</td></tr>
+<tr class="separator:a6c5593aba4a6a4c00f09bf16cb4c56a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0371405f9553a8cd762a7765f9a9768"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ab0371405f9553a8cd762a7765f9a9768">refreshWorld</a> (const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;point)</td></tr>
+<tr class="separator:ab0371405f9553a8cd762a7765f9a9768"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f897860d9b19729fb60df20788b0791"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a9f897860d9b19729fb60df20788b0791">localCoordinates</a> ()</td></tr>
+<tr class="separator:a9f897860d9b19729fb60df20788b0791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa628ed742bcf4dffcb481edc5dab3d8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#aa628ed742bcf4dffcb481edc5dab3d8d">worldCoordinates</a> ()</td></tr>
+<tr class="separator:aa628ed742bcf4dffcb481edc5dab3d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f923ad4ab1a962794fab10c93ebece1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a3f923ad4ab1a962794fab10c93ebece1">moveTo</a> (const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;position)</td></tr>
+<tr class="separator:a3f923ad4ab1a962794fab10c93ebece1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc99655d02fc453154fa57d63756fdd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#acc99655d02fc453154fa57d63756fdd4">moveToAndRefresh</a> (const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;position)</td></tr>
+<tr class="separator:acc99655d02fc453154fa57d63756fdd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecc7f4ae1bd6d9983997d3b75c34c948"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#aecc7f4ae1bd6d9983997d3b75c34c948">getPosition</a> () const</td></tr>
+<tr class="separator:aecc7f4ae1bd6d9983997d3b75c34c948"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29675e84fb7c1d4cdb8e4a8a9a752d2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a29675e84fb7c1d4cdb8e4a8a9a752d2f">drawCallback</a> (<a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga5db298dc5fe7132d3190e5e423b6da6a">TNanoEngineOnDraw</a> callback)</td></tr>
+<tr class="separator:a29675e84fb7c1d4cdb8e4a8a9a752d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46cd57f9747c91460ceec1d69883a403"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a46cd57f9747c91460ceec1d69883a403">collision</a> (<a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;p, <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga4a82780f66e02834d957e77e70cc17d7">NanoRect</a> &amp;rect)</td></tr>
+<tr class="memdesc:a46cd57f9747c91460ceec1d69883a403"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if point is inside the rectangle area. Returns true if point is inside the rectangle area.  <a href="#a46cd57f9747c91460ceec1d69883a403">More...</a><br /></td></tr>
+<tr class="separator:a46cd57f9747c91460ceec1d69883a403"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1aa063368bb408a5f675b709e817de9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ae1aa063368bb408a5f675b709e817de9">insert</a> (<a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>&lt; <a class="el" href="class_nano_engine_tiler.html#a27aa224eaeeaba811e6688bf3a43c881">TilerT</a> &gt; &amp;object) __attribute__((noinline))</td></tr>
+<tr class="separator:ae1aa063368bb408a5f675b709e817de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc4520540d1d9038e5247ab170423fe1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#acc4520540d1d9038e5247ab170423fe1">remove</a> (<a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>&lt; <a class="el" href="class_nano_engine_tiler.html#a27aa224eaeeaba811e6688bf3a43c881">TilerT</a> &gt; &amp;object) __attribute__((noinline))</td></tr>
+<tr class="separator:acc4520540d1d9038e5247ab170423fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f94ba4d2a330836d71dd49c188d939f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a0f94ba4d2a330836d71dd49c188d939f">update</a> () __attribute__((noinline))</td></tr>
+<tr class="separator:a0f94ba4d2a330836d71dd49c188d939f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c55511c0c5927ad1cf519c458bbefbc"><td class="memItemLeft" align="right" valign="top">C &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a7c55511c0c5927ad1cf519c458bbefbc">getCanvas</a> ()</td></tr>
+<tr class="separator:a7c55511c0c5927ad1cf519c458bbefbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb19e84dd6c15fed9746bd01c8797370"><td class="memItemLeft" align="right" valign="top">D &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#afb19e84dd6c15fed9746bd01c8797370">getDisplay</a> ()</td></tr>
+<tr class="separator:afb19e84dd6c15fed9746bd01c8797370"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:aa1c621d4f6843b3f043a16a03f1f9f9f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#aa1c621d4f6843b3f043a16a03f1f9f9f">NanoEngineTiler</a> (<a class="el" href="class_nano_display_ops.html">NanoDisplayOps</a>&lt; B &gt; &amp;display)</td></tr>
-<tr class="separator:aa1c621d4f6843b3f043a16a03f1f9f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a957ecf4bdb3a257133cbd3a2300beb70"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a957ecf4bdb3a257133cbd3a2300beb70">NanoEngineTiler</a> (D &amp;display)</td></tr>
+<tr class="separator:a957ecf4bdb3a257133cbd3a2300beb70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a37804708cedd5f9d7ccdc7108a41ae52"><td class="memItemLeft" align="right" valign="top"><a id="a37804708cedd5f9d7ccdc7108a41ae52"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a37804708cedd5f9d7ccdc7108a41ae52">displayBuffer</a> ()</td></tr>
-<tr class="memdesc:a37804708cedd5f9d7ccdc7108a41ae52"><td class="mdescLeft">&#160;</td><td class="mdescRight">refreshes content on oled display. Refreshes content on oled display. Call it, if you want to update the screen. Engine will update only those areas, which are marked by <a class="el" href="class_nano_engine_tiler.html#a876d04901d2dcf3df6f137080e2fffe0">refresh()</a> methods. <br /></td></tr>
-<tr class="separator:a37804708cedd5f9d7ccdc7108a41ae52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad42fc155500f45d75649d85e3316c44a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ad42fc155500f45d75649d85e3316c44a">displayPopup</a> (const char *msg)</td></tr>
-<tr class="memdesc:ad42fc155500f45d75649d85e3316c44a"><td class="mdescLeft">&#160;</td><td class="mdescRight">prints popup message over display content prints popup message over display content  <a href="#ad42fc155500f45d75649d85e3316c44a">More...</a><br /></td></tr>
-<tr class="separator:ad42fc155500f45d75649d85e3316c44a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6fce88fed6fb414cd30b2e4c132bdfc"><td class="memItemLeft" align="right" valign="top"><a id="ab6fce88fed6fb414cd30b2e4c132bdfc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ab6fce88fed6fb414cd30b2e4c132bdfc">displayBuffer</a> () __attribute__((noinline))</td></tr>
+<tr class="memdesc:ab6fce88fed6fb414cd30b2e4c132bdfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">refreshes content on oled display. Refreshes content on oled display. Call it, if you want to update the screen. Engine will update only those areas, which are marked by <a class="el" href="class_nano_engine_tiler.html#ad465542210563583e80984107285460b">refresh()</a> methods. <br /></td></tr>
+<tr class="separator:ab6fce88fed6fb414cd30b2e4c132bdfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab80149e0520d65591317bbfa6eb41e28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ab80149e0520d65591317bbfa6eb41e28">displayPopup</a> (const char *msg)</td></tr>
+<tr class="memdesc:ab80149e0520d65591317bbfa6eb41e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">prints popup message over display content prints popup message over display content  <a href="#ab80149e0520d65591317bbfa6eb41e28">More...</a><br /></td></tr>
+<tr class="separator:ab80149e0520d65591317bbfa6eb41e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ac51c6c90c70b3f14b8be226b5eb0f748"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ac51c6c90c70b3f14b8be226b5eb0f748">m_refreshFlags</a> [NE_MAX_TILES_NUM]</td></tr>
-<tr class="separator:ac51c6c90c70b3f14b8be226b5eb0f748"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fea498adc40a93cfd53a5939a4ae37e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_nano_display_ops.html">NanoDisplayOps</a>&lt; B &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a1fea498adc40a93cfd53a5939a4ae37e">m_display</a></td></tr>
-<tr class="separator:a1fea498adc40a93cfd53a5939a4ae37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4285b2ad6df9947679fab68e8e097786"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga5db298dc5fe7132d3190e5e423b6da6a">TNanoEngineOnDraw</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a4285b2ad6df9947679fab68e8e097786">m_onDraw</a></td></tr>
-<tr class="separator:a4285b2ad6df9947679fab68e8e097786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab774d4d6e9ce52663001d61f07ac3a79"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ab774d4d6e9ce52663001d61f07ac3a79">m_refreshFlags</a> [NE_MAX_TILES_NUM]</td></tr>
+<tr class="separator:ab774d4d6e9ce52663001d61f07ac3a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a123ea15a74b5641896c8e8d312a1ffe0"><td class="memItemLeft" align="right" valign="top">D &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a123ea15a74b5641896c8e8d312a1ffe0">m_display</a></td></tr>
+<tr class="separator:a123ea15a74b5641896c8e8d312a1ffe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae277b28ddc52ec2645c6ea3a140089ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga5db298dc5fe7132d3190e5e423b6da6a">TNanoEngineOnDraw</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ae277b28ddc52ec2645c6ea3a140089ff">m_onDraw</a></td></tr>
+<tr class="separator:ae277b28ddc52ec2645c6ea3a140089ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;class C, uint8_t B&gt;<br />
-class NanoEngineTiler&lt; C, B &gt;</h3>
+<div class="textblock"><h3>template&lt;class C, class D&gt;<br />
+class NanoEngineTiler&lt; C, D &gt;</h3>
 
 <p>This class template is responsible for holding and updating data about areas to be refreshed on LCD display. It accepts canvas class, tile width in pixels, tile height in pixels and number of bits in tile width as arguments for the template. For example, for 8x8 8-bit RGB tiles the reference should be NanoEngineTiler&lt;NanoCanvas8,8,8,3&gt;, and 3 bits means 3^2 = 8. If you need to have single big buffer, holding the whole content for monochrome display, you can specify something like this NanoEngineTiler&lt;NanoCanvas1,128,64,7&gt;. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00079">79</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aa1c621d4f6843b3f043a16a03f1f9f9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1c621d4f6843b3f043a16a03f1f9f9f">&#9670;&nbsp;</a></span>NanoEngineTiler()</h2>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00076">76</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a27aa224eaeeaba811e6688bf3a43c881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27aa224eaeeaba811e6688bf3a43c881">&#9670;&nbsp;</a></span>TilerT</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt;C,D&gt; <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::<a class="el" href="class_nano_engine_tiler.html#a27aa224eaeeaba811e6688bf3a43c881">TilerT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This type is template argument for all Nano Objects. </p>
+
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00179">179</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a957ecf4bdb3a257133cbd3a2300beb70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a957ecf4bdb3a257133cbd3a2300beb70">&#9670;&nbsp;</a></span>NanoEngineTiler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::<a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a> </td>
+          <td class="memname"><a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::<a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_nano_display_ops.html">NanoDisplayOps</a>&lt; B &gt; &amp;&#160;</td>
+          <td class="paramtype">D &amp;&#160;</td>
           <td class="paramname"><em>display</em></td><td>)</td>
           <td></td>
         </tr>
@@ -182,32 +208,32 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Only child classes can initialize the engine </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00176">176</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00173">173</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a49e9413444e6da21cd9ae27f80f2fc78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49e9413444e6da21cd9ae27f80f2fc78">&#9670;&nbsp;</a></span>collision()</h2>
+<a id="a46cd57f9747c91460ceec1d69883a403"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46cd57f9747c91460ceec1d69883a403">&#9670;&nbsp;</a></span>collision()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::collision </td>
+          <td class="memname">bool <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::collision </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;&#160;</td>
           <td class="paramname"><em>p</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga4a82780f66e02834d957e77e70cc17d7">NanoRect</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga4a82780f66e02834d957e77e70cc17d7">NanoRect</a> &amp;&#160;</td>
           <td class="paramname"><em>rect</em>&#160;</td>
         </tr>
         <tr>
@@ -233,23 +259,23 @@ template&lt;class C , uint8_t B&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if point is inside the rectangle area. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00336">336</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00337">337</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="ad42fc155500f45d75649d85e3316c44a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad42fc155500f45d75649d85e3316c44a">&#9670;&nbsp;</a></span>displayPopup()</h2>
+<a id="ab80149e0520d65591317bbfa6eb41e28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab80149e0520d65591317bbfa6eb41e28">&#9670;&nbsp;</a></span>displayPopup()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::displayPopup </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::displayPopup </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
@@ -271,25 +297,25 @@ template&lt;class C , uint8_t B&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00491">491</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00494">494</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a4c71ecdeacfee7d0c79d704d7c0419be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c71ecdeacfee7d0c79d704d7c0419be">&#9670;&nbsp;</a></span>drawCallback()</h2>
+<a id="a29675e84fb7c1d4cdb8e4a8a9a752d2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29675e84fb7c1d4cdb8e4a8a9a752d2f">&#9670;&nbsp;</a></span>drawCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::drawCallback </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::drawCallback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga5db298dc5fe7132d3190e5e423b6da6a">TNanoEngineOnDraw</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga5db298dc5fe7132d3190e5e423b6da6a">TNanoEngineOnDraw</a>&#160;</td>
           <td class="paramname"><em>callback</em></td><td>)</td>
           <td></td>
         </tr>
@@ -300,7 +326,7 @@ template&lt;class C , uint8_t B&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Sets user-defined draw callback. This callback will be called everytime, engine needs to update display content. If user callback returns false, engine will not update that area. You always have a way to find out, which area is being updated by engine via NanoEngine&lt;&gt;::canvas::getOffset() and NanoEngine&lt;&gt;::NE_TILE_SIZE. </p><dl class="section warning"><dt>Warning</dt><dd>By default canvas in the engine is initialized with world coordinates. So graphics object with [0,0] coordinates will be placed at topleft position fo the window pointed by offset property of <a class="el" href="class_nano_engine.html">NanoEngine</a>. But engine supports also local coordinates, if you need to draw some dialog, for example. In this case actual object position depends on current engine offset. Refer to <a class="el" href="class_nano_engine_tiler.html#a23ed5c262124fb7dd3f630aac687dbc8">worldCoordinates()</a> and <a class="el" href="class_nano_engine_tiler.html#a07b0650f62948cf42468154188e698bc">localCoordinates()</a>. </dd></dl>
+<p>Sets user-defined draw callback. This callback will be called everytime, engine needs to update display content. If user callback returns false, engine will not update that area. You always have a way to find out, which area is being updated by engine via NanoEngine&lt;&gt;::canvas::getOffset() and NanoEngine&lt;&gt;::NE_TILE_SIZE. </p><dl class="section warning"><dt>Warning</dt><dd>By default canvas in the engine is initialized with world coordinates. So graphics object with [0,0] coordinates will be placed at topleft position fo the window pointed by offset property of <a class="el" href="class_nano_engine.html">NanoEngine</a>. But engine supports also local coordinates, if you need to draw some dialog, for example. In this case actual object position depends on current engine offset. Refer to <a class="el" href="class_nano_engine_tiler.html#aa628ed742bcf4dffcb481edc5dab3d8d">worldCoordinates()</a> and <a class="el" href="class_nano_engine_tiler.html#a9f897860d9b19729fb60df20788b0791">localCoordinates()</a>. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">callback</td><td>- user-defined draw callback. </td></tr>
@@ -308,27 +334,27 @@ template&lt;class C , uint8_t B&gt; </div>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>you can change draw callback anytime you need. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_nano_engine_tiler.html#a23ed5c262124fb7dd3f630aac687dbc8">worldCoordinates()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_nano_engine_tiler.html#aa628ed742bcf4dffcb481edc5dab3d8d">worldCoordinates()</a> </dd>
 <dd>
-<a class="el" href="class_nano_engine_tiler.html#a07b0650f62948cf42468154188e698bc">localCoordinates()</a> </dd></dl>
+<a class="el" href="class_nano_engine_tiler.html#a9f897860d9b19729fb60df20788b0791">localCoordinates()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00324">324</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00325">325</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a1e5770280f97e37f77b3f65823ff9ac8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e5770280f97e37f77b3f65823ff9ac8">&#9670;&nbsp;</a></span>getCanvas()</h2>
+<a id="a7c55511c0c5927ad1cf519c458bbefbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c55511c0c5927ad1cf519c458bbefbc">&#9670;&nbsp;</a></span>getCanvas()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">C&amp; <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::getCanvas </td>
+          <td class="memname">C&amp; <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::getCanvas </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -342,23 +368,23 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Returns canvas, used by the <a class="el" href="class_nano_engine.html">NanoEngine</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00405">405</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00406">406</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="ae8d8bb43b6a02536b487dfcadbd7defb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8d8bb43b6a02536b487dfcadbd7defb">&#9670;&nbsp;</a></span>getDisplay()</h2>
+<a id="afb19e84dd6c15fed9746bd01c8797370"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb19e84dd6c15fed9746bd01c8797370">&#9670;&nbsp;</a></span>getDisplay()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_nano_display_ops.html">NanoDisplayOps</a>&lt;B&gt;&amp; <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::getDisplay </td>
+          <td class="memname">D&amp; <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::getDisplay </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -372,23 +398,23 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Returns reference to display object. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00410">410</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00411">411</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a04c0ff9f6d00b694935aca8e888a558c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04c0ff9f6d00b694935aca8e888a558c">&#9670;&nbsp;</a></span>getPosition()</h2>
+<a id="aecc7f4ae1bd6d9983997d3b75c34c948"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecc7f4ae1bd6d9983997d3b75c34c948">&#9670;&nbsp;</a></span>getPosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a>&amp; <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::getPosition </td>
+          <td class="memname">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a>&amp; <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::getPosition </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -402,25 +428,25 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Returns current World offset </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00303">303</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00304">304</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a40c37ac36e1d72c1e4ec705347be90eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40c37ac36e1d72c1e4ec705347be90eb">&#9670;&nbsp;</a></span>insert()</h2>
+<a id="ae1aa063368bb408a5f675b709e817de9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1aa063368bb408a5f675b709e817de9">&#9670;&nbsp;</a></span>insert()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::insert </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>&lt; <a class="el" href="class_nano_engine.html">NanoEngine</a>&lt; C, B &gt;&gt; &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>&lt; <a class="el" href="class_nano_engine_tiler.html#a27aa224eaeeaba811e6688bf3a43c881">TilerT</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>object</em></td><td>)</td>
           <td></td>
         </tr>
@@ -431,31 +457,31 @@ template&lt;class C , uint8_t B&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Inserts new <a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>. This object will be displayed during next call to <a class="el" href="class_nano_engine_tiler.html#a9e0e6144c711fbcebdc379f6aaa13368">update()</a>/draw() methods.</p>
+<p>Inserts new <a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>. This object will be displayed during next call to <a class="el" href="class_nano_engine_tiler.html#a0f94ba4d2a330836d71dd49c188d939f">update()</a>/draw() methods.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">object</td><td>object to place to <a class="el" href="class_nano_engine.html">NanoEngine</a> </td></tr>
+    <tr><td class="paramname">object</td><td>reference to object to place to <a class="el" href="class_nano_engine.html">NanoEngine</a> </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00344">344</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00345">345</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a07b0650f62948cf42468154188e698bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07b0650f62948cf42468154188e698bc">&#9670;&nbsp;</a></span>localCoordinates()</h2>
+<a id="a9f897860d9b19729fb60df20788b0791"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f897860d9b19729fb60df20788b0791">&#9670;&nbsp;</a></span>localCoordinates()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::localCoordinates </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::localCoordinates </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -469,25 +495,25 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Switches engine canvas to local coordinates system. This method can be useful to ease up drawing of some static elements on lcd display. </p><dl class="section warning"><dt>Warning</dt><dd>do not call twice subsequentally. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00267">267</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00268">268</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a94f5725c46ba1be16f1cf9502ba10bc4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94f5725c46ba1be16f1cf9502ba10bc4">&#9670;&nbsp;</a></span>moveTo()</h2>
+<a id="a3f923ad4ab1a962794fab10c93ebece1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f923ad4ab1a962794fab10c93ebece1">&#9670;&nbsp;</a></span>moveTo()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::moveTo </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::moveTo </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;&#160;</td>
           <td class="paramname"><em>position</em></td><td>)</td>
           <td></td>
         </tr>
@@ -500,25 +526,25 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Moves engine coordinate to new position (this sets World coordinates offset). </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00285">285</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00286">286</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a2f989d7bb06919e486eaaca7dcc5af34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f989d7bb06919e486eaaca7dcc5af34">&#9670;&nbsp;</a></span>moveToAndRefresh()</h2>
+<a id="acc99655d02fc453154fa57d63756fdd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc99655d02fc453154fa57d63756fdd4">&#9670;&nbsp;</a></span>moveToAndRefresh()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::moveToAndRefresh </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::moveToAndRefresh </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;&#160;</td>
           <td class="paramname"><em>position</em></td><td>)</td>
           <td></td>
         </tr>
@@ -531,23 +557,23 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Moves engine coordinate to new position and mark whole display for refresh (this sets World coordinates offset). </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00294">294</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00295">295</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a876d04901d2dcf3df6f137080e2fffe0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a876d04901d2dcf3df6f137080e2fffe0">&#9670;&nbsp;</a></span>refresh() <span class="overload">[1/4]</span></h2>
+<a id="ad465542210563583e80984107285460b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad465542210563583e80984107285460b">&#9670;&nbsp;</a></span>refresh() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::refresh </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::refresh </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -561,25 +587,25 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Marks all tiles for update. Actual update will take place in display() method. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00188">188</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00189">189</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a2ab528c728eeee350a90bf966a13fd3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ab528c728eeee350a90bf966a13fd3d">&#9670;&nbsp;</a></span>refresh() <span class="overload">[2/4]</span></h2>
+<a id="a2d6a05eeedc1343cce5a99581204fc95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d6a05eeedc1343cce5a99581204fc95">&#9670;&nbsp;</a></span>refresh() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::refresh </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::refresh </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga4a82780f66e02834d957e77e70cc17d7">NanoRect</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga4a82780f66e02834d957e77e70cc17d7">NanoRect</a> &amp;&#160;</td>
           <td class="paramname"><em>rect</em></td><td>)</td>
           <td></td>
         </tr>
@@ -592,25 +618,25 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Mark specified area in pixels for redrawing by <a class="el" href="class_nano_engine.html">NanoEngine</a>. Actual update will take place in display() method. </p><dl class="section note"><dt>Note</dt><dd>assumes that rect is in local screen coordinates </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00198">198</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00199">199</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a639b1789868cab29301759573a2e46c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a639b1789868cab29301759573a2e46c4">&#9670;&nbsp;</a></span>refresh() <span class="overload">[3/4]</span></h2>
+<a id="addb8fda2b5f4d2aac9f74f1440a6d4f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addb8fda2b5f4d2aac9f74f1440a6d4f5">&#9670;&nbsp;</a></span>refresh() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::refresh </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::refresh </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;&#160;</td>
           <td class="paramname"><em>point</em></td><td>)</td>
           <td></td>
         </tr>
@@ -623,23 +649,23 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Mark specified area in pixels for redrawing by <a class="el" href="class_nano_engine.html">NanoEngine</a>. Actual update will take place in display() method. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00207">207</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00208">208</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a423956a5b8b4ebdf4c46f8cdb0028ec5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a423956a5b8b4ebdf4c46f8cdb0028ec5">&#9670;&nbsp;</a></span>refresh() <span class="overload">[4/4]</span></h2>
+<a id="a22c70012177a7306900fad1013478cc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22c70012177a7306900fad1013478cc6">&#9670;&nbsp;</a></span>refresh() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::refresh </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::refresh </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a>&#160;</td>
           <td class="paramname"><em>x1</em>, </td>
@@ -676,25 +702,25 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Mark specified area in pixels for redrawing by <a class="el" href="class_nano_engine.html">NanoEngine</a>. Actual update will take place in display() method. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00217">217</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00218">218</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="ab490be1a946245f401a54986b0f55158"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab490be1a946245f401a54986b0f55158">&#9670;&nbsp;</a></span>refreshWorld() <span class="overload">[1/3]</span></h2>
+<a id="a42e2b5d5aa4f8a1be2c337ebca9e0155"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42e2b5d5aa4f8a1be2c337ebca9e0155">&#9670;&nbsp;</a></span>refreshWorld() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::refreshWorld </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::refreshWorld </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga4a82780f66e02834d957e77e70cc17d7">NanoRect</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga4a82780f66e02834d957e77e70cc17d7">NanoRect</a> &amp;&#160;</td>
           <td class="paramname"><em>rect</em></td><td>)</td>
           <td></td>
         </tr>
@@ -705,25 +731,25 @@ template&lt;class C , uint8_t B&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Marks for refresh lcd area, which corresponds to specified rectangle in global (World) coordinates. If engine offset is (0,0), then this function refreshes the same area as <a class="el" href="class_nano_engine_tiler.html#a876d04901d2dcf3df6f137080e2fffe0">refresh()</a>. </p>
+<p>Marks for refresh lcd area, which corresponds to specified rectangle in global (World) coordinates. If engine offset is (0,0), then this function refreshes the same area as <a class="el" href="class_nano_engine_tiler.html#ad465542210563583e80984107285460b">refresh()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00238">238</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00239">239</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a8de6d0b74fab3efa2f4d1f9fba657147"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8de6d0b74fab3efa2f4d1f9fba657147">&#9670;&nbsp;</a></span>refreshWorld() <span class="overload">[2/3]</span></h2>
+<a id="a6c5593aba4a6a4c00f09bf16cb4c56a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c5593aba4a6a4c00f09bf16cb4c56a2">&#9670;&nbsp;</a></span>refreshWorld() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::refreshWorld </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::refreshWorld </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group___s_s_d1306___h_a_l___a_p_i.html#ga609c6ba2ba635102cd316b7b59af8351">lcdint_t</a>&#160;</td>
           <td class="paramname"><em>x1</em>, </td>
@@ -758,27 +784,27 @@ template&lt;class C , uint8_t B&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Marks for refresh lcd area, which corresponds to specified rectangle in global (World) coordinates. If engine offset is (0,0), then this function refreshes the same area as <a class="el" href="class_nano_engine_tiler.html#a876d04901d2dcf3df6f137080e2fffe0">refresh()</a>. </p>
+<p>Marks for refresh lcd area, which corresponds to specified rectangle in global (World) coordinates. If engine offset is (0,0), then this function refreshes the same area as <a class="el" href="class_nano_engine_tiler.html#ad465542210563583e80984107285460b">refresh()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00248">248</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00249">249</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a258d7e07cbc57801dc3385ce0162ccd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a258d7e07cbc57801dc3385ce0162ccd2">&#9670;&nbsp;</a></span>refreshWorld() <span class="overload">[3/3]</span></h2>
+<a id="ab0371405f9553a8cd762a7765f9a9768"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0371405f9553a8cd762a7765f9a9768">&#9670;&nbsp;</a></span>refreshWorld() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::refreshWorld </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::refreshWorld </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga6bed080ec75d21960ecff045b5b110ff">NanoPoint</a> &amp;&#160;</td>
           <td class="paramname"><em>point</em></td><td>)</td>
           <td></td>
         </tr>
@@ -796,25 +822,25 @@ template&lt;class C , uint8_t B&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00257">257</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00258">258</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a41e6207c0a9a2d4ac0ae2051ddbe4363"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41e6207c0a9a2d4ac0ae2051ddbe4363">&#9670;&nbsp;</a></span>remove()</h2>
+<a id="acc4520540d1d9038e5247ab170423fe1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc4520540d1d9038e5247ab170423fe1">&#9670;&nbsp;</a></span>remove()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::remove </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::remove </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>&lt; <a class="el" href="class_nano_engine.html">NanoEngine</a>&lt; C, B &gt;&gt; &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_nano_engine_object.html">NanoEngineObject</a>&lt; <a class="el" href="class_nano_engine_tiler.html#a27aa224eaeeaba811e6688bf3a43c881">TilerT</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>object</em></td><td>)</td>
           <td></td>
         </tr>
@@ -825,7 +851,7 @@ template&lt;class C , uint8_t B&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Removes <a class="el" href="class_nano_engine_object.html">NanoEngineObject</a> from the list, but doesn't destroy the object. The place occupied by this object will be refreshed during next call to <a class="el" href="class_nano_engine_tiler.html#a9e0e6144c711fbcebdc379f6aaa13368">update()</a>/draw() methods.</p>
+<p>Removes <a class="el" href="class_nano_engine_object.html">NanoEngineObject</a> from the list, but doesn't destroy the object. The place occupied by this object will be refreshed during next call to <a class="el" href="class_nano_engine_tiler.html#a0f94ba4d2a330836d71dd49c188d939f">update()</a>/draw() methods.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">object</td><td>object to remove from <a class="el" href="class_nano_engine.html">NanoEngine</a> </td></tr>
@@ -833,23 +859,23 @@ template&lt;class C , uint8_t B&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00359">359</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00360">360</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a9e0e6144c711fbcebdc379f6aaa13368"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e0e6144c711fbcebdc379f6aaa13368">&#9670;&nbsp;</a></span>update()</h2>
+<a id="a0f94ba4d2a330836d71dd49c188d939f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f94ba4d2a330836d71dd49c188d939f">&#9670;&nbsp;</a></span>update()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::update </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::update </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -863,23 +889,23 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Updates all objects. This method doesn't refresh screen content </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00392">392</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00393">393</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a23ed5c262124fb7dd3f630aac687dbc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23ed5c262124fb7dd3f630aac687dbc8">&#9670;&nbsp;</a></span>worldCoordinates()</h2>
+<a id="aa628ed742bcf4dffcb481edc5dab3d8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa628ed742bcf4dffcb481edc5dab3d8d">&#9670;&nbsp;</a></span>worldCoordinates()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::worldCoordinates </td>
+          <td class="memname">void <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::worldCoordinates </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -893,24 +919,24 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Switches engine canvas to global (World) coordinates system. This method can be useful to create screen moving animation. </p><dl class="section warning"><dt>Warning</dt><dd>do not call twice subsequentally. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00277">277</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00278">278</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1fea498adc40a93cfd53a5939a4ae37e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1fea498adc40a93cfd53a5939a4ae37e">&#9670;&nbsp;</a></span>m_display</h2>
+<a id="a123ea15a74b5641896c8e8d312a1ffe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a123ea15a74b5641896c8e8d312a1ffe0">&#9670;&nbsp;</a></span>m_display</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_nano_display_ops.html">NanoDisplayOps</a>&lt;B&gt;&amp; <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::m_display</td>
+          <td class="memname">D&amp; <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::m_display</td>
         </tr>
       </table>
   </td>
@@ -921,23 +947,23 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Reference to display object, used by <a class="el" href="class_nano_engine.html">NanoEngine</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00422">422</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00423">423</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="a4285b2ad6df9947679fab68e8e097786"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4285b2ad6df9947679fab68e8e097786">&#9670;&nbsp;</a></span>m_onDraw</h2>
+<a id="ae277b28ddc52ec2645c6ea3a140089ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae277b28ddc52ec2645c6ea3a140089ff">&#9670;&nbsp;</a></span>m_onDraw</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i.html#ga5db298dc5fe7132d3190e5e423b6da6a">TNanoEngineOnDraw</a> <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::m_onDraw</td>
+          <td class="memname"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga5db298dc5fe7132d3190e5e423b6da6a">TNanoEngineOnDraw</a> <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::m_onDraw</td>
         </tr>
       </table>
   </td>
@@ -948,23 +974,23 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Callback to call if specific tile needs to be updated </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00425">425</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00426">426</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="ac51c6c90c70b3f14b8be226b5eb0f748"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac51c6c90c70b3f14b8be226b5eb0f748">&#9670;&nbsp;</a></span>m_refreshFlags</h2>
+<a id="ab774d4d6e9ce52663001d61f07ac3a79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab774d4d6e9ce52663001d61f07ac3a79">&#9670;&nbsp;</a></span>m_refreshFlags</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class C , uint8_t B&gt; </div>
+template&lt;class C , class D &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, B &gt;::m_refreshFlags[NE_MAX_TILES_NUM]</td>
+          <td class="memname">uint16_t <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::m_refreshFlags[NE_MAX_TILES_NUM]</td>
         </tr>
       </table>
   </td>
@@ -975,12 +1001,12 @@ template&lt;class C , uint8_t B&gt; </div>
 </div><div class="memdoc">
 <p>Contains information on tiles to be updated. Elements of array are rows and bits are columns. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00417">417</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00418">418</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>nano_engine/<a class="el" href="tiler_8h_source.html">tiler.h</a></li>
+<li>v2/nano_engine/<a class="el" href="tiler_8h_source.html">tiler.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
