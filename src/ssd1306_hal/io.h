@@ -317,10 +317,14 @@ extern "C" {
 #endif // end ifdef __cplusplus
 
 // !!! PLATFORM I2C IMPLEMENTATION OPTIONAL !!!
+
+/**
+ * Structure describes i2c pins
+ */
 typedef struct
 {
-    int8_t sda;
-    int8_t scl;
+    int8_t sda; ///< data pin
+    int8_t scl; ///< clock pin
 } ssd1306_platform_i2cConfig_t;
 
 /**

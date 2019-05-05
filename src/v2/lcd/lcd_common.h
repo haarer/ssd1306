@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 /**
- * @file lcd_common.h global lcd settings
+ * @file v2/lcd/lcd_common.h global lcd settings
  */
 
 #ifndef _LCD_COMMON_V2_H_
