@@ -651,7 +651,7 @@ void NanoDisplayOps<O,I>::printFixedPgm(lcdint_t xpos, lcdint_t y, const char *c
 template <class O, class I>
 static uint8_t getMaxScreenItems(NanoDisplayOps<O,I> &display)
 {
-    return (display.height() >> 3) - 2;
+    return (display.height() - 16) / display.getFont().getHeader().height;
 }
 
 template <class O, class I>
@@ -680,7 +680,9 @@ static void drawMenuItem(NanoDisplayOps<O,I> &display, SAppMenu *menu, uint8_t i
         display.positiveMode();
     }
     display.setColor( 0xFFFF );
-    display.printFixed(8, (index - menu->scrollPosition + 1)*8, menu->items[index], STYLE_NORMAL );
+    display.printFixed(8,
+                       (index - menu->scrollPosition)*display.getFont().getHeader().height + 8,
+                       menu->items[index], STYLE_NORMAL );
     display.positiveMode();
 }
 
