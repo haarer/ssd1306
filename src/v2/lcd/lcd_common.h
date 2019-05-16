@@ -29,6 +29,7 @@
 #define _LCD_COMMON_V2_H_
 
 #include "ssd1306_hal/io.h"
+#include "lcd_common.inl"
 
 #ifdef __cplusplus
 extern "C" {
@@ -55,6 +56,9 @@ extern "C" {
  * @param delayMs delay in milliseconds to hold rstPin in low state
  */
 void ssd1306_resetController2(int8_t rstPin, uint8_t delayMs);
+
+
+
 
 /**
  * @}
