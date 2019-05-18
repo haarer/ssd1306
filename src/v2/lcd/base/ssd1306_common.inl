@@ -679,9 +679,12 @@ static void drawMenuItem(NanoDisplayOps<O,I> &display, SAppMenu *menu, uint8_t i
     {
         display.positiveMode();
     }
+    lcdint_t item_top = 8 + (index - menu->scrollPosition)*display.getFont().getHeader().height;
+    display.setColor( 0x0000 );
+    display.fillRect( 8 + display.getFont().getTextSize(menu->items[index]), item_top,
+                  display.width() - 9, item_top + display.getFont().getHeader().height - 1 );
     display.setColor( 0xFFFF );
-    display.printFixed(8,
-                       (index - menu->scrollPosition)*display.getFont().getHeader().height + 8,
+    display.printFixed(8, item_top,
                        menu->items[index], STYLE_NORMAL );
     display.positiveMode();
 }
@@ -716,7 +719,7 @@ void NanoDisplayOps<O,I>::updateMenu(SAppMenu *menu)
         uint8_t scrollPosition = calculateScrollPosition<O,I>( *this, menu, menu->selection );
         if ( scrollPosition != menu->scrollPosition )
         {
-            this->clear();
+//            this->clear();
             showMenu(menu);
         }
         else
