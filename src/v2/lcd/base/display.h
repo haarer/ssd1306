@@ -710,6 +710,8 @@ public:
      */
     void drawRect(const NanoRect &rect);
 
+    using O::fillRect;
+
     /**
      * Fills rectangle area
      * @param rect - structure, describing rectangle area
