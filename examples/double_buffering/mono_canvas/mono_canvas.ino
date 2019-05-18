@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2017-2018, Alexey Dynda
+    Copyright (c) 2017-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,13 @@
  */
 
 #include "ssd1306v2.h"
-#include "nano_engine.h"
+
+DisplaySSD1306_128x64_I2C display;
+//DisplaySSD1306_128x64_SPI display(-1,{-1, 0, 1, 0, -1, -1); // Use this line for nano pi (RST not used, 0=CE, gpio1=D/C)
+//DisplaySSD1306_128x64_SPI display(3,{-1, 4, 5, 0,-1,-1});   // Use this line for Atmega328p (3=RST, 4=CE, 5=D/C)
+//DisplaySSD1306_128x64_SPI display(24,{-1, 0, 23, 0,-1,-1}); // Use this line for Raspberry  (gpio24=RST, 0=CE, gpio23=D/C)
+//DisplaySSD1306_128x64_SPI display(22,{-1, 5, 21, 0,-1,-1}); // Use this line for ESP32 (VSPI)  (gpio22=RST, gpio5=CE for VSPI, gpio21=D/C)
+
 
 /*
  * Heart image below is defined directly in flash memory.
@@ -86,15 +92,9 @@ NanoCanvas1 canvas(canvasWidth, canvasHeight, canvasData);
 void setup()
 {
     /* Initialize and clear display */
-    ssd1306_128x64_i2c_init();
-//    ssd1306_128x64_spi_init(3, 4, 5);
-//    pcd8544_84x48_spi_init(3, 4, 5); // 3 RST, 4 CES, 5 DS
-//    ssd1331_96x64_spi_init(3, 4, 5);
-//    ssd1351_128x128_spi_init(3, 4, 5);
-//    il9163_128x128_spi_init(3, 4, 5);
-//    st7735_128x160_spi_init(3, 4, 5);
+    display.begin();
+    display.clear();
 
-    ssd1306_fillScreen(0x00);
     /* Create 4 "hearts", and place them at different positions and give different movement direction */
     for(uint8_t i = 0; i < spritesCount; i++)
     {
@@ -133,5 +133,5 @@ void loop()
         canvas.drawBitmap1( objects[i].pos.x, objects[i].pos.y, 8, 8, heartImage );
     }
     /* Now, draw canvas on the display */
-    canvas.blt(48, 0);
+    display.drawCanvas( 48, 0, canvas );
 }
