@@ -318,7 +318,7 @@ lcduint_t NanoFont::getTextSize(const char *text, lcduint_t *height)
         SCharInfo char_info;
         getCharBitmap(unicode, &char_info);
         width += char_info.width + char_info.spacing;
-        if ( *height ) *height = char_info.height;
+        if ( height ) *height = char_info.height;
         text++;
     }
     return width;
