@@ -22,26 +22,19 @@
     SOFTWARE.
 */
 
-#include "buttons.h"
-#include "ssd1306v2.h"
+#pragma once
 
-uint8_t getPressedButton(uint8_t analogPin)
+#include <stdint.h>
+
+enum class Key: uint8_t
 {
-  int buttonValue = analogRead(analogPin);
-  if (buttonValue < 100) {
-    return BUTTON_RIGHT;
-  }
-  else if (buttonValue < 200) {
-    return BUTTON_UP;
-  }
-  else if (buttonValue < 400){
-    return BUTTON_DOWN;
-  }
-  else if (buttonValue < 600){
-    return BUTTON_LEFT;
-  }
-  else if (buttonValue < 800){
-    return BUTTON_SELECT;
-  }
-  return BUTTON_NONE;
-}
+    BT_NONE   = 0,
+    BT_RIGHT  = 1,
+    BT_UP     = 2,
+    BT_DOWN   = 3,
+    BT_LEFT   = 4,
+    BT_SELECT = 5,
+};
+
+Key getPressedButton(uint8_t analogPin);
+

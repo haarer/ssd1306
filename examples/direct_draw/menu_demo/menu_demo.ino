@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2017-2018, Alexey Dynda
+    Copyright (c) 2017-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -41,6 +41,12 @@
 #endif
 #define BUTTON_PIN     A0
 
+DisplaySSD1306_128x64_I2C display;
+//DisplaySSD1306_128x64_SPI display(-1,{-1, 0, 1, 0, -1, -1); // Use this line for nano pi (RST not used, 0=CE, gpio1=D/C)
+//DisplaySSD1306_128x64_SPI display(3,{-1, 4, 5, 0,-1,-1});   // Use this line for Atmega328p (3=RST, 4=CE, 5=D/C)
+//DisplaySSD1306_128x64_SPI display(24,{-1, 0, 23, 0,-1,-1}); // Use this line for Raspberry  (gpio24=RST, 0=CE, gpio23=D/C)
+//DisplaySSD1306_128x64_SPI display(22,{-1, 5, 21, 0,-1,-1}); // Use this line for ESP32 (VSPI)  (gpio22=RST, gpio5=CE for VSPI, gpio21=D/C)
+
 /* Define menu items of the menu box */
 const char *menuItems[] =
 {
@@ -48,33 +54,33 @@ const char *menuItems[] =
     "menu item 2",
     "menu item 3",
     "menu item 4",
-    "menu item 5",
-    "menu item 6",
-    "menu item 7",
-    "menu item 8",
+    "menu item N 5",
+    "menu item N 6",
+    "menu item N 7",
+    "menu item last",
 };
 
 /* This variable will hold menu state, processed by SSD1306 API functions */
 SAppMenu menu;
-static uint8_t button;
+static Key button;
 
 
 void setup()
 {
-    ssd1306_128x64_i2c_init();
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
-    ssd1306_fillScreen( 0x00 );
+    display.begin();
+    display.setFixedFont(ssd1306xled_font8x16);
+    display.clear();
     /* Initialize main menu state */
-    ssd1306_createMenu( &menu, menuItems, sizeof(menuItems) / sizeof(char *) );
+    display.createMenu( &menu, menuItems, sizeof(menuItems) / sizeof(char *) );
     /* show menu on the display */
-    ssd1306_showMenu( &menu );
+    display.showMenu( &menu );
     button = getPressedButton(BUTTON_PIN);
 }
 
 
 void loop()
 {
-    uint8_t newButton = getPressedButton(BUTTON_PIN);
+    Key newButton = getPressedButton(BUTTON_PIN);
     if (newButton == button)
     {
         return;
@@ -82,18 +88,18 @@ void loop()
     button = newButton;
     switch (button)
     {
-        case BUTTON_UP:
+        case Key::BT_UP:
             /* move menu cursor up and refresh menu on the display */
-            ssd1306_menuUp( &menu );
-            ssd1306_updateMenu( &menu );
+            display.menuUp( &menu );
+            display.updateMenu( &menu );
             break;
-        case BUTTON_DOWN:
+        case Key::BT_DOWN:
             /* move menu cursor down and refresh menu on the display */
-            ssd1306_menuDown( &menu );
-            ssd1306_updateMenu( &menu );
+            display.menuDown( &menu );
+            display.updateMenu( &menu );
             break;
-        case BUTTON_SELECT:
-            /* You always can request current position of menu cursor, by calling ssd1306_menuSelection() */
+        case Key::BT_SELECT:
+            /* You always can request current position of menu cursor, by calling display.menuSelection() */
             break;
         default:
             break;
