@@ -122,7 +122,7 @@ public:
      * @param height pointer to lcduint_t variable to store height to. nullptr if
      *        height is not required
      */
-    lcduint_t getTextSize(const char *text, lcduint_t *height);
+    lcduint_t getTextSize(const char *text, lcduint_t *height = nullptr);
 
     /**
      * Returns 16-bit unicode char, encoded in utf8
