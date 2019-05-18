@@ -145,11 +145,13 @@ static const PROGMEM uint8_t s_ST7735_lcd128x128x16_initData[] =
           CMD_ARG, 0x2A, CMD_ARG, 0x90, CMD_ARG, 0x24,
           CMD_ARG, 0x11, CMD_ARG, 0x00, CMD_ARG, 0x00,
           CMD_ARG, 0x00, CMD_ARG, 0x00, CMD_ARG, 0x00, // positive gamma correction
+          CMD_ARG, 0x00,
     0xE1, CMD_ARG, 0x20, CMD_ARG, 0x20, CMD_ARG, 0x20,
           CMD_ARG, 0x20, CMD_ARG, 0x05, CMD_ARG, 0x00,
           CMD_ARG, 0x15, CMD_ARG, 0xA7, CMD_ARG, 0x3D,
           CMD_ARG, 0x18, CMD_ARG, 0x25, CMD_ARG, 0x2A,
           CMD_ARG, 0x2B, CMD_ARG, 0x2B, CMD_ARG, 0x3A, // negative gamma correction
+          CMD_ARG, 0x00,
     0xB1,  CMD_ARG,  0x08, CMD_ARG, 0x08, // frame rate control 1, use by default
     0xB4,  CMD_ARG, 0x07,                 // display inversion, use by default
     0xC0,  CMD_ARG,  0x0A, CMD_ARG, 0x02, // power control 1
@@ -218,7 +220,7 @@ static const PROGMEM uint8_t s_ST7735_lcd128x160x16_initData[] =
     0xC1, 0x01, 0xC5,        // PWCTR2 power control 2
     0xC2, 0x02, 0x0A, 0x00,  // PWCTR3 power control 3
     0xC3, 0x02, 0x8A, 0x2A,  // PWCTR4 (C3h): Power Control 4 (in Idle mode/ 8-colors)
-    0xC4, 0x02, 0x8A, 0xEE,  // PWCTR5 (C4h): Power Control 5 (in Partial mode/ full-colors) 
+    0xC4, 0x02, 0x8A, 0xEE,  // PWCTR5 (C4h): Power Control 5 (in Partial mode/ full-colors)
     0xC5, 0x01, 0x0E,        // VMCTR vcom control 1
     0x20, 0x00,              // INVOFF (20h): Display Inversion Off
 //    0xFC, 0x02, 0x11, 0x15,  // PWCTR6
