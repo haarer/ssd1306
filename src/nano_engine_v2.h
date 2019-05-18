@@ -100,13 +100,13 @@ using NanoEngine8 = NanoEngine<TILE_16x16_RGB8,D>;
  * @warning Works only in RGB 8-bit color mode
  */
 template <class D>
-class NanoEngine1_8: public NanoEngine<TILE_8x8_MONO_8,D>
+class NanoEngine1_8: public NanoEngine<TILE_16x16_MONO_8,D>
 {
 public:
     /**
      * Creates new Graphics Engine object.
      */
-    using NanoEngine<TILE_8x8_MONO_8,D>::NanoEngine;
+    using NanoEngine<TILE_16x16_MONO_8,D>::NanoEngine;
 };
 
 /**
@@ -125,7 +125,7 @@ public:
  * need to refresh only part of oled display.
  */
 template <class D>
-using NanoEngine16 = NanoEngine<TILE_8x8_RGB16,D>;
+using NanoEngine16 = NanoEngine<TILE_16x16_RGB16,D>;
 
 /**
  * @}

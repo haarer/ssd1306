@@ -25,7 +25,6 @@
  * @file tiler.h Tiler helper for graphics processing
  */
 
-
 #ifndef _NANO_ENGINE_TILER_H_
 #define _NANO_ENGINE_TILER_H_
 
@@ -38,7 +37,9 @@
  * @{
  */
 
-#define NE_MAX_TILES_NUM 24
+#ifndef NE_MAX_TILE_ROWS
+#define NE_MAX_TILE_ROWS 20      ///< Maximum tile rows supported. Can be defined outside the library
+#endif
 
 /**
  * Structure, holding currently set font.
@@ -56,9 +57,11 @@
 #define TILE_8x8_RGB8         NanoCanvas<8,8,8>              ///< Standard 8-bit RGB tile 8x8
 #define TILE_16x16_RGB8       NanoCanvas<16,16,8>            ///< Standard 8-bit RGB tile 16x16
 #define TILE_32x32_RGB8       NanoCanvas<32,32,8>            ///< Standard 8-bit RGB tile 32x32
-#define TILE_8x8_MONO_8       NanoCanvas<8,8,1>    ///< Standard 1-bit tile 8x8 for RGB mode
+#define TILE_8x8_MONO_8       NanoCanvas<8,8,1>              ///< Standard 1-bit tile 8x8 for RGB mode
+#define TILE_16x16_MONO_8     NanoCanvas<16,16,1>            ///< Standard 1-bit tile 16x16 for RGB mode
 // Tiles for 16-bit displays
 #define TILE_8x8_RGB16        NanoCanvas<8,8,16>             ///< Standard 16-bit RGB tile 8x8
+#define TILE_16x16_RGB16      NanoCanvas<16,16,16>           ///< Standard 16-bit RGB tile 16x16
 // Adafruit tiles
 #define ADATILE_8x8_MONO      AdafruitCanvas1,  8,  8,      3    ///< Use Adafruit GFX implementation as NanoEngine canvas
 #define ADATILE_8x8_RGB8      AdafruitCanvas8,  8,  8,      3    ///< Use Adafruit GFX implementation as NanoEngine canvas
@@ -207,7 +210,7 @@ public:
      */
     void refresh(const NanoPoint &point) __attribute__ ((noinline))
     {
-        if ((point.x<0)||(point.y<0) || ((point.y/canvas.height())>=NE_MAX_TILES_NUM)) return;
+        if ((point.x<0)||(point.y<0) || ((point.y/canvas.height())>=NE_MAX_TILE_ROWS)) return;
         m_refreshFlags[(point.y/canvas.height())] |= (1<<(point.x/canvas.width()));
     }
 
@@ -221,7 +224,7 @@ public:
         if (y1 < 0) y1 = 0;
         if (x1 < 0) x1 = 0;
         y1 = y1/canvas.height();
-        y2 = min((y2/canvas.height()), NE_MAX_TILES_NUM - 1);
+        y2 = min((y2/canvas.height()), NE_MAX_TILE_ROWS - 1);
         for (uint8_t y=y1; y<=y2; y++)
         {
             for(uint8_t x=x1/canvas.width(); x<=(x2/canvas.width()); x++)
@@ -412,18 +415,18 @@ public:
 
 protected:
     /**
-     * Contains information on tiles to be updated.
-     * Elements of array are rows and bits are columns.
-     */
-    uint16_t   m_refreshFlags[NE_MAX_TILES_NUM];
-
-    /**
      * Reference to display object, used by NanoEngine
      */
     D& m_display;
 
     /** Callback to call if specific tile needs to be updated */
     TNanoEngineOnDraw m_onDraw;
+
+    /**
+     * Contains information on tiles to be updated.
+     * Elements of array are rows and bits are columns.
+     */
+    uint16_t   m_refreshFlags[NE_MAX_TILE_ROWS];
 
     /**
      * @brief refreshes content on oled display.
