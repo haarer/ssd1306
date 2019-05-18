@@ -422,6 +422,38 @@ void NanoDisplayOps1<I>::drawVLine(lcdint_t x1, lcdint_t y1, lcdint_t y2)
 template <class I>
 void NanoDisplayOps1<I>::fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2)
 {
+    uint8_t templ = this->m_color^s_ssd1306_invertByte;
+    if (x1 > x2) return;
+    if (y1 > y2) return;
+    if ((lcduint_t)x2 >= this->m_w) x2 = (lcdint_t)this->m_w -1;
+    if ((lcduint_t)y2 >= this->m_h) y2 = (lcdint_t)this->m_h -1;
+    uint8_t bank1 = (y1 >> 3);
+    uint8_t bank2 = (y2 >> 3);
+    this->m_intf.startBlock(x1, bank1, x2 - x1 + 1);
+    for (uint8_t bank = bank1; bank<=bank2; bank++)
+    {
+        uint8_t mask = 0xFF;
+        if (bank1 == bank2)
+        {
+            mask = (mask >> ((y1 & 7) + 7 - (y2 & 7))) << (y1 & 7);
+        }
+        else if (bank1 == bank)
+        {
+            mask = (mask << (y1 & 7));
+        }
+        else if (bank2 == bank)
+        {
+            mask = (mask >> (7 - (y2 & 7)));
+        }
+        for (uint8_t x=x1; x<=x2; x++)
+        {
+//            m_bytes[BADDR(bank) + x] &= ~mask;
+//            m_bytes[BADDR(bank) + x] |= (templ & mask);
+            this->m_intf.send(templ & mask);
+        }
+        this->m_intf.nextBlock();
+    }
+    this->m_intf.endBlock();
 }
 
 template <class I>
