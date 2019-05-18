@@ -81,6 +81,7 @@ const char *menuItems[] =
 
 static void bitmapDemo()
 {
+    display.clear();
     display.setColor(RGB_COLOR16(64,64,255));
     display.drawBitmap1(0, 0, 128, 64, Owl);
     display.drawBitmap8(0, 0, 8, 8, heartImage8);
