@@ -59,8 +59,8 @@ through API.
 | ssd1306 128x32 | X | X |   |   |
 | ssd1331 96x64 |   | X | X |   |
 | ssd1351 128x128 |   | X |   |   |
-| il9163 128x128 |   | X | X | planned support |
-| st7735 128x160 |   | X | X | planned support |
+| il9163 128x128 |   | X | X |   |
+| st7735 128x160 |   | X | X |   |
 | ili9341 240x320 |   | X | X | planned support |
 | pcd8544 84x48 |   | X  |   | Nokia 5110 |
 | vga 96x40 color |   |   |   | direct D-sub output, atmega328p only, planned support |
