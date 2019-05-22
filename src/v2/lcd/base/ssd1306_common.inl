@@ -33,34 +33,6 @@
 //extern lcduint_t ssd1306_cursorY;
 
 #if 0
-void ssd1306_fillScreen(uint8_t fill_Data)
-{
-    fill_Data ^= s_ssd1306_invertByte;
-    ssd1306_lcd.set_block(0, 0, 0);
-    for(uint8_t m=(ssd1306_lcd.height >> 3); m>0; m--)
-    {
-        for(uint8_t n=ssd1306_lcd.width; n>0; n--)
-        {
-            ssd1306_lcd.send_pixels1(fill_Data);
-        }
-        ssd1306_lcd.next_page();
-    }
-    ssd1306_intf.stop();
-}
-
-void ssd1306_clearScreen()
-{
-    ssd1306_lcd.set_block(0, 0, 0);
-    for(uint8_t m=(ssd1306_lcd.height >> 3); m>0; m--)
-    {
-        for(uint8_t n=ssd1306_lcd.width; n>0; n--)
-        {
-            ssd1306_lcd.send_pixels1( s_ssd1306_invertByte );
-        }
-        ssd1306_lcd.next_page();
-    }
-    ssd1306_intf.stop();
-}
 
 uint8_t ssd1306_printFixed(uint8_t xpos, uint8_t y, const char *ch, EFontStyle style)
 {
@@ -781,3 +753,30 @@ void NanoDisplayOps<O,I>::drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<16> &
     this->drawBuffer16( x, y, canvas.width(), canvas.height(), canvas.getData() );
 }
 
+template <class O, class I>
+void NanoDisplayOps<O,I>::drawProgressBar(int8_t progress)
+{
+    lcduint_t height = 8;
+    lcduint_t width = 8;
+    char str[5] = "100%";
+    if ( progress < 100 )
+    {
+        str[0] = ' ';
+        str[1] = progress / 10 + '0';
+        str[2] = progress % 10 + '0';
+        str[3] = '%';
+    }
+    if ( this->m_font != nullptr )
+    {
+        width = this->getFont().getTextSize( str, &height );
+    }
+    lcdint_t middle = this->height() / 2;
+    lcdint_t progress_pos = 8 + (int16_t)(this->width() - 16) * progress / 100;
+    uint16_t color = this->m_color;
+    this->m_color = 0x0000;
+    this->fillRect( progress_pos, middle, this->width() - 8, middle + height );
+    this->m_color = color;
+    this->printFixed( this->width() / 2 - width / 2, middle - height, str );
+    this->drawRect( 8, middle, this->width() - 8, middle + height );
+    this->fillRect( 8, middle, progress_pos, middle + height );
+}

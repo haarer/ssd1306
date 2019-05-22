@@ -812,6 +812,13 @@ public:
      */
     void menuUp(SAppMenu *menu);
 
+    /**
+     * Displays progress bar in the middle of the display.
+     *
+     * @param progress progress in range 0 - 100.
+     */
+    void drawProgressBar(int8_t progress);
+
 protected:
     /**
      * Initializes interface and display
