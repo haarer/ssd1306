@@ -174,7 +174,7 @@ void setup()
 
     display.begin();
 
-    display.fill( 0x00 );
+    display.clear();
     display.createMenu( &menu, menuItems, sizeof(menuItems) / sizeof(char *) );
     display.showMenu( &menu );
 }
@@ -209,7 +209,7 @@ void loop()
         default:
             break;
     }
-    display.fill( 0x00 );
+    display.clear();
     display.showMenu(&menu);
     delay(500);
     display.menuDown(&menu);
