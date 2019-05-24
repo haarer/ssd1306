@@ -459,7 +459,8 @@ void NanoDisplayOps1<I>::fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_
 template <class I>
 void NanoDisplayOps1<I>::clear()
 {
-    this->m_intf.startBlock(0, 0, 0);
+    this->fill(0);
+/*    this->m_intf.startBlock(0, 0, 0);
     for(uint8_t m=(this->m_h >> 3); m>0; m--)
     {
         for(uint8_t n=this->m_w; n>0; n--)
@@ -468,7 +469,7 @@ void NanoDisplayOps1<I>::clear()
         }
         this->m_intf.nextBlock();
     }
-    this->m_intf.endBlock();
+    this->m_intf.endBlock(); */
 }
 
 template <class I>
