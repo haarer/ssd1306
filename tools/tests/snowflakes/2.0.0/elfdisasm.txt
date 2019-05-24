@@ -71,11 +71,11 @@ Disassembly of section .text:
       b8:	22 da 12 db 20 8d 14 a4 af 00                       "... .....
 
 000000c2 <__ctors_start>:
-      c2:	35 04       	cpc	r3, r5
-      c4:	d8 07       	cpc	r29, r24
+      c2:	31 04       	cpc	r3, r1
+      c4:	c4 07       	cpc	r28, r20
 
 000000c6 <__ctors_end>:
-      c6:	cd 04       	cpc	r12, r13
+      c6:	c9 04       	cpc	r12, r9
 
 000000c8 <__dtors_end>:
       c8:	11 24       	eor	r1, r1
@@ -89,8 +89,8 @@ Disassembly of section .text:
       d4:	11 e0       	ldi	r17, 0x01	; 1
       d6:	a0 e0       	ldi	r26, 0x00	; 0
       d8:	b1 e0       	ldi	r27, 0x01	; 1
-      da:	e6 e4       	ldi	r30, 0x46	; 70
-      dc:	f1 e1       	ldi	r31, 0x11	; 17
+      da:	ee ef       	ldi	r30, 0xFE	; 254
+      dc:	f0 e1       	ldi	r31, 0x10	; 16
       de:	02 c0       	rjmp	.+4      	; 0xe4 <__do_copy_data+0x10>
       e0:	05 90       	lpm	r0, Z+
       e2:	0d 92       	st	X+, r0
@@ -108,7 +108,7 @@ Disassembly of section .text:
       f2:	1d 92       	st	X+, r1
 
 000000f4 <.do_clear_bss_start>:
-      f4:	a6 3e       	cpi	r26, 0xE6	; 230
+      f4:	a4 3e       	cpi	r26, 0xE4	; 228
       f6:	b2 07       	cpc	r27, r18
       f8:	e1 f7       	brne	.-8      	; 0xf2 <.do_clear_bss_loop>
 
@@ -119,19 +119,19 @@ Disassembly of section .text:
      100:	04 c0       	rjmp	.+8      	; 0x10a <__do_global_ctors+0x10>
      102:	21 97       	sbiw	r28, 0x01	; 1
      104:	fe 01       	movw	r30, r28
-     106:	0e 94 6f 08 	call	0x10de	; 0x10de <__tablejump2__>
+     106:	0e 94 4b 08 	call	0x1096	; 0x1096 <__tablejump2__>
      10a:	c1 36       	cpi	r28, 0x61	; 97
      10c:	d1 07       	cpc	r29, r17
      10e:	c9 f7       	brne	.-14     	; 0x102 <__do_global_ctors+0x8>
      110:	0e 94 8e 00 	call	0x11c	; 0x11c <main>
-     114:	0c 94 96 08 	jmp	0x112c	; 0x112c <__do_global_dtors>
+     114:	0c 94 72 08 	jmp	0x10e4	; 0x10e4 <__do_global_dtors>
 
 00000118 <__bad_interrupt>:
      118:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 0000011c <main>:
      11c:	0e 94 1c 01 	call	0x238	; 0x238 <setup()>
-     120:	0e 94 fb 03 	call	0x7f6	; 0x7f6 <loop()>
+     120:	0e 94 f7 03 	call	0x7ee	; 0x7ee <loop()>
      124:	fd cf       	rjmp	.-6      	; 0x120 <main+0x4>
 
 00000126 <NanoSprite<NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C> >::draw()>:
@@ -161,7 +161,7 @@ Disassembly of section .text:
      154:	82 81       	ldd	r24, Z+2	; 0x02
      156:	93 81       	ldd	r25, Z+3	; 0x03
      158:	8c 96       	adiw	r24, 0x2c	; 44
-     15a:	0e 94 2b 06 	call	0xc56	; 0xc56 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)>
+     15a:	0e 94 27 06 	call	0xc4e	; 0xc4e <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)>
      15e:	1f 91       	pop	r17
      160:	0f 91       	pop	r16
      162:	ff 90       	pop	r15
@@ -279,25 +279,25 @@ Disassembly of section .text:
      236:	08 95       	ret
 
 00000238 <setup()>:
-     238:	8e eb       	ldi	r24, 0xBE	; 190
+     238:	8c eb       	ldi	r24, 0xBC	; 188
      23a:	92 e0       	ldi	r25, 0x02	; 2
-     23c:	0e 94 e5 05 	call	0xbca	; 0xbca <DisplaySSD1306_128x64_I2C::begin()>
+     23c:	0e 94 e1 05 	call	0xbc2	; 0xbc2 <DisplaySSD1306_128x64_I2C::begin()>
      240:	6e e1       	ldi	r22, 0x1E	; 30
      242:	8c e4       	ldi	r24, 0x4C	; 76
      244:	92 e0       	ldi	r25, 0x02	; 2
-     246:	0e 94 e8 07 	call	0xfd0	; 0xfd0 <NanoEngineCore::setFrameRate(unsigned char)>
+     246:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <NanoEngineCore::setFrameRate(unsigned char)>
      24a:	8c e4       	ldi	r24, 0x4C	; 76
      24c:	92 e0       	ldi	r25, 0x02	; 2
-     24e:	0e 94 e2 07 	call	0xfc4	; 0xfc4 <NanoEngineCore::begin()>
+     24e:	0e 94 ce 07 	call	0xf9c	; 0xf9c <NanoEngineCore::begin()>
      252:	82 e0       	ldi	r24, 0x02	; 2
-     254:	80 93 8f 02 	sts	0x028F, r24	; 0x80028f <engine+0x43>
+     254:	80 93 8d 02 	sts	0x028D, r24	; 0x80028d <engine+0x41>
      258:	48 e2       	ldi	r20, 0x28	; 40
      25a:	50 e0       	ldi	r21, 0x00	; 0
      25c:	6f ef       	ldi	r22, 0xFF	; 255
      25e:	70 e0       	ldi	r23, 0x00	; 0
      260:	89 e5       	ldi	r24, 0x59	; 89
      262:	92 e0       	ldi	r25, 0x02	; 2
-     264:	0c 94 8f 08 	jmp	0x111e	; 0x111e <memset>
+     264:	0c 94 6b 08 	jmp	0x10d6	; 0x10d6 <memset>
 
 00000268 <NanoObject<NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C> >::moveTo(_NanoPoint const&)>:
      268:	0f 93       	push	r16
@@ -455,7 +455,7 @@ Disassembly of section .text:
      396:	35 07       	cpc	r19, r21
      398:	2c f0       	brlt	.+10     	; 0x3a4 <SnowFlake::update()+0xc4>
      39a:	b8 01       	movw	r22, r16
-     39c:	89 59       	subi	r24, 0x99	; 153
+     39c:	8b 59       	subi	r24, 0x9B	; 155
      39e:	9f 4f       	sbci	r25, 0xFF	; 255
      3a0:	0e 94 da 00 	call	0x1b4	; 0x1b4 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::remove(NanoEngineObject<NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C> >&) [clone .isra.9] [clone .constprop.27]>
      3a4:	0f 90       	pop	r0
@@ -471,7 +471,7 @@ Disassembly of section .text:
 000003b6 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::insert(NanoEngineObject<NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C> >&)>:
      3b6:	db 01       	movw	r26, r22
      3b8:	fc 01       	movw	r30, r24
-     3ba:	e9 59       	subi	r30, 0x99	; 153
+     3ba:	eb 59       	subi	r30, 0x9B	; 155
      3bc:	ff 4f       	sbci	r31, 0xFF	; 255
      3be:	20 81       	ld	r18, Z
      3c0:	31 81       	ldd	r19, Z+1	; 0x01
@@ -567,1616 +567,1580 @@ Disassembly of section .text:
      474:	08 95       	ret
 
 00000476 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)>:
-     476:	9f 92       	push	r9
-     478:	af 92       	push	r10
-     47a:	bf 92       	push	r11
-     47c:	cf 92       	push	r12
-     47e:	df 92       	push	r13
-     480:	ef 92       	push	r14
-     482:	ff 92       	push	r15
-     484:	0f 93       	push	r16
-     486:	1f 93       	push	r17
-     488:	cf 93       	push	r28
-     48a:	df 93       	push	r29
-     48c:	7c 01       	movw	r14, r24
-     48e:	17 fd       	sbrc	r17, 7
-     490:	4f c0       	rjmp	.+158    	; 0x530 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0xba>
-     492:	37 fd       	sbrc	r19, 7
-     494:	4d c0       	rjmp	.+154    	; 0x530 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0xba>
-     496:	6b 01       	movw	r12, r22
-     498:	77 ff       	sbrs	r23, 7
-     49a:	02 c0       	rjmp	.+4      	; 0x4a0 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x2a>
-     49c:	c1 2c       	mov	r12, r1
-     49e:	d1 2c       	mov	r13, r1
-     4a0:	d7 01       	movw	r26, r14
-     4a2:	d2 96       	adiw	r26, 0x32	; 50
-     4a4:	ed 91       	ld	r30, X+
-     4a6:	fc 91       	ld	r31, X
-     4a8:	d3 97       	sbiw	r26, 0x33	; 51
-     4aa:	ca 01       	movw	r24, r20
-     4ac:	57 ff       	sbrs	r21, 7
-     4ae:	02 c0       	rjmp	.+4      	; 0x4b4 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x3e>
-     4b0:	80 e0       	ldi	r24, 0x00	; 0
-     4b2:	90 e0       	ldi	r25, 0x00	; 0
-     4b4:	bf 01       	movw	r22, r30
-     4b6:	0e 94 1d 08 	call	0x103a	; 0x103a <__udivmodhi4>
-     4ba:	96 2e       	mov	r9, r22
-     4bc:	c8 01       	movw	r24, r16
-     4be:	bf 01       	movw	r22, r30
-     4c0:	0e 94 1d 08 	call	0x103a	; 0x103a <__udivmodhi4>
-     4c4:	63 31       	cpi	r22, 0x13	; 19
-     4c6:	71 05       	cpc	r23, r1
-     4c8:	10 f4       	brcc	.+4      	; 0x4ce <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x58>
-     4ca:	eb 01       	movw	r28, r22
-     4cc:	02 c0       	rjmp	.+4      	; 0x4d2 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x5c>
-     4ce:	c3 e1       	ldi	r28, 0x13	; 19
-     4d0:	d0 e0       	ldi	r29, 0x00	; 0
-     4d2:	01 e0       	ldi	r16, 0x01	; 1
-     4d4:	10 e0       	ldi	r17, 0x00	; 0
-     4d6:	e9 2d       	mov	r30, r9
-     4d8:	f0 e0       	ldi	r31, 0x00	; 0
-     4da:	ce 17       	cp	r28, r30
-     4dc:	df 07       	cpc	r29, r31
-     4de:	44 f1       	brlt	.+80     	; 0x530 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0xba>
-     4e0:	d7 01       	movw	r26, r14
-     4e2:	d0 96       	adiw	r26, 0x30	; 48
-     4e4:	ad 90       	ld	r10, X+
-     4e6:	bc 90       	ld	r11, X
-     4e8:	d1 97       	sbiw	r26, 0x31	; 49
-     4ea:	c6 01       	movw	r24, r12
-     4ec:	b5 01       	movw	r22, r10
-     4ee:	0e 94 1d 08 	call	0x103a	; 0x103a <__udivmodhi4>
-     4f2:	46 2f       	mov	r20, r22
-     4f4:	c9 01       	movw	r24, r18
-     4f6:	b5 01       	movw	r22, r10
-     4f8:	0e 94 1d 08 	call	0x103a	; 0x103a <__udivmodhi4>
-     4fc:	ee 0f       	add	r30, r30
-     4fe:	ff 1f       	adc	r31, r31
-     500:	ee 0d       	add	r30, r14
-     502:	ff 1d       	adc	r31, r15
-     504:	84 2f       	mov	r24, r20
-     506:	90 e0       	ldi	r25, 0x00	; 0
-     508:	68 17       	cp	r22, r24
-     50a:	79 07       	cpc	r23, r25
-     50c:	78 f0       	brcs	.+30     	; 0x52c <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0xb6>
-     50e:	c8 01       	movw	r24, r16
-     510:	04 2e       	mov	r0, r20
-     512:	02 c0       	rjmp	.+4      	; 0x518 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0xa2>
-     514:	88 0f       	add	r24, r24
-     516:	99 1f       	adc	r25, r25
-     518:	0a 94       	dec	r0
-     51a:	e2 f7       	brpl	.-8      	; 0x514 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x9e>
-     51c:	a4 81       	ldd	r26, Z+4	; 0x04
-     51e:	b5 81       	ldd	r27, Z+5	; 0x05
-     520:	8a 2b       	or	r24, r26
-     522:	9b 2b       	or	r25, r27
-     524:	95 83       	std	Z+5, r25	; 0x05
-     526:	84 83       	std	Z+4, r24	; 0x04
-     528:	4f 5f       	subi	r20, 0xFF	; 255
-     52a:	ec cf       	rjmp	.-40     	; 0x504 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x8e>
-     52c:	93 94       	inc	r9
-     52e:	d3 cf       	rjmp	.-90     	; 0x4d6 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x60>
-     530:	df 91       	pop	r29
-     532:	cf 91       	pop	r28
-     534:	1f 91       	pop	r17
-     536:	0f 91       	pop	r16
-     538:	ff 90       	pop	r15
-     53a:	ef 90       	pop	r14
-     53c:	df 90       	pop	r13
-     53e:	cf 90       	pop	r12
-     540:	bf 90       	pop	r11
-     542:	af 90       	pop	r10
-     544:	9f 90       	pop	r9
-     546:	08 95       	ret
+     476:	cf 92       	push	r12
+     478:	df 92       	push	r13
+     47a:	ef 92       	push	r14
+     47c:	ff 92       	push	r15
+     47e:	0f 93       	push	r16
+     480:	1f 93       	push	r17
+     482:	cf 93       	push	r28
+     484:	df 93       	push	r29
+     486:	7c 01       	movw	r14, r24
+     488:	69 01       	movw	r12, r18
+     48a:	17 fd       	sbrc	r17, 7
+     48c:	50 c0       	rjmp	.+160    	; 0x52e <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0xb8>
+     48e:	37 fd       	sbrc	r19, 7
+     490:	4e c0       	rjmp	.+156    	; 0x52e <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0xb8>
+     492:	fb 01       	movw	r30, r22
+     494:	77 ff       	sbrs	r23, 7
+     496:	02 c0       	rjmp	.+4      	; 0x49c <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x26>
+     498:	e0 e0       	ldi	r30, 0x00	; 0
+     49a:	f0 e0       	ldi	r31, 0x00	; 0
+     49c:	d7 01       	movw	r26, r14
+     49e:	d2 96       	adiw	r26, 0x32	; 50
+     4a0:	2d 91       	ld	r18, X+
+     4a2:	3c 91       	ld	r19, X
+     4a4:	d3 97       	sbiw	r26, 0x33	; 51
+     4a6:	ca 01       	movw	r24, r20
+     4a8:	57 ff       	sbrs	r21, 7
+     4aa:	02 c0       	rjmp	.+4      	; 0x4b0 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x3a>
+     4ac:	80 e0       	ldi	r24, 0x00	; 0
+     4ae:	90 e0       	ldi	r25, 0x00	; 0
+     4b0:	b9 01       	movw	r22, r18
+     4b2:	0e 94 f9 07 	call	0xff2	; 0xff2 <__udivmodhi4>
+     4b6:	46 2f       	mov	r20, r22
+     4b8:	c8 01       	movw	r24, r16
+     4ba:	b9 01       	movw	r22, r18
+     4bc:	0e 94 f9 07 	call	0xff2	; 0xff2 <__udivmodhi4>
+     4c0:	63 31       	cpi	r22, 0x13	; 19
+     4c2:	71 05       	cpc	r23, r1
+     4c4:	10 f4       	brcc	.+4      	; 0x4ca <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x54>
+     4c6:	eb 01       	movw	r28, r22
+     4c8:	02 c0       	rjmp	.+4      	; 0x4ce <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x58>
+     4ca:	c3 e1       	ldi	r28, 0x13	; 19
+     4cc:	d0 e0       	ldi	r29, 0x00	; 0
+     4ce:	d7 01       	movw	r26, r14
+     4d0:	d0 96       	adiw	r26, 0x30	; 48
+     4d2:	0d 91       	ld	r16, X+
+     4d4:	1c 91       	ld	r17, X
+     4d6:	d1 97       	sbiw	r26, 0x31	; 49
+     4d8:	cf 01       	movw	r24, r30
+     4da:	b8 01       	movw	r22, r16
+     4dc:	0e 94 f9 07 	call	0xff2	; 0xff2 <__udivmodhi4>
+     4e0:	36 2f       	mov	r19, r22
+     4e2:	c6 01       	movw	r24, r12
+     4e4:	b8 01       	movw	r22, r16
+     4e6:	0e 94 f9 07 	call	0xff2	; 0xff2 <__udivmodhi4>
+     4ea:	a1 e0       	ldi	r26, 0x01	; 1
+     4ec:	b0 e0       	ldi	r27, 0x00	; 0
+     4ee:	83 2f       	mov	r24, r19
+     4f0:	90 e0       	ldi	r25, 0x00	; 0
+     4f2:	68 17       	cp	r22, r24
+     4f4:	79 07       	cpc	r23, r25
+     4f6:	d8 f0       	brcs	.+54     	; 0x52e <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0xb8>
+     4f8:	84 2f       	mov	r24, r20
+     4fa:	8d 01       	movw	r16, r26
+     4fc:	03 2e       	mov	r0, r19
+     4fe:	02 c0       	rjmp	.+4      	; 0x504 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x8e>
+     500:	00 0f       	add	r16, r16
+     502:	11 1f       	adc	r17, r17
+     504:	0a 94       	dec	r0
+     506:	e2 f7       	brpl	.-8      	; 0x500 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x8a>
+     508:	e8 2f       	mov	r30, r24
+     50a:	f0 e0       	ldi	r31, 0x00	; 0
+     50c:	ce 17       	cp	r28, r30
+     50e:	df 07       	cpc	r29, r31
+     510:	64 f0       	brlt	.+24     	; 0x52a <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0xb4>
+     512:	ee 0f       	add	r30, r30
+     514:	ff 1f       	adc	r31, r31
+     516:	ee 0d       	add	r30, r14
+     518:	ff 1d       	adc	r31, r15
+     51a:	c4 80       	ldd	r12, Z+4	; 0x04
+     51c:	d5 80       	ldd	r13, Z+5	; 0x05
+     51e:	c0 2a       	or	r12, r16
+     520:	d1 2a       	or	r13, r17
+     522:	d5 82       	std	Z+5, r13	; 0x05
+     524:	c4 82       	std	Z+4, r12	; 0x04
+     526:	8f 5f       	subi	r24, 0xFF	; 255
+     528:	ef cf       	rjmp	.-34     	; 0x508 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x92>
+     52a:	3f 5f       	subi	r19, 0xFF	; 255
+     52c:	e0 cf       	rjmp	.-64     	; 0x4ee <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)+0x78>
+     52e:	df 91       	pop	r29
+     530:	cf 91       	pop	r28
+     532:	1f 91       	pop	r17
+     534:	0f 91       	pop	r16
+     536:	ff 90       	pop	r15
+     538:	ef 90       	pop	r14
+     53a:	df 90       	pop	r13
+     53c:	cf 90       	pop	r12
+     53e:	08 95       	ret
 
-00000548 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refreshWorld(int, int, int, int)>:
-     548:	0f 93       	push	r16
-     54a:	1f 93       	push	r17
-     54c:	fc 01       	movw	r30, r24
-     54e:	eb 59       	subi	r30, 0x9B	; 155
-     550:	ff 4f       	sbci	r31, 0xFF	; 255
-     552:	a0 81       	ld	r26, Z
-     554:	b1 81       	ldd	r27, Z+1	; 0x01
-     556:	32 97       	sbiw	r30, 0x02	; 2
-     558:	01 90       	ld	r0, Z+
-     55a:	f0 81       	ld	r31, Z
-     55c:	e0 2d       	mov	r30, r0
-     55e:	0a 1b       	sub	r16, r26
-     560:	1b 0b       	sbc	r17, r27
-     562:	2e 1b       	sub	r18, r30
-     564:	3f 0b       	sbc	r19, r31
-     566:	4a 1b       	sub	r20, r26
-     568:	5b 0b       	sbc	r21, r27
-     56a:	6e 1b       	sub	r22, r30
-     56c:	7f 0b       	sbc	r23, r31
-     56e:	0e 94 3b 02 	call	0x476	; 0x476 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)>
-     572:	1f 91       	pop	r17
-     574:	0f 91       	pop	r16
-     576:	08 95       	ret
+00000540 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refreshWorld(int, int, int, int)>:
+     540:	0f 93       	push	r16
+     542:	1f 93       	push	r17
+     544:	fc 01       	movw	r30, r24
+     546:	ed 59       	subi	r30, 0x9D	; 157
+     548:	ff 4f       	sbci	r31, 0xFF	; 255
+     54a:	a0 81       	ld	r26, Z
+     54c:	b1 81       	ldd	r27, Z+1	; 0x01
+     54e:	32 97       	sbiw	r30, 0x02	; 2
+     550:	01 90       	ld	r0, Z+
+     552:	f0 81       	ld	r31, Z
+     554:	e0 2d       	mov	r30, r0
+     556:	0a 1b       	sub	r16, r26
+     558:	1b 0b       	sbc	r17, r27
+     55a:	2e 1b       	sub	r18, r30
+     55c:	3f 0b       	sbc	r19, r31
+     55e:	4a 1b       	sub	r20, r26
+     560:	5b 0b       	sbc	r21, r27
+     562:	6e 1b       	sub	r22, r30
+     564:	7f 0b       	sbc	r23, r31
+     566:	0e 94 3b 02 	call	0x476	; 0x476 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refresh(int, int, int, int)>
+     56a:	1f 91       	pop	r17
+     56c:	0f 91       	pop	r16
+     56e:	08 95       	ret
 
-00000578 <NanoObject<NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C> >::refresh()>:
-     578:	0f 93       	push	r16
-     57a:	1f 93       	push	r17
-     57c:	fc 01       	movw	r30, r24
-     57e:	82 81       	ldd	r24, Z+2	; 0x02
-     580:	93 81       	ldd	r25, Z+3	; 0x03
-     582:	00 97       	sbiw	r24, 0x00	; 0
-     584:	51 f0       	breq	.+20     	; 0x59a <NanoObject<NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C> >::refresh()+0x22>
-     586:	05 85       	ldd	r16, Z+13	; 0x0d
-     588:	16 85       	ldd	r17, Z+14	; 0x0e
-     58a:	23 85       	ldd	r18, Z+11	; 0x0b
-     58c:	34 85       	ldd	r19, Z+12	; 0x0c
-     58e:	41 85       	ldd	r20, Z+9	; 0x09
-     590:	52 85       	ldd	r21, Z+10	; 0x0a
-     592:	67 81       	ldd	r22, Z+7	; 0x07
-     594:	70 85       	ldd	r23, Z+8	; 0x08
-     596:	0e 94 a4 02 	call	0x548	; 0x548 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refreshWorld(int, int, int, int)>
-     59a:	1f 91       	pop	r17
-     59c:	0f 91       	pop	r16
-     59e:	08 95       	ret
+00000570 <NanoObject<NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C> >::refresh()>:
+     570:	0f 93       	push	r16
+     572:	1f 93       	push	r17
+     574:	fc 01       	movw	r30, r24
+     576:	82 81       	ldd	r24, Z+2	; 0x02
+     578:	93 81       	ldd	r25, Z+3	; 0x03
+     57a:	00 97       	sbiw	r24, 0x00	; 0
+     57c:	51 f0       	breq	.+20     	; 0x592 <NanoObject<NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C> >::refresh()+0x22>
+     57e:	05 85       	ldd	r16, Z+13	; 0x0d
+     580:	16 85       	ldd	r17, Z+14	; 0x0e
+     582:	23 85       	ldd	r18, Z+11	; 0x0b
+     584:	34 85       	ldd	r19, Z+12	; 0x0c
+     586:	41 85       	ldd	r20, Z+9	; 0x09
+     588:	52 85       	ldd	r21, Z+10	; 0x0a
+     58a:	67 81       	ldd	r22, Z+7	; 0x07
+     58c:	70 85       	ldd	r23, Z+8	; 0x08
+     58e:	0e 94 a0 02 	call	0x540	; 0x540 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::refreshWorld(int, int, int, int)>
+     592:	1f 91       	pop	r17
+     594:	0f 91       	pop	r16
+     596:	08 95       	ret
 
-000005a0 <InterfaceSSD1306<PlatformI2c>::commandStart()>:
-     5a0:	cf 93       	push	r28
-     5a2:	df 93       	push	r29
-     5a4:	ec 01       	movw	r28, r24
-     5a6:	0e 94 6c 05 	call	0xad8	; 0xad8 <TwiI2c::start()>
-     5aa:	89 81       	ldd	r24, Y+1	; 0x01
-     5ac:	87 fd       	sbrc	r24, 7
-     5ae:	09 c0       	rjmp	.+18     	; 0x5c2 <InterfaceSSD1306<PlatformI2c>::commandStart()+0x22>
-     5b0:	60 e0       	ldi	r22, 0x00	; 0
-     5b2:	70 e0       	ldi	r23, 0x00	; 0
-     5b4:	08 2e       	mov	r0, r24
-     5b6:	00 0c       	add	r0, r0
-     5b8:	99 0b       	sbc	r25, r25
-     5ba:	df 91       	pop	r29
-     5bc:	cf 91       	pop	r28
-     5be:	0c 94 e8 04 	jmp	0x9d0	; 0x9d0 <digitalWrite>
-     5c2:	60 e0       	ldi	r22, 0x00	; 0
-     5c4:	ce 01       	movw	r24, r28
-     5c6:	df 91       	pop	r29
-     5c8:	cf 91       	pop	r28
-     5ca:	0c 94 80 05 	jmp	0xb00	; 0xb00 <TwiI2c::send(unsigned char)>
+00000598 <InterfaceSSD1306<PlatformI2c>::commandStart()>:
+     598:	cf 93       	push	r28
+     59a:	df 93       	push	r29
+     59c:	ec 01       	movw	r28, r24
+     59e:	0e 94 68 05 	call	0xad0	; 0xad0 <TwiI2c::start()>
+     5a2:	89 81       	ldd	r24, Y+1	; 0x01
+     5a4:	87 fd       	sbrc	r24, 7
+     5a6:	09 c0       	rjmp	.+18     	; 0x5ba <InterfaceSSD1306<PlatformI2c>::commandStart()+0x22>
+     5a8:	60 e0       	ldi	r22, 0x00	; 0
+     5aa:	70 e0       	ldi	r23, 0x00	; 0
+     5ac:	08 2e       	mov	r0, r24
+     5ae:	00 0c       	add	r0, r0
+     5b0:	99 0b       	sbc	r25, r25
+     5b2:	df 91       	pop	r29
+     5b4:	cf 91       	pop	r28
+     5b6:	0c 94 e4 04 	jmp	0x9c8	; 0x9c8 <digitalWrite>
+     5ba:	60 e0       	ldi	r22, 0x00	; 0
+     5bc:	ce 01       	movw	r24, r28
+     5be:	df 91       	pop	r29
+     5c0:	cf 91       	pop	r28
+     5c2:	0c 94 7c 05 	jmp	0xaf8	; 0xaf8 <TwiI2c::send(unsigned char)>
 
-000005ce <InterfaceSSD1306<PlatformI2c>::startBlock(unsigned int, unsigned int, unsigned int)>:
-     5ce:	ef 92       	push	r14
-     5d0:	ff 92       	push	r15
-     5d2:	0f 93       	push	r16
-     5d4:	1f 93       	push	r17
-     5d6:	cf 93       	push	r28
-     5d8:	df 93       	push	r29
-     5da:	ec 01       	movw	r28, r24
-     5dc:	16 2f       	mov	r17, r22
-     5de:	04 2f       	mov	r16, r20
-     5e0:	79 01       	movw	r14, r18
-     5e2:	0e 94 d0 02 	call	0x5a0	; 0x5a0 <InterfaceSSD1306<PlatformI2c>::commandStart()>
-     5e6:	61 e2       	ldi	r22, 0x21	; 33
+000005c6 <InterfaceSSD1306<PlatformI2c>::startBlock(unsigned int, unsigned int, unsigned int)>:
+     5c6:	ef 92       	push	r14
+     5c8:	ff 92       	push	r15
+     5ca:	0f 93       	push	r16
+     5cc:	1f 93       	push	r17
+     5ce:	cf 93       	push	r28
+     5d0:	df 93       	push	r29
+     5d2:	ec 01       	movw	r28, r24
+     5d4:	16 2f       	mov	r17, r22
+     5d6:	04 2f       	mov	r16, r20
+     5d8:	79 01       	movw	r14, r18
+     5da:	0e 94 cc 02 	call	0x598	; 0x598 <InterfaceSSD1306<PlatformI2c>::commandStart()>
+     5de:	61 e2       	ldi	r22, 0x21	; 33
+     5e0:	ce 01       	movw	r24, r28
+     5e2:	0e 94 7c 05 	call	0xaf8	; 0xaf8 <TwiI2c::send(unsigned char)>
+     5e6:	61 2f       	mov	r22, r17
      5e8:	ce 01       	movw	r24, r28
-     5ea:	0e 94 80 05 	call	0xb00	; 0xb00 <TwiI2c::send(unsigned char)>
-     5ee:	61 2f       	mov	r22, r17
-     5f0:	ce 01       	movw	r24, r28
-     5f2:	0e 94 80 05 	call	0xb00	; 0xb00 <TwiI2c::send(unsigned char)>
-     5f6:	e1 14       	cp	r14, r1
-     5f8:	f1 04       	cpc	r15, r1
-     5fa:	21 f0       	breq	.+8      	; 0x604 <InterfaceSSD1306<PlatformI2c>::startBlock(unsigned int, unsigned int, unsigned int)+0x36>
-     5fc:	6f ef       	ldi	r22, 0xFF	; 255
-     5fe:	6e 0d       	add	r22, r14
-     600:	61 0f       	add	r22, r17
-     602:	04 c0       	rjmp	.+8      	; 0x60c <InterfaceSSD1306<PlatformI2c>::startBlock(unsigned int, unsigned int, unsigned int)+0x3e>
-     604:	ea 81       	ldd	r30, Y+2	; 0x02
-     606:	fb 81       	ldd	r31, Y+3	; 0x03
-     608:	60 81       	ld	r22, Z
-     60a:	61 50       	subi	r22, 0x01	; 1
+     5ea:	0e 94 7c 05 	call	0xaf8	; 0xaf8 <TwiI2c::send(unsigned char)>
+     5ee:	e1 14       	cp	r14, r1
+     5f0:	f1 04       	cpc	r15, r1
+     5f2:	21 f0       	breq	.+8      	; 0x5fc <InterfaceSSD1306<PlatformI2c>::startBlock(unsigned int, unsigned int, unsigned int)+0x36>
+     5f4:	6f ef       	ldi	r22, 0xFF	; 255
+     5f6:	6e 0d       	add	r22, r14
+     5f8:	61 0f       	add	r22, r17
+     5fa:	04 c0       	rjmp	.+8      	; 0x604 <InterfaceSSD1306<PlatformI2c>::startBlock(unsigned int, unsigned int, unsigned int)+0x3e>
+     5fc:	ea 81       	ldd	r30, Y+2	; 0x02
+     5fe:	fb 81       	ldd	r31, Y+3	; 0x03
+     600:	60 81       	ld	r22, Z
+     602:	61 50       	subi	r22, 0x01	; 1
+     604:	ce 01       	movw	r24, r28
+     606:	0e 94 7c 05 	call	0xaf8	; 0xaf8 <TwiI2c::send(unsigned char)>
+     60a:	62 e2       	ldi	r22, 0x22	; 34
      60c:	ce 01       	movw	r24, r28
-     60e:	0e 94 80 05 	call	0xb00	; 0xb00 <TwiI2c::send(unsigned char)>
-     612:	62 e2       	ldi	r22, 0x22	; 34
+     60e:	0e 94 7c 05 	call	0xaf8	; 0xaf8 <TwiI2c::send(unsigned char)>
+     612:	60 2f       	mov	r22, r16
      614:	ce 01       	movw	r24, r28
-     616:	0e 94 80 05 	call	0xb00	; 0xb00 <TwiI2c::send(unsigned char)>
-     61a:	60 2f       	mov	r22, r16
-     61c:	ce 01       	movw	r24, r28
-     61e:	0e 94 80 05 	call	0xb00	; 0xb00 <TwiI2c::send(unsigned char)>
-     622:	ea 81       	ldd	r30, Y+2	; 0x02
-     624:	fb 81       	ldd	r31, Y+3	; 0x03
-     626:	62 81       	ldd	r22, Z+2	; 0x02
-     628:	73 81       	ldd	r23, Z+3	; 0x03
-     62a:	83 e0       	ldi	r24, 0x03	; 3
-     62c:	76 95       	lsr	r23
-     62e:	67 95       	ror	r22
-     630:	8a 95       	dec	r24
-     632:	e1 f7       	brne	.-8      	; 0x62c <InterfaceSSD1306<PlatformI2c>::startBlock(unsigned int, unsigned int, unsigned int)+0x5e>
-     634:	61 50       	subi	r22, 0x01	; 1
-     636:	ce 01       	movw	r24, r28
-     638:	0e 94 80 05 	call	0xb00	; 0xb00 <TwiI2c::send(unsigned char)>
-     63c:	89 81       	ldd	r24, Y+1	; 0x01
-     63e:	87 fd       	sbrc	r24, 7
-     640:	0d c0       	rjmp	.+26     	; 0x65c <InterfaceSSD1306<PlatformI2c>::startBlock(unsigned int, unsigned int, unsigned int)+0x8e>
-     642:	61 e0       	ldi	r22, 0x01	; 1
-     644:	70 e0       	ldi	r23, 0x00	; 0
-     646:	08 2e       	mov	r0, r24
-     648:	00 0c       	add	r0, r0
-     64a:	99 0b       	sbc	r25, r25
-     64c:	df 91       	pop	r29
-     64e:	cf 91       	pop	r28
-     650:	1f 91       	pop	r17
-     652:	0f 91       	pop	r16
-     654:	ff 90       	pop	r15
-     656:	ef 90       	pop	r14
-     658:	0c 94 e8 04 	jmp	0x9d0	; 0x9d0 <digitalWrite>
-     65c:	ce 01       	movw	r24, r28
-     65e:	0e 94 7c 05 	call	0xaf8	; 0xaf8 <TwiI2c::stop()>
+     616:	0e 94 7c 05 	call	0xaf8	; 0xaf8 <TwiI2c::send(unsigned char)>
+     61a:	ea 81       	ldd	r30, Y+2	; 0x02
+     61c:	fb 81       	ldd	r31, Y+3	; 0x03
+     61e:	62 81       	ldd	r22, Z+2	; 0x02
+     620:	73 81       	ldd	r23, Z+3	; 0x03
+     622:	83 e0       	ldi	r24, 0x03	; 3
+     624:	76 95       	lsr	r23
+     626:	67 95       	ror	r22
+     628:	8a 95       	dec	r24
+     62a:	e1 f7       	brne	.-8      	; 0x624 <InterfaceSSD1306<PlatformI2c>::startBlock(unsigned int, unsigned int, unsigned int)+0x5e>
+     62c:	61 50       	subi	r22, 0x01	; 1
+     62e:	ce 01       	movw	r24, r28
+     630:	0e 94 7c 05 	call	0xaf8	; 0xaf8 <TwiI2c::send(unsigned char)>
+     634:	89 81       	ldd	r24, Y+1	; 0x01
+     636:	87 fd       	sbrc	r24, 7
+     638:	0d c0       	rjmp	.+26     	; 0x654 <InterfaceSSD1306<PlatformI2c>::startBlock(unsigned int, unsigned int, unsigned int)+0x8e>
+     63a:	61 e0       	ldi	r22, 0x01	; 1
+     63c:	70 e0       	ldi	r23, 0x00	; 0
+     63e:	08 2e       	mov	r0, r24
+     640:	00 0c       	add	r0, r0
+     642:	99 0b       	sbc	r25, r25
+     644:	df 91       	pop	r29
+     646:	cf 91       	pop	r28
+     648:	1f 91       	pop	r17
+     64a:	0f 91       	pop	r16
+     64c:	ff 90       	pop	r15
+     64e:	ef 90       	pop	r14
+     650:	0c 94 e4 04 	jmp	0x9c8	; 0x9c8 <digitalWrite>
+     654:	ce 01       	movw	r24, r28
+     656:	0e 94 78 05 	call	0xaf0	; 0xaf0 <TwiI2c::stop()>
+     65a:	ce 01       	movw	r24, r28
+     65c:	0e 94 68 05 	call	0xad0	; 0xad0 <TwiI2c::start()>
+     660:	60 e4       	ldi	r22, 0x40	; 64
      662:	ce 01       	movw	r24, r28
-     664:	0e 94 6c 05 	call	0xad8	; 0xad8 <TwiI2c::start()>
-     668:	60 e4       	ldi	r22, 0x40	; 64
-     66a:	ce 01       	movw	r24, r28
-     66c:	df 91       	pop	r29
-     66e:	cf 91       	pop	r28
-     670:	1f 91       	pop	r17
-     672:	0f 91       	pop	r16
-     674:	ff 90       	pop	r15
-     676:	ef 90       	pop	r14
-     678:	0c 94 80 05 	jmp	0xb00	; 0xb00 <TwiI2c::send(unsigned char)>
+     664:	df 91       	pop	r29
+     666:	cf 91       	pop	r28
+     668:	1f 91       	pop	r17
+     66a:	0f 91       	pop	r16
+     66c:	ff 90       	pop	r15
+     66e:	ef 90       	pop	r14
+     670:	0c 94 7c 05 	jmp	0xaf8	; 0xaf8 <TwiI2c::send(unsigned char)>
 
-0000067c <NanoDisplayOps<NanoDisplayOps1<InterfaceSSD1306<PlatformI2c> >, InterfaceSSD1306<PlatformI2c> >::drawCanvas(int, int, NanoCanvasOps<(unsigned char)1>&)>:
-     67c:	cf 92       	push	r12
-     67e:	df 92       	push	r13
-     680:	ef 92       	push	r14
-     682:	ff 92       	push	r15
-     684:	0f 93       	push	r16
-     686:	1f 93       	push	r17
-     688:	cf 93       	push	r28
-     68a:	df 93       	push	r29
-     68c:	6c 01       	movw	r12, r24
-     68e:	f9 01       	movw	r30, r18
-     690:	01 89       	ldd	r16, Z+17	; 0x11
-     692:	12 89       	ldd	r17, Z+18	; 0x12
-     694:	c6 81       	ldd	r28, Z+6	; 0x06
-     696:	d7 81       	ldd	r29, Z+7	; 0x07
-     698:	e4 80       	ldd	r14, Z+4	; 0x04
-     69a:	f5 80       	ldd	r15, Z+5	; 0x05
-     69c:	83 e0       	ldi	r24, 0x03	; 3
-     69e:	55 95       	asr	r21
-     6a0:	47 95       	ror	r20
-     6a2:	8a 95       	dec	r24
-     6a4:	e1 f7       	brne	.-8      	; 0x69e <NanoDisplayOps<NanoDisplayOps1<InterfaceSSD1306<PlatformI2c> >, InterfaceSSD1306<PlatformI2c> >::drawCanvas(int, int, NanoCanvasOps<(unsigned char)1>&)+0x22>
-     6a6:	97 01       	movw	r18, r14
-     6a8:	f6 01       	movw	r30, r12
-     6aa:	83 89       	ldd	r24, Z+19	; 0x13
-     6ac:	94 89       	ldd	r25, Z+20	; 0x14
-     6ae:	0e 94 e7 02 	call	0x5ce	; 0x5ce <InterfaceSSD1306<PlatformI2c>::startBlock(unsigned int, unsigned int, unsigned int)>
-     6b2:	93 e0       	ldi	r25, 0x03	; 3
-     6b4:	d6 95       	lsr	r29
-     6b6:	c7 95       	ror	r28
-     6b8:	9a 95       	dec	r25
-     6ba:	e1 f7       	brne	.-8      	; 0x6b4 <NanoDisplayOps<NanoDisplayOps1<InterfaceSSD1306<PlatformI2c> >, InterfaceSSD1306<PlatformI2c> >::drawCanvas(int, int, NanoCanvasOps<(unsigned char)1>&)+0x38>
-     6bc:	f6 01       	movw	r30, r12
-     6be:	83 89       	ldd	r24, Z+19	; 0x13
-     6c0:	94 89       	ldd	r25, Z+20	; 0x14
-     6c2:	cc 23       	and	r28, r28
-     6c4:	41 f0       	breq	.+16     	; 0x6d6 <NanoDisplayOps<NanoDisplayOps1<InterfaceSSD1306<PlatformI2c> >, InterfaceSSD1306<PlatformI2c> >::drawCanvas(int, int, NanoCanvasOps<(unsigned char)1>&)+0x5a>
-     6c6:	a7 01       	movw	r20, r14
-     6c8:	b8 01       	movw	r22, r16
-     6ca:	0e 94 98 05 	call	0xb30	; 0xb30 <TwiI2c::sendBuffer(unsigned char const*, unsigned int)>
-     6ce:	0e 0d       	add	r16, r14
-     6d0:	1f 1d       	adc	r17, r15
-     6d2:	c1 50       	subi	r28, 0x01	; 1
-     6d4:	f3 cf       	rjmp	.-26     	; 0x6bc <NanoDisplayOps<NanoDisplayOps1<InterfaceSSD1306<PlatformI2c> >, InterfaceSSD1306<PlatformI2c> >::drawCanvas(int, int, NanoCanvasOps<(unsigned char)1>&)+0x40>
-     6d6:	df 91       	pop	r29
-     6d8:	cf 91       	pop	r28
-     6da:	1f 91       	pop	r17
-     6dc:	0f 91       	pop	r16
-     6de:	ff 90       	pop	r15
-     6e0:	ef 90       	pop	r14
-     6e2:	df 90       	pop	r13
-     6e4:	cf 90       	pop	r12
-     6e6:	0c 94 7c 05 	jmp	0xaf8	; 0xaf8 <TwiI2c::stop()>
+00000674 <NanoDisplayOps<NanoDisplayOps1<InterfaceSSD1306<PlatformI2c> >, InterfaceSSD1306<PlatformI2c> >::drawCanvas(int, int, NanoCanvasOps<(unsigned char)1>&)>:
+     674:	cf 92       	push	r12
+     676:	df 92       	push	r13
+     678:	ef 92       	push	r14
+     67a:	ff 92       	push	r15
+     67c:	0f 93       	push	r16
+     67e:	1f 93       	push	r17
+     680:	cf 93       	push	r28
+     682:	df 93       	push	r29
+     684:	6c 01       	movw	r12, r24
+     686:	f9 01       	movw	r30, r18
+     688:	07 85       	ldd	r16, Z+15	; 0x0f
+     68a:	10 89       	ldd	r17, Z+16	; 0x10
+     68c:	c6 81       	ldd	r28, Z+6	; 0x06
+     68e:	d7 81       	ldd	r29, Z+7	; 0x07
+     690:	e4 80       	ldd	r14, Z+4	; 0x04
+     692:	f5 80       	ldd	r15, Z+5	; 0x05
+     694:	83 e0       	ldi	r24, 0x03	; 3
+     696:	55 95       	asr	r21
+     698:	47 95       	ror	r20
+     69a:	8a 95       	dec	r24
+     69c:	e1 f7       	brne	.-8      	; 0x696 <NanoDisplayOps<NanoDisplayOps1<InterfaceSSD1306<PlatformI2c> >, InterfaceSSD1306<PlatformI2c> >::drawCanvas(int, int, NanoCanvasOps<(unsigned char)1>&)+0x22>
+     69e:	97 01       	movw	r18, r14
+     6a0:	f6 01       	movw	r30, r12
+     6a2:	83 89       	ldd	r24, Z+19	; 0x13
+     6a4:	94 89       	ldd	r25, Z+20	; 0x14
+     6a6:	0e 94 e3 02 	call	0x5c6	; 0x5c6 <InterfaceSSD1306<PlatformI2c>::startBlock(unsigned int, unsigned int, unsigned int)>
+     6aa:	93 e0       	ldi	r25, 0x03	; 3
+     6ac:	d6 95       	lsr	r29
+     6ae:	c7 95       	ror	r28
+     6b0:	9a 95       	dec	r25
+     6b2:	e1 f7       	brne	.-8      	; 0x6ac <NanoDisplayOps<NanoDisplayOps1<InterfaceSSD1306<PlatformI2c> >, InterfaceSSD1306<PlatformI2c> >::drawCanvas(int, int, NanoCanvasOps<(unsigned char)1>&)+0x38>
+     6b4:	f6 01       	movw	r30, r12
+     6b6:	83 89       	ldd	r24, Z+19	; 0x13
+     6b8:	94 89       	ldd	r25, Z+20	; 0x14
+     6ba:	cc 23       	and	r28, r28
+     6bc:	41 f0       	breq	.+16     	; 0x6ce <NanoDisplayOps<NanoDisplayOps1<InterfaceSSD1306<PlatformI2c> >, InterfaceSSD1306<PlatformI2c> >::drawCanvas(int, int, NanoCanvasOps<(unsigned char)1>&)+0x5a>
+     6be:	a7 01       	movw	r20, r14
+     6c0:	b8 01       	movw	r22, r16
+     6c2:	0e 94 94 05 	call	0xb28	; 0xb28 <TwiI2c::sendBuffer(unsigned char const*, unsigned int)>
+     6c6:	0e 0d       	add	r16, r14
+     6c8:	1f 1d       	adc	r17, r15
+     6ca:	c1 50       	subi	r28, 0x01	; 1
+     6cc:	f3 cf       	rjmp	.-26     	; 0x6b4 <NanoDisplayOps<NanoDisplayOps1<InterfaceSSD1306<PlatformI2c> >, InterfaceSSD1306<PlatformI2c> >::drawCanvas(int, int, NanoCanvasOps<(unsigned char)1>&)+0x40>
+     6ce:	df 91       	pop	r29
+     6d0:	cf 91       	pop	r28
+     6d2:	1f 91       	pop	r17
+     6d4:	0f 91       	pop	r16
+     6d6:	ff 90       	pop	r15
+     6d8:	ef 90       	pop	r14
+     6da:	df 90       	pop	r13
+     6dc:	cf 90       	pop	r12
+     6de:	0c 94 78 05 	jmp	0xaf0	; 0xaf0 <TwiI2c::stop()>
 
-000006ea <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()>:
-     6ea:	4f 92       	push	r4
-     6ec:	5f 92       	push	r5
-     6ee:	6f 92       	push	r6
-     6f0:	7f 92       	push	r7
-     6f2:	8f 92       	push	r8
-     6f4:	9f 92       	push	r9
-     6f6:	af 92       	push	r10
-     6f8:	bf 92       	push	r11
-     6fa:	cf 92       	push	r12
-     6fc:	df 92       	push	r13
-     6fe:	ef 92       	push	r14
-     700:	ff 92       	push	r15
-     702:	0f 93       	push	r16
-     704:	1f 93       	push	r17
-     706:	cf 93       	push	r28
-     708:	df 93       	push	r29
-     70a:	ec 01       	movw	r28, r24
-     70c:	00 e0       	ldi	r16, 0x00	; 0
-     70e:	10 e0       	ldi	r17, 0x00	; 0
-     710:	2c 01       	movw	r4, r24
-     712:	85 e6       	ldi	r24, 0x65	; 101
-     714:	48 0e       	add	r4, r24
-     716:	51 1c       	adc	r5, r1
-     718:	3e 01       	movw	r6, r28
-     71a:	e3 e6       	ldi	r30, 0x63	; 99
-     71c:	6e 0e       	add	r6, r30
-     71e:	71 1c       	adc	r7, r1
-     720:	4e 01       	movw	r8, r28
-     722:	f7 e6       	ldi	r31, 0x67	; 103
-     724:	8f 0e       	add	r8, r31
-     726:	91 1c       	adc	r9, r1
-     728:	6e 01       	movw	r12, r28
-     72a:	8c e2       	ldi	r24, 0x2C	; 44
-     72c:	c8 0e       	add	r12, r24
-     72e:	d1 1c       	adc	r13, r1
-     730:	e8 81       	ld	r30, Y
-     732:	f9 81       	ldd	r31, Y+1	; 0x01
-     734:	84 81       	ldd	r24, Z+4	; 0x04
-     736:	95 81       	ldd	r25, Z+5	; 0x05
-     738:	08 17       	cp	r16, r24
-     73a:	19 07       	cpc	r17, r25
-     73c:	08 f0       	brcs	.+2      	; 0x740 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0x56>
-     73e:	4a c0       	rjmp	.+148    	; 0x7d4 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0xea>
-     740:	6a a9       	ldd	r22, Y+50	; 0x32
-     742:	7b a9       	ldd	r23, Y+51	; 0x33
-     744:	c8 01       	movw	r24, r16
-     746:	0e 94 1d 08 	call	0x103a	; 0x103a <__udivmodhi4>
-     74a:	fb 01       	movw	r30, r22
-     74c:	ee 0f       	add	r30, r30
-     74e:	ff 1f       	adc	r31, r31
-     750:	ec 0f       	add	r30, r28
-     752:	fd 1f       	adc	r31, r29
-     754:	a4 80       	ldd	r10, Z+4	; 0x04
-     756:	b5 80       	ldd	r11, Z+5	; 0x05
-     758:	15 82       	std	Z+5, r1	; 0x05
-     75a:	14 82       	std	Z+4, r1	; 0x04
-     75c:	e1 2c       	mov	r14, r1
-     75e:	f1 2c       	mov	r15, r1
-     760:	e8 81       	ld	r30, Y
-     762:	f9 81       	ldd	r31, Y+1	; 0x01
-     764:	82 81       	ldd	r24, Z+2	; 0x02
-     766:	93 81       	ldd	r25, Z+3	; 0x03
-     768:	e8 16       	cp	r14, r24
-     76a:	f9 06       	cpc	r15, r25
-     76c:	70 f5       	brcc	.+92     	; 0x7ca <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0xe0>
-     76e:	a0 fe       	sbrs	r10, 0
-     770:	25 c0       	rjmp	.+74     	; 0x7bc <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0xd2>
-     772:	f2 01       	movw	r30, r4
-     774:	80 81       	ld	r24, Z
-     776:	91 81       	ldd	r25, Z+1	; 0x01
-     778:	80 0f       	add	r24, r16
-     77a:	91 1f       	adc	r25, r17
-     77c:	f3 01       	movw	r30, r6
-     77e:	20 81       	ld	r18, Z
-     780:	31 81       	ldd	r19, Z+1	; 0x01
-     782:	2e 0d       	add	r18, r14
-     784:	3f 1d       	adc	r19, r15
-     786:	3d a7       	std	Y+45, r19	; 0x2d
-     788:	2c a7       	std	Y+44, r18	; 0x2c
-     78a:	9f a7       	std	Y+47, r25	; 0x2f
-     78c:	8e a7       	std	Y+46, r24	; 0x2e
-     78e:	ea 81       	ldd	r30, Y+2	; 0x02
-     790:	fb 81       	ldd	r31, Y+3	; 0x03
-     792:	30 97       	sbiw	r30, 0x00	; 0
-     794:	21 f4       	brne	.+8      	; 0x79e <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0xb4>
-     796:	c6 01       	movw	r24, r12
-     798:	0e 94 14 06 	call	0xc28	; 0xc28 <NanoCanvasOps<(unsigned char)1>::clear()>
-     79c:	03 c0       	rjmp	.+6      	; 0x7a4 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0xba>
-     79e:	09 95       	icall
-     7a0:	88 23       	and	r24, r24
-     7a2:	61 f0       	breq	.+24     	; 0x7bc <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0xd2>
-     7a4:	f4 01       	movw	r30, r8
-     7a6:	80 81       	ld	r24, Z
-     7a8:	91 81       	ldd	r25, Z+1	; 0x01
-     7aa:	0e 94 c7 00 	call	0x18e	; 0x18e <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::draw() [clone .isra.15] [clone .constprop.26]>
-     7ae:	96 01       	movw	r18, r12
-     7b0:	a8 01       	movw	r20, r16
-     7b2:	b7 01       	movw	r22, r14
-     7b4:	88 81       	ld	r24, Y
-     7b6:	99 81       	ldd	r25, Y+1	; 0x01
-     7b8:	0e 94 3e 03 	call	0x67c	; 0x67c <NanoDisplayOps<NanoDisplayOps1<InterfaceSSD1306<PlatformI2c> >, InterfaceSSD1306<PlatformI2c> >::drawCanvas(int, int, NanoCanvasOps<(unsigned char)1>&)>
-     7bc:	b6 94       	lsr	r11
-     7be:	a7 94       	ror	r10
-     7c0:	88 a9       	ldd	r24, Y+48	; 0x30
-     7c2:	99 a9       	ldd	r25, Y+49	; 0x31
-     7c4:	e8 0e       	add	r14, r24
-     7c6:	f9 1e       	adc	r15, r25
-     7c8:	cb cf       	rjmp	.-106    	; 0x760 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0x76>
-     7ca:	8a a9       	ldd	r24, Y+50	; 0x32
-     7cc:	9b a9       	ldd	r25, Y+51	; 0x33
-     7ce:	08 0f       	add	r16, r24
-     7d0:	19 1f       	adc	r17, r25
-     7d2:	ae cf       	rjmp	.-164    	; 0x730 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0x46>
-     7d4:	df 91       	pop	r29
-     7d6:	cf 91       	pop	r28
-     7d8:	1f 91       	pop	r17
-     7da:	0f 91       	pop	r16
-     7dc:	ff 90       	pop	r15
-     7de:	ef 90       	pop	r14
-     7e0:	df 90       	pop	r13
-     7e2:	cf 90       	pop	r12
-     7e4:	bf 90       	pop	r11
-     7e6:	af 90       	pop	r10
-     7e8:	9f 90       	pop	r9
-     7ea:	8f 90       	pop	r8
-     7ec:	7f 90       	pop	r7
-     7ee:	6f 90       	pop	r6
-     7f0:	5f 90       	pop	r5
-     7f2:	4f 90       	pop	r4
-     7f4:	08 95       	ret
+000006e2 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()>:
+     6e2:	4f 92       	push	r4
+     6e4:	5f 92       	push	r5
+     6e6:	6f 92       	push	r6
+     6e8:	7f 92       	push	r7
+     6ea:	8f 92       	push	r8
+     6ec:	9f 92       	push	r9
+     6ee:	af 92       	push	r10
+     6f0:	bf 92       	push	r11
+     6f2:	cf 92       	push	r12
+     6f4:	df 92       	push	r13
+     6f6:	ef 92       	push	r14
+     6f8:	ff 92       	push	r15
+     6fa:	0f 93       	push	r16
+     6fc:	1f 93       	push	r17
+     6fe:	cf 93       	push	r28
+     700:	df 93       	push	r29
+     702:	ec 01       	movw	r28, r24
+     704:	00 e0       	ldi	r16, 0x00	; 0
+     706:	10 e0       	ldi	r17, 0x00	; 0
+     708:	2c 01       	movw	r4, r24
+     70a:	83 e6       	ldi	r24, 0x63	; 99
+     70c:	48 0e       	add	r4, r24
+     70e:	51 1c       	adc	r5, r1
+     710:	3e 01       	movw	r6, r28
+     712:	e1 e6       	ldi	r30, 0x61	; 97
+     714:	6e 0e       	add	r6, r30
+     716:	71 1c       	adc	r7, r1
+     718:	4e 01       	movw	r8, r28
+     71a:	f5 e6       	ldi	r31, 0x65	; 101
+     71c:	8f 0e       	add	r8, r31
+     71e:	91 1c       	adc	r9, r1
+     720:	6e 01       	movw	r12, r28
+     722:	8c e2       	ldi	r24, 0x2C	; 44
+     724:	c8 0e       	add	r12, r24
+     726:	d1 1c       	adc	r13, r1
+     728:	e8 81       	ld	r30, Y
+     72a:	f9 81       	ldd	r31, Y+1	; 0x01
+     72c:	84 81       	ldd	r24, Z+4	; 0x04
+     72e:	95 81       	ldd	r25, Z+5	; 0x05
+     730:	08 17       	cp	r16, r24
+     732:	19 07       	cpc	r17, r25
+     734:	08 f0       	brcs	.+2      	; 0x738 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0x56>
+     736:	4a c0       	rjmp	.+148    	; 0x7cc <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0xea>
+     738:	6a a9       	ldd	r22, Y+50	; 0x32
+     73a:	7b a9       	ldd	r23, Y+51	; 0x33
+     73c:	c8 01       	movw	r24, r16
+     73e:	0e 94 f9 07 	call	0xff2	; 0xff2 <__udivmodhi4>
+     742:	fb 01       	movw	r30, r22
+     744:	ee 0f       	add	r30, r30
+     746:	ff 1f       	adc	r31, r31
+     748:	ec 0f       	add	r30, r28
+     74a:	fd 1f       	adc	r31, r29
+     74c:	a4 80       	ldd	r10, Z+4	; 0x04
+     74e:	b5 80       	ldd	r11, Z+5	; 0x05
+     750:	15 82       	std	Z+5, r1	; 0x05
+     752:	14 82       	std	Z+4, r1	; 0x04
+     754:	e1 2c       	mov	r14, r1
+     756:	f1 2c       	mov	r15, r1
+     758:	e8 81       	ld	r30, Y
+     75a:	f9 81       	ldd	r31, Y+1	; 0x01
+     75c:	82 81       	ldd	r24, Z+2	; 0x02
+     75e:	93 81       	ldd	r25, Z+3	; 0x03
+     760:	e8 16       	cp	r14, r24
+     762:	f9 06       	cpc	r15, r25
+     764:	70 f5       	brcc	.+92     	; 0x7c2 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0xe0>
+     766:	a0 fe       	sbrs	r10, 0
+     768:	25 c0       	rjmp	.+74     	; 0x7b4 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0xd2>
+     76a:	f2 01       	movw	r30, r4
+     76c:	80 81       	ld	r24, Z
+     76e:	91 81       	ldd	r25, Z+1	; 0x01
+     770:	80 0f       	add	r24, r16
+     772:	91 1f       	adc	r25, r17
+     774:	f3 01       	movw	r30, r6
+     776:	20 81       	ld	r18, Z
+     778:	31 81       	ldd	r19, Z+1	; 0x01
+     77a:	2e 0d       	add	r18, r14
+     77c:	3f 1d       	adc	r19, r15
+     77e:	3d a7       	std	Y+45, r19	; 0x2d
+     780:	2c a7       	std	Y+44, r18	; 0x2c
+     782:	9f a7       	std	Y+47, r25	; 0x2f
+     784:	8e a7       	std	Y+46, r24	; 0x2e
+     786:	ea 81       	ldd	r30, Y+2	; 0x02
+     788:	fb 81       	ldd	r31, Y+3	; 0x03
+     78a:	30 97       	sbiw	r30, 0x00	; 0
+     78c:	21 f4       	brne	.+8      	; 0x796 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0xb4>
+     78e:	c6 01       	movw	r24, r12
+     790:	0e 94 10 06 	call	0xc20	; 0xc20 <NanoCanvasOps<(unsigned char)1>::clear()>
+     794:	03 c0       	rjmp	.+6      	; 0x79c <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0xba>
+     796:	09 95       	icall
+     798:	88 23       	and	r24, r24
+     79a:	61 f0       	breq	.+24     	; 0x7b4 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0xd2>
+     79c:	f4 01       	movw	r30, r8
+     79e:	80 81       	ld	r24, Z
+     7a0:	91 81       	ldd	r25, Z+1	; 0x01
+     7a2:	0e 94 c7 00 	call	0x18e	; 0x18e <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::draw() [clone .isra.15] [clone .constprop.26]>
+     7a6:	96 01       	movw	r18, r12
+     7a8:	a8 01       	movw	r20, r16
+     7aa:	b7 01       	movw	r22, r14
+     7ac:	88 81       	ld	r24, Y
+     7ae:	99 81       	ldd	r25, Y+1	; 0x01
+     7b0:	0e 94 3a 03 	call	0x674	; 0x674 <NanoDisplayOps<NanoDisplayOps1<InterfaceSSD1306<PlatformI2c> >, InterfaceSSD1306<PlatformI2c> >::drawCanvas(int, int, NanoCanvasOps<(unsigned char)1>&)>
+     7b4:	b6 94       	lsr	r11
+     7b6:	a7 94       	ror	r10
+     7b8:	88 a9       	ldd	r24, Y+48	; 0x30
+     7ba:	99 a9       	ldd	r25, Y+49	; 0x31
+     7bc:	e8 0e       	add	r14, r24
+     7be:	f9 1e       	adc	r15, r25
+     7c0:	cb cf       	rjmp	.-106    	; 0x758 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0x76>
+     7c2:	8a a9       	ldd	r24, Y+50	; 0x32
+     7c4:	9b a9       	ldd	r25, Y+51	; 0x33
+     7c6:	08 0f       	add	r16, r24
+     7c8:	19 1f       	adc	r17, r25
+     7ca:	ae cf       	rjmp	.-164    	; 0x728 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()+0x46>
+     7cc:	df 91       	pop	r29
+     7ce:	cf 91       	pop	r28
+     7d0:	1f 91       	pop	r17
+     7d2:	0f 91       	pop	r16
+     7d4:	ff 90       	pop	r15
+     7d6:	ef 90       	pop	r14
+     7d8:	df 90       	pop	r13
+     7da:	cf 90       	pop	r12
+     7dc:	bf 90       	pop	r11
+     7de:	af 90       	pop	r10
+     7e0:	9f 90       	pop	r9
+     7e2:	8f 90       	pop	r8
+     7e4:	7f 90       	pop	r7
+     7e6:	6f 90       	pop	r6
+     7e8:	5f 90       	pop	r5
+     7ea:	4f 90       	pop	r4
+     7ec:	08 95       	ret
 
-000007f6 <loop()>:
-     7f6:	8c e4       	ldi	r24, 0x4C	; 76
-     7f8:	92 e0       	ldi	r25, 0x02	; 2
-     7fa:	0e 94 f3 07 	call	0xfe6	; 0xfe6 <NanoEngineCore::nextFrame()>
-     7fe:	88 23       	and	r24, r24
-     800:	99 f1       	breq	.+102    	; 0x868 <loop()+0x72>
-     802:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_start>
-     806:	81 50       	subi	r24, 0x01	; 1
-     808:	19 f0       	breq	.+6      	; 0x810 <loop()+0x1a>
+000007ee <loop()>:
+     7ee:	8c e4       	ldi	r24, 0x4C	; 76
+     7f0:	92 e0       	ldi	r25, 0x02	; 2
+     7f2:	0e 94 df 07 	call	0xfbe	; 0xfbe <NanoEngineCore::nextFrame()>
+     7f6:	88 23       	and	r24, r24
+     7f8:	99 f1       	breq	.+102    	; 0x860 <loop()+0x72>
+     7fa:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_start>
+     7fe:	81 50       	subi	r24, 0x01	; 1
+     800:	19 f0       	breq	.+6      	; 0x808 <loop()+0x1a>
+     802:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
+     806:	05 c0       	rjmp	.+10     	; 0x812 <loop()+0x24>
+     808:	83 e0       	ldi	r24, 0x03	; 3
      80a:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
-     80e:	05 c0       	rjmp	.+10     	; 0x81a <loop()+0x24>
-     810:	83 e0       	ldi	r24, 0x03	; 3
-     812:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
-     816:	0e 94 f2 01 	call	0x3e4	; 0x3e4 <addSnowFlake()>
-     81a:	80 91 bc 02 	lds	r24, 0x02BC	; 0x8002bc <engine+0x70>
-     81e:	90 91 bd 02 	lds	r25, 0x02BD	; 0x8002bd <engine+0x71>
-     822:	0e 94 b4 00 	call	0x168	; 0x168 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::update() [clone .isra.11] [clone .constprop.23]>
-     826:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <engine+0x3>
-     82a:	10 92 50 02 	sts	0x0250, r1	; 0x800250 <engine+0x4>
-     82e:	10 92 51 02 	sts	0x0251, r1	; 0x800251 <engine+0x5>
-     832:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <engine+0x6>
-     836:	85 e5       	ldi	r24, 0x55	; 85
-     838:	92 e0       	ldi	r25, 0x02	; 2
-     83a:	0e 94 75 03 	call	0x6ea	; 0x6ea <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()>
-     83e:	20 91 4f 02 	lds	r18, 0x024F	; 0x80024f <engine+0x3>
-     842:	30 91 50 02 	lds	r19, 0x0250	; 0x800250 <engine+0x4>
-     846:	40 91 51 02 	lds	r20, 0x0251	; 0x800251 <engine+0x5>
-     84a:	50 91 52 02 	lds	r21, 0x0252	; 0x800252 <engine+0x6>
-     84e:	ac e9       	ldi	r26, 0x9C	; 156
-     850:	bf ef       	ldi	r27, 0xFF	; 255
-     852:	0e 94 6a 08 	call	0x10d4	; 0x10d4 <__mulohisi3>
-     856:	20 91 4c 02 	lds	r18, 0x024C	; 0x80024c <engine>
-     85a:	30 e0       	ldi	r19, 0x00	; 0
-     85c:	40 e0       	ldi	r20, 0x00	; 0
-     85e:	50 e0       	ldi	r21, 0x00	; 0
-     860:	0e 94 45 08 	call	0x108a	; 0x108a <__udivmodsi4>
-     864:	20 93 4e 02 	sts	0x024E, r18	; 0x80024e <engine+0x2>
-     868:	08 95       	ret
+     80e:	0e 94 f2 01 	call	0x3e4	; 0x3e4 <addSnowFlake()>
+     812:	80 91 ba 02 	lds	r24, 0x02BA	; 0x8002ba <engine+0x6e>
+     816:	90 91 bb 02 	lds	r25, 0x02BB	; 0x8002bb <engine+0x6f>
+     81a:	0e 94 b4 00 	call	0x168	; 0x168 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::update() [clone .isra.11] [clone .constprop.23]>
+     81e:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <engine+0x3>
+     822:	10 92 50 02 	sts	0x0250, r1	; 0x800250 <engine+0x4>
+     826:	10 92 51 02 	sts	0x0251, r1	; 0x800251 <engine+0x5>
+     82a:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <engine+0x6>
+     82e:	85 e5       	ldi	r24, 0x55	; 85
+     830:	92 e0       	ldi	r25, 0x02	; 2
+     832:	0e 94 71 03 	call	0x6e2	; 0x6e2 <NanoEngineTiler<NanoCanvas<16u, 16u, (unsigned char)1>, DisplaySSD1306_128x64_I2C>::displayBuffer()>
+     836:	20 91 4f 02 	lds	r18, 0x024F	; 0x80024f <engine+0x3>
+     83a:	30 91 50 02 	lds	r19, 0x0250	; 0x800250 <engine+0x4>
+     83e:	40 91 51 02 	lds	r20, 0x0251	; 0x800251 <engine+0x5>
+     842:	50 91 52 02 	lds	r21, 0x0252	; 0x800252 <engine+0x6>
+     846:	ac e9       	ldi	r26, 0x9C	; 156
+     848:	bf ef       	ldi	r27, 0xFF	; 255
+     84a:	0e 94 46 08 	call	0x108c	; 0x108c <__mulohisi3>
+     84e:	20 91 4c 02 	lds	r18, 0x024C	; 0x80024c <engine>
+     852:	30 e0       	ldi	r19, 0x00	; 0
+     854:	40 e0       	ldi	r20, 0x00	; 0
+     856:	50 e0       	ldi	r21, 0x00	; 0
+     858:	0e 94 21 08 	call	0x1042	; 0x1042 <__udivmodsi4>
+     85c:	20 93 4e 02 	sts	0x024E, r18	; 0x80024e <engine+0x2>
+     860:	08 95       	ret
 
-0000086a <_GLOBAL__sub_I_display>:
-     86a:	cf 93       	push	r28
-     86c:	10 92 c1 02 	sts	0x02C1, r1	; 0x8002c1 <display+0x3>
-     870:	10 92 c0 02 	sts	0x02C0, r1	; 0x8002c0 <display+0x2>
-     874:	10 92 c3 02 	sts	0x02C3, r1	; 0x8002c3 <display+0x5>
-     878:	10 92 c2 02 	sts	0x02C2, r1	; 0x8002c2 <display+0x4>
-     87c:	10 92 c5 02 	sts	0x02C5, r1	; 0x8002c5 <display+0x7>
-     880:	10 92 c4 02 	sts	0x02C4, r1	; 0x8002c4 <display+0x6>
-     884:	10 92 c7 02 	sts	0x02C7, r1	; 0x8002c7 <display+0x9>
-     888:	10 92 c6 02 	sts	0x02C6, r1	; 0x8002c6 <display+0x8>
-     88c:	10 92 c9 02 	sts	0x02C9, r1	; 0x8002c9 <display+0xb>
-     890:	10 92 c8 02 	sts	0x02C8, r1	; 0x8002c8 <display+0xa>
-     894:	10 92 ca 02 	sts	0x02CA, r1	; 0x8002ca <display+0xc>
-     898:	8f ef       	ldi	r24, 0xFF	; 255
-     89a:	9f ef       	ldi	r25, 0xFF	; 255
-     89c:	90 93 ce 02 	sts	0x02CE, r25	; 0x8002ce <display+0x10>
-     8a0:	80 93 cd 02 	sts	0x02CD, r24	; 0x8002cd <display+0xf>
-     8a4:	10 92 d0 02 	sts	0x02D0, r1	; 0x8002d0 <display+0x12>
-     8a8:	10 92 cf 02 	sts	0x02CF, r1	; 0x8002cf <display+0x11>
-     8ac:	84 ed       	ldi	r24, 0xD4	; 212
-     8ae:	92 e0       	ldi	r25, 0x02	; 2
-     8b0:	90 93 d2 02 	sts	0x02D2, r25	; 0x8002d2 <display+0x14>
-     8b4:	80 93 d1 02 	sts	0x02D1, r24	; 0x8002d1 <display+0x13>
-     8b8:	cf ef       	ldi	r28, 0xFF	; 255
-     8ba:	c0 93 d3 02 	sts	0x02D3, r28	; 0x8002d3 <display+0x15>
-     8be:	8f e0       	ldi	r24, 0x0F	; 15
-     8c0:	91 e0       	ldi	r25, 0x01	; 1
-     8c2:	90 93 bf 02 	sts	0x02BF, r25	; 0x8002bf <display+0x1>
-     8c6:	80 93 be 02 	sts	0x02BE, r24	; 0x8002be <display>
-     8ca:	6c e3       	ldi	r22, 0x3C	; 60
-     8cc:	84 ed       	ldi	r24, 0xD4	; 212
-     8ce:	92 e0       	ldi	r25, 0x02	; 2
-     8d0:	0e 94 66 05 	call	0xacc	; 0xacc <TwiI2c::TwiI2c(unsigned char)>
-     8d4:	c0 93 d5 02 	sts	0x02D5, r28	; 0x8002d5 <display+0x17>
-     8d8:	80 ec       	ldi	r24, 0xC0	; 192
-     8da:	92 e0       	ldi	r25, 0x02	; 2
-     8dc:	90 93 d7 02 	sts	0x02D7, r25	; 0x8002d7 <display+0x19>
-     8e0:	80 93 d6 02 	sts	0x02D6, r24	; 0x8002d6 <display+0x18>
-     8e4:	10 92 d8 02 	sts	0x02D8, r1	; 0x8002d8 <display+0x1a>
-     8e8:	81 e2       	ldi	r24, 0x21	; 33
-     8ea:	80 93 4c 02 	sts	0x024C, r24	; 0x80024c <engine>
-     8ee:	8e e1       	ldi	r24, 0x1E	; 30
-     8f0:	80 93 4d 02 	sts	0x024D, r24	; 0x80024d <engine+0x1>
-     8f4:	10 92 4e 02 	sts	0x024E, r1	; 0x80024e <engine+0x2>
-     8f8:	10 92 54 02 	sts	0x0254, r1	; 0x800254 <engine+0x8>
-     8fc:	10 92 53 02 	sts	0x0253, r1	; 0x800253 <engine+0x7>
-     900:	8e eb       	ldi	r24, 0xBE	; 190
-     902:	92 e0       	ldi	r25, 0x02	; 2
-     904:	90 93 56 02 	sts	0x0256, r25	; 0x800256 <engine+0xa>
-     908:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <engine+0x9>
-     90c:	10 92 58 02 	sts	0x0258, r1	; 0x800258 <engine+0xc>
-     910:	10 92 57 02 	sts	0x0257, r1	; 0x800257 <engine+0xb>
-     914:	10 92 97 02 	sts	0x0297, r1	; 0x800297 <engine+0x4b>
-     918:	10 92 96 02 	sts	0x0296, r1	; 0x800296 <engine+0x4a>
-     91c:	28 e9       	ldi	r18, 0x98	; 152
-     91e:	32 e0       	ldi	r19, 0x02	; 2
-     920:	40 e1       	ldi	r20, 0x10	; 16
-     922:	50 e0       	ldi	r21, 0x00	; 0
-     924:	60 e1       	ldi	r22, 0x10	; 16
-     926:	70 e0       	ldi	r23, 0x00	; 0
-     928:	81 e8       	ldi	r24, 0x81	; 129
-     92a:	92 e0       	ldi	r25, 0x02	; 2
-     92c:	0e 94 b1 07 	call	0xf62	; 0xf62 <NanoCanvasOps<(unsigned char)1>::begin(int, int, unsigned char*)>
-     930:	80 e2       	ldi	r24, 0x20	; 32
-     932:	e8 e9       	ldi	r30, 0x98	; 152
-     934:	f2 e0       	ldi	r31, 0x02	; 2
-     936:	df 01       	movw	r26, r30
-     938:	1d 92       	st	X+, r1
-     93a:	8a 95       	dec	r24
-     93c:	e9 f7       	brne	.-6      	; 0x938 <__stack+0x39>
+00000862 <_GLOBAL__sub_I_display>:
+     862:	cf 93       	push	r28
+     864:	10 92 bf 02 	sts	0x02BF, r1	; 0x8002bf <display+0x3>
+     868:	10 92 be 02 	sts	0x02BE, r1	; 0x8002be <display+0x2>
+     86c:	10 92 c1 02 	sts	0x02C1, r1	; 0x8002c1 <display+0x5>
+     870:	10 92 c0 02 	sts	0x02C0, r1	; 0x8002c0 <display+0x4>
+     874:	10 92 c3 02 	sts	0x02C3, r1	; 0x8002c3 <display+0x7>
+     878:	10 92 c2 02 	sts	0x02C2, r1	; 0x8002c2 <display+0x6>
+     87c:	10 92 c5 02 	sts	0x02C5, r1	; 0x8002c5 <display+0x9>
+     880:	10 92 c4 02 	sts	0x02C4, r1	; 0x8002c4 <display+0x8>
+     884:	10 92 c7 02 	sts	0x02C7, r1	; 0x8002c7 <display+0xb>
+     888:	10 92 c6 02 	sts	0x02C6, r1	; 0x8002c6 <display+0xa>
+     88c:	10 92 c8 02 	sts	0x02C8, r1	; 0x8002c8 <display+0xc>
+     890:	8f ef       	ldi	r24, 0xFF	; 255
+     892:	9f ef       	ldi	r25, 0xFF	; 255
+     894:	90 93 cc 02 	sts	0x02CC, r25	; 0x8002cc <display+0x10>
+     898:	80 93 cb 02 	sts	0x02CB, r24	; 0x8002cb <display+0xf>
+     89c:	10 92 ce 02 	sts	0x02CE, r1	; 0x8002ce <display+0x12>
+     8a0:	10 92 cd 02 	sts	0x02CD, r1	; 0x8002cd <display+0x11>
+     8a4:	82 ed       	ldi	r24, 0xD2	; 210
+     8a6:	92 e0       	ldi	r25, 0x02	; 2
+     8a8:	90 93 d0 02 	sts	0x02D0, r25	; 0x8002d0 <display+0x14>
+     8ac:	80 93 cf 02 	sts	0x02CF, r24	; 0x8002cf <display+0x13>
+     8b0:	cf ef       	ldi	r28, 0xFF	; 255
+     8b2:	c0 93 d1 02 	sts	0x02D1, r28	; 0x8002d1 <display+0x15>
+     8b6:	8f e0       	ldi	r24, 0x0F	; 15
+     8b8:	91 e0       	ldi	r25, 0x01	; 1
+     8ba:	90 93 bd 02 	sts	0x02BD, r25	; 0x8002bd <display+0x1>
+     8be:	80 93 bc 02 	sts	0x02BC, r24	; 0x8002bc <display>
+     8c2:	6c e3       	ldi	r22, 0x3C	; 60
+     8c4:	82 ed       	ldi	r24, 0xD2	; 210
+     8c6:	92 e0       	ldi	r25, 0x02	; 2
+     8c8:	0e 94 62 05 	call	0xac4	; 0xac4 <TwiI2c::TwiI2c(unsigned char)>
+     8cc:	c0 93 d3 02 	sts	0x02D3, r28	; 0x8002d3 <display+0x17>
+     8d0:	8e eb       	ldi	r24, 0xBE	; 190
+     8d2:	92 e0       	ldi	r25, 0x02	; 2
+     8d4:	90 93 d5 02 	sts	0x02D5, r25	; 0x8002d5 <display+0x19>
+     8d8:	80 93 d4 02 	sts	0x02D4, r24	; 0x8002d4 <display+0x18>
+     8dc:	10 92 d6 02 	sts	0x02D6, r1	; 0x8002d6 <display+0x1a>
+     8e0:	81 e2       	ldi	r24, 0x21	; 33
+     8e2:	80 93 4c 02 	sts	0x024C, r24	; 0x80024c <engine>
+     8e6:	8e e1       	ldi	r24, 0x1E	; 30
+     8e8:	80 93 4d 02 	sts	0x024D, r24	; 0x80024d <engine+0x1>
+     8ec:	10 92 4e 02 	sts	0x024E, r1	; 0x80024e <engine+0x2>
+     8f0:	10 92 54 02 	sts	0x0254, r1	; 0x800254 <engine+0x8>
+     8f4:	10 92 53 02 	sts	0x0253, r1	; 0x800253 <engine+0x7>
+     8f8:	8c eb       	ldi	r24, 0xBC	; 188
+     8fa:	92 e0       	ldi	r25, 0x02	; 2
+     8fc:	90 93 56 02 	sts	0x0256, r25	; 0x800256 <engine+0xa>
+     900:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <engine+0x9>
+     904:	10 92 58 02 	sts	0x0258, r1	; 0x800258 <engine+0xc>
+     908:	10 92 57 02 	sts	0x0257, r1	; 0x800257 <engine+0xb>
+     90c:	10 92 95 02 	sts	0x0295, r1	; 0x800295 <engine+0x49>
+     910:	10 92 94 02 	sts	0x0294, r1	; 0x800294 <engine+0x48>
+     914:	26 e9       	ldi	r18, 0x96	; 150
+     916:	32 e0       	ldi	r19, 0x02	; 2
+     918:	40 e1       	ldi	r20, 0x10	; 16
+     91a:	50 e0       	ldi	r21, 0x00	; 0
+     91c:	60 e1       	ldi	r22, 0x10	; 16
+     91e:	70 e0       	ldi	r23, 0x00	; 0
+     920:	81 e8       	ldi	r24, 0x81	; 129
+     922:	92 e0       	ldi	r25, 0x02	; 2
+     924:	0e 94 ad 07 	call	0xf5a	; 0xf5a <NanoCanvasOps<(unsigned char)1>::begin(int, int, unsigned char*)>
+     928:	80 e2       	ldi	r24, 0x20	; 32
+     92a:	e6 e9       	ldi	r30, 0x96	; 150
+     92c:	f2 e0       	ldi	r31, 0x02	; 2
+     92e:	df 01       	movw	r26, r30
+     930:	1d 92       	st	X+, r1
+     932:	8a 95       	dec	r24
+     934:	e9 f7       	brne	.-6      	; 0x930 <__stack+0x31>
+     936:	10 92 b7 02 	sts	0x02B7, r1	; 0x8002b7 <engine+0x6b>
+     93a:	10 92 b6 02 	sts	0x02B6, r1	; 0x8002b6 <engine+0x6a>
      93e:	10 92 b9 02 	sts	0x02B9, r1	; 0x8002b9 <engine+0x6d>
      942:	10 92 b8 02 	sts	0x02B8, r1	; 0x8002b8 <engine+0x6c>
-     946:	10 92 bb 02 	sts	0x02BB, r1	; 0x8002bb <engine+0x6f>
-     94a:	10 92 ba 02 	sts	0x02BA, r1	; 0x8002ba <engine+0x6e>
-     94e:	48 e2       	ldi	r20, 0x28	; 40
-     950:	50 e0       	ldi	r21, 0x00	; 0
-     952:	6f ef       	ldi	r22, 0xFF	; 255
-     954:	70 e0       	ldi	r23, 0x00	; 0
-     956:	89 e5       	ldi	r24, 0x59	; 89
-     958:	92 e0       	ldi	r25, 0x02	; 2
-     95a:	0e 94 8f 08 	call	0x111e	; 0x111e <memset>
-     95e:	e4 e1       	ldi	r30, 0x14	; 20
-     960:	f1 e0       	ldi	r31, 0x01	; 1
-     962:	2c e4       	ldi	r18, 0x4C	; 76
-     964:	32 e0       	ldi	r19, 0x02	; 2
-     966:	87 e0       	ldi	r24, 0x07	; 7
-     968:	90 e0       	ldi	r25, 0x00	; 0
-     96a:	45 e0       	ldi	r20, 0x05	; 5
-     96c:	51 e0       	ldi	r21, 0x01	; 1
-     96e:	13 82       	std	Z+3, r1	; 0x03
-     970:	12 82       	std	Z+2, r1	; 0x02
-     972:	15 82       	std	Z+5, r1	; 0x05
-     974:	14 82       	std	Z+4, r1	; 0x04
-     976:	10 86       	std	Z+8, r1	; 0x08
-     978:	17 82       	std	Z+7, r1	; 0x07
-     97a:	12 86       	std	Z+10, r1	; 0x0a
-     97c:	11 86       	std	Z+9, r1	; 0x09
-     97e:	94 87       	std	Z+12, r25	; 0x0c
-     980:	83 87       	std	Z+11, r24	; 0x0b
-     982:	96 87       	std	Z+14, r25	; 0x0e
-     984:	85 87       	std	Z+13, r24	; 0x0d
-     986:	10 8a       	std	Z+16, r1	; 0x10
-     988:	17 86       	std	Z+15, r1	; 0x0f
-     98a:	51 83       	std	Z+1, r21	; 0x01
-     98c:	40 83       	st	Z, r20
-     98e:	7a 96       	adiw	r30, 0x1a	; 26
-     990:	2e 17       	cp	r18, r30
-     992:	3f 07       	cpc	r19, r31
-     994:	61 f7       	brne	.-40     	; 0x96e <__stack+0x6f>
-     996:	cf 91       	pop	r28
-     998:	08 95       	ret
+     946:	48 e2       	ldi	r20, 0x28	; 40
+     948:	50 e0       	ldi	r21, 0x00	; 0
+     94a:	6f ef       	ldi	r22, 0xFF	; 255
+     94c:	70 e0       	ldi	r23, 0x00	; 0
+     94e:	89 e5       	ldi	r24, 0x59	; 89
+     950:	92 e0       	ldi	r25, 0x02	; 2
+     952:	0e 94 6b 08 	call	0x10d6	; 0x10d6 <memset>
+     956:	e4 e1       	ldi	r30, 0x14	; 20
+     958:	f1 e0       	ldi	r31, 0x01	; 1
+     95a:	2c e4       	ldi	r18, 0x4C	; 76
+     95c:	32 e0       	ldi	r19, 0x02	; 2
+     95e:	87 e0       	ldi	r24, 0x07	; 7
+     960:	90 e0       	ldi	r25, 0x00	; 0
+     962:	45 e0       	ldi	r20, 0x05	; 5
+     964:	51 e0       	ldi	r21, 0x01	; 1
+     966:	13 82       	std	Z+3, r1	; 0x03
+     968:	12 82       	std	Z+2, r1	; 0x02
+     96a:	15 82       	std	Z+5, r1	; 0x05
+     96c:	14 82       	std	Z+4, r1	; 0x04
+     96e:	10 86       	std	Z+8, r1	; 0x08
+     970:	17 82       	std	Z+7, r1	; 0x07
+     972:	12 86       	std	Z+10, r1	; 0x0a
+     974:	11 86       	std	Z+9, r1	; 0x09
+     976:	94 87       	std	Z+12, r25	; 0x0c
+     978:	83 87       	std	Z+11, r24	; 0x0b
+     97a:	96 87       	std	Z+14, r25	; 0x0e
+     97c:	85 87       	std	Z+13, r24	; 0x0d
+     97e:	10 8a       	std	Z+16, r1	; 0x10
+     980:	17 86       	std	Z+15, r1	; 0x0f
+     982:	51 83       	std	Z+1, r21	; 0x01
+     984:	40 83       	st	Z, r20
+     986:	7a 96       	adiw	r30, 0x1a	; 26
+     988:	2e 17       	cp	r18, r30
+     98a:	3f 07       	cpc	r19, r31
+     98c:	61 f7       	brne	.-40     	; 0x966 <__stack+0x67>
+     98e:	cf 91       	pop	r28
+     990:	08 95       	ret
 
-0000099a <_GLOBAL__sub_D_display>:
-     99a:	8f e0       	ldi	r24, 0x0F	; 15
-     99c:	91 e0       	ldi	r25, 0x01	; 1
-     99e:	90 93 bf 02 	sts	0x02BF, r25	; 0x8002bf <display+0x1>
-     9a2:	80 93 be 02 	sts	0x02BE, r24	; 0x8002be <display>
-     9a6:	84 ed       	ldi	r24, 0xD4	; 212
-     9a8:	92 e0       	ldi	r25, 0x02	; 2
-     9aa:	0c 94 69 05 	jmp	0xad2	; 0xad2 <TwiI2c::~TwiI2c()>
+00000992 <_GLOBAL__sub_D_display>:
+     992:	8f e0       	ldi	r24, 0x0F	; 15
+     994:	91 e0       	ldi	r25, 0x01	; 1
+     996:	90 93 bd 02 	sts	0x02BD, r25	; 0x8002bd <display+0x1>
+     99a:	80 93 bc 02 	sts	0x02BC, r24	; 0x8002bc <display>
+     99e:	82 ed       	ldi	r24, 0xD2	; 210
+     9a0:	92 e0       	ldi	r25, 0x02	; 2
+     9a2:	0c 94 65 05 	jmp	0xaca	; 0xaca <TwiI2c::~TwiI2c()>
 
-000009ae <delay>:
-     9ae:	61 15       	cp	r22, r1
-     9b0:	71 05       	cpc	r23, r1
-     9b2:	81 05       	cpc	r24, r1
-     9b4:	91 05       	cpc	r25, r1
-     9b6:	59 f0       	breq	.+22     	; 0x9ce <delay+0x20>
-     9b8:	ef e9       	ldi	r30, 0x9F	; 159
-     9ba:	ff e0       	ldi	r31, 0x0F	; 15
-     9bc:	31 97       	sbiw	r30, 0x01	; 1
-     9be:	f1 f7       	brne	.-4      	; 0x9bc <delay+0xe>
-     9c0:	00 c0       	rjmp	.+0      	; 0x9c2 <delay+0x14>
-     9c2:	00 00       	nop
-     9c4:	61 50       	subi	r22, 0x01	; 1
-     9c6:	71 09       	sbc	r23, r1
-     9c8:	81 09       	sbc	r24, r1
-     9ca:	91 09       	sbc	r25, r1
-     9cc:	f0 cf       	rjmp	.-32     	; 0x9ae <delay>
-     9ce:	08 95       	ret
+000009a6 <delay>:
+     9a6:	61 15       	cp	r22, r1
+     9a8:	71 05       	cpc	r23, r1
+     9aa:	81 05       	cpc	r24, r1
+     9ac:	91 05       	cpc	r25, r1
+     9ae:	59 f0       	breq	.+22     	; 0x9c6 <delay+0x20>
+     9b0:	ef e9       	ldi	r30, 0x9F	; 159
+     9b2:	ff e0       	ldi	r31, 0x0F	; 15
+     9b4:	31 97       	sbiw	r30, 0x01	; 1
+     9b6:	f1 f7       	brne	.-4      	; 0x9b4 <delay+0xe>
+     9b8:	00 c0       	rjmp	.+0      	; 0x9ba <delay+0x14>
+     9ba:	00 00       	nop
+     9bc:	61 50       	subi	r22, 0x01	; 1
+     9be:	71 09       	sbc	r23, r1
+     9c0:	81 09       	sbc	r24, r1
+     9c2:	91 09       	sbc	r25, r1
+     9c4:	f0 cf       	rjmp	.-32     	; 0x9a6 <delay>
+     9c6:	08 95       	ret
 
-000009d0 <digitalWrite>:
-     9d0:	ac 01       	movw	r20, r24
-     9d2:	47 70       	andi	r20, 0x07	; 7
-     9d4:	55 27       	eor	r21, r21
-     9d6:	21 e0       	ldi	r18, 0x01	; 1
-     9d8:	30 e0       	ldi	r19, 0x00	; 0
-     9da:	01 c0       	rjmp	.+2      	; 0x9de <digitalWrite+0xe>
-     9dc:	22 0f       	add	r18, r18
-     9de:	4a 95       	dec	r20
-     9e0:	ea f7       	brpl	.-6      	; 0x9dc <digitalWrite+0xc>
-     9e2:	88 30       	cpi	r24, 0x08	; 8
-     9e4:	91 05       	cpc	r25, r1
-     9e6:	54 f4       	brge	.+20     	; 0x9fc <digitalWrite+0x2c>
-     9e8:	8b b1       	in	r24, 0x0b	; 11
-     9ea:	61 30       	cpi	r22, 0x01	; 1
-     9ec:	71 05       	cpc	r23, r1
-     9ee:	11 f4       	brne	.+4      	; 0x9f4 <digitalWrite+0x24>
-     9f0:	28 2b       	or	r18, r24
-     9f2:	02 c0       	rjmp	.+4      	; 0x9f8 <digitalWrite+0x28>
-     9f4:	20 95       	com	r18
-     9f6:	28 23       	and	r18, r24
-     9f8:	2b b9       	out	0x0b, r18	; 11
-     9fa:	08 95       	ret
-     9fc:	40 97       	sbiw	r24, 0x10	; 16
-     9fe:	54 f4       	brge	.+20     	; 0xa14 <digitalWrite+0x44>
-     a00:	85 b1       	in	r24, 0x05	; 5
-     a02:	61 30       	cpi	r22, 0x01	; 1
-     a04:	71 05       	cpc	r23, r1
-     a06:	11 f4       	brne	.+4      	; 0xa0c <digitalWrite+0x3c>
-     a08:	28 2b       	or	r18, r24
-     a0a:	02 c0       	rjmp	.+4      	; 0xa10 <digitalWrite+0x40>
-     a0c:	20 95       	com	r18
-     a0e:	28 23       	and	r18, r24
-     a10:	25 b9       	out	0x05, r18	; 5
-     a12:	08 95       	ret
-     a14:	88 b1       	in	r24, 0x08	; 8
-     a16:	61 30       	cpi	r22, 0x01	; 1
-     a18:	71 05       	cpc	r23, r1
-     a1a:	11 f4       	brne	.+4      	; 0xa20 <digitalWrite+0x50>
-     a1c:	28 2b       	or	r18, r24
-     a1e:	02 c0       	rjmp	.+4      	; 0xa24 <digitalWrite+0x54>
-     a20:	20 95       	com	r18
-     a22:	28 23       	and	r18, r24
-     a24:	28 b9       	out	0x08, r18	; 8
-     a26:	08 95       	ret
+000009c8 <digitalWrite>:
+     9c8:	ac 01       	movw	r20, r24
+     9ca:	47 70       	andi	r20, 0x07	; 7
+     9cc:	55 27       	eor	r21, r21
+     9ce:	21 e0       	ldi	r18, 0x01	; 1
+     9d0:	30 e0       	ldi	r19, 0x00	; 0
+     9d2:	01 c0       	rjmp	.+2      	; 0x9d6 <digitalWrite+0xe>
+     9d4:	22 0f       	add	r18, r18
+     9d6:	4a 95       	dec	r20
+     9d8:	ea f7       	brpl	.-6      	; 0x9d4 <digitalWrite+0xc>
+     9da:	88 30       	cpi	r24, 0x08	; 8
+     9dc:	91 05       	cpc	r25, r1
+     9de:	54 f4       	brge	.+20     	; 0x9f4 <digitalWrite+0x2c>
+     9e0:	8b b1       	in	r24, 0x0b	; 11
+     9e2:	61 30       	cpi	r22, 0x01	; 1
+     9e4:	71 05       	cpc	r23, r1
+     9e6:	11 f4       	brne	.+4      	; 0x9ec <digitalWrite+0x24>
+     9e8:	28 2b       	or	r18, r24
+     9ea:	02 c0       	rjmp	.+4      	; 0x9f0 <digitalWrite+0x28>
+     9ec:	20 95       	com	r18
+     9ee:	28 23       	and	r18, r24
+     9f0:	2b b9       	out	0x0b, r18	; 11
+     9f2:	08 95       	ret
+     9f4:	40 97       	sbiw	r24, 0x10	; 16
+     9f6:	54 f4       	brge	.+20     	; 0xa0c <digitalWrite+0x44>
+     9f8:	85 b1       	in	r24, 0x05	; 5
+     9fa:	61 30       	cpi	r22, 0x01	; 1
+     9fc:	71 05       	cpc	r23, r1
+     9fe:	11 f4       	brne	.+4      	; 0xa04 <digitalWrite+0x3c>
+     a00:	28 2b       	or	r18, r24
+     a02:	02 c0       	rjmp	.+4      	; 0xa08 <digitalWrite+0x40>
+     a04:	20 95       	com	r18
+     a06:	28 23       	and	r18, r24
+     a08:	25 b9       	out	0x05, r18	; 5
+     a0a:	08 95       	ret
+     a0c:	88 b1       	in	r24, 0x08	; 8
+     a0e:	61 30       	cpi	r22, 0x01	; 1
+     a10:	71 05       	cpc	r23, r1
+     a12:	11 f4       	brne	.+4      	; 0xa18 <digitalWrite+0x50>
+     a14:	28 2b       	or	r18, r24
+     a16:	02 c0       	rjmp	.+4      	; 0xa1c <digitalWrite+0x54>
+     a18:	20 95       	com	r18
+     a1a:	28 23       	and	r18, r24
+     a1c:	28 b9       	out	0x08, r18	; 8
+     a1e:	08 95       	ret
 
-00000a28 <pinMode>:
-     a28:	ac 01       	movw	r20, r24
-     a2a:	47 70       	andi	r20, 0x07	; 7
-     a2c:	55 27       	eor	r21, r21
-     a2e:	21 e0       	ldi	r18, 0x01	; 1
-     a30:	30 e0       	ldi	r19, 0x00	; 0
-     a32:	01 c0       	rjmp	.+2      	; 0xa36 <pinMode+0xe>
-     a34:	22 0f       	add	r18, r18
-     a36:	4a 95       	dec	r20
-     a38:	ea f7       	brpl	.-6      	; 0xa34 <pinMode+0xc>
-     a3a:	88 30       	cpi	r24, 0x08	; 8
-     a3c:	91 05       	cpc	r25, r1
-     a3e:	54 f4       	brge	.+20     	; 0xa54 <pinMode+0x2c>
-     a40:	8a b1       	in	r24, 0x0a	; 10
-     a42:	61 30       	cpi	r22, 0x01	; 1
-     a44:	71 05       	cpc	r23, r1
-     a46:	11 f4       	brne	.+4      	; 0xa4c <pinMode+0x24>
-     a48:	28 2b       	or	r18, r24
-     a4a:	02 c0       	rjmp	.+4      	; 0xa50 <pinMode+0x28>
-     a4c:	20 95       	com	r18
-     a4e:	28 23       	and	r18, r24
-     a50:	2a b9       	out	0x0a, r18	; 10
-     a52:	08 95       	ret
-     a54:	40 97       	sbiw	r24, 0x10	; 16
-     a56:	54 f4       	brge	.+20     	; 0xa6c <pinMode+0x44>
-     a58:	84 b1       	in	r24, 0x04	; 4
-     a5a:	61 30       	cpi	r22, 0x01	; 1
-     a5c:	71 05       	cpc	r23, r1
-     a5e:	11 f4       	brne	.+4      	; 0xa64 <pinMode+0x3c>
-     a60:	28 2b       	or	r18, r24
-     a62:	02 c0       	rjmp	.+4      	; 0xa68 <pinMode+0x40>
-     a64:	20 95       	com	r18
-     a66:	28 23       	and	r18, r24
-     a68:	24 b9       	out	0x04, r18	; 4
-     a6a:	08 95       	ret
-     a6c:	87 b1       	in	r24, 0x07	; 7
-     a6e:	61 30       	cpi	r22, 0x01	; 1
-     a70:	71 05       	cpc	r23, r1
-     a72:	11 f4       	brne	.+4      	; 0xa78 <pinMode+0x50>
-     a74:	28 2b       	or	r18, r24
-     a76:	02 c0       	rjmp	.+4      	; 0xa7c <pinMode+0x54>
-     a78:	20 95       	com	r18
-     a7a:	28 23       	and	r18, r24
-     a7c:	27 b9       	out	0x07, r18	; 7
-     a7e:	08 95       	ret
+00000a20 <pinMode>:
+     a20:	ac 01       	movw	r20, r24
+     a22:	47 70       	andi	r20, 0x07	; 7
+     a24:	55 27       	eor	r21, r21
+     a26:	21 e0       	ldi	r18, 0x01	; 1
+     a28:	30 e0       	ldi	r19, 0x00	; 0
+     a2a:	01 c0       	rjmp	.+2      	; 0xa2e <pinMode+0xe>
+     a2c:	22 0f       	add	r18, r18
+     a2e:	4a 95       	dec	r20
+     a30:	ea f7       	brpl	.-6      	; 0xa2c <pinMode+0xc>
+     a32:	88 30       	cpi	r24, 0x08	; 8
+     a34:	91 05       	cpc	r25, r1
+     a36:	54 f4       	brge	.+20     	; 0xa4c <pinMode+0x2c>
+     a38:	8a b1       	in	r24, 0x0a	; 10
+     a3a:	61 30       	cpi	r22, 0x01	; 1
+     a3c:	71 05       	cpc	r23, r1
+     a3e:	11 f4       	brne	.+4      	; 0xa44 <pinMode+0x24>
+     a40:	28 2b       	or	r18, r24
+     a42:	02 c0       	rjmp	.+4      	; 0xa48 <pinMode+0x28>
+     a44:	20 95       	com	r18
+     a46:	28 23       	and	r18, r24
+     a48:	2a b9       	out	0x0a, r18	; 10
+     a4a:	08 95       	ret
+     a4c:	40 97       	sbiw	r24, 0x10	; 16
+     a4e:	54 f4       	brge	.+20     	; 0xa64 <pinMode+0x44>
+     a50:	84 b1       	in	r24, 0x04	; 4
+     a52:	61 30       	cpi	r22, 0x01	; 1
+     a54:	71 05       	cpc	r23, r1
+     a56:	11 f4       	brne	.+4      	; 0xa5c <pinMode+0x3c>
+     a58:	28 2b       	or	r18, r24
+     a5a:	02 c0       	rjmp	.+4      	; 0xa60 <pinMode+0x40>
+     a5c:	20 95       	com	r18
+     a5e:	28 23       	and	r18, r24
+     a60:	24 b9       	out	0x04, r18	; 4
+     a62:	08 95       	ret
+     a64:	87 b1       	in	r24, 0x07	; 7
+     a66:	61 30       	cpi	r22, 0x01	; 1
+     a68:	71 05       	cpc	r23, r1
+     a6a:	11 f4       	brne	.+4      	; 0xa70 <pinMode+0x50>
+     a6c:	28 2b       	or	r18, r24
+     a6e:	02 c0       	rjmp	.+4      	; 0xa74 <pinMode+0x54>
+     a70:	20 95       	com	r18
+     a72:	28 23       	and	r18, r24
+     a74:	27 b9       	out	0x07, r18	; 7
+     a76:	08 95       	ret
 
-00000a80 <ssd1306_twi_start()>:
-     a80:	84 ea       	ldi	r24, 0xA4	; 164
-     a82:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
-     a86:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
-     a8a:	87 ff       	sbrs	r24, 7
-     a8c:	fc cf       	rjmp	.-8      	; 0xa86 <ssd1306_twi_start()+0x6>
-     a8e:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7e00b9>
-     a92:	88 7f       	andi	r24, 0xF8	; 248
-     a94:	88 30       	cpi	r24, 0x08	; 8
-     a96:	11 f0       	breq	.+4      	; 0xa9c <ssd1306_twi_start()+0x1c>
-     a98:	80 31       	cpi	r24, 0x10	; 16
-     a9a:	09 f4       	brne	.+2      	; 0xa9e <ssd1306_twi_start()+0x1e>
-     a9c:	80 e0       	ldi	r24, 0x00	; 0
-     a9e:	08 95       	ret
+00000a78 <ssd1306_twi_start()>:
+     a78:	84 ea       	ldi	r24, 0xA4	; 164
+     a7a:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
+     a7e:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
+     a82:	87 ff       	sbrs	r24, 7
+     a84:	fc cf       	rjmp	.-8      	; 0xa7e <ssd1306_twi_start()+0x6>
+     a86:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7e00b9>
+     a8a:	88 7f       	andi	r24, 0xF8	; 248
+     a8c:	88 30       	cpi	r24, 0x08	; 8
+     a8e:	11 f0       	breq	.+4      	; 0xa94 <ssd1306_twi_start()+0x1c>
+     a90:	80 31       	cpi	r24, 0x10	; 16
+     a92:	09 f4       	brne	.+2      	; 0xa96 <ssd1306_twi_start()+0x1e>
+     a94:	80 e0       	ldi	r24, 0x00	; 0
+     a96:	08 95       	ret
 
-00000aa0 <ssd1306_twi_send(unsigned char)>:
-     aa0:	24 e8       	ldi	r18, 0x84	; 132
-     aa2:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7e00bb>
-     aa6:	20 93 bc 00 	sts	0x00BC, r18	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
-     aaa:	90 91 bc 00 	lds	r25, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
-     aae:	97 ff       	sbrs	r25, 7
-     ab0:	fc cf       	rjmp	.-8      	; 0xaaa <ssd1306_twi_send(unsigned char)+0xa>
-     ab2:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7e00b9>
-     ab6:	98 7f       	andi	r25, 0xF8	; 248
-     ab8:	98 31       	cpi	r25, 0x18	; 24
-     aba:	31 f0       	breq	.+12     	; 0xac8 <ssd1306_twi_send(unsigned char)+0x28>
-     abc:	98 32       	cpi	r25, 0x28	; 40
-     abe:	21 f0       	breq	.+8      	; 0xac8 <ssd1306_twi_send(unsigned char)+0x28>
-     ac0:	98 33       	cpi	r25, 0x38	; 56
-     ac2:	79 f7       	brne	.-34     	; 0xaa2 <ssd1306_twi_send(unsigned char)+0x2>
-     ac4:	88 e3       	ldi	r24, 0x38	; 56
-     ac6:	08 95       	ret
-     ac8:	80 e0       	ldi	r24, 0x00	; 0
+00000a98 <ssd1306_twi_send(unsigned char)>:
+     a98:	24 e8       	ldi	r18, 0x84	; 132
+     a9a:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7e00bb>
+     a9e:	20 93 bc 00 	sts	0x00BC, r18	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
+     aa2:	90 91 bc 00 	lds	r25, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
+     aa6:	97 ff       	sbrs	r25, 7
+     aa8:	fc cf       	rjmp	.-8      	; 0xaa2 <ssd1306_twi_send(unsigned char)+0xa>
+     aaa:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7e00b9>
+     aae:	98 7f       	andi	r25, 0xF8	; 248
+     ab0:	98 31       	cpi	r25, 0x18	; 24
+     ab2:	31 f0       	breq	.+12     	; 0xac0 <ssd1306_twi_send(unsigned char)+0x28>
+     ab4:	98 32       	cpi	r25, 0x28	; 40
+     ab6:	21 f0       	breq	.+8      	; 0xac0 <ssd1306_twi_send(unsigned char)+0x28>
+     ab8:	98 33       	cpi	r25, 0x38	; 56
+     aba:	79 f7       	brne	.-34     	; 0xa9a <ssd1306_twi_send(unsigned char)+0x2>
+     abc:	88 e3       	ldi	r24, 0x38	; 56
+     abe:	08 95       	ret
+     ac0:	80 e0       	ldi	r24, 0x00	; 0
+     ac2:	08 95       	ret
+
+00000ac4 <TwiI2c::TwiI2c(unsigned char)>:
+     ac4:	fc 01       	movw	r30, r24
+     ac6:	60 83       	st	Z, r22
+     ac8:	08 95       	ret
+
+00000aca <TwiI2c::~TwiI2c()>:
      aca:	08 95       	ret
 
-00000acc <TwiI2c::TwiI2c(unsigned char)>:
-     acc:	fc 01       	movw	r30, r24
-     ace:	60 83       	st	Z, r22
-     ad0:	08 95       	ret
+00000acc <TwiI2c::begin()>:
+     acc:	08 95       	ret
 
-00000ad2 <TwiI2c::~TwiI2c()>:
-     ad2:	08 95       	ret
+00000ace <TwiI2c::end()>:
+     ace:	08 95       	ret
 
-00000ad4 <TwiI2c::begin()>:
-     ad4:	08 95       	ret
+00000ad0 <TwiI2c::start()>:
+     ad0:	cf 93       	push	r28
+     ad2:	df 93       	push	r29
+     ad4:	ec 01       	movw	r28, r24
+     ad6:	0e 94 3c 05 	call	0xa78	; 0xa78 <ssd1306_twi_start()>
+     ada:	81 11       	cpse	r24, r1
+     adc:	06 c0       	rjmp	.+12     	; 0xaea <TwiI2c::start()+0x1a>
+     ade:	88 81       	ld	r24, Y
+     ae0:	88 0f       	add	r24, r24
+     ae2:	0e 94 4c 05 	call	0xa98	; 0xa98 <ssd1306_twi_send(unsigned char)>
+     ae6:	88 33       	cpi	r24, 0x38	; 56
+     ae8:	b1 f3       	breq	.-20     	; 0xad6 <TwiI2c::start()+0x6>
+     aea:	df 91       	pop	r29
+     aec:	cf 91       	pop	r28
+     aee:	08 95       	ret
 
-00000ad6 <TwiI2c::end()>:
-     ad6:	08 95       	ret
-
-00000ad8 <TwiI2c::start()>:
-     ad8:	cf 93       	push	r28
-     ada:	df 93       	push	r29
-     adc:	ec 01       	movw	r28, r24
-     ade:	0e 94 40 05 	call	0xa80	; 0xa80 <ssd1306_twi_start()>
-     ae2:	81 11       	cpse	r24, r1
-     ae4:	06 c0       	rjmp	.+12     	; 0xaf2 <TwiI2c::start()+0x1a>
-     ae6:	88 81       	ld	r24, Y
-     ae8:	88 0f       	add	r24, r24
-     aea:	0e 94 50 05 	call	0xaa0	; 0xaa0 <ssd1306_twi_send(unsigned char)>
-     aee:	88 33       	cpi	r24, 0x38	; 56
-     af0:	b1 f3       	breq	.-20     	; 0xade <TwiI2c::start()+0x6>
-     af2:	df 91       	pop	r29
-     af4:	cf 91       	pop	r28
+00000af0 <TwiI2c::stop()>:
+     af0:	84 e9       	ldi	r24, 0x94	; 148
+     af2:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
      af6:	08 95       	ret
 
-00000af8 <TwiI2c::stop()>:
-     af8:	84 e9       	ldi	r24, 0x94	; 148
-     afa:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
-     afe:	08 95       	ret
+00000af8 <TwiI2c::send(unsigned char)>:
+     af8:	1f 93       	push	r17
+     afa:	cf 93       	push	r28
+     afc:	df 93       	push	r29
+     afe:	ec 01       	movw	r28, r24
+     b00:	16 2f       	mov	r17, r22
+     b02:	81 2f       	mov	r24, r17
+     b04:	0e 94 4c 05 	call	0xa98	; 0xa98 <ssd1306_twi_send(unsigned char)>
+     b08:	88 33       	cpi	r24, 0x38	; 56
+     b0a:	51 f4       	brne	.+20     	; 0xb20 <TwiI2c::send(unsigned char)+0x28>
+     b0c:	0e 94 3c 05 	call	0xa78	; 0xa78 <ssd1306_twi_start()>
+     b10:	81 11       	cpse	r24, r1
+     b12:	06 c0       	rjmp	.+12     	; 0xb20 <TwiI2c::send(unsigned char)+0x28>
+     b14:	88 81       	ld	r24, Y
+     b16:	88 0f       	add	r24, r24
+     b18:	0e 94 4c 05 	call	0xa98	; 0xa98 <ssd1306_twi_send(unsigned char)>
+     b1c:	88 33       	cpi	r24, 0x38	; 56
+     b1e:	89 f3       	breq	.-30     	; 0xb02 <TwiI2c::send(unsigned char)+0xa>
+     b20:	df 91       	pop	r29
+     b22:	cf 91       	pop	r28
+     b24:	1f 91       	pop	r17
+     b26:	08 95       	ret
 
-00000b00 <TwiI2c::send(unsigned char)>:
-     b00:	1f 93       	push	r17
-     b02:	cf 93       	push	r28
-     b04:	df 93       	push	r29
-     b06:	ec 01       	movw	r28, r24
-     b08:	16 2f       	mov	r17, r22
-     b0a:	81 2f       	mov	r24, r17
-     b0c:	0e 94 50 05 	call	0xaa0	; 0xaa0 <ssd1306_twi_send(unsigned char)>
-     b10:	88 33       	cpi	r24, 0x38	; 56
-     b12:	51 f4       	brne	.+20     	; 0xb28 <TwiI2c::send(unsigned char)+0x28>
-     b14:	0e 94 40 05 	call	0xa80	; 0xa80 <ssd1306_twi_start()>
-     b18:	81 11       	cpse	r24, r1
-     b1a:	06 c0       	rjmp	.+12     	; 0xb28 <TwiI2c::send(unsigned char)+0x28>
-     b1c:	88 81       	ld	r24, Y
-     b1e:	88 0f       	add	r24, r24
-     b20:	0e 94 50 05 	call	0xaa0	; 0xaa0 <ssd1306_twi_send(unsigned char)>
-     b24:	88 33       	cpi	r24, 0x38	; 56
-     b26:	89 f3       	breq	.-30     	; 0xb0a <TwiI2c::send(unsigned char)+0xa>
-     b28:	df 91       	pop	r29
-     b2a:	cf 91       	pop	r28
-     b2c:	1f 91       	pop	r17
-     b2e:	08 95       	ret
+00000b28 <TwiI2c::sendBuffer(unsigned char const*, unsigned int)>:
+     b28:	ef 92       	push	r14
+     b2a:	ff 92       	push	r15
+     b2c:	0f 93       	push	r16
+     b2e:	1f 93       	push	r17
+     b30:	cf 93       	push	r28
+     b32:	df 93       	push	r29
+     b34:	7c 01       	movw	r14, r24
+     b36:	eb 01       	movw	r28, r22
+     b38:	8b 01       	movw	r16, r22
+     b3a:	04 0f       	add	r16, r20
+     b3c:	15 1f       	adc	r17, r21
+     b3e:	c0 17       	cp	r28, r16
+     b40:	d1 07       	cpc	r29, r17
+     b42:	29 f0       	breq	.+10     	; 0xb4e <TwiI2c::sendBuffer(unsigned char const*, unsigned int)+0x26>
+     b44:	69 91       	ld	r22, Y+
+     b46:	c7 01       	movw	r24, r14
+     b48:	0e 94 7c 05 	call	0xaf8	; 0xaf8 <TwiI2c::send(unsigned char)>
+     b4c:	f8 cf       	rjmp	.-16     	; 0xb3e <TwiI2c::sendBuffer(unsigned char const*, unsigned int)+0x16>
+     b4e:	df 91       	pop	r29
+     b50:	cf 91       	pop	r28
+     b52:	1f 91       	pop	r17
+     b54:	0f 91       	pop	r16
+     b56:	ff 90       	pop	r15
+     b58:	ef 90       	pop	r14
+     b5a:	08 95       	ret
 
-00000b30 <TwiI2c::sendBuffer(unsigned char const*, unsigned int)>:
-     b30:	ef 92       	push	r14
-     b32:	ff 92       	push	r15
-     b34:	0f 93       	push	r16
-     b36:	1f 93       	push	r17
-     b38:	cf 93       	push	r28
-     b3a:	df 93       	push	r29
-     b3c:	7c 01       	movw	r14, r24
-     b3e:	eb 01       	movw	r28, r22
-     b40:	8b 01       	movw	r16, r22
-     b42:	04 0f       	add	r16, r20
-     b44:	15 1f       	adc	r17, r21
-     b46:	c0 17       	cp	r28, r16
-     b48:	d1 07       	cpc	r29, r17
-     b4a:	29 f0       	breq	.+10     	; 0xb56 <TwiI2c::sendBuffer(unsigned char const*, unsigned int)+0x26>
-     b4c:	69 91       	ld	r22, Y+
-     b4e:	c7 01       	movw	r24, r14
-     b50:	0e 94 80 05 	call	0xb00	; 0xb00 <TwiI2c::send(unsigned char)>
-     b54:	f8 cf       	rjmp	.-16     	; 0xb46 <TwiI2c::sendBuffer(unsigned char const*, unsigned int)+0x16>
-     b56:	df 91       	pop	r29
-     b58:	cf 91       	pop	r28
-     b5a:	1f 91       	pop	r17
-     b5c:	0f 91       	pop	r16
-     b5e:	ff 90       	pop	r15
-     b60:	ef 90       	pop	r14
-     b62:	08 95       	ret
+00000b5c <ssd1306_resetController2>:
+     b5c:	1f 93       	push	r17
+     b5e:	cf 93       	push	r28
+     b60:	df 93       	push	r29
+     b62:	87 fd       	sbrc	r24, 7
+     b64:	27 c0       	rjmp	.+78     	; 0xbb4 <ssd1306_resetController2+0x58>
+     b66:	16 2f       	mov	r17, r22
+     b68:	c8 2f       	mov	r28, r24
+     b6a:	88 0f       	add	r24, r24
+     b6c:	dd 0b       	sbc	r29, r29
+     b6e:	61 e0       	ldi	r22, 0x01	; 1
+     b70:	70 e0       	ldi	r23, 0x00	; 0
+     b72:	ce 01       	movw	r24, r28
+     b74:	0e 94 10 05 	call	0xa20	; 0xa20 <pinMode>
+     b78:	61 e0       	ldi	r22, 0x01	; 1
+     b7a:	70 e0       	ldi	r23, 0x00	; 0
+     b7c:	ce 01       	movw	r24, r28
+     b7e:	0e 94 e4 04 	call	0x9c8	; 0x9c8 <digitalWrite>
+     b82:	6a e0       	ldi	r22, 0x0A	; 10
+     b84:	70 e0       	ldi	r23, 0x00	; 0
+     b86:	80 e0       	ldi	r24, 0x00	; 0
+     b88:	90 e0       	ldi	r25, 0x00	; 0
+     b8a:	0e 94 d3 04 	call	0x9a6	; 0x9a6 <delay>
+     b8e:	60 e0       	ldi	r22, 0x00	; 0
+     b90:	70 e0       	ldi	r23, 0x00	; 0
+     b92:	ce 01       	movw	r24, r28
+     b94:	0e 94 e4 04 	call	0x9c8	; 0x9c8 <digitalWrite>
+     b98:	61 2f       	mov	r22, r17
+     b9a:	70 e0       	ldi	r23, 0x00	; 0
+     b9c:	80 e0       	ldi	r24, 0x00	; 0
+     b9e:	90 e0       	ldi	r25, 0x00	; 0
+     ba0:	0e 94 d3 04 	call	0x9a6	; 0x9a6 <delay>
+     ba4:	61 e0       	ldi	r22, 0x01	; 1
+     ba6:	70 e0       	ldi	r23, 0x00	; 0
+     ba8:	ce 01       	movw	r24, r28
+     baa:	df 91       	pop	r29
+     bac:	cf 91       	pop	r28
+     bae:	1f 91       	pop	r17
+     bb0:	0c 94 e4 04 	jmp	0x9c8	; 0x9c8 <digitalWrite>
+     bb4:	df 91       	pop	r29
+     bb6:	cf 91       	pop	r28
+     bb8:	1f 91       	pop	r17
+     bba:	08 95       	ret
 
-00000b64 <ssd1306_resetController2>:
-     b64:	1f 93       	push	r17
-     b66:	cf 93       	push	r28
-     b68:	df 93       	push	r29
-     b6a:	87 fd       	sbrc	r24, 7
-     b6c:	27 c0       	rjmp	.+78     	; 0xbbc <ssd1306_resetController2+0x58>
-     b6e:	16 2f       	mov	r17, r22
-     b70:	c8 2f       	mov	r28, r24
-     b72:	88 0f       	add	r24, r24
-     b74:	dd 0b       	sbc	r29, r29
-     b76:	61 e0       	ldi	r22, 0x01	; 1
-     b78:	70 e0       	ldi	r23, 0x00	; 0
-     b7a:	ce 01       	movw	r24, r28
-     b7c:	0e 94 14 05 	call	0xa28	; 0xa28 <pinMode>
-     b80:	61 e0       	ldi	r22, 0x01	; 1
-     b82:	70 e0       	ldi	r23, 0x00	; 0
-     b84:	ce 01       	movw	r24, r28
-     b86:	0e 94 e8 04 	call	0x9d0	; 0x9d0 <digitalWrite>
-     b8a:	6a e0       	ldi	r22, 0x0A	; 10
-     b8c:	70 e0       	ldi	r23, 0x00	; 0
-     b8e:	80 e0       	ldi	r24, 0x00	; 0
-     b90:	90 e0       	ldi	r25, 0x00	; 0
-     b92:	0e 94 d7 04 	call	0x9ae	; 0x9ae <delay>
-     b96:	60 e0       	ldi	r22, 0x00	; 0
-     b98:	70 e0       	ldi	r23, 0x00	; 0
-     b9a:	ce 01       	movw	r24, r28
-     b9c:	0e 94 e8 04 	call	0x9d0	; 0x9d0 <digitalWrite>
-     ba0:	61 2f       	mov	r22, r17
-     ba2:	70 e0       	ldi	r23, 0x00	; 0
-     ba4:	80 e0       	ldi	r24, 0x00	; 0
-     ba6:	90 e0       	ldi	r25, 0x00	; 0
-     ba8:	0e 94 d7 04 	call	0x9ae	; 0x9ae <delay>
-     bac:	61 e0       	ldi	r22, 0x01	; 1
-     bae:	70 e0       	ldi	r23, 0x00	; 0
-     bb0:	ce 01       	movw	r24, r28
-     bb2:	df 91       	pop	r29
-     bb4:	cf 91       	pop	r28
-     bb6:	1f 91       	pop	r17
-     bb8:	0c 94 e8 04 	jmp	0x9d0	; 0x9d0 <digitalWrite>
-     bbc:	df 91       	pop	r29
-     bbe:	cf 91       	pop	r28
-     bc0:	1f 91       	pop	r17
-     bc2:	08 95       	ret
+00000bbc <DisplaySSD1306_128x64_I2C::end()>:
+     bbc:	46 96       	adiw	r24, 0x16	; 22
+     bbe:	0c 94 67 05 	jmp	0xace	; 0xace <TwiI2c::end()>
 
-00000bc4 <DisplaySSD1306_128x64_I2C::end()>:
-     bc4:	46 96       	adiw	r24, 0x16	; 22
-     bc6:	0c 94 6b 05 	jmp	0xad6	; 0xad6 <TwiI2c::end()>
-
-00000bca <DisplaySSD1306_128x64_I2C::begin()>:
-     bca:	0f 93       	push	r16
-     bcc:	1f 93       	push	r17
-     bce:	cf 93       	push	r28
-     bd0:	df 93       	push	r29
-     bd2:	ec 01       	movw	r28, r24
-     bd4:	46 96       	adiw	r24, 0x16	; 22
-     bd6:	0e 94 6a 05 	call	0xad4	; 0xad4 <TwiI2c::begin()>
-     bda:	6a e0       	ldi	r22, 0x0A	; 10
-     bdc:	8d 89       	ldd	r24, Y+21	; 0x15
-     bde:	0e 94 b2 05 	call	0xb64	; 0xb64 <ssd1306_resetController2>
-     be2:	80 e8       	ldi	r24, 0x80	; 128
+00000bc2 <DisplaySSD1306_128x64_I2C::begin()>:
+     bc2:	0f 93       	push	r16
+     bc4:	1f 93       	push	r17
+     bc6:	cf 93       	push	r28
+     bc8:	df 93       	push	r29
+     bca:	ec 01       	movw	r28, r24
+     bcc:	46 96       	adiw	r24, 0x16	; 22
+     bce:	0e 94 66 05 	call	0xacc	; 0xacc <TwiI2c::begin()>
+     bd2:	6a e0       	ldi	r22, 0x0A	; 10
+     bd4:	8d 89       	ldd	r24, Y+21	; 0x15
+     bd6:	0e 94 ae 05 	call	0xb5c	; 0xb5c <ssd1306_resetController2>
+     bda:	80 e8       	ldi	r24, 0x80	; 128
+     bdc:	90 e0       	ldi	r25, 0x00	; 0
+     bde:	9b 83       	std	Y+3, r25	; 0x03
+     be0:	8a 83       	std	Y+2, r24	; 0x02
+     be2:	80 e4       	ldi	r24, 0x40	; 64
      be4:	90 e0       	ldi	r25, 0x00	; 0
-     be6:	9b 83       	std	Y+3, r25	; 0x03
-     be8:	8a 83       	std	Y+2, r24	; 0x02
-     bea:	80 e4       	ldi	r24, 0x40	; 64
-     bec:	90 e0       	ldi	r25, 0x00	; 0
-     bee:	9d 83       	std	Y+5, r25	; 0x05
-     bf0:	8c 83       	std	Y+4, r24	; 0x04
-     bf2:	08 ea       	ldi	r16, 0xA8	; 168
-     bf4:	10 e0       	ldi	r17, 0x00	; 0
-     bf6:	8b 89       	ldd	r24, Y+19	; 0x13
-     bf8:	9c 89       	ldd	r25, Y+20	; 0x14
-     bfa:	0e 94 d0 02 	call	0x5a0	; 0x5a0 <InterfaceSSD1306<PlatformI2c>::commandStart()>
-     bfe:	f8 01       	movw	r30, r16
-     c00:	64 91       	lpm	r22, Z
+     be6:	9d 83       	std	Y+5, r25	; 0x05
+     be8:	8c 83       	std	Y+4, r24	; 0x04
+     bea:	08 ea       	ldi	r16, 0xA8	; 168
+     bec:	10 e0       	ldi	r17, 0x00	; 0
+     bee:	8b 89       	ldd	r24, Y+19	; 0x13
+     bf0:	9c 89       	ldd	r25, Y+20	; 0x14
+     bf2:	0e 94 cc 02 	call	0x598	; 0x598 <InterfaceSSD1306<PlatformI2c>::commandStart()>
+     bf6:	f8 01       	movw	r30, r16
+     bf8:	64 91       	lpm	r22, Z
+     bfa:	8b 89       	ldd	r24, Y+19	; 0x13
+     bfc:	9c 89       	ldd	r25, Y+20	; 0x14
+     bfe:	0e 94 7c 05 	call	0xaf8	; 0xaf8 <TwiI2c::send(unsigned char)>
      c02:	8b 89       	ldd	r24, Y+19	; 0x13
      c04:	9c 89       	ldd	r25, Y+20	; 0x14
-     c06:	0e 94 80 05 	call	0xb00	; 0xb00 <TwiI2c::send(unsigned char)>
-     c0a:	8b 89       	ldd	r24, Y+19	; 0x13
-     c0c:	9c 89       	ldd	r25, Y+20	; 0x14
-     c0e:	0e 94 7c 05 	call	0xaf8	; 0xaf8 <TwiI2c::stop()>
-     c12:	0f 5f       	subi	r16, 0xFF	; 255
-     c14:	1f 4f       	sbci	r17, 0xFF	; 255
-     c16:	f0 e0       	ldi	r31, 0x00	; 0
-     c18:	01 3c       	cpi	r16, 0xC1	; 193
-     c1a:	1f 07       	cpc	r17, r31
-     c1c:	61 f7       	brne	.-40     	; 0xbf6 <DisplaySSD1306_128x64_I2C::begin()+0x2c>
-     c1e:	df 91       	pop	r29
-     c20:	cf 91       	pop	r28
-     c22:	1f 91       	pop	r17
-     c24:	0f 91       	pop	r16
-     c26:	08 95       	ret
+     c06:	0e 94 78 05 	call	0xaf0	; 0xaf0 <TwiI2c::stop()>
+     c0a:	0f 5f       	subi	r16, 0xFF	; 255
+     c0c:	1f 4f       	sbci	r17, 0xFF	; 255
+     c0e:	f0 e0       	ldi	r31, 0x00	; 0
+     c10:	01 3c       	cpi	r16, 0xC1	; 193
+     c12:	1f 07       	cpc	r17, r31
+     c14:	61 f7       	brne	.-40     	; 0xbee <DisplaySSD1306_128x64_I2C::begin()+0x2c>
+     c16:	df 91       	pop	r29
+     c18:	cf 91       	pop	r28
+     c1a:	1f 91       	pop	r17
+     c1c:	0f 91       	pop	r16
+     c1e:	08 95       	ret
 
-00000c28 <NanoCanvasOps<(unsigned char)1>::clear()>:
-     c28:	fc 01       	movw	r30, r24
-     c2a:	86 81       	ldd	r24, Z+6	; 0x06
-     c2c:	97 81       	ldd	r25, Z+7	; 0x07
-     c2e:	23 e0       	ldi	r18, 0x03	; 3
-     c30:	96 95       	lsr	r25
-     c32:	87 95       	ror	r24
-     c34:	2a 95       	dec	r18
-     c36:	e1 f7       	brne	.-8      	; 0xc30 <NanoCanvasOps<(unsigned char)1>::clear()+0x8>
-     c38:	24 81       	ldd	r18, Z+4	; 0x04
-     c3a:	35 81       	ldd	r19, Z+5	; 0x05
-     c3c:	82 9f       	mul	r24, r18
-     c3e:	a0 01       	movw	r20, r0
-     c40:	83 9f       	mul	r24, r19
-     c42:	50 0d       	add	r21, r0
-     c44:	92 9f       	mul	r25, r18
-     c46:	50 0d       	add	r21, r0
-     c48:	11 24       	eor	r1, r1
-     c4a:	60 e0       	ldi	r22, 0x00	; 0
-     c4c:	70 e0       	ldi	r23, 0x00	; 0
-     c4e:	81 89       	ldd	r24, Z+17	; 0x11
-     c50:	92 89       	ldd	r25, Z+18	; 0x12
-     c52:	0c 94 8f 08 	jmp	0x111e	; 0x111e <memset>
+00000c20 <NanoCanvasOps<(unsigned char)1>::clear()>:
+     c20:	fc 01       	movw	r30, r24
+     c22:	86 81       	ldd	r24, Z+6	; 0x06
+     c24:	97 81       	ldd	r25, Z+7	; 0x07
+     c26:	23 e0       	ldi	r18, 0x03	; 3
+     c28:	96 95       	lsr	r25
+     c2a:	87 95       	ror	r24
+     c2c:	2a 95       	dec	r18
+     c2e:	e1 f7       	brne	.-8      	; 0xc28 <NanoCanvasOps<(unsigned char)1>::clear()+0x8>
+     c30:	24 81       	ldd	r18, Z+4	; 0x04
+     c32:	35 81       	ldd	r19, Z+5	; 0x05
+     c34:	82 9f       	mul	r24, r18
+     c36:	a0 01       	movw	r20, r0
+     c38:	83 9f       	mul	r24, r19
+     c3a:	50 0d       	add	r21, r0
+     c3c:	92 9f       	mul	r25, r18
+     c3e:	50 0d       	add	r21, r0
+     c40:	11 24       	eor	r1, r1
+     c42:	60 e0       	ldi	r22, 0x00	; 0
+     c44:	70 e0       	ldi	r23, 0x00	; 0
+     c46:	87 85       	ldd	r24, Z+15	; 0x0f
+     c48:	90 89       	ldd	r25, Z+16	; 0x10
+     c4a:	0c 94 6b 08 	jmp	0x10d6	; 0x10d6 <memset>
 
-00000c56 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)>:
-     c56:	2f 92       	push	r2
-     c58:	3f 92       	push	r3
-     c5a:	4f 92       	push	r4
-     c5c:	5f 92       	push	r5
-     c5e:	6f 92       	push	r6
-     c60:	7f 92       	push	r7
-     c62:	8f 92       	push	r8
-     c64:	9f 92       	push	r9
-     c66:	af 92       	push	r10
-     c68:	bf 92       	push	r11
-     c6a:	cf 92       	push	r12
-     c6c:	df 92       	push	r13
-     c6e:	ef 92       	push	r14
-     c70:	ff 92       	push	r15
-     c72:	0f 93       	push	r16
-     c74:	1f 93       	push	r17
-     c76:	cf 93       	push	r28
-     c78:	df 93       	push	r29
-     c7a:	cd b7       	in	r28, 0x3d	; 61
-     c7c:	de b7       	in	r29, 0x3e	; 62
-     c7e:	2d 97       	sbiw	r28, 0x0d	; 13
-     c80:	0f b6       	in	r0, 0x3f	; 63
-     c82:	f8 94       	cli
-     c84:	de bf       	out	0x3e, r29	; 62
-     c86:	0f be       	out	0x3f, r0	; 63
-     c88:	cd bf       	out	0x3d, r28	; 61
-     c8a:	dc 01       	movw	r26, r24
-     c8c:	59 01       	movw	r10, r18
-     c8e:	12 96       	adiw	r26, 0x02	; 2
-     c90:	8d 91       	ld	r24, X+
-     c92:	9c 91       	ld	r25, X
-     c94:	13 97       	sbiw	r26, 0x03	; 3
-     c96:	48 1b       	sub	r20, r24
-     c98:	59 0b       	sbc	r21, r25
-     c9a:	68 01       	movw	r12, r16
-     c9c:	c4 0e       	add	r12, r20
-     c9e:	d5 1e       	adc	r13, r21
-     ca0:	1c 14       	cp	r1, r12
-     ca2:	1d 04       	cpc	r1, r13
-     ca4:	0c f0       	brlt	.+2      	; 0xca8 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x52>
-     ca6:	44 c1       	rjmp	.+648    	; 0xf30 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2da>
-     ca8:	16 96       	adiw	r26, 0x06	; 6
-     caa:	ed 91       	ld	r30, X+
-     cac:	fc 91       	ld	r31, X
-     cae:	17 97       	sbiw	r26, 0x07	; 7
-     cb0:	4e 17       	cp	r20, r30
-     cb2:	5f 07       	cpc	r21, r31
-     cb4:	0c f0       	brlt	.+2      	; 0xcb8 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x62>
-     cb6:	3c c1       	rjmp	.+632    	; 0xf30 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2da>
-     cb8:	8d 91       	ld	r24, X+
-     cba:	9c 91       	ld	r25, X
-     cbc:	11 97       	sbiw	r26, 0x01	; 1
-     cbe:	68 1b       	sub	r22, r24
-     cc0:	79 0b       	sbc	r23, r25
-     cc2:	39 01       	movw	r6, r18
-     cc4:	66 0e       	add	r6, r22
-     cc6:	77 1e       	adc	r7, r23
-     cc8:	16 14       	cp	r1, r6
-     cca:	17 04       	cpc	r1, r7
-     ccc:	0c f0       	brlt	.+2      	; 0xcd0 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x7a>
-     cce:	30 c1       	rjmp	.+608    	; 0xf30 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2da>
-     cd0:	14 96       	adiw	r26, 0x04	; 4
-     cd2:	4d 90       	ld	r4, X+
-     cd4:	5c 90       	ld	r5, X
-     cd6:	15 97       	sbiw	r26, 0x05	; 5
-     cd8:	64 15       	cp	r22, r4
-     cda:	75 05       	cpc	r23, r5
-     cdc:	0c f0       	brlt	.+2      	; 0xce0 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x8a>
-     cde:	28 c1       	rjmp	.+592    	; 0xf30 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2da>
-     ce0:	57 ff       	sbrs	r21, 7
-     ce2:	18 c0       	rjmp	.+48     	; 0xd14 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0xbe>
-     ce4:	87 e0       	ldi	r24, 0x07	; 7
-     ce6:	90 e0       	ldi	r25, 0x00	; 0
-     ce8:	84 1b       	sub	r24, r20
-     cea:	95 0b       	sbc	r25, r21
-     cec:	33 e0       	ldi	r19, 0x03	; 3
-     cee:	96 95       	lsr	r25
-     cf0:	87 95       	ror	r24
-     cf2:	3a 95       	dec	r19
-     cf4:	e1 f7       	brne	.-8      	; 0xcee <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x98>
-     cf6:	8a 9d       	mul	r24, r10
-     cf8:	80 01       	movw	r16, r0
-     cfa:	8b 9d       	mul	r24, r11
-     cfc:	10 0d       	add	r17, r0
-     cfe:	9a 9d       	mul	r25, r10
-     d00:	10 0d       	add	r17, r0
-     d02:	11 24       	eor	r1, r1
-     d04:	e0 0e       	add	r14, r16
-     d06:	f1 1e       	adc	r15, r17
-     d08:	86 01       	movw	r16, r12
-     d0a:	99 24       	eor	r9, r9
-     d0c:	93 94       	inc	r9
-     d0e:	80 e0       	ldi	r24, 0x00	; 0
-     d10:	90 e0       	ldi	r25, 0x00	; 0
-     d12:	02 c0       	rjmp	.+4      	; 0xd18 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0xc2>
-     d14:	ca 01       	movw	r24, r20
-     d16:	91 2c       	mov	r9, r1
-     d18:	77 ff       	sbrs	r23, 7
-     d1a:	05 c0       	rjmp	.+10     	; 0xd26 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0xd0>
-     d1c:	e6 1a       	sub	r14, r22
-     d1e:	f7 0a       	sbc	r15, r23
-     d20:	60 e0       	ldi	r22, 0x00	; 0
-     d22:	70 e0       	ldi	r23, 0x00	; 0
-     d24:	01 c0       	rjmp	.+2      	; 0xd28 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0xd2>
-     d26:	35 01       	movw	r6, r10
-     d28:	24 2f       	mov	r18, r20
-     d2a:	27 70       	andi	r18, 0x07	; 7
-     d2c:	2d 87       	std	Y+13, r18	; 0x0d
-     d2e:	42 2f       	mov	r20, r18
-     d30:	50 e0       	ldi	r21, 0x00	; 0
-     d32:	5a 83       	std	Y+2, r21	; 0x02
-     d34:	49 83       	std	Y+1, r20	; 0x01
-     d36:	18 01       	movw	r2, r16
-     d38:	24 1a       	sub	r2, r20
-     d3a:	35 0a       	sbc	r3, r21
-     d3c:	91 01       	movw	r18, r2
-     d3e:	21 5f       	subi	r18, 0xF1	; 241
-     d40:	3f 4f       	sbci	r19, 0xFF	; 255
-     d42:	a9 01       	movw	r20, r18
-     d44:	23 e0       	ldi	r18, 0x03	; 3
-     d46:	56 95       	lsr	r21
-     d48:	47 95       	ror	r20
-     d4a:	2a 95       	dec	r18
-     d4c:	e1 f7       	brne	.-8      	; 0xd46 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0xf0>
-     d4e:	5e 83       	std	Y+6, r21	; 0x06
-     d50:	4d 83       	std	Y+5, r20	; 0x05
-     d52:	68 01       	movw	r12, r16
-     d54:	c8 0e       	add	r12, r24
-     d56:	d9 1e       	adc	r13, r25
-     d58:	ec 15       	cp	r30, r12
-     d5a:	fd 05       	cpc	r31, r13
-     d5c:	18 f4       	brcc	.+6      	; 0xd64 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x10e>
-     d5e:	8f 01       	movw	r16, r30
-     d60:	08 1b       	sub	r16, r24
-     d62:	19 0b       	sbc	r17, r25
-     d64:	f3 01       	movw	r30, r6
-     d66:	e6 0f       	add	r30, r22
-     d68:	f7 1f       	adc	r31, r23
-     d6a:	4e 16       	cp	r4, r30
-     d6c:	5f 06       	cpc	r5, r31
-     d6e:	18 f4       	brcc	.+6      	; 0xd76 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x120>
-     d70:	32 01       	movw	r6, r4
-     d72:	66 1a       	sub	r6, r22
-     d74:	77 0a       	sbc	r7, r23
-     d76:	1c 01       	movw	r2, r24
-     d78:	51 e0       	ldi	r21, 0x01	; 1
-     d7a:	25 1a       	sub	r2, r21
-     d7c:	31 08       	sbc	r3, r1
-     d7e:	02 0d       	add	r16, r2
-     d80:	13 1d       	adc	r17, r3
-     d82:	f3 e0       	ldi	r31, 0x03	; 3
-     d84:	16 95       	lsr	r17
-     d86:	07 95       	ror	r16
-     d88:	fa 95       	dec	r31
-     d8a:	e1 f7       	brne	.-8      	; 0xd84 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x12e>
-     d8c:	9c 01       	movw	r18, r24
-     d8e:	13 e0       	ldi	r17, 0x03	; 3
-     d90:	35 95       	asr	r19
-     d92:	27 95       	ror	r18
-     d94:	1a 95       	dec	r17
-     d96:	e1 f7       	brne	.-8      	; 0xd90 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x13a>
-     d98:	02 1b       	sub	r16, r18
-     d9a:	22 24       	eor	r2, r2
-     d9c:	23 94       	inc	r2
-     d9e:	20 0e       	add	r2, r16
-     da0:	2f ef       	ldi	r18, 0xFF	; 255
-     da2:	30 e0       	ldi	r19, 0x00	; 0
-     da4:	32 2e       	mov	r3, r18
-     da6:	0d 84       	ldd	r0, Y+13	; 0x0d
-     da8:	01 c0       	rjmp	.+2      	; 0xdac <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x156>
-     daa:	33 0c       	add	r3, r3
-     dac:	0a 94       	dec	r0
-     dae:	ea f7       	brpl	.-6      	; 0xdaa <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x154>
-     db0:	e8 e0       	ldi	r30, 0x08	; 8
-     db2:	f0 e0       	ldi	r31, 0x00	; 0
-     db4:	2f 01       	movw	r4, r30
-     db6:	c9 80       	ldd	r12, Y+1	; 0x01
-     db8:	da 80       	ldd	r13, Y+2	; 0x02
-     dba:	4c 18       	sub	r4, r12
-     dbc:	5d 08       	sbc	r5, r13
-     dbe:	5c 82       	std	Y+4, r5	; 0x04
-     dc0:	4b 82       	std	Y+3, r4	; 0x03
-     dc2:	29 01       	movw	r4, r18
-     dc4:	0b 80       	ldd	r0, Y+3	; 0x03
-     dc6:	02 c0       	rjmp	.+4      	; 0xdcc <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x176>
-     dc8:	55 94       	asr	r5
-     dca:	47 94       	ror	r4
-     dcc:	0a 94       	dec	r0
-     dce:	e2 f7       	brpl	.-8      	; 0xdc8 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x172>
-     dd0:	c1 2c       	mov	r12, r1
-     dd2:	d1 2c       	mov	r13, r1
-     dd4:	51 e0       	ldi	r21, 0x01	; 1
-     dd6:	ed 81       	ldd	r30, Y+5	; 0x05
-     dd8:	fe 81       	ldd	r31, Y+6	; 0x06
-     dda:	ff 27       	eor	r31, r31
-     ddc:	8f 01       	movw	r16, r30
-     dde:	01 50       	subi	r16, 0x01	; 1
-     de0:	11 09       	sbc	r17, r1
-     de2:	1a 87       	std	Y+10, r17	; 0x0a
-     de4:	09 87       	std	Y+9, r16	; 0x09
-     de6:	c2 14       	cp	r12, r2
-     de8:	08 f0       	brcs	.+2      	; 0xdec <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x196>
-     dea:	a2 c0       	rjmp	.+324    	; 0xf30 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2da>
-     dec:	96 01       	movw	r18, r12
-     dee:	43 e0       	ldi	r20, 0x03	; 3
-     df0:	22 0f       	add	r18, r18
-     df2:	33 1f       	adc	r19, r19
-     df4:	4a 95       	dec	r20
-     df6:	e1 f7       	brne	.-8      	; 0xdf0 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x19a>
-     df8:	28 0f       	add	r18, r24
-     dfa:	39 1f       	adc	r19, r25
-     dfc:	e3 e0       	ldi	r30, 0x03	; 3
-     dfe:	36 95       	lsr	r19
-     e00:	27 95       	ror	r18
-     e02:	ea 95       	dec	r30
-     e04:	e1 f7       	brne	.-8      	; 0xdfe <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x1a8>
-     e06:	14 96       	adiw	r26, 0x04	; 4
-     e08:	ed 91       	ld	r30, X+
-     e0a:	fc 91       	ld	r31, X
-     e0c:	15 97       	sbiw	r26, 0x05	; 5
-     e0e:	8f 01       	movw	r16, r30
-     e10:	20 9f       	mul	r18, r16
-     e12:	f0 01       	movw	r30, r0
-     e14:	21 9f       	mul	r18, r17
-     e16:	f0 0d       	add	r31, r0
-     e18:	30 9f       	mul	r19, r16
-     e1a:	f0 0d       	add	r31, r0
-     e1c:	11 24       	eor	r1, r1
-     e1e:	e6 0f       	add	r30, r22
-     e20:	f7 1f       	adc	r31, r23
-     e22:	29 85       	ldd	r18, Y+9	; 0x09
-     e24:	3a 85       	ldd	r19, Y+10	; 0x0a
-     e26:	c2 16       	cp	r12, r18
-     e28:	d3 06       	cpc	r13, r19
-     e2a:	31 f4       	brne	.+12     	; 0xe38 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x1e2>
-     e2c:	51 e0       	ldi	r21, 0x01	; 1
-     e2e:	3d 85       	ldd	r19, Y+13	; 0x0d
-     e30:	33 23       	and	r19, r19
-     e32:	21 f0       	breq	.+8      	; 0xe3c <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x1e6>
-     e34:	50 e0       	ldi	r21, 0x00	; 0
-     e36:	04 c0       	rjmp	.+8      	; 0xe40 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x1ea>
-     e38:	55 23       	and	r21, r21
-     e3a:	11 f0       	breq	.+4      	; 0xe40 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x1ea>
-     e3c:	53 2c       	mov	r5, r3
-     e3e:	01 c0       	rjmp	.+2      	; 0xe42 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x1ec>
-     e40:	51 2c       	mov	r5, r1
-     e42:	25 2d       	mov	r18, r5
-     e44:	24 29       	or	r18, r4
-     e46:	87 01       	movw	r16, r14
-     e48:	06 0d       	add	r16, r6
-     e4a:	17 1d       	adc	r17, r7
-     e4c:	1e 83       	std	Y+6, r17	; 0x06
-     e4e:	0d 83       	std	Y+5, r16	; 0x05
-     e50:	91 10       	cpse	r9, r1
-     e52:	52 2e       	mov	r5, r18
-     e54:	50 94       	com	r5
-     e56:	fc 86       	std	Y+12, r15	; 0x0c
-     e58:	eb 86       	std	Y+11, r14	; 0x0b
-     e5a:	9f 01       	movw	r18, r30
-     e5c:	2e 19       	sub	r18, r14
-     e5e:	3f 09       	sbc	r19, r15
-     e60:	38 87       	std	Y+8, r19	; 0x08
-     e62:	2f 83       	std	Y+7, r18	; 0x07
-     e64:	0f 81       	ldd	r16, Y+7	; 0x07
-     e66:	18 85       	ldd	r17, Y+8	; 0x08
-     e68:	2b 85       	ldd	r18, Y+11	; 0x0b
-     e6a:	3c 85       	ldd	r19, Y+12	; 0x0c
-     e6c:	02 0f       	add	r16, r18
-     e6e:	13 1f       	adc	r17, r19
-     e70:	ed 81       	ldd	r30, Y+5	; 0x05
-     e72:	fe 81       	ldd	r31, Y+6	; 0x06
-     e74:	2e 17       	cp	r18, r30
-     e76:	3f 07       	cpc	r19, r31
-     e78:	09 f4       	brne	.+2      	; 0xe7c <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x226>
-     e7a:	53 c0       	rjmp	.+166    	; 0xf22 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2cc>
-     e7c:	55 23       	and	r21, r21
-     e7e:	41 f0       	breq	.+16     	; 0xe90 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x23a>
-     e80:	f9 01       	movw	r30, r18
-     e82:	84 90       	lpm	r8, Z
-     e84:	09 80       	ldd	r0, Y+1	; 0x01
-     e86:	01 c0       	rjmp	.+2      	; 0xe8a <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x234>
-     e88:	88 0c       	add	r8, r8
-     e8a:	0a 94       	dec	r0
-     e8c:	ea f7       	brpl	.-6      	; 0xe88 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x232>
-     e8e:	01 c0       	rjmp	.+2      	; 0xe92 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x23c>
-     e90:	81 2c       	mov	r8, r1
-     e92:	99 20       	and	r9, r9
-     e94:	69 f0       	breq	.+26     	; 0xeb0 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x25a>
-     e96:	eb 85       	ldd	r30, Y+11	; 0x0b
-     e98:	fc 85       	ldd	r31, Y+12	; 0x0c
-     e9a:	ea 19       	sub	r30, r10
-     e9c:	fb 09       	sbc	r31, r11
-     e9e:	e4 91       	lpm	r30, Z
-     ea0:	f0 e0       	ldi	r31, 0x00	; 0
-     ea2:	0b 80       	ldd	r0, Y+3	; 0x03
-     ea4:	02 c0       	rjmp	.+4      	; 0xeaa <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x254>
-     ea6:	f5 95       	asr	r31
-     ea8:	e7 95       	ror	r30
-     eaa:	0a 94       	dec	r0
-     eac:	e2 f7       	brpl	.-8      	; 0xea6 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x250>
-     eae:	8e 2a       	or	r8, r30
-     eb0:	1e 96       	adiw	r26, 0x0e	; 14
-     eb2:	ec 91       	ld	r30, X
-     eb4:	1e 97       	sbiw	r26, 0x0e	; 14
-     eb6:	51 96       	adiw	r26, 0x11	; 17
-     eb8:	2d 91       	ld	r18, X+
-     eba:	3c 91       	ld	r19, X
-     ebc:	52 97       	sbiw	r26, 0x12	; 18
-     ebe:	e1 fd       	sbrc	r30, 1
-     ec0:	16 c0       	rjmp	.+44     	; 0xeee <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x298>
-     ec2:	f9 01       	movw	r30, r18
-     ec4:	e0 0f       	add	r30, r16
-     ec6:	f1 1f       	adc	r31, r17
-     ec8:	20 81       	ld	r18, Z
-     eca:	25 21       	and	r18, r5
-     ecc:	20 83       	st	Z, r18
-     ece:	51 96       	adiw	r26, 0x11	; 17
-     ed0:	ed 91       	ld	r30, X+
-     ed2:	fc 91       	ld	r31, X
-     ed4:	52 97       	sbiw	r26, 0x12	; 18
-     ed6:	e0 0f       	add	r30, r16
-     ed8:	f1 1f       	adc	r31, r17
-     eda:	10 81       	ld	r17, Z
-     edc:	53 96       	adiw	r26, 0x13	; 19
-     ede:	2d 91       	ld	r18, X+
-     ee0:	3c 91       	ld	r19, X
-     ee2:	54 97       	sbiw	r26, 0x14	; 20
-     ee4:	23 2b       	or	r18, r19
-     ee6:	09 f4       	brne	.+2      	; 0xeea <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x294>
-     ee8:	80 94       	com	r8
-     eea:	81 2a       	or	r8, r17
-     eec:	12 c0       	rjmp	.+36     	; 0xf12 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2bc>
-     eee:	53 96       	adiw	r26, 0x13	; 19
-     ef0:	ed 91       	ld	r30, X+
-     ef2:	fc 91       	ld	r31, X
-     ef4:	54 97       	sbiw	r26, 0x14	; 20
-     ef6:	ef 2b       	or	r30, r31
-     ef8:	39 f4       	brne	.+14     	; 0xf08 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2b2>
-     efa:	f9 01       	movw	r30, r18
-     efc:	e0 0f       	add	r30, r16
-     efe:	f1 1f       	adc	r31, r17
-     f00:	80 94       	com	r8
-     f02:	20 81       	ld	r18, Z
-     f04:	82 22       	and	r8, r18
-     f06:	05 c0       	rjmp	.+10     	; 0xf12 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2bc>
-     f08:	f9 01       	movw	r30, r18
-     f0a:	e0 0f       	add	r30, r16
-     f0c:	f1 1f       	adc	r31, r17
-     f0e:	20 81       	ld	r18, Z
-     f10:	82 2a       	or	r8, r18
-     f12:	80 82       	st	Z, r8
-     f14:	0b 85       	ldd	r16, Y+11	; 0x0b
-     f16:	1c 85       	ldd	r17, Y+12	; 0x0c
-     f18:	0f 5f       	subi	r16, 0xFF	; 255
-     f1a:	1f 4f       	sbci	r17, 0xFF	; 255
-     f1c:	1c 87       	std	Y+12, r17	; 0x0c
-     f1e:	0b 87       	std	Y+11, r16	; 0x0b
-     f20:	a1 cf       	rjmp	.-190    	; 0xe64 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x20e>
-     f22:	ea 0c       	add	r14, r10
-     f24:	fb 1c       	adc	r15, r11
-     f26:	1f ef       	ldi	r17, 0xFF	; 255
-     f28:	c1 1a       	sub	r12, r17
-     f2a:	d1 0a       	sbc	r13, r17
-     f2c:	9d 84       	ldd	r9, Y+13	; 0x0d
-     f2e:	5b cf       	rjmp	.-330    	; 0xde6 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x190>
-     f30:	2d 96       	adiw	r28, 0x0d	; 13
-     f32:	0f b6       	in	r0, 0x3f	; 63
-     f34:	f8 94       	cli
-     f36:	de bf       	out	0x3e, r29	; 62
-     f38:	0f be       	out	0x3f, r0	; 63
-     f3a:	cd bf       	out	0x3d, r28	; 61
-     f3c:	df 91       	pop	r29
-     f3e:	cf 91       	pop	r28
-     f40:	1f 91       	pop	r17
-     f42:	0f 91       	pop	r16
-     f44:	ff 90       	pop	r15
-     f46:	ef 90       	pop	r14
-     f48:	df 90       	pop	r13
-     f4a:	cf 90       	pop	r12
-     f4c:	bf 90       	pop	r11
-     f4e:	af 90       	pop	r10
-     f50:	9f 90       	pop	r9
-     f52:	8f 90       	pop	r8
-     f54:	7f 90       	pop	r7
-     f56:	6f 90       	pop	r6
-     f58:	5f 90       	pop	r5
-     f5a:	4f 90       	pop	r4
-     f5c:	3f 90       	pop	r3
-     f5e:	2f 90       	pop	r2
-     f60:	08 95       	ret
+00000c4e <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)>:
+     c4e:	2f 92       	push	r2
+     c50:	3f 92       	push	r3
+     c52:	4f 92       	push	r4
+     c54:	5f 92       	push	r5
+     c56:	6f 92       	push	r6
+     c58:	7f 92       	push	r7
+     c5a:	8f 92       	push	r8
+     c5c:	9f 92       	push	r9
+     c5e:	af 92       	push	r10
+     c60:	bf 92       	push	r11
+     c62:	cf 92       	push	r12
+     c64:	df 92       	push	r13
+     c66:	ef 92       	push	r14
+     c68:	ff 92       	push	r15
+     c6a:	0f 93       	push	r16
+     c6c:	1f 93       	push	r17
+     c6e:	cf 93       	push	r28
+     c70:	df 93       	push	r29
+     c72:	cd b7       	in	r28, 0x3d	; 61
+     c74:	de b7       	in	r29, 0x3e	; 62
+     c76:	2d 97       	sbiw	r28, 0x0d	; 13
+     c78:	0f b6       	in	r0, 0x3f	; 63
+     c7a:	f8 94       	cli
+     c7c:	de bf       	out	0x3e, r29	; 62
+     c7e:	0f be       	out	0x3f, r0	; 63
+     c80:	cd bf       	out	0x3d, r28	; 61
+     c82:	dc 01       	movw	r26, r24
+     c84:	59 01       	movw	r10, r18
+     c86:	12 96       	adiw	r26, 0x02	; 2
+     c88:	8d 91       	ld	r24, X+
+     c8a:	9c 91       	ld	r25, X
+     c8c:	13 97       	sbiw	r26, 0x03	; 3
+     c8e:	48 1b       	sub	r20, r24
+     c90:	59 0b       	sbc	r21, r25
+     c92:	68 01       	movw	r12, r16
+     c94:	c4 0e       	add	r12, r20
+     c96:	d5 1e       	adc	r13, r21
+     c98:	1c 14       	cp	r1, r12
+     c9a:	1d 04       	cpc	r1, r13
+     c9c:	0c f0       	brlt	.+2      	; 0xca0 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x52>
+     c9e:	44 c1       	rjmp	.+648    	; 0xf28 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2da>
+     ca0:	16 96       	adiw	r26, 0x06	; 6
+     ca2:	ed 91       	ld	r30, X+
+     ca4:	fc 91       	ld	r31, X
+     ca6:	17 97       	sbiw	r26, 0x07	; 7
+     ca8:	4e 17       	cp	r20, r30
+     caa:	5f 07       	cpc	r21, r31
+     cac:	0c f0       	brlt	.+2      	; 0xcb0 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x62>
+     cae:	3c c1       	rjmp	.+632    	; 0xf28 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2da>
+     cb0:	8d 91       	ld	r24, X+
+     cb2:	9c 91       	ld	r25, X
+     cb4:	11 97       	sbiw	r26, 0x01	; 1
+     cb6:	68 1b       	sub	r22, r24
+     cb8:	79 0b       	sbc	r23, r25
+     cba:	39 01       	movw	r6, r18
+     cbc:	66 0e       	add	r6, r22
+     cbe:	77 1e       	adc	r7, r23
+     cc0:	16 14       	cp	r1, r6
+     cc2:	17 04       	cpc	r1, r7
+     cc4:	0c f0       	brlt	.+2      	; 0xcc8 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x7a>
+     cc6:	30 c1       	rjmp	.+608    	; 0xf28 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2da>
+     cc8:	14 96       	adiw	r26, 0x04	; 4
+     cca:	4d 90       	ld	r4, X+
+     ccc:	5c 90       	ld	r5, X
+     cce:	15 97       	sbiw	r26, 0x05	; 5
+     cd0:	64 15       	cp	r22, r4
+     cd2:	75 05       	cpc	r23, r5
+     cd4:	0c f0       	brlt	.+2      	; 0xcd8 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x8a>
+     cd6:	28 c1       	rjmp	.+592    	; 0xf28 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2da>
+     cd8:	57 ff       	sbrs	r21, 7
+     cda:	18 c0       	rjmp	.+48     	; 0xd0c <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0xbe>
+     cdc:	87 e0       	ldi	r24, 0x07	; 7
+     cde:	90 e0       	ldi	r25, 0x00	; 0
+     ce0:	84 1b       	sub	r24, r20
+     ce2:	95 0b       	sbc	r25, r21
+     ce4:	33 e0       	ldi	r19, 0x03	; 3
+     ce6:	96 95       	lsr	r25
+     ce8:	87 95       	ror	r24
+     cea:	3a 95       	dec	r19
+     cec:	e1 f7       	brne	.-8      	; 0xce6 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x98>
+     cee:	8a 9d       	mul	r24, r10
+     cf0:	80 01       	movw	r16, r0
+     cf2:	8b 9d       	mul	r24, r11
+     cf4:	10 0d       	add	r17, r0
+     cf6:	9a 9d       	mul	r25, r10
+     cf8:	10 0d       	add	r17, r0
+     cfa:	11 24       	eor	r1, r1
+     cfc:	e0 0e       	add	r14, r16
+     cfe:	f1 1e       	adc	r15, r17
+     d00:	86 01       	movw	r16, r12
+     d02:	99 24       	eor	r9, r9
+     d04:	93 94       	inc	r9
+     d06:	80 e0       	ldi	r24, 0x00	; 0
+     d08:	90 e0       	ldi	r25, 0x00	; 0
+     d0a:	02 c0       	rjmp	.+4      	; 0xd10 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0xc2>
+     d0c:	ca 01       	movw	r24, r20
+     d0e:	91 2c       	mov	r9, r1
+     d10:	77 ff       	sbrs	r23, 7
+     d12:	05 c0       	rjmp	.+10     	; 0xd1e <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0xd0>
+     d14:	e6 1a       	sub	r14, r22
+     d16:	f7 0a       	sbc	r15, r23
+     d18:	60 e0       	ldi	r22, 0x00	; 0
+     d1a:	70 e0       	ldi	r23, 0x00	; 0
+     d1c:	01 c0       	rjmp	.+2      	; 0xd20 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0xd2>
+     d1e:	35 01       	movw	r6, r10
+     d20:	24 2f       	mov	r18, r20
+     d22:	27 70       	andi	r18, 0x07	; 7
+     d24:	2d 87       	std	Y+13, r18	; 0x0d
+     d26:	42 2f       	mov	r20, r18
+     d28:	50 e0       	ldi	r21, 0x00	; 0
+     d2a:	5a 83       	std	Y+2, r21	; 0x02
+     d2c:	49 83       	std	Y+1, r20	; 0x01
+     d2e:	18 01       	movw	r2, r16
+     d30:	24 1a       	sub	r2, r20
+     d32:	35 0a       	sbc	r3, r21
+     d34:	91 01       	movw	r18, r2
+     d36:	21 5f       	subi	r18, 0xF1	; 241
+     d38:	3f 4f       	sbci	r19, 0xFF	; 255
+     d3a:	a9 01       	movw	r20, r18
+     d3c:	23 e0       	ldi	r18, 0x03	; 3
+     d3e:	56 95       	lsr	r21
+     d40:	47 95       	ror	r20
+     d42:	2a 95       	dec	r18
+     d44:	e1 f7       	brne	.-8      	; 0xd3e <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0xf0>
+     d46:	5e 83       	std	Y+6, r21	; 0x06
+     d48:	4d 83       	std	Y+5, r20	; 0x05
+     d4a:	68 01       	movw	r12, r16
+     d4c:	c8 0e       	add	r12, r24
+     d4e:	d9 1e       	adc	r13, r25
+     d50:	ec 15       	cp	r30, r12
+     d52:	fd 05       	cpc	r31, r13
+     d54:	18 f4       	brcc	.+6      	; 0xd5c <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x10e>
+     d56:	8f 01       	movw	r16, r30
+     d58:	08 1b       	sub	r16, r24
+     d5a:	19 0b       	sbc	r17, r25
+     d5c:	f3 01       	movw	r30, r6
+     d5e:	e6 0f       	add	r30, r22
+     d60:	f7 1f       	adc	r31, r23
+     d62:	4e 16       	cp	r4, r30
+     d64:	5f 06       	cpc	r5, r31
+     d66:	18 f4       	brcc	.+6      	; 0xd6e <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x120>
+     d68:	32 01       	movw	r6, r4
+     d6a:	66 1a       	sub	r6, r22
+     d6c:	77 0a       	sbc	r7, r23
+     d6e:	1c 01       	movw	r2, r24
+     d70:	51 e0       	ldi	r21, 0x01	; 1
+     d72:	25 1a       	sub	r2, r21
+     d74:	31 08       	sbc	r3, r1
+     d76:	02 0d       	add	r16, r2
+     d78:	13 1d       	adc	r17, r3
+     d7a:	f3 e0       	ldi	r31, 0x03	; 3
+     d7c:	16 95       	lsr	r17
+     d7e:	07 95       	ror	r16
+     d80:	fa 95       	dec	r31
+     d82:	e1 f7       	brne	.-8      	; 0xd7c <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x12e>
+     d84:	9c 01       	movw	r18, r24
+     d86:	13 e0       	ldi	r17, 0x03	; 3
+     d88:	35 95       	asr	r19
+     d8a:	27 95       	ror	r18
+     d8c:	1a 95       	dec	r17
+     d8e:	e1 f7       	brne	.-8      	; 0xd88 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x13a>
+     d90:	02 1b       	sub	r16, r18
+     d92:	22 24       	eor	r2, r2
+     d94:	23 94       	inc	r2
+     d96:	20 0e       	add	r2, r16
+     d98:	2f ef       	ldi	r18, 0xFF	; 255
+     d9a:	30 e0       	ldi	r19, 0x00	; 0
+     d9c:	32 2e       	mov	r3, r18
+     d9e:	0d 84       	ldd	r0, Y+13	; 0x0d
+     da0:	01 c0       	rjmp	.+2      	; 0xda4 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x156>
+     da2:	33 0c       	add	r3, r3
+     da4:	0a 94       	dec	r0
+     da6:	ea f7       	brpl	.-6      	; 0xda2 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x154>
+     da8:	e8 e0       	ldi	r30, 0x08	; 8
+     daa:	f0 e0       	ldi	r31, 0x00	; 0
+     dac:	2f 01       	movw	r4, r30
+     dae:	c9 80       	ldd	r12, Y+1	; 0x01
+     db0:	da 80       	ldd	r13, Y+2	; 0x02
+     db2:	4c 18       	sub	r4, r12
+     db4:	5d 08       	sbc	r5, r13
+     db6:	5c 82       	std	Y+4, r5	; 0x04
+     db8:	4b 82       	std	Y+3, r4	; 0x03
+     dba:	29 01       	movw	r4, r18
+     dbc:	0b 80       	ldd	r0, Y+3	; 0x03
+     dbe:	02 c0       	rjmp	.+4      	; 0xdc4 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x176>
+     dc0:	55 94       	asr	r5
+     dc2:	47 94       	ror	r4
+     dc4:	0a 94       	dec	r0
+     dc6:	e2 f7       	brpl	.-8      	; 0xdc0 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x172>
+     dc8:	c1 2c       	mov	r12, r1
+     dca:	d1 2c       	mov	r13, r1
+     dcc:	51 e0       	ldi	r21, 0x01	; 1
+     dce:	ed 81       	ldd	r30, Y+5	; 0x05
+     dd0:	fe 81       	ldd	r31, Y+6	; 0x06
+     dd2:	ff 27       	eor	r31, r31
+     dd4:	8f 01       	movw	r16, r30
+     dd6:	01 50       	subi	r16, 0x01	; 1
+     dd8:	11 09       	sbc	r17, r1
+     dda:	1a 87       	std	Y+10, r17	; 0x0a
+     ddc:	09 87       	std	Y+9, r16	; 0x09
+     dde:	c2 14       	cp	r12, r2
+     de0:	08 f0       	brcs	.+2      	; 0xde4 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x196>
+     de2:	a2 c0       	rjmp	.+324    	; 0xf28 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2da>
+     de4:	96 01       	movw	r18, r12
+     de6:	43 e0       	ldi	r20, 0x03	; 3
+     de8:	22 0f       	add	r18, r18
+     dea:	33 1f       	adc	r19, r19
+     dec:	4a 95       	dec	r20
+     dee:	e1 f7       	brne	.-8      	; 0xde8 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x19a>
+     df0:	28 0f       	add	r18, r24
+     df2:	39 1f       	adc	r19, r25
+     df4:	e3 e0       	ldi	r30, 0x03	; 3
+     df6:	36 95       	lsr	r19
+     df8:	27 95       	ror	r18
+     dfa:	ea 95       	dec	r30
+     dfc:	e1 f7       	brne	.-8      	; 0xdf6 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x1a8>
+     dfe:	14 96       	adiw	r26, 0x04	; 4
+     e00:	ed 91       	ld	r30, X+
+     e02:	fc 91       	ld	r31, X
+     e04:	15 97       	sbiw	r26, 0x05	; 5
+     e06:	8f 01       	movw	r16, r30
+     e08:	20 9f       	mul	r18, r16
+     e0a:	f0 01       	movw	r30, r0
+     e0c:	21 9f       	mul	r18, r17
+     e0e:	f0 0d       	add	r31, r0
+     e10:	30 9f       	mul	r19, r16
+     e12:	f0 0d       	add	r31, r0
+     e14:	11 24       	eor	r1, r1
+     e16:	e6 0f       	add	r30, r22
+     e18:	f7 1f       	adc	r31, r23
+     e1a:	29 85       	ldd	r18, Y+9	; 0x09
+     e1c:	3a 85       	ldd	r19, Y+10	; 0x0a
+     e1e:	c2 16       	cp	r12, r18
+     e20:	d3 06       	cpc	r13, r19
+     e22:	31 f4       	brne	.+12     	; 0xe30 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x1e2>
+     e24:	51 e0       	ldi	r21, 0x01	; 1
+     e26:	3d 85       	ldd	r19, Y+13	; 0x0d
+     e28:	33 23       	and	r19, r19
+     e2a:	21 f0       	breq	.+8      	; 0xe34 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x1e6>
+     e2c:	50 e0       	ldi	r21, 0x00	; 0
+     e2e:	04 c0       	rjmp	.+8      	; 0xe38 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x1ea>
+     e30:	55 23       	and	r21, r21
+     e32:	11 f0       	breq	.+4      	; 0xe38 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x1ea>
+     e34:	53 2c       	mov	r5, r3
+     e36:	01 c0       	rjmp	.+2      	; 0xe3a <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x1ec>
+     e38:	51 2c       	mov	r5, r1
+     e3a:	25 2d       	mov	r18, r5
+     e3c:	24 29       	or	r18, r4
+     e3e:	87 01       	movw	r16, r14
+     e40:	06 0d       	add	r16, r6
+     e42:	17 1d       	adc	r17, r7
+     e44:	1e 83       	std	Y+6, r17	; 0x06
+     e46:	0d 83       	std	Y+5, r16	; 0x05
+     e48:	91 10       	cpse	r9, r1
+     e4a:	52 2e       	mov	r5, r18
+     e4c:	50 94       	com	r5
+     e4e:	fc 86       	std	Y+12, r15	; 0x0c
+     e50:	eb 86       	std	Y+11, r14	; 0x0b
+     e52:	9f 01       	movw	r18, r30
+     e54:	2e 19       	sub	r18, r14
+     e56:	3f 09       	sbc	r19, r15
+     e58:	38 87       	std	Y+8, r19	; 0x08
+     e5a:	2f 83       	std	Y+7, r18	; 0x07
+     e5c:	0f 81       	ldd	r16, Y+7	; 0x07
+     e5e:	18 85       	ldd	r17, Y+8	; 0x08
+     e60:	2b 85       	ldd	r18, Y+11	; 0x0b
+     e62:	3c 85       	ldd	r19, Y+12	; 0x0c
+     e64:	02 0f       	add	r16, r18
+     e66:	13 1f       	adc	r17, r19
+     e68:	ed 81       	ldd	r30, Y+5	; 0x05
+     e6a:	fe 81       	ldd	r31, Y+6	; 0x06
+     e6c:	2e 17       	cp	r18, r30
+     e6e:	3f 07       	cpc	r19, r31
+     e70:	09 f4       	brne	.+2      	; 0xe74 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x226>
+     e72:	53 c0       	rjmp	.+166    	; 0xf1a <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2cc>
+     e74:	55 23       	and	r21, r21
+     e76:	41 f0       	breq	.+16     	; 0xe88 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x23a>
+     e78:	f9 01       	movw	r30, r18
+     e7a:	84 90       	lpm	r8, Z
+     e7c:	09 80       	ldd	r0, Y+1	; 0x01
+     e7e:	01 c0       	rjmp	.+2      	; 0xe82 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x234>
+     e80:	88 0c       	add	r8, r8
+     e82:	0a 94       	dec	r0
+     e84:	ea f7       	brpl	.-6      	; 0xe80 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x232>
+     e86:	01 c0       	rjmp	.+2      	; 0xe8a <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x23c>
+     e88:	81 2c       	mov	r8, r1
+     e8a:	99 20       	and	r9, r9
+     e8c:	69 f0       	breq	.+26     	; 0xea8 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x25a>
+     e8e:	eb 85       	ldd	r30, Y+11	; 0x0b
+     e90:	fc 85       	ldd	r31, Y+12	; 0x0c
+     e92:	ea 19       	sub	r30, r10
+     e94:	fb 09       	sbc	r31, r11
+     e96:	e4 91       	lpm	r30, Z
+     e98:	f0 e0       	ldi	r31, 0x00	; 0
+     e9a:	0b 80       	ldd	r0, Y+3	; 0x03
+     e9c:	02 c0       	rjmp	.+4      	; 0xea2 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x254>
+     e9e:	f5 95       	asr	r31
+     ea0:	e7 95       	ror	r30
+     ea2:	0a 94       	dec	r0
+     ea4:	e2 f7       	brpl	.-8      	; 0xe9e <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x250>
+     ea6:	8e 2a       	or	r8, r30
+     ea8:	1c 96       	adiw	r26, 0x0c	; 12
+     eaa:	ec 91       	ld	r30, X
+     eac:	1c 97       	sbiw	r26, 0x0c	; 12
+     eae:	1f 96       	adiw	r26, 0x0f	; 15
+     eb0:	2d 91       	ld	r18, X+
+     eb2:	3c 91       	ld	r19, X
+     eb4:	50 97       	sbiw	r26, 0x10	; 16
+     eb6:	e1 fd       	sbrc	r30, 1
+     eb8:	16 c0       	rjmp	.+44     	; 0xee6 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x298>
+     eba:	f9 01       	movw	r30, r18
+     ebc:	e0 0f       	add	r30, r16
+     ebe:	f1 1f       	adc	r31, r17
+     ec0:	20 81       	ld	r18, Z
+     ec2:	25 21       	and	r18, r5
+     ec4:	20 83       	st	Z, r18
+     ec6:	1f 96       	adiw	r26, 0x0f	; 15
+     ec8:	ed 91       	ld	r30, X+
+     eca:	fc 91       	ld	r31, X
+     ecc:	50 97       	sbiw	r26, 0x10	; 16
+     ece:	e0 0f       	add	r30, r16
+     ed0:	f1 1f       	adc	r31, r17
+     ed2:	10 81       	ld	r17, Z
+     ed4:	51 96       	adiw	r26, 0x11	; 17
+     ed6:	2d 91       	ld	r18, X+
+     ed8:	3c 91       	ld	r19, X
+     eda:	52 97       	sbiw	r26, 0x12	; 18
+     edc:	23 2b       	or	r18, r19
+     ede:	09 f4       	brne	.+2      	; 0xee2 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x294>
+     ee0:	80 94       	com	r8
+     ee2:	81 2a       	or	r8, r17
+     ee4:	12 c0       	rjmp	.+36     	; 0xf0a <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2bc>
+     ee6:	51 96       	adiw	r26, 0x11	; 17
+     ee8:	ed 91       	ld	r30, X+
+     eea:	fc 91       	ld	r31, X
+     eec:	52 97       	sbiw	r26, 0x12	; 18
+     eee:	ef 2b       	or	r30, r31
+     ef0:	39 f4       	brne	.+14     	; 0xf00 <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2b2>
+     ef2:	f9 01       	movw	r30, r18
+     ef4:	e0 0f       	add	r30, r16
+     ef6:	f1 1f       	adc	r31, r17
+     ef8:	80 94       	com	r8
+     efa:	20 81       	ld	r18, Z
+     efc:	82 22       	and	r8, r18
+     efe:	05 c0       	rjmp	.+10     	; 0xf0a <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x2bc>
+     f00:	f9 01       	movw	r30, r18
+     f02:	e0 0f       	add	r30, r16
+     f04:	f1 1f       	adc	r31, r17
+     f06:	20 81       	ld	r18, Z
+     f08:	82 2a       	or	r8, r18
+     f0a:	80 82       	st	Z, r8
+     f0c:	0b 85       	ldd	r16, Y+11	; 0x0b
+     f0e:	1c 85       	ldd	r17, Y+12	; 0x0c
+     f10:	0f 5f       	subi	r16, 0xFF	; 255
+     f12:	1f 4f       	sbci	r17, 0xFF	; 255
+     f14:	1c 87       	std	Y+12, r17	; 0x0c
+     f16:	0b 87       	std	Y+11, r16	; 0x0b
+     f18:	a1 cf       	rjmp	.-190    	; 0xe5c <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x20e>
+     f1a:	ea 0c       	add	r14, r10
+     f1c:	fb 1c       	adc	r15, r11
+     f1e:	1f ef       	ldi	r17, 0xFF	; 255
+     f20:	c1 1a       	sub	r12, r17
+     f22:	d1 0a       	sbc	r13, r17
+     f24:	9d 84       	ldd	r9, Y+13	; 0x0d
+     f26:	5b cf       	rjmp	.-330    	; 0xdde <NanoCanvasOps<(unsigned char)1>::drawBitmap1(int, int, unsigned int, unsigned int, unsigned char const*)+0x190>
+     f28:	2d 96       	adiw	r28, 0x0d	; 13
+     f2a:	0f b6       	in	r0, 0x3f	; 63
+     f2c:	f8 94       	cli
+     f2e:	de bf       	out	0x3e, r29	; 62
+     f30:	0f be       	out	0x3f, r0	; 63
+     f32:	cd bf       	out	0x3d, r28	; 61
+     f34:	df 91       	pop	r29
+     f36:	cf 91       	pop	r28
+     f38:	1f 91       	pop	r17
+     f3a:	0f 91       	pop	r16
+     f3c:	ff 90       	pop	r15
+     f3e:	ef 90       	pop	r14
+     f40:	df 90       	pop	r13
+     f42:	cf 90       	pop	r12
+     f44:	bf 90       	pop	r11
+     f46:	af 90       	pop	r10
+     f48:	9f 90       	pop	r9
+     f4a:	8f 90       	pop	r8
+     f4c:	7f 90       	pop	r7
+     f4e:	6f 90       	pop	r6
+     f50:	5f 90       	pop	r5
+     f52:	4f 90       	pop	r4
+     f54:	3f 90       	pop	r3
+     f56:	2f 90       	pop	r2
+     f58:	08 95       	ret
 
-00000f62 <NanoCanvasOps<(unsigned char)1>::begin(int, int, unsigned char*)>:
-     f62:	fc 01       	movw	r30, r24
-     f64:	75 83       	std	Z+5, r23	; 0x05
-     f66:	64 83       	std	Z+4, r22	; 0x04
-     f68:	57 83       	std	Z+7, r21	; 0x07
-     f6a:	46 83       	std	Z+6, r20	; 0x06
-     f6c:	11 82       	std	Z+1, r1	; 0x01
-     f6e:	10 82       	st	Z, r1
-     f70:	13 82       	std	Z+3, r1	; 0x03
-     f72:	12 82       	std	Z+2, r1	; 0x02
-     f74:	13 86       	std	Z+11, r1	; 0x0b
-     f76:	12 86       	std	Z+10, r1	; 0x0a
-     f78:	15 86       	std	Z+13, r1	; 0x0d
-     f7a:	14 86       	std	Z+12, r1	; 0x0c
-     f7c:	8f ef       	ldi	r24, 0xFF	; 255
-     f7e:	90 e0       	ldi	r25, 0x00	; 0
-     f80:	94 8b       	std	Z+20, r25	; 0x14
-     f82:	83 8b       	std	Z+19, r24	; 0x13
-     f84:	16 86       	std	Z+14, r1	; 0x0e
-     f86:	83 e0       	ldi	r24, 0x03	; 3
-     f88:	90 e0       	ldi	r25, 0x00	; 0
-     f8a:	91 87       	std	Z+9, r25	; 0x09
-     f8c:	80 87       	std	Z+8, r24	; 0x08
-     f8e:	80 85       	ldd	r24, Z+8	; 0x08
-     f90:	91 85       	ldd	r25, Z+9	; 0x09
-     f92:	01 96       	adiw	r24, 0x01	; 1
-     f94:	ab 01       	movw	r20, r22
-     f96:	08 2e       	mov	r0, r24
-     f98:	02 c0       	rjmp	.+4      	; 0xf9e <NanoCanvasOps<(unsigned char)1>::begin(int, int, unsigned char*)+0x3c>
-     f9a:	55 95       	asr	r21
-     f9c:	47 95       	ror	r20
-     f9e:	0a 94       	dec	r0
-     fa0:	e2 f7       	brpl	.-8      	; 0xf9a <NanoCanvasOps<(unsigned char)1>::begin(int, int, unsigned char*)+0x38>
-     fa2:	45 2b       	or	r20, r21
-     fa4:	91 f7       	brne	.-28     	; 0xf8a <NanoCanvasOps<(unsigned char)1>::begin(int, int, unsigned char*)+0x28>
-     fa6:	32 8b       	std	Z+18, r19	; 0x12
-     fa8:	21 8b       	std	Z+17, r18	; 0x11
-     faa:	cf 01       	movw	r24, r30
-     fac:	0c 94 14 06 	jmp	0xc28	; 0xc28 <NanoCanvasOps<(unsigned char)1>::clear()>
+00000f5a <NanoCanvasOps<(unsigned char)1>::begin(int, int, unsigned char*)>:
+     f5a:	fc 01       	movw	r30, r24
+     f5c:	75 83       	std	Z+5, r23	; 0x05
+     f5e:	64 83       	std	Z+4, r22	; 0x04
+     f60:	57 83       	std	Z+7, r21	; 0x07
+     f62:	46 83       	std	Z+6, r20	; 0x06
+     f64:	11 82       	std	Z+1, r1	; 0x01
+     f66:	10 82       	st	Z, r1
+     f68:	13 82       	std	Z+3, r1	; 0x03
+     f6a:	12 82       	std	Z+2, r1	; 0x02
+     f6c:	11 86       	std	Z+9, r1	; 0x09
+     f6e:	10 86       	std	Z+8, r1	; 0x08
+     f70:	13 86       	std	Z+11, r1	; 0x0b
+     f72:	12 86       	std	Z+10, r1	; 0x0a
+     f74:	8f ef       	ldi	r24, 0xFF	; 255
+     f76:	90 e0       	ldi	r25, 0x00	; 0
+     f78:	92 8b       	std	Z+18, r25	; 0x12
+     f7a:	81 8b       	std	Z+17, r24	; 0x11
+     f7c:	14 86       	std	Z+12, r1	; 0x0c
+     f7e:	30 8b       	std	Z+16, r19	; 0x10
+     f80:	27 87       	std	Z+15, r18	; 0x0f
+     f82:	cf 01       	movw	r24, r30
+     f84:	0c 94 10 06 	jmp	0xc20	; 0xc20 <NanoCanvasOps<(unsigned char)1>::clear()>
 
-00000fb0 <_GLOBAL__sub_I_g_ssd1306_unicode2>:
-     fb0:	e9 ed       	ldi	r30, 0xD9	; 217
-     fb2:	f2 e0       	ldi	r31, 0x02	; 2
-     fb4:	8b e0       	ldi	r24, 0x0B	; 11
-     fb6:	df 01       	movw	r26, r30
-     fb8:	1d 92       	st	X+, r1
-     fba:	8a 95       	dec	r24
-     fbc:	e9 f7       	brne	.-6      	; 0xfb8 <_GLOBAL__sub_I_g_ssd1306_unicode2+0x8>
-     fbe:	14 86       	std	Z+12, r1	; 0x0c
-     fc0:	13 86       	std	Z+11, r1	; 0x0b
-     fc2:	08 95       	ret
+00000f88 <_GLOBAL__sub_I_g_ssd1306_unicode2>:
+     f88:	e7 ed       	ldi	r30, 0xD7	; 215
+     f8a:	f2 e0       	ldi	r31, 0x02	; 2
+     f8c:	8b e0       	ldi	r24, 0x0B	; 11
+     f8e:	df 01       	movw	r26, r30
+     f90:	1d 92       	st	X+, r1
+     f92:	8a 95       	dec	r24
+     f94:	e9 f7       	brne	.-6      	; 0xf90 <_GLOBAL__sub_I_g_ssd1306_unicode2+0x8>
+     f96:	14 86       	std	Z+12, r1	; 0x0c
+     f98:	13 86       	std	Z+11, r1	; 0x0b
+     f9a:	08 95       	ret
 
-00000fc4 <NanoEngineCore::begin()>:
-     fc4:	fc 01       	movw	r30, r24
-     fc6:	13 82       	std	Z+3, r1	; 0x03
-     fc8:	14 82       	std	Z+4, r1	; 0x04
-     fca:	15 82       	std	Z+5, r1	; 0x05
-     fcc:	16 82       	std	Z+6, r1	; 0x06
-     fce:	08 95       	ret
+00000f9c <NanoEngineCore::begin()>:
+     f9c:	fc 01       	movw	r30, r24
+     f9e:	13 82       	std	Z+3, r1	; 0x03
+     fa0:	14 82       	std	Z+4, r1	; 0x04
+     fa2:	15 82       	std	Z+5, r1	; 0x05
+     fa4:	16 82       	std	Z+6, r1	; 0x06
+     fa6:	08 95       	ret
 
-00000fd0 <NanoEngineCore::setFrameRate(unsigned char)>:
-     fd0:	fc 01       	movw	r30, r24
-     fd2:	66 23       	and	r22, r22
-     fd4:	39 f0       	breq	.+14     	; 0xfe4 <NanoEngineCore::setFrameRate(unsigned char)+0x14>
-     fd6:	61 83       	std	Z+1, r22	; 0x01
-     fd8:	70 e0       	ldi	r23, 0x00	; 0
-     fda:	88 ee       	ldi	r24, 0xE8	; 232
-     fdc:	93 e0       	ldi	r25, 0x03	; 3
-     fde:	0e 94 31 08 	call	0x1062	; 0x1062 <__divmodhi4>
-     fe2:	60 83       	st	Z, r22
-     fe4:	08 95       	ret
+00000fa8 <NanoEngineCore::setFrameRate(unsigned char)>:
+     fa8:	fc 01       	movw	r30, r24
+     faa:	66 23       	and	r22, r22
+     fac:	39 f0       	breq	.+14     	; 0xfbc <NanoEngineCore::setFrameRate(unsigned char)+0x14>
+     fae:	61 83       	std	Z+1, r22	; 0x01
+     fb0:	70 e0       	ldi	r23, 0x00	; 0
+     fb2:	88 ee       	ldi	r24, 0xE8	; 232
+     fb4:	93 e0       	ldi	r25, 0x03	; 3
+     fb6:	0e 94 0d 08 	call	0x101a	; 0x101a <__divmodhi4>
+     fba:	60 83       	st	Z, r22
+     fbc:	08 95       	ret
 
-00000fe6 <NanoEngineCore::nextFrame()>:
-     fe6:	0f 93       	push	r16
-     fe8:	1f 93       	push	r17
-     fea:	cf 93       	push	r28
-     fec:	fc 01       	movw	r30, r24
-     fee:	03 81       	ldd	r16, Z+3	; 0x03
-     ff0:	14 81       	ldd	r17, Z+4	; 0x04
-     ff2:	25 81       	ldd	r18, Z+5	; 0x05
-     ff4:	36 81       	ldd	r19, Z+6	; 0x06
-     ff6:	30 95       	com	r19
-     ff8:	20 95       	com	r18
-     ffa:	10 95       	com	r17
-     ffc:	01 95       	neg	r16
-     ffe:	1f 4f       	sbci	r17, 0xFF	; 255
-    1000:	2f 4f       	sbci	r18, 0xFF	; 255
-    1002:	3f 4f       	sbci	r19, 0xFF	; 255
-    1004:	40 81       	ld	r20, Z
-    1006:	50 e0       	ldi	r21, 0x00	; 0
-    1008:	60 e0       	ldi	r22, 0x00	; 0
-    100a:	70 e0       	ldi	r23, 0x00	; 0
-    100c:	c1 e0       	ldi	r28, 0x01	; 1
-    100e:	04 17       	cp	r16, r20
-    1010:	15 07       	cpc	r17, r21
-    1012:	26 07       	cpc	r18, r22
-    1014:	37 07       	cpc	r19, r23
-    1016:	08 f4       	brcc	.+2      	; 0x101a <NanoEngineCore::nextFrame()+0x34>
-    1018:	c0 e0       	ldi	r28, 0x00	; 0
-    101a:	04 17       	cp	r16, r20
-    101c:	15 07       	cpc	r17, r21
-    101e:	26 07       	cpc	r18, r22
-    1020:	37 07       	cpc	r19, r23
-    1022:	30 f0       	brcs	.+12     	; 0x1030 <NanoEngineCore::nextFrame()+0x4a>
-    1024:	07 80       	ldd	r0, Z+7	; 0x07
-    1026:	f0 85       	ldd	r31, Z+8	; 0x08
-    1028:	e0 2d       	mov	r30, r0
-    102a:	30 97       	sbiw	r30, 0x00	; 0
-    102c:	09 f0       	breq	.+2      	; 0x1030 <NanoEngineCore::nextFrame()+0x4a>
-    102e:	09 95       	icall
-    1030:	8c 2f       	mov	r24, r28
-    1032:	cf 91       	pop	r28
-    1034:	1f 91       	pop	r17
-    1036:	0f 91       	pop	r16
+00000fbe <NanoEngineCore::nextFrame()>:
+     fbe:	cf 93       	push	r28
+     fc0:	fc 01       	movw	r30, r24
+     fc2:	43 81       	ldd	r20, Z+3	; 0x03
+     fc4:	54 81       	ldd	r21, Z+4	; 0x04
+     fc6:	51 95       	neg	r21
+     fc8:	41 95       	neg	r20
+     fca:	51 09       	sbc	r21, r1
+     fcc:	20 81       	ld	r18, Z
+     fce:	30 e0       	ldi	r19, 0x00	; 0
+     fd0:	c1 e0       	ldi	r28, 0x01	; 1
+     fd2:	42 17       	cp	r20, r18
+     fd4:	53 07       	cpc	r21, r19
+     fd6:	08 f4       	brcc	.+2      	; 0xfda <NanoEngineCore::nextFrame()+0x1c>
+     fd8:	c0 e0       	ldi	r28, 0x00	; 0
+     fda:	42 17       	cp	r20, r18
+     fdc:	53 07       	cpc	r21, r19
+     fde:	30 f0       	brcs	.+12     	; 0xfec <NanoEngineCore::nextFrame()+0x2e>
+     fe0:	07 80       	ldd	r0, Z+7	; 0x07
+     fe2:	f0 85       	ldd	r31, Z+8	; 0x08
+     fe4:	e0 2d       	mov	r30, r0
+     fe6:	30 97       	sbiw	r30, 0x00	; 0
+     fe8:	09 f0       	breq	.+2      	; 0xfec <NanoEngineCore::nextFrame()+0x2e>
+     fea:	09 95       	icall
+     fec:	8c 2f       	mov	r24, r28
+     fee:	cf 91       	pop	r28
+     ff0:	08 95       	ret
+
+00000ff2 <__udivmodhi4>:
+     ff2:	aa 1b       	sub	r26, r26
+     ff4:	bb 1b       	sub	r27, r27
+     ff6:	51 e1       	ldi	r21, 0x11	; 17
+     ff8:	07 c0       	rjmp	.+14     	; 0x1008 <__udivmodhi4_ep>
+
+00000ffa <__udivmodhi4_loop>:
+     ffa:	aa 1f       	adc	r26, r26
+     ffc:	bb 1f       	adc	r27, r27
+     ffe:	a6 17       	cp	r26, r22
+    1000:	b7 07       	cpc	r27, r23
+    1002:	10 f0       	brcs	.+4      	; 0x1008 <__udivmodhi4_ep>
+    1004:	a6 1b       	sub	r26, r22
+    1006:	b7 0b       	sbc	r27, r23
+
+00001008 <__udivmodhi4_ep>:
+    1008:	88 1f       	adc	r24, r24
+    100a:	99 1f       	adc	r25, r25
+    100c:	5a 95       	dec	r21
+    100e:	a9 f7       	brne	.-22     	; 0xffa <__udivmodhi4_loop>
+    1010:	80 95       	com	r24
+    1012:	90 95       	com	r25
+    1014:	bc 01       	movw	r22, r24
+    1016:	cd 01       	movw	r24, r26
+    1018:	08 95       	ret
+
+0000101a <__divmodhi4>:
+    101a:	97 fb       	bst	r25, 7
+    101c:	07 2e       	mov	r0, r23
+    101e:	16 f4       	brtc	.+4      	; 0x1024 <__divmodhi4+0xa>
+    1020:	00 94       	com	r0
+    1022:	07 d0       	rcall	.+14     	; 0x1032 <__divmodhi4_neg1>
+    1024:	77 fd       	sbrc	r23, 7
+    1026:	09 d0       	rcall	.+18     	; 0x103a <__divmodhi4_neg2>
+    1028:	0e 94 f9 07 	call	0xff2	; 0xff2 <__udivmodhi4>
+    102c:	07 fc       	sbrc	r0, 7
+    102e:	05 d0       	rcall	.+10     	; 0x103a <__divmodhi4_neg2>
+    1030:	3e f4       	brtc	.+14     	; 0x1040 <__divmodhi4_exit>
+
+00001032 <__divmodhi4_neg1>:
+    1032:	90 95       	com	r25
+    1034:	81 95       	neg	r24
+    1036:	9f 4f       	sbci	r25, 0xFF	; 255
     1038:	08 95       	ret
 
-0000103a <__udivmodhi4>:
-    103a:	aa 1b       	sub	r26, r26
-    103c:	bb 1b       	sub	r27, r27
-    103e:	51 e1       	ldi	r21, 0x11	; 17
-    1040:	07 c0       	rjmp	.+14     	; 0x1050 <__udivmodhi4_ep>
+0000103a <__divmodhi4_neg2>:
+    103a:	70 95       	com	r23
+    103c:	61 95       	neg	r22
+    103e:	7f 4f       	sbci	r23, 0xFF	; 255
 
-00001042 <__udivmodhi4_loop>:
-    1042:	aa 1f       	adc	r26, r26
-    1044:	bb 1f       	adc	r27, r27
-    1046:	a6 17       	cp	r26, r22
-    1048:	b7 07       	cpc	r27, r23
-    104a:	10 f0       	brcs	.+4      	; 0x1050 <__udivmodhi4_ep>
-    104c:	a6 1b       	sub	r26, r22
-    104e:	b7 0b       	sbc	r27, r23
+00001040 <__divmodhi4_exit>:
+    1040:	08 95       	ret
 
-00001050 <__udivmodhi4_ep>:
-    1050:	88 1f       	adc	r24, r24
-    1052:	99 1f       	adc	r25, r25
-    1054:	5a 95       	dec	r21
-    1056:	a9 f7       	brne	.-22     	; 0x1042 <__udivmodhi4_loop>
-    1058:	80 95       	com	r24
-    105a:	90 95       	com	r25
-    105c:	bc 01       	movw	r22, r24
-    105e:	cd 01       	movw	r24, r26
-    1060:	08 95       	ret
+00001042 <__udivmodsi4>:
+    1042:	a1 e2       	ldi	r26, 0x21	; 33
+    1044:	1a 2e       	mov	r1, r26
+    1046:	aa 1b       	sub	r26, r26
+    1048:	bb 1b       	sub	r27, r27
+    104a:	fd 01       	movw	r30, r26
+    104c:	0d c0       	rjmp	.+26     	; 0x1068 <__udivmodsi4_ep>
 
-00001062 <__divmodhi4>:
-    1062:	97 fb       	bst	r25, 7
-    1064:	07 2e       	mov	r0, r23
-    1066:	16 f4       	brtc	.+4      	; 0x106c <__divmodhi4+0xa>
-    1068:	00 94       	com	r0
-    106a:	07 d0       	rcall	.+14     	; 0x107a <__divmodhi4_neg1>
-    106c:	77 fd       	sbrc	r23, 7
-    106e:	09 d0       	rcall	.+18     	; 0x1082 <__divmodhi4_neg2>
-    1070:	0e 94 1d 08 	call	0x103a	; 0x103a <__udivmodhi4>
-    1074:	07 fc       	sbrc	r0, 7
-    1076:	05 d0       	rcall	.+10     	; 0x1082 <__divmodhi4_neg2>
-    1078:	3e f4       	brtc	.+14     	; 0x1088 <__divmodhi4_exit>
+0000104e <__udivmodsi4_loop>:
+    104e:	aa 1f       	adc	r26, r26
+    1050:	bb 1f       	adc	r27, r27
+    1052:	ee 1f       	adc	r30, r30
+    1054:	ff 1f       	adc	r31, r31
+    1056:	a2 17       	cp	r26, r18
+    1058:	b3 07       	cpc	r27, r19
+    105a:	e4 07       	cpc	r30, r20
+    105c:	f5 07       	cpc	r31, r21
+    105e:	20 f0       	brcs	.+8      	; 0x1068 <__udivmodsi4_ep>
+    1060:	a2 1b       	sub	r26, r18
+    1062:	b3 0b       	sbc	r27, r19
+    1064:	e4 0b       	sbc	r30, r20
+    1066:	f5 0b       	sbc	r31, r21
 
-0000107a <__divmodhi4_neg1>:
+00001068 <__udivmodsi4_ep>:
+    1068:	66 1f       	adc	r22, r22
+    106a:	77 1f       	adc	r23, r23
+    106c:	88 1f       	adc	r24, r24
+    106e:	99 1f       	adc	r25, r25
+    1070:	1a 94       	dec	r1
+    1072:	69 f7       	brne	.-38     	; 0x104e <__udivmodsi4_loop>
+    1074:	60 95       	com	r22
+    1076:	70 95       	com	r23
+    1078:	80 95       	com	r24
     107a:	90 95       	com	r25
-    107c:	81 95       	neg	r24
-    107e:	9f 4f       	sbci	r25, 0xFF	; 255
-    1080:	08 95       	ret
+    107c:	9b 01       	movw	r18, r22
+    107e:	ac 01       	movw	r20, r24
+    1080:	bd 01       	movw	r22, r26
+    1082:	cf 01       	movw	r24, r30
+    1084:	08 95       	ret
 
-00001082 <__divmodhi4_neg2>:
-    1082:	70 95       	com	r23
-    1084:	61 95       	neg	r22
-    1086:	7f 4f       	sbci	r23, 0xFF	; 255
+00001086 <__mulshisi3>:
+    1086:	b7 ff       	sbrs	r27, 7
+    1088:	0c 94 51 08 	jmp	0x10a2	; 0x10a2 <__muluhisi3>
 
-00001088 <__divmodhi4_exit>:
-    1088:	08 95       	ret
+0000108c <__mulohisi3>:
+    108c:	0e 94 51 08 	call	0x10a2	; 0x10a2 <__muluhisi3>
+    1090:	82 1b       	sub	r24, r18
+    1092:	93 0b       	sbc	r25, r19
+    1094:	08 95       	ret
 
-0000108a <__udivmodsi4>:
-    108a:	a1 e2       	ldi	r26, 0x21	; 33
-    108c:	1a 2e       	mov	r1, r26
-    108e:	aa 1b       	sub	r26, r26
-    1090:	bb 1b       	sub	r27, r27
-    1092:	fd 01       	movw	r30, r26
-    1094:	0d c0       	rjmp	.+26     	; 0x10b0 <__udivmodsi4_ep>
+00001096 <__tablejump2__>:
+    1096:	ee 0f       	add	r30, r30
+    1098:	ff 1f       	adc	r31, r31
+    109a:	05 90       	lpm	r0, Z+
+    109c:	f4 91       	lpm	r31, Z
+    109e:	e0 2d       	mov	r30, r0
+    10a0:	09 94       	ijmp
 
-00001096 <__udivmodsi4_loop>:
-    1096:	aa 1f       	adc	r26, r26
-    1098:	bb 1f       	adc	r27, r27
-    109a:	ee 1f       	adc	r30, r30
-    109c:	ff 1f       	adc	r31, r31
-    109e:	a2 17       	cp	r26, r18
-    10a0:	b3 07       	cpc	r27, r19
-    10a2:	e4 07       	cpc	r30, r20
-    10a4:	f5 07       	cpc	r31, r21
-    10a6:	20 f0       	brcs	.+8      	; 0x10b0 <__udivmodsi4_ep>
-    10a8:	a2 1b       	sub	r26, r18
-    10aa:	b3 0b       	sbc	r27, r19
-    10ac:	e4 0b       	sbc	r30, r20
-    10ae:	f5 0b       	sbc	r31, r21
+000010a2 <__muluhisi3>:
+    10a2:	0e 94 5c 08 	call	0x10b8	; 0x10b8 <__umulhisi3>
+    10a6:	a5 9f       	mul	r26, r21
+    10a8:	90 0d       	add	r25, r0
+    10aa:	b4 9f       	mul	r27, r20
+    10ac:	90 0d       	add	r25, r0
+    10ae:	a4 9f       	mul	r26, r20
+    10b0:	80 0d       	add	r24, r0
+    10b2:	91 1d       	adc	r25, r1
+    10b4:	11 24       	eor	r1, r1
+    10b6:	08 95       	ret
 
-000010b0 <__udivmodsi4_ep>:
-    10b0:	66 1f       	adc	r22, r22
-    10b2:	77 1f       	adc	r23, r23
-    10b4:	88 1f       	adc	r24, r24
-    10b6:	99 1f       	adc	r25, r25
-    10b8:	1a 94       	dec	r1
-    10ba:	69 f7       	brne	.-38     	; 0x1096 <__udivmodsi4_loop>
-    10bc:	60 95       	com	r22
-    10be:	70 95       	com	r23
-    10c0:	80 95       	com	r24
-    10c2:	90 95       	com	r25
-    10c4:	9b 01       	movw	r18, r22
-    10c6:	ac 01       	movw	r20, r24
-    10c8:	bd 01       	movw	r22, r26
-    10ca:	cf 01       	movw	r24, r30
-    10cc:	08 95       	ret
+000010b8 <__umulhisi3>:
+    10b8:	a2 9f       	mul	r26, r18
+    10ba:	b0 01       	movw	r22, r0
+    10bc:	b3 9f       	mul	r27, r19
+    10be:	c0 01       	movw	r24, r0
+    10c0:	a3 9f       	mul	r26, r19
+    10c2:	70 0d       	add	r23, r0
+    10c4:	81 1d       	adc	r24, r1
+    10c6:	11 24       	eor	r1, r1
+    10c8:	91 1d       	adc	r25, r1
+    10ca:	b2 9f       	mul	r27, r18
+    10cc:	70 0d       	add	r23, r0
+    10ce:	81 1d       	adc	r24, r1
+    10d0:	11 24       	eor	r1, r1
+    10d2:	91 1d       	adc	r25, r1
+    10d4:	08 95       	ret
 
-000010ce <__mulshisi3>:
-    10ce:	b7 ff       	sbrs	r27, 7
-    10d0:	0c 94 75 08 	jmp	0x10ea	; 0x10ea <__muluhisi3>
+000010d6 <memset>:
+    10d6:	dc 01       	movw	r26, r24
+    10d8:	01 c0       	rjmp	.+2      	; 0x10dc <memset+0x6>
+    10da:	6d 93       	st	X+, r22
+    10dc:	41 50       	subi	r20, 0x01	; 1
+    10de:	50 40       	sbci	r21, 0x00	; 0
+    10e0:	e0 f7       	brcc	.-8      	; 0x10da <memset+0x4>
+    10e2:	08 95       	ret
 
-000010d4 <__mulohisi3>:
-    10d4:	0e 94 75 08 	call	0x10ea	; 0x10ea <__muluhisi3>
-    10d8:	82 1b       	sub	r24, r18
-    10da:	93 0b       	sbc	r25, r19
-    10dc:	08 95       	ret
+000010e4 <__do_global_dtors>:
+    10e4:	10 e0       	ldi	r17, 0x00	; 0
+    10e6:	c3 e6       	ldi	r28, 0x63	; 99
+    10e8:	d0 e0       	ldi	r29, 0x00	; 0
+    10ea:	04 c0       	rjmp	.+8      	; 0x10f4 <__do_global_dtors+0x10>
+    10ec:	fe 01       	movw	r30, r28
+    10ee:	0e 94 4b 08 	call	0x1096	; 0x1096 <__tablejump2__>
+    10f2:	21 96       	adiw	r28, 0x01	; 1
+    10f4:	c4 36       	cpi	r28, 0x64	; 100
+    10f6:	d1 07       	cpc	r29, r17
+    10f8:	c9 f7       	brne	.-14     	; 0x10ec <__do_global_dtors+0x8>
+    10fa:	f8 94       	cli
 
-000010de <__tablejump2__>:
-    10de:	ee 0f       	add	r30, r30
-    10e0:	ff 1f       	adc	r31, r31
-    10e2:	05 90       	lpm	r0, Z+
-    10e4:	f4 91       	lpm	r31, Z
-    10e6:	e0 2d       	mov	r30, r0
-    10e8:	09 94       	ijmp
-
-000010ea <__muluhisi3>:
-    10ea:	0e 94 80 08 	call	0x1100	; 0x1100 <__umulhisi3>
-    10ee:	a5 9f       	mul	r26, r21
-    10f0:	90 0d       	add	r25, r0
-    10f2:	b4 9f       	mul	r27, r20
-    10f4:	90 0d       	add	r25, r0
-    10f6:	a4 9f       	mul	r26, r20
-    10f8:	80 0d       	add	r24, r0
-    10fa:	91 1d       	adc	r25, r1
-    10fc:	11 24       	eor	r1, r1
-    10fe:	08 95       	ret
-
-00001100 <__umulhisi3>:
-    1100:	a2 9f       	mul	r26, r18
-    1102:	b0 01       	movw	r22, r0
-    1104:	b3 9f       	mul	r27, r19
-    1106:	c0 01       	movw	r24, r0
-    1108:	a3 9f       	mul	r26, r19
-    110a:	70 0d       	add	r23, r0
-    110c:	81 1d       	adc	r24, r1
-    110e:	11 24       	eor	r1, r1
-    1110:	91 1d       	adc	r25, r1
-    1112:	b2 9f       	mul	r27, r18
-    1114:	70 0d       	add	r23, r0
-    1116:	81 1d       	adc	r24, r1
-    1118:	11 24       	eor	r1, r1
-    111a:	91 1d       	adc	r25, r1
-    111c:	08 95       	ret
-
-0000111e <memset>:
-    111e:	dc 01       	movw	r26, r24
-    1120:	01 c0       	rjmp	.+2      	; 0x1124 <memset+0x6>
-    1122:	6d 93       	st	X+, r22
-    1124:	41 50       	subi	r20, 0x01	; 1
-    1126:	50 40       	sbci	r21, 0x00	; 0
-    1128:	e0 f7       	brcc	.-8      	; 0x1122 <memset+0x4>
-    112a:	08 95       	ret
-
-0000112c <__do_global_dtors>:
-    112c:	10 e0       	ldi	r17, 0x00	; 0
-    112e:	c3 e6       	ldi	r28, 0x63	; 99
-    1130:	d0 e0       	ldi	r29, 0x00	; 0
-    1132:	04 c0       	rjmp	.+8      	; 0x113c <__do_global_dtors+0x10>
-    1134:	fe 01       	movw	r30, r28
-    1136:	0e 94 6f 08 	call	0x10de	; 0x10de <__tablejump2__>
-    113a:	21 96       	adiw	r28, 0x01	; 1
-    113c:	c4 36       	cpi	r28, 0x64	; 100
-    113e:	d1 07       	cpc	r29, r17
-    1140:	c9 f7       	brne	.-14     	; 0x1134 <__do_global_dtors+0x8>
-    1142:	f8 94       	cli
-
-00001144 <__stop_program>:
-    1144:	ff cf       	rjmp	.-2      	; 0x1144 <__stop_program>
+000010fc <__stop_program>:
+    10fc:	ff cf       	rjmp	.-2      	; 0x10fc <__stop_program>
