@@ -194,8 +194,9 @@ void NanoCanvasOps<BPP>::printFixedPgm(lcdint_t xpos, lcdint_t y, const char *ch
 /////////////////////////////////////////////////////////////////////////////////
 
 #ifdef CONFIG_MULTIPLICATION_NOT_SUPPORTED
-#define YADDR1(y) (static_cast<uint16_t>((y) >> 3) << m_p)
-#define BANK_ADDR1(b) ((b) << m_p)
+// compiler optimizes multiplication correctly itself
+#define YADDR1(y) (static_cast<uint16_t>((y) >> 3) * m_w)
+#define BANK_ADDR1(b) ((b) * m_w)
 #else
 #define YADDR1(y) (static_cast<uint16_t>((y) >> 3) * m_w)
 #define BANK_ADDR1(b) ((b) * m_w)
@@ -420,8 +421,6 @@ void NanoCanvasOps<1>::begin(lcdint_t w, lcdint_t h, uint8_t *bytes)
     m_cursorY = 0;
     m_color = WHITE;
     m_textMode = 0;
-    m_p = 3;
-    while (w >> (m_p+1)) { m_p++; };
     m_buf = bytes;
     clear();
 }
@@ -647,8 +646,6 @@ void NanoCanvasOps<8>::begin(lcdint_t w, lcdint_t h, uint8_t *bytes)
     m_cursorY = 0;
     m_color = 0xFF; // white color by default
     m_textMode = 0;
-    m_p = 3;
-    while (w >> (m_p+1)) { m_p++; };
     m_buf = bytes;
     clear();
 }
@@ -886,9 +883,6 @@ void NanoCanvasOps<16>::begin(lcdint_t w, lcdint_t h, uint8_t *bytes)
     m_cursorY = 0;
     m_color = 0xFFFF; // white color by default
     m_textMode = 0;
-    m_p = 3;
-    while (w >> (m_p+1)) { m_p++; };
-    m_p++;
     m_buf = bytes;
     clear();
 }

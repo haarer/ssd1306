@@ -335,7 +335,6 @@ public:
 protected:
     lcduint_t m_w;    ///< width of NanoCanvas area in pixels
     lcduint_t m_h;    ///< height of NanoCanvas area in pixels
-    lcduint_t m_p;    ///< number of bits, used by width value: 3 equals to 8 pixels width
     lcdint_t  m_cursorX;  ///< current X cursor position for text output
     lcdint_t  m_cursorY;  ///< current Y cursor position for text output
     uint8_t   m_textMode; ///< Flags for current NanoCanvas mode
