@@ -306,19 +306,16 @@ lcduint_t NanoFont::getTextSize(const char *text, lcduint_t *height)
     {
         if (*text == '\r' || *text == '\n')
         {
-            text++;
             break;
         }
         uint16_t unicode = unicode16FromUtf8(*text);
-        if (unicode == SSD1306_MORE_CHARS_REQUIRED)
+        if (unicode != SSD1306_MORE_CHARS_REQUIRED)
         {
-            text++;
-            continue;
+            SCharInfo char_info;
+            getCharBitmap(unicode, &char_info);
+            width += char_info.width + char_info.spacing;
+            if ( height ) *height = char_info.height;
         }
-        SCharInfo char_info;
-        getCharBitmap(unicode, &char_info);
-        width += char_info.width + char_info.spacing;
-        if ( height ) *height = char_info.height;
         text++;
     }
     return width;
@@ -328,7 +325,7 @@ uint16_t NanoFont::unicode16FromUtf8(uint8_t ch)
 {
 #ifdef CONFIG_SSD1306_UNICODE_ENABLE
     static uint16_t unicode = 0;
-    ch &= 0x000000FF;
+    ch &= 0x00FF;
     if (!unicode)
     {
         if ( ch >= 0xc0 )
