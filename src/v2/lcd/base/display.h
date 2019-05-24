@@ -87,7 +87,7 @@ public:
      * @param y2 - position Y
      * @note color can be set via setColor()
      */
-    void fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2);
+    void fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2) __attribute__((noinline));
 
     /**
      * Draws bitmap, located in Flash, on the display
@@ -317,7 +317,7 @@ public:
      * @param y2 - position Y
      * @note color can be set via setColor()
      */
-    void fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2);
+    void fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2) __attribute__((noinline));
 
     /**
      * Draws bitmap, located in Flash, on the display
@@ -510,7 +510,7 @@ public:
      * @param y2 - position Y
      * @note color can be set via setColor()
      */
-    void fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2);
+    void fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2) __attribute__((noinline));
 
     /**
      * Draws bitmap, located in Flash, on the display
@@ -818,6 +818,20 @@ public:
      * @param progress progress in range 0 - 100.
      */
     void drawProgressBar(int8_t progress);
+
+    /**
+     * Displays window at specified position and of specified size
+     *
+     * @param x x position in pixels from top-lef corner
+     * @param y y position in pixels from top-lef corner
+     * @param width width of window to draw. Can be 0.
+     * @param height height of windows to draw. Can be 0.
+     * @param caption text to display as caption
+     * @param blank true if content inside window should be blanked
+     */
+    void drawWindow(lcdint_t x, lcdint_t y,
+                    lcduint_t width, lcduint_t height,
+                    const char *caption, bool blank);
 
 protected:
     /**

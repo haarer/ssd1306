@@ -46,6 +46,7 @@ void setup()
     display.begin();
     display.setFixedFont(ssd1306xled_font6x8);
     display.clear();
+    display.drawWindow(0,0,0,0,"Downloading",true);
 }
 
 int progress = 0;

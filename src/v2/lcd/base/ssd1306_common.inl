@@ -776,7 +776,39 @@ void NanoDisplayOps<O,I>::drawProgressBar(int8_t progress)
     this->m_color = 0x0000;
     this->fillRect( progress_pos, middle, this->width() - 8, middle + height );
     this->m_color = color;
-    this->printFixed( this->width() / 2 - width / 2, middle - height, str );
-    this->drawRect( 8, middle, this->width() - 8, middle + height );
+    this->drawRect( progress_pos, middle, this->width() - 8, middle + height );
     this->fillRect( 8, middle, progress_pos, middle + height );
+    if ( this->m_font != nullptr )
+    {
+        this->printFixed( this->width() / 2 - width / 2, middle - height, str );
+    }
 }
+
+template <class O, class I>
+void NanoDisplayOps<O,I>::drawWindow(lcdint_t x, lcdint_t y,
+                                     lcduint_t width, lcduint_t height,
+                                     const char *caption, bool blank)
+{
+    if ( width == 0 ) { width = this->width() - 8; x = 4; }
+    if ( height == 0 ) { height = this->height() - 4; y = 0; }
+    if ( blank )
+    {
+        uint16_t color = this->m_color;
+        this->m_color = 0x0000;
+        this->fillRect( x, y, x + width - 1, y + height - 1 );
+        this->m_color = color;
+    }
+    if ( caption )
+    {
+        y += this->getFont().getHeader().height / 2;
+        height -= this->getFont().getHeader().height / 2;
+    }
+    this->drawRect( x, y, x + width - 1, y + height - 1 );
+    if ( caption )
+    {
+        lcduint_t theight;
+        lcduint_t twidth = this->getFont().getTextSize( caption, &theight );
+        this->printFixed( x + (width - twidth)/2, y - theight/2, caption );
+    }
+}
+
