@@ -131,37 +131,47 @@ void DisplayST7735x16<I>::end()
 static const PROGMEM uint8_t s_ST7735_lcd128x128x16_initData[] =
 {
 #ifdef SDL_EMULATION
-    SDL_LCD_ST7735,
-    0x00,
+    SDL_LCD_ST7735, 0x00,
+    0b00000000, 0x00,
 #endif
-//    0x01,                     // sw reset. not needed, we do hardware reset
-    0x11,                       // exit sleep mode
-//    0x28,                                 // display off
-    0x3A, CMD_ARG, 0x05,        // set 16-bit pixel format
-    0x26, CMD_ARG, 0x04,        // set gamma curve: valid values 1, 2, 4, 8
-    0xF2, CMD_ARG, 0x01,        // enable gamma adjustment, 0 - to disable
-    0xE0, CMD_ARG, 0x3F, CMD_ARG, 0x25, CMD_ARG, 0x1C,
-          CMD_ARG, 0x1E, CMD_ARG, 0x20, CMD_ARG, 0x12,
-          CMD_ARG, 0x2A, CMD_ARG, 0x90, CMD_ARG, 0x24,
-          CMD_ARG, 0x11, CMD_ARG, 0x00, CMD_ARG, 0x00,
-          CMD_ARG, 0x00, CMD_ARG, 0x00, CMD_ARG, 0x00, // positive gamma correction
-          CMD_ARG, 0x00,
-    0xE1, CMD_ARG, 0x20, CMD_ARG, 0x20, CMD_ARG, 0x20,
-          CMD_ARG, 0x20, CMD_ARG, 0x05, CMD_ARG, 0x00,
-          CMD_ARG, 0x15, CMD_ARG, 0xA7, CMD_ARG, 0x3D,
-          CMD_ARG, 0x18, CMD_ARG, 0x25, CMD_ARG, 0x2A,
-          CMD_ARG, 0x2B, CMD_ARG, 0x2B, CMD_ARG, 0x3A, // negative gamma correction
-          CMD_ARG, 0x00,
-    0xB1,  CMD_ARG,  0x08, CMD_ARG, 0x08, // frame rate control 1, use by default
-    0xB4,  CMD_ARG, 0x07,                 // display inversion, use by default
-    0xC0,  CMD_ARG,  0x0A, CMD_ARG, 0x02, // power control 1
-    0xC1,  CMD_ARG,  0x02,                // power control 2
-    0xC5,  CMD_ARG,  0x50, CMD_ARG, 0x5B, // vcom control 1
-    0xC7,  CMD_ARG,  0x40,                // vcom offset
+    0x01, CMD_DELAY,  150,   // SWRESET sw reset. not needed, we do hardware reset
+    0x11, CMD_DELAY,  255,   // SLPOUT exit sleep mode
+    0xB1, 0x03, 0x01, 0x2C, 0x2D,  // FRMCTR1 frame rate control 1, use by default
+    0xB2, 0x03, 0x01, 0x2C, 0x2D,  // FRMCTR2, Frame Rate Control (In Idle mode/ 8-colors)
+    0xB3, 0x06,              // FRMCTR3 (B3h): Frame Rate Control (In Partial mode/ full colors)
+                0x01, 0x2C, 0x2D,
+                0x01, 0x2C, 0x2D,
+    0xB4, 0x01, 0x07,        // INVCTR display inversion, use by default
+    0xB6, 0x02, 0x15, 0x02,  // DISSET5
+    0xC0, 0x03, 0xA2, 0x02, 0x84,  // PWCTR1 power control 1
+    0xC1, 0x01, 0xC5,        // PWCTR2 power control 2
+    0xC2, 0x02, 0x0A, 0x00,  // PWCTR3 power control 3
+    0xC3, 0x02, 0x8A, 0x2A,  // PWCTR4 (C3h): Power Control 4 (in Idle mode/ 8-colors)
+    0xC4, 0x02, 0x8A, 0xEE,  // PWCTR5 (C4h): Power Control 5 (in Partial mode/ full-colors)
+    0xC5, 0x01, 0x0E,        // VMCTR vcom control 1
+    0x20, 0x00,              // INVOFF (20h): Display Inversion Off
+//    0xFC, 0x02, 0x11, 0x15,  // PWCTR6
+
+    0x36, 0x01, 0b00000000,  // MADCTL
+    0x3A, 0x01, 0x05,        // COLMOD set 16-bit pixel format
+
+//    0x26, 1, 0x08,        // GAMSET set gamma curve: valid values 1, 2, 4, 8
+//    0xF2, 1, 0x01,        // enable gamma adjustment, 0 - to disable
+    0xE0, 0x10, // GMCTRP1 positive gamma correction
+                0x0F, 0x1A, 0x0F, 0x18,
+                0x2F, 0x28, 0x20, 0x22,
+                0x1F, 0x1B, 0x23, 0x37,
+                0x00, 0x07, 0x02, 0x10,
+    0xE1, 0x10, // GMCTRN1 negative gamma correction
+                0x0F, 0x1B, 0x0F, 0x17,
+                0x33, 0x2C, 0x29, 0x2E,
+                0x30, 0x30, 0x39, 0x3F,
+                0x00, 0x07, 0x03, 0x10,
+//    0xC7,  1,  0x40,                // vcom offset
 //    0x2A,  CMD_ARG,  0x00, CMD_ARG, 0x00, CMD_ARG, 0x00, CMD_ARG, 0x7F,   // set column address, not needed. set by direct API
 //    0x2B,  CMD_ARG,  0x00, CMD_ARG, 0x00, CMD_ARG, 0x00, CMD_ARG, 0x9F,   // set page address, not needed. set by direct API
-    0x36,  CMD_ARG,  0b00100000,          // enable fake "vertical addressing" mode.
-    0x29,
+    0x29, CMD_DELAY,  100, // DISPON display on
+    0x13, CMD_DELAY,   10, // NORON
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -176,24 +186,9 @@ void DisplayST7735_128x128x16<I>::begin()
     delay(120);
     this->m_w = 128;
     this->m_h = 128;
-    this->m_intf.start();
-    this->m_intf.spiDataMode(0);
-    for( uint8_t i=0; i<sizeof(s_ST7735_lcd128x128x16_initData); i++)
-    {
-        uint8_t data = pgm_read_byte(&s_ST7735_lcd128x128x16_initData[i]);
-        if (data == CMD_ARG)
-        {
-            data = pgm_read_byte(&s_ST7735_lcd128x128x16_initData[++i]);
-            this->m_intf.spiDataMode(1);
-            this->m_intf.send(data);
-            this->m_intf.spiDataMode(0);
-        }
-        else
-        {
-            this->m_intf.send(data);
-        }
-    }
-    this->m_intf.stop();
+    _configureSpiDisplay<I>(this->m_intf,
+                            s_ST7735_lcd128x128x16_initData,
+                            sizeof(s_ST7735_lcd128x128x16_initData));
 }
 
 template <class I>
@@ -225,7 +220,7 @@ static const PROGMEM uint8_t s_ST7735_lcd128x160x16_initData[] =
     0x20, 0x00,              // INVOFF (20h): Display Inversion Off
 //    0xFC, 0x02, 0x11, 0x15,  // PWCTR6
 
-    0x36, 0x01, 0b00000000,  // MADCTL // enable fake "vertical addressing" mode (for il9163_setBlock() )
+    0x36, 0x01, 0b00000000,  // MADCTL
     0x3A, 0x01, 0x05,        // COLMOD set 16-bit pixel format
 
 //    0x26, 1, 0x08,        // GAMSET set gamma curve: valid values 1, 2, 4, 8
