@@ -57,7 +57,7 @@ var searchData=
   ['nanodisplayops_3c_20nanodisplayops8_3c_20interfacessd1331_3c_20platformspi_20_3e_20_3e_2c_20interfacessd1331_3c_20platformspi_20_3e_20_3e',['NanoDisplayOps&lt; NanoDisplayOps8&lt; InterfaceSSD1331&lt; PlatformSpi &gt; &gt;, InterfaceSSD1331&lt; PlatformSpi &gt; &gt;',['../class_nano_display_ops.html',1,'']]],
   ['nanoengine',['NanoEngine',['../class_nano_engine.html',1,'']]],
   ['nanoengine1_5f8',['NanoEngine1_8',['../class_nano_engine1__8.html',1,'']]],
-  ['nanoengine_3c_20tile_5f8x8_5fmono_5f8_2c_20d_20_3e',['NanoEngine&lt; TILE_8x8_MONO_8, D &gt;',['../class_nano_engine.html',1,'']]],
+  ['nanoengine_3c_20tile_5f16x16_5fmono_5f8_2c_20d_20_3e',['NanoEngine&lt; TILE_16x16_MONO_8, D &gt;',['../class_nano_engine.html',1,'']]],
   ['nanoenginecore',['NanoEngineCore',['../class_nano_engine_core.html',1,'']]],
   ['nanoengineinputs',['NanoEngineInputs',['../class_nano_engine_inputs.html',1,'']]],
   ['nanoengineobject',['NanoEngineObject',['../class_nano_engine_object.html',1,'']]],

@@ -78,9 +78,9 @@ Inheritance diagram for NanoEngineTiler&lt; C, D &gt;:</div>
  <div class="center">
   <img src="class_nano_engine_tiler.png" usemap="#NanoEngineTiler_3C_20C_2C_20D_20_3E_map" alt=""/>
   <map id="NanoEngineTiler_3C_20C_2C_20D_20_3E_map" name="NanoEngineTiler_3C_20C_2C_20D_20_3E_map">
-<area href="class_nano_engine.html" alt="NanoEngine&lt; C, D &gt;" shape="rect" coords="0,56,236,80"/>
-<area href="class_nano_engine.html" alt="NanoEngine&lt; TILE_8x8_MONO_8, D &gt;" shape="rect" coords="246,56,482,80"/>
-<area href="class_nano_engine1__8.html" alt="NanoEngine1_8&lt; D &gt;" shape="rect" coords="246,112,482,136"/>
+<area href="class_nano_engine.html" alt="NanoEngine&lt; C, D &gt;" shape="rect" coords="0,56,250,80"/>
+<area href="class_nano_engine.html" alt="NanoEngine&lt; TILE_16x16_MONO_8, D &gt;" shape="rect" coords="260,56,510,80"/>
+<area href="class_nano_engine1__8.html" alt="NanoEngine1_8&lt; D &gt;" shape="rect" coords="260,112,510,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -146,12 +146,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ab774d4d6e9ce52663001d61f07ac3a79"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ab774d4d6e9ce52663001d61f07ac3a79">m_refreshFlags</a> [NE_MAX_TILES_NUM]</td></tr>
-<tr class="separator:ab774d4d6e9ce52663001d61f07ac3a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a123ea15a74b5641896c8e8d312a1ffe0"><td class="memItemLeft" align="right" valign="top">D &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a123ea15a74b5641896c8e8d312a1ffe0">m_display</a></td></tr>
 <tr class="separator:a123ea15a74b5641896c8e8d312a1ffe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae277b28ddc52ec2645c6ea3a140089ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga5db298dc5fe7132d3190e5e423b6da6a">TNanoEngineOnDraw</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#ae277b28ddc52ec2645c6ea3a140089ff">m_onDraw</a></td></tr>
 <tr class="separator:ae277b28ddc52ec2645c6ea3a140089ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4faa123b566caf3418283e2328d10629"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nano_engine_tiler.html#a4faa123b566caf3418283e2328d10629">m_refreshFlags</a> [<a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#gaec35f63deb0fbf39ad0391a0523c8848">NE_MAX_TILE_ROWS</a>]</td></tr>
+<tr class="separator:a4faa123b566caf3418283e2328d10629"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class C, class D&gt;<br />
@@ -159,7 +159,7 @@ class NanoEngineTiler&lt; C, D &gt;</h3>
 
 <p>This class template is responsible for holding and updating data about areas to be refreshed on LCD display. It accepts canvas class, tile width in pixels, tile height in pixels and number of bits in tile width as arguments for the template. For example, for 8x8 8-bit RGB tiles the reference should be NanoEngineTiler&lt;NanoCanvas8,8,8,3&gt;, and 3 bits means 3^2 = 8. If you need to have single big buffer, holding the whole content for monochrome display, you can specify something like this NanoEngineTiler&lt;NanoCanvas1,128,64,7&gt;. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00076">76</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00079">79</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a27aa224eaeeaba811e6688bf3a43c881"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27aa224eaeeaba811e6688bf3a43c881">&#9670;&nbsp;</a></span>TilerT</h2>
@@ -176,7 +176,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>This type is template argument for all Nano Objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00179">179</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00182">182</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -208,7 +208,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Only child classes can initialize the engine </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00173">173</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00176">176</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -259,7 +259,7 @@ template&lt;class C , class D &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if point is inside the rectangle area. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00337">337</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00340">340</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -297,7 +297,7 @@ template&lt;class C , class D &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00494">494</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00497">497</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -338,7 +338,7 @@ template&lt;class C , class D &gt; </div>
 <dd>
 <a class="el" href="class_nano_engine_tiler.html#a9f897860d9b19729fb60df20788b0791">localCoordinates()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00325">325</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00328">328</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -368,7 +368,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Returns canvas, used by the <a class="el" href="class_nano_engine.html">NanoEngine</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00406">406</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00409">409</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -398,7 +398,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Returns reference to display object. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00411">411</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00414">414</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -428,7 +428,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Returns current World offset </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00304">304</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00307">307</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -465,7 +465,7 @@ template&lt;class C , class D &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00345">345</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00348">348</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -495,7 +495,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Switches engine canvas to local coordinates system. This method can be useful to ease up drawing of some static elements on lcd display. </p><dl class="section warning"><dt>Warning</dt><dd>do not call twice subsequentally. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00268">268</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00271">271</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -526,7 +526,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Moves engine coordinate to new position (this sets World coordinates offset). </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00286">286</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00289">289</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -557,7 +557,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Moves engine coordinate to new position and mark whole display for refresh (this sets World coordinates offset). </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00295">295</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00298">298</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -587,7 +587,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Marks all tiles for update. Actual update will take place in display() method. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00189">189</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00192">192</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -618,7 +618,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Mark specified area in pixels for redrawing by <a class="el" href="class_nano_engine.html">NanoEngine</a>. Actual update will take place in display() method. </p><dl class="section note"><dt>Note</dt><dd>assumes that rect is in local screen coordinates </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00199">199</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00202">202</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -649,7 +649,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Mark specified area in pixels for redrawing by <a class="el" href="class_nano_engine.html">NanoEngine</a>. Actual update will take place in display() method. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00208">208</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00211">211</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -702,7 +702,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Mark specified area in pixels for redrawing by <a class="el" href="class_nano_engine.html">NanoEngine</a>. Actual update will take place in display() method. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00218">218</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00221">221</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -733,7 +733,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Marks for refresh lcd area, which corresponds to specified rectangle in global (World) coordinates. If engine offset is (0,0), then this function refreshes the same area as <a class="el" href="class_nano_engine_tiler.html#ad465542210563583e80984107285460b">refresh()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00239">239</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00242">242</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -786,7 +786,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Marks for refresh lcd area, which corresponds to specified rectangle in global (World) coordinates. If engine offset is (0,0), then this function refreshes the same area as <a class="el" href="class_nano_engine_tiler.html#ad465542210563583e80984107285460b">refresh()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00249">249</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00252">252</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -822,7 +822,7 @@ template&lt;class C , class D &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00258">258</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00261">261</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -859,7 +859,7 @@ template&lt;class C , class D &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00360">360</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00363">363</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -889,7 +889,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Updates all objects. This method doesn't refresh screen content </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00393">393</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00396">396</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -919,7 +919,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Switches engine canvas to global (World) coordinates system. This method can be useful to create screen moving animation. </p><dl class="section warning"><dt>Warning</dt><dd>do not call twice subsequentally. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00278">278</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00281">281</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -947,7 +947,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Reference to display object, used by <a class="el" href="class_nano_engine.html">NanoEngine</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00423">423</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00420">420</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
@@ -974,12 +974,12 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Callback to call if specific tile needs to be updated </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00426">426</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00423">423</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>
-<a id="ab774d4d6e9ce52663001d61f07ac3a79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab774d4d6e9ce52663001d61f07ac3a79">&#9670;&nbsp;</a></span>m_refreshFlags</h2>
+<a id="a4faa123b566caf3418283e2328d10629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4faa123b566caf3418283e2328d10629">&#9670;&nbsp;</a></span>m_refreshFlags</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -990,7 +990,7 @@ template&lt;class C , class D &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::m_refreshFlags[NE_MAX_TILES_NUM]</td>
+          <td class="memname">uint16_t <a class="el" href="class_nano_engine_tiler.html">NanoEngineTiler</a>&lt; C, D &gt;::m_refreshFlags[<a class="el" href="group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#gaec35f63deb0fbf39ad0391a0523c8848">NE_MAX_TILE_ROWS</a>]</td>
         </tr>
       </table>
   </td>
@@ -1001,7 +1001,7 @@ template&lt;class C , class D &gt; </div>
 </div><div class="memdoc">
 <p>Contains information on tiles to be updated. Elements of array are rows and bits are columns. </p>
 
-<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00418">418</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tiler_8h_source.html#l00429">429</a> of file <a class="el" href="tiler_8h_source.html">tiler.h</a>.</p>
 
 </div>
 </div>

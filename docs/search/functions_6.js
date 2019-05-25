@@ -18,7 +18,7 @@ var searchData=
   ['getrect',['getRect',['../struct_s_p_r_i_t_e.html#a9e207e844a61cf781260fef142bc6aa0',1,'SPRITE::getRect()'],['../class_nano_object.html#a27288dc6389706ff2a7f1a17611f7d7f',1,'NanoObject::getRect()']]],
   ['getselected',['getSelected',['../class_nano_menu.html#aa166032d94c54349a09dec7b7c2b85ff',1,'NanoMenu']]],
   ['getstartline',['getStartLine',['../class_interface_s_h1106.html#a081746c0f55cc47a8f8ccbcd79079ac6',1,'InterfaceSH1106::getStartLine()'],['../class_interface_s_s_d1306.html#ac3bb8697544fd85fe7951d424297371e',1,'InterfaceSSD1306::getStartLine()']]],
-  ['gettextsize',['getTextSize',['../class_nano_font.html#adf306493e7a3584a7058251c5c85a74e',1,'NanoFont']]],
+  ['gettextsize',['getTextSize',['../class_nano_font.html#a2bf95f6ac87b47a0c5f2aff6a1a03ddf',1,'NanoFont']]],
   ['gettiler',['getTiler',['../class_nano_engine_object.html#a36da38a043d4e4eec91e532c4c15d8ff',1,'NanoEngineObject']]],
   ['getupdaterect',['getUpdateRect',['../struct_s_p_r_i_t_e.html#a7e3987f9f24d964797a7b0e28a231366',1,'SPRITE']]],
   ['gfx_5fdrawmonobitmap',['gfx_drawMonoBitmap',['../class_nano_display_ops1.html#a641c504dae7a8dbf379c4908ff8acc16',1,'NanoDisplayOps1']]]
