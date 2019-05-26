@@ -73,7 +73,7 @@ void setup()
     /* Initialize main menu state */
     display.createMenu( &menu, menuItems, sizeof(menuItems) / sizeof(char *) );
     /* show menu on the display */
-    display.showMenu( &menu );
+    display.showMenuSmooth( &menu );
     button = getPressedButton(BUTTON_PIN);
 }
 
@@ -91,12 +91,12 @@ void loop()
         case Key::BT_UP:
             /* move menu cursor up and refresh menu on the display */
             display.menuUp( &menu );
-            display.updateMenu( &menu );
+            display.updateMenuSmooth( &menu );
             break;
         case Key::BT_DOWN:
             /* move menu cursor down and refresh menu on the display */
             display.menuDown( &menu );
-            display.updateMenu( &menu );
+            display.updateMenuSmooth( &menu );
             break;
         case Key::BT_SELECT:
             /* You always can request current position of menu cursor, by calling display.menuSelection() */

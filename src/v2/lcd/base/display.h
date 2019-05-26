@@ -778,12 +778,31 @@ public:
     void showMenu( SAppMenu *menu);
 
     /**
+     * Shows menu items on the display. If menu items cannot fit the display,
+     * the function provides scrolling. Unlike showMenu() this implementation
+     * uses more graph functions and requires more flash, but result looks better.
+     *
+     * @param menu pointer to SAppMenu structure
+     */
+    void showMenuSmooth( SAppMenu *menu );
+
+    /**
      * Updates menu items on the display. That is if selection is changed,
      * the function will update only those areas, affected by the change.
      *
      * @param menu Pointer to SAppMenu structure
      */
     void updateMenu(SAppMenu *menu);
+
+    /**
+     * Updates menu items on the display. That is if selection is changed,
+     * the function will update only those areas, affected by the change.
+     * Unlike showMenu() this implementation uses more graph functions
+     * and requires more flash, but result looks better.
+     *
+     * @param menu Pointer to SAppMenu structure
+     */
+    void updateMenuSmooth(SAppMenu *menu);
 
     /**
      * Returns currently selected menu item.
