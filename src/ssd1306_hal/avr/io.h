@@ -42,10 +42,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifndef LOW
 #define LOW  0
+#endif
+
+#ifndef HIGH
 #define HIGH 1
+#endif
+
+#ifndef INPUT
 #define INPUT 0
+#endif
+
+#ifndef OUTPUT
 #define OUTPUT 1
+#endif
 
 #if defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__) || \
     defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
@@ -87,19 +98,16 @@
 extern "C" {
 #endif
 
-// not implemented functions for plain AVR
+void pinMode(int pin, int mode);
 static inline int  digitalRead(int pin) { return LOW; };
+void digitalWrite(int pin, int level);
 static inline int  analogRead(int pin) { return 0; };
 static inline uint32_t millis() { return 0; };
 static inline void randomSeed(int seed) { };
 static inline void attachInterrupt(int pin, void (*interrupt)(), int level) { };
-
-// implemented functions for plain AVR
 void delay(unsigned long ms);
-#define delayMicroseconds(us)  _delay_us(us)
+static inline uint32_t delayMicroseconds(unsigned long us) { return _delay_us(us); };
 
-void digitalWrite(int pin, int level);
-void pinMode(int pin, int mode);
 
 #ifdef __cplusplus
 }
