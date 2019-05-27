@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2016-2018, Alexey Dynda
+    Copyright (c) 2016-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@
 
 #include "ssd1306_uart_builtin.h"
 
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 
 #if 0
 

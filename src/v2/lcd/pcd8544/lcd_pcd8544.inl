@@ -23,7 +23,7 @@
 */
 
 #include "pcd8544_commands.h"
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 #ifdef SDL_EMULATION
 #include "sdl_core.h"
 #endif

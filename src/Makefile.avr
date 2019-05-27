@@ -1,6 +1,6 @@
 #    MIT License
 #
-#    Copyright (c) 2018, Alexey Dynda
+#    Copyright (c) 2018-2019, Alexey Dynda
 #
 #    Permission is hereby granted, free of charge, to any person obtaining a copy
 #    of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ FREQUENCY ?= 16000000
 CCFLAGS += -mmcu=$(MCU) -DF_CPU=$(FREQUENCY)
 
 ifeq ($(ADAFRUIT),y)
-INCLUDES += -I./ssd1306_hal/avr/arduino
+INCLUDES += -I./lcd_hal/avr/arduino
 endif
 
 include Makefile.common

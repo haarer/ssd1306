@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2016-2018, Alexey Dynda
+    Copyright (c) 2016-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@
 #define _OWL_H_
 
 // ----------------------------------------------------------------------------
-#include "ssd1306_hal/io.h"
+#include "ssd1306v2.h"
 
 extern const uint8_t Owl [] PROGMEM;
 

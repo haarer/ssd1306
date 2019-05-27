@@ -28,7 +28,7 @@
 #ifndef SSD1306_FONTS_H
 #define SSD1306_FONTS_H
 
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 #include "nano_gfx_types.h"
 
 #ifdef __cplusplus

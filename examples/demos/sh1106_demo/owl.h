@@ -26,7 +26,7 @@
 #define _OWL_H_
 
 // ----------------------------------------------------------------------------
-#include "ssd1306_hal/io.h"
+#include "ssd1306v2.h"
 
 extern const uint8_t Owl [] PROGMEM;
 

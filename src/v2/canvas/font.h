@@ -28,7 +28,7 @@
 #ifndef _NANO_FONT_H_
 #define _NANO_FONT_H_
 
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 #include "nano_gfx_types.h"
 
 /**

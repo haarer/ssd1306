@@ -26,23 +26,23 @@ SRCS_C = \
 	fonts/ssd1306_fonts.c \
 	v2/ssd1306_utf8.c \
 	v1/ssd1306_uart.c \
-	ssd1306_hal/ssd1306_interface.c \
+	lcd_hal/ssd1306_interface.c \
 
 SRCS_CPP = \
-	ssd1306_hal/avr/platform.cpp \
-	ssd1306_hal/avr/ssd1306_i2c_twi.cpp \
-	ssd1306_hal/avr/ssd1306_spi_avr.cpp \
-	ssd1306_hal/avr/ssd1306_i2c_embedded.cpp \
-	ssd1306_hal/avr/ssd1306_spi_usi.cpp \
-	ssd1306_hal/linux/platform.cpp \
-	ssd1306_hal/linux/linux_i2c.cpp \
-	ssd1306_hal/linux/linux_spi.cpp \
-	ssd1306_hal/linux/sdl_i2c.cpp \
-	ssd1306_hal/linux/sdl_spi.cpp \
-	ssd1306_hal/arduino/platform.cpp \
-	ssd1306_hal/arduino/arduino_spi.cpp \
-	ssd1306_hal/arduino/arduino_wire.cpp \
-	ssd1306_hal/stm32/platform.cpp \
+	lcd_hal/avr/platform.cpp \
+	lcd_hal/avr/ssd1306_i2c_twi.cpp \
+	lcd_hal/avr/ssd1306_spi_avr.cpp \
+	lcd_hal/avr/ssd1306_i2c_embedded.cpp \
+	lcd_hal/avr/ssd1306_spi_usi.cpp \
+	lcd_hal/linux/platform.cpp \
+	lcd_hal/linux/linux_i2c.cpp \
+	lcd_hal/linux/linux_spi.cpp \
+	lcd_hal/linux/sdl_i2c.cpp \
+	lcd_hal/linux/sdl_spi.cpp \
+	lcd_hal/arduino/platform.cpp \
+	lcd_hal/arduino/arduino_spi.cpp \
+	lcd_hal/arduino/arduino_wire.cpp \
+	lcd_hal/stm32/platform.cpp \
 	v2/lcd/lcd_common.cpp \
 	v2/lcd/pcd8544/lcd_pcd8544.cpp \
 	v2/lcd/sh1106/oled_sh1106.cpp \

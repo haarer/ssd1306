@@ -28,7 +28,7 @@
 #ifndef _LCD_COMMON_V2_H_
 #define _LCD_COMMON_V2_H_
 
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 #include "lcd_common.inl"
 
 #ifdef __cplusplus

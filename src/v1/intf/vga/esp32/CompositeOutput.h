@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 
 #if defined(CONFIG_VGA_AVAILABLE) && defined(CONFIG_VGA_ENABLE) && defined(__XTENSA__)
 

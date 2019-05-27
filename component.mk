@@ -3,8 +3,8 @@
 COMPONENT_ADD_INCLUDEDIRS := ./src \
 
 COMPONENT_SRCDIRS := ./src \
-                     ./src/ssd1306_hal \
-                     ./src/ssd1306_hal/esp \
+                     ./src/lcd_hal \
+                     ./src/lcd_hal/esp \
                      ./src/fonts \
                      ./src/v1 \
                      ./src/v1/intf/uart \

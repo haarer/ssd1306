@@ -32,7 +32,7 @@
 #include "v2/canvas/rect.h"
 #include "v2/canvas/canvas.h"
 #include "v2/canvas/font.h"
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 #include "nano_gfx_types.h"
 #include "display_base.h"
 

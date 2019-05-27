@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2018-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
 #define _NANO_RECT_H_
 
 #include "point.h"
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 
 /**
  * @ingroup NANO_ENGINE_API_V2

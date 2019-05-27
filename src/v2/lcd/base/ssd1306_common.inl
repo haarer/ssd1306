@@ -26,7 +26,7 @@
 ////// GENERIC FUNCTIONS APPLICABLE FOR ALL DISPLAY TYPES /////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 
 //const uint8_t *s_font6x8 = &ssd1306xled_font6x8[4];
 //extern lcduint_t ssd1306_cursorX;

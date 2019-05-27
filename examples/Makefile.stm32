@@ -47,7 +47,7 @@ CCFLAGS += -mlittle-endian -mthumb -mthumb-interwork -g -Os -w -ffreestanding -m
 LDFLAGS += -specs=nosys.specs
 
 ifeq ($(ADAFRUIT),y)
-INCLUDES += -I../src/ssd1306_hal/avr/arduino
+INCLUDES += -I../src/lcd_hal/avr/arduino
 endif
 
 include Makefile.common

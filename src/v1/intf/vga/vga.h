@@ -28,7 +28,7 @@
 #ifndef _SSD1306_VGA_H_
 #define _SSD1306_VGA_H_
 
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 
 #ifdef __cplusplus
 extern "C" {

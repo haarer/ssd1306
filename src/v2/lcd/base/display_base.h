@@ -28,7 +28,7 @@
 #ifndef _DISPLAY_BASE_H_
 #define _DISPLAY_BASE_H_
 
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 #include "nano_gfx_types.h"
 #include "v2/canvas/point.h"
 #include "v2/canvas/rect.h"

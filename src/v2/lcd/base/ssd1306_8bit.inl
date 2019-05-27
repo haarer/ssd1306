@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 
 extern uint8_t s_ssd1306_invertByte;
 

@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2018-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -35,12 +35,12 @@
 #ifndef _SSD1306_ADAFRUIT_H_
 #define _SSD1306_ADAFRUIT_H_
 
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 
 #if defined(CONFIG_ADAFRUIT_GFX_ENABLE)
 
 #include "ssd1306v2.h"
-#include "ssd1306_hal/Print_internal.h"
+#include "lcd_hal/Print_internal.h"
 #include "nano_gfx_types.h"
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS

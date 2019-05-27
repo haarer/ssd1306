@@ -32,8 +32,8 @@
 #include "point.h"
 #include "rect.h"
 #include "font.h"
-#include "ssd1306_hal/io.h"
-#include "ssd1306_hal/Print_internal.h"
+#include "lcd_hal/io.h"
+#include "lcd_hal/Print_internal.h"
 #include "nano_gfx_types.h"
 
 /**

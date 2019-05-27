@@ -30,7 +30,7 @@
 
 #include "v2/canvas/point.h"
 #include "v2/canvas/rect.h"
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 #include "tiler.h"
 
 /**

@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2017-2018, Alexey Dynda
+    Copyright (c) 2017-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,8 @@
 #define _SSD1306_CONSOLE_H_
 
 #include "ssd1306v2.h"
-#include "ssd1306_hal/io.h"
-#include "ssd1306_hal/Print_internal.h"
+#include "lcd_hal/io.h"
+#include "lcd_hal/Print_internal.h"
 
 /**
  * Callback function to print text to the LCD display

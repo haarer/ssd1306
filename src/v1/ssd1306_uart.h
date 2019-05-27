@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2018-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@
 
 // This check is required if you want to use ssd1306_uart module outside ssd1306_library
 #ifndef CONFIG_AVR_UART_AVAILABLE
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 #endif
 
 #if defined(CONFIG_AVR_UART_AVAILABLE) && defined(CONFIG_AVR_UART_ENABLE)

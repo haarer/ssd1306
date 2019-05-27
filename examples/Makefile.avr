@@ -46,7 +46,7 @@ LDFLAGS += -fno-implicit-templates
 SRCS += avr_abi.cpp
 
 ifeq ($(ADAFRUIT),y)
-INCLUDES += -I../src/ssd1306_hal/avr/arduino
+INCLUDES += -I../src/lcd_hal/avr/arduino
 endif
 
 include Makefile.common

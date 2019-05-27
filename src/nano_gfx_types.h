@@ -28,7 +28,7 @@
 #ifndef _NANO_GFX_TYPES_H_
 #define _NANO_GFX_TYPES_H_
 
-#include "ssd1306_hal/io.h"
+#include "lcd_hal/io.h"
 
 /** Flag means that more chars are required to decode utf-8 */
 #define SSD1306_MORE_CHARS_REQUIRED  0xffff
