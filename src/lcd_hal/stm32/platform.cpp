@@ -22,11 +22,11 @@
     SOFTWARE.
 */
 
-#include "lcd_hal/io.h"
+#include "../io.h"
 
 #if defined(SSD1306_STM32_PLATFORM)
 
-#include "intf/ssd1306_interface.h"
+#include "../interface.h"
 #include "stm32f1xx_hal.h"
 
 // TODO: To add support. Any help is welcome

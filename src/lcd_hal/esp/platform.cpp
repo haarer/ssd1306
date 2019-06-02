@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 
-#include "lcd_hal/io.h"
+#include "../io.h"
 
 #if defined(__XTENSA__) && !defined(ARDUINO)
 

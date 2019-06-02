@@ -3,11 +3,11 @@
 
 #define ARDUINO_FAKE
 #if defined(__MINGW32__)
-#include "lcd_hal/mingw/io.h"
-#include "lcd_hal/Print_internal.h"
+#include "../../mingw/io.h"
+#include "../../Print_internal.h"
 #else
-#include "lcd_hal/linux/io.h"
-#include "lcd_hal/Print_internal.h"
+#include "../../linux/io.h"
+#include "../../Print_internal.h"
 #endif
 
 #ifndef boolean

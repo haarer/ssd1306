@@ -22,11 +22,11 @@
     SOFTWARE.
 */
 /**
- * @file lcd_hal/ssd1306_interface.h SSD1306 interface functions.
+ * @file lcd_hal/lcd_interface.h LCD interface functions.
  */
 
-#ifndef _SSD1306V2_INTERFACE_H_
-#define _SSD1306V2_INTERFACE_H_
+#ifndef _LCD_HAL_INTERFACE_H_
+#define _LCD_HAL_INTERFACE_H_
 
 #include <stdint.h>
 
@@ -237,4 +237,4 @@ void ssd1306_resetController2(int8_t rstPin, uint8_t delayMs);
  */
 
 // ----------------------------------------------------------------------------
-#endif // _SSD1306_INTERFACE_H_
+#endif

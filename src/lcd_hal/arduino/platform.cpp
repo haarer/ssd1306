@@ -22,8 +22,8 @@
     SOFTWARE.
 */
 
-#include "lcd_hal/io.h"
-#include "v1/lcd/lcd_common.h"
+#include "../io.h"
+//#include "v1/lcd/lcd_common.h"
 
 #if defined(ARDUINO)
 

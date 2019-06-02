@@ -32,7 +32,7 @@
 #define CONFIG_LINUX_I2C_AVAILABLE
 #define CONFIG_LINUX_SPI_AVAILABLE
 
-#include "lcd_hal/UserSettings.h"
+#include "../UserSettings.h"
 
 #if defined(SDL_EMULATION)  // SDL Emulation mode includes
 #include "sdl_core.h"

@@ -36,7 +36,7 @@
 
 #else
 
-#include "lcd_hal/io.h"
+#include "io.h"
 #include <stdio.h>
 
 /** Implements own Print class for plain AVR and Linux environment */

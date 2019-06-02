@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 
-#include "lcd_hal/io.h"
+#include "io.h"
 #include <stddef.h>
 
 int8_t s_ssd1306_cs = 4;

@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 
-#include "lcd_hal/io.h"
+#include "../io.h"
 
 #if defined(CONFIG_ESP32_SPI_AVAILABLE) && defined(CONFIG_ESP32_SPI_ENABLE)
 

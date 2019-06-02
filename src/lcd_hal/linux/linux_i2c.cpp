@@ -24,7 +24,7 @@
 
 #if (defined(__linux__) || defined(__MINGW32__)) && !defined(ARDUINO)
 
-#include "lcd_hal/io.h"
+#include "../io.h"
 
 #include <sys/stat.h>
 #include <sys/types.h>

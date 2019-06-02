@@ -29,8 +29,8 @@
 #ifndef _SSD1306V2_ARDUINO_IO_H_
 #define _SSD1306V2_ARDUINO_IO_H_
 
-#include "lcd_hal/UserSettings.h"
-#include "lcd_hal/ssd1306_interface.h"
+#include "../UserSettings.h"
+#include "../interface.h"
 
 #if defined(ARDUINO_ARCH_STM32)   // stm32duino support
     #include <Arduino.h>

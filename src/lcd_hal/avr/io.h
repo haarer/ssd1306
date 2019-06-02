@@ -29,8 +29,8 @@
 #ifndef _SSD1306V2_AVR_IO_H_
 #define _SSD1306V2_AVR_IO_H_
 
-#include "lcd_hal/UserSettings.h"
-#include "lcd_hal/ssd1306_interface.h"
+#include "../UserSettings.h"
+#include "../interface.h"
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -106,7 +106,7 @@ static inline uint32_t millis() { return 0; };
 static inline void randomSeed(int seed) { };
 static inline void attachInterrupt(int pin, void (*interrupt)(), int level) { };
 void delay(unsigned long ms);
-static inline uint32_t delayMicroseconds(unsigned long us) { return _delay_us(us); };
+static inline void delayMicroseconds(unsigned long us) { _delay_us(us); };
 
 
 #ifdef __cplusplus
