@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 /**
- * @file lcd_hal/lcd_interface.h LCD interface functions.
+ * @file lcd_hal/interface.h LCD interface functions.
  */
 
 #ifndef _LCD_HAL_INTERFACE_H_

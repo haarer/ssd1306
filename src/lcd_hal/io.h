@@ -89,6 +89,8 @@
 #warning "Platform is not supported. Use template to add support"
 #endif
 
+#include <stdint.h>
+
 #ifndef LCDINT_TYPES_DEFINED
 /** Macro informs if lcdint_t type is defined */
 #define LCDINT_TYPES_DEFINED
@@ -100,6 +102,185 @@ typedef unsigned int lcduint_t;
 
 /** swaps content of a and b variables of type type */
 #define ssd1306_swap_data(a, b, type)  { type t = a; a = b; b = t; }
+
+////////////////////////////////////////////////////////////////////////////////
+//                   HAL Layer functions
+////////////////////////////////////////////////////////////////////////////////
+
+#if defined(ARDUINO)
+
+#define LCD_LOW LOW
+#define LCD_HIGH HIGH
+#define LCD_GPIO_INPUT INPUT
+#define LCD_GPIO_OUTPUT OUTPUT
+#define LCD_PROGMEM PROGMEM
+
+#define lcd_gpioRead digitalRead
+#define lcd_gpioWrite digitalWrite
+#define lcd_gpioMode pinMode
+#define lcd_adcRead analogRead
+
+#define lcd_pgmReadByte pgm_read_byte
+#define lcd_eepromReadWord eeprom_read_word
+#define lcd_eepromWriteWord eeprom_write_word
+
+#define lcd_millis millis
+#define lcd_micros micros
+#define lcd_delay delay
+#define lcd_delayUs delayMicroseconds
+
+#define lcd_random random
+#define lcd_randomSeed randomSeed
+
+#else
+
+/** Constant corresponds to low level of gpio pin */
+#define LCD_LOW 0
+/** Constant corresponds to high level of gpio pin */
+#define LCD_HIGH 1
+/** Constant corresponds to input mode of gpio */
+#define LCD_GPIO_INPUT 0
+/** Consrant corresponds to output mode of gpio */
+#define LCD_GPIO_OUTPUT 1
+// LCD_PROMEM is platform specific definition
+// #define LCD_PROGMEM PROGMEM
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/**
+ * Sets gpio pin mode
+ * @param pin pin number to change mode of
+ * @param mode new gpio mode: LCD_GPIO_INPUT or LCD_GPIO_OUTPUT
+ */
+void lcd_gpioMode(int pin, int mode);
+
+/**
+ * Reads gpio pin value
+ * @param pin gpio pin number to read
+ * @return LCD_HIGH or LCD_LOW
+ */
+int  lcd_gpioRead(int pin);
+
+/**
+ * Writes value to gpio
+ * @param pin gpio pin number to change
+ * @param level LCD_HIGH or LCD_LOW
+ */
+void lcd_gpioWrite(int pin, int level);
+
+/**
+ * Read ADC data
+ * @param pin adc pin to read (platform-specific)
+ * @return integer value corresponding to provided gpio pin.
+ *         actual value range depends on platform and ADC mode.
+ */
+int lcd_adcRead(int pin);
+
+/**
+ * returns 32-bit timestamp from system power-up in milliseconds
+ */
+uint32_t lcd_millis();
+
+/**
+ * Initializes RND device
+ * @param seed unique number to use for initialization
+ */
+void lcd_randomSeed(int seed);
+
+/**
+ * Attaches interrupt handler to pin. Not implemented on many platforms
+ * @param pin gpio pin number to attach interrupt handler to
+ * @param interrupt interrupt handler
+ * @param level gpio state to aim interrupt
+ */
+void attachInterrupt(int pin, void (*interrupt)(), int level);
+
+/**
+ * Forces current thread to sleeps for specified number of milliseconds
+ * @param ms time in milliseconds
+ */
+void lcd_delay(unsigned long ms);
+
+/**
+ * Forces current thread to sleeps for specified number of microseconds
+ * @param us time in microseconds
+ */
+void lcd_delayUs(unsigned long us);
+
+/**
+ * Read single data byte directly from flash. This function is valid only
+ * for AVR platform. For other platforms, it reads byte, pointed by ptr.
+ * @param ptr pointer to data in flash
+ * @return returns single byte read.
+ */
+uint8_t lcd_pgmReadByte(const void *ptr);
+
+/**
+ * Reads 16-bit from eeprom
+ * @param ptr pointer to eeprom memory to read
+ * @return 16-bit number from eeprom
+ */
+uint16_t lcd_eepromReadWord(const void *ptr);
+
+/**
+ * Writes 16-bit to eeprom
+ * @param ptr pointer to eeprom memory to write data to
+ * @param val 16-bit value to write
+ */
+void lcd_eepromWriteWord(const void *ptr, uint16_t val);
+
+#ifdef __cplusplus
+}
+#endif
+
+#ifdef __cplusplus
+
+/**
+ * Returns random number in range [0;max]
+ * @param max upper limit for number being generated
+ */
+int random(int max);
+
+/**
+ * Returns random number in range [min;max]
+ * @param min lower limit for number being generated
+ * @param max upper limit for number being generated
+ */
+int random(int min, int max);
+#endif
+
+#if ARDUINO_COMPAT
+
+#define LOW LCD_LOW
+#define HIGH LCD_HIGH
+#define INPUT LCD_GPIO_INPUT
+#define OUTPUT LCD_GPIO_OUTPUT
+#define PROGMEM LCD_PROGMEM
+
+#define digitalRead lcd_gpioRead
+#define digitalWrite lcd_gpioWrite
+#define pinMode lcd_gpioMode
+#define analogRead lcd_adcRead
+
+#define pgm_read_byte lcd_pgmReadByte
+#define eeprom_read_word lcd_eepromReadWord
+#define eeprom_write_word lcd_eepromWriteWord
+
+#define millis lcd_millis
+#define micros lcd_micros
+#define delay lcd_delay
+#define delayMicroseconds lcd_delayUs
+
+#define random lcd_random
+#define randomSeed lcd_randomSeed
+
+#endif
+
+#endif
+
+
 
 #ifdef __cplusplus
 
