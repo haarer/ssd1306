@@ -26,7 +26,7 @@
 
 #if defined(__AVR__) && !defined(ARDUINO)
 
-void delay(unsigned long ms)
+void lcd_delay(unsigned long ms)
 {
     while (ms--)
     {
@@ -58,7 +58,7 @@ void delay(unsigned long ms)
     #define G2_PORT s_stub
 #endif
 
-void digitalWrite(int pin, int level)
+void lcd_gpioWrite(int pin, int level)
 {
     uint8_t mask = (1<<(pin & 0x7));
     if (pin<8)
@@ -75,7 +75,7 @@ void digitalWrite(int pin, int level)
     }
 }
 
-void pinMode(int pin, int mode)
+void lcd_gpioMode(int pin, int mode)
 {
     uint8_t mask = (1<<(pin & 0x7));
     if (pin<8)
@@ -90,7 +90,56 @@ void pinMode(int pin, int mode)
     {
         if (mode == OUTPUT) G2_DIR |= mask; else G2_DIR &= ~mask;
     }
-};
+}
+
+int  lcd_gpioRead(int pin)
+{
+    // TODO: Not implemented
+    return LOW;
+}
+
+int  lcd_adcRead(int pin)
+{
+    // TODO: Not implemented
+    return 0;
+}
+
+uint32_t lcd_millis()
+{
+    // TODO: Not implemented
+    return 0;
+}
+
+void attachInterrupt(int pin, void (*interrupt)(), int level)
+{
+    // TODO: Not implemented
+}
+
+#if 0
+
+void lcd_delayUs(unsigned long us)
+{
+    _delay_us(us);
+}
+
+#endif
+
+void lcd_randomSeed(int seed)
+{
+    // TODO: Not implemented
+}
+
+int lcd_random(int max)
+{
+    // TODO: Not implemented
+    return 0;
+}
+
+int lcd_random(int min, int max)
+{
+    // TODO: Not implemented
+    return 0;
+}
 
 #endif
 

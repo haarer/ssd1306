@@ -567,12 +567,12 @@ bool moveObjects()
 void movePlatform()
 {
     // Use A0 ADC input (channel 0) if Z_KEYPAD is attached
-    uint8_t buttonCode = getPressedButton(0);
-    if (buttonCode == BUTTON_RIGHT)
+    Key buttonCode = getPressedButton(0);
+    if (buttonCode == Key::BT_RIGHT)
     {
         platformPos = min(RIGHT_EDGE - LEFT_EDGE - 1 - platformWidth, platformPos + PLATFORM_SPEED);
     }
-    if (buttonCode == BUTTON_LEFT)
+    if (buttonCode == Key::BT_LEFT)
     {
         platformPos = max(0, platformPos - PLATFORM_SPEED);
     }

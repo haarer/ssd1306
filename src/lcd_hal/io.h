@@ -107,6 +107,8 @@ typedef unsigned int lcduint_t;
 //                   HAL Layer functions
 ////////////////////////////////////////////////////////////////////////////////
 
+#define ARDUINO_COMPAT
+
 #if defined(ARDUINO)
 
 #define LCD_LOW LOW
@@ -203,11 +205,13 @@ void attachInterrupt(int pin, void (*interrupt)(), int level);
  */
 void lcd_delay(unsigned long ms);
 
+#if !defined(__AVR__)
 /**
  * Forces current thread to sleeps for specified number of microseconds
  * @param us time in microseconds
  */
 void lcd_delayUs(unsigned long us);
+#endif
 
 /**
  * Read single data byte directly from flash. This function is valid only
@@ -241,37 +245,43 @@ void lcd_eepromWriteWord(const void *ptr, uint16_t val);
  * Returns random number in range [0;max]
  * @param max upper limit for number being generated
  */
-int random(int max);
+int lcd_random(int max);
 
 /**
  * Returns random number in range [min;max]
  * @param min lower limit for number being generated
  * @param max upper limit for number being generated
  */
-int random(int min, int max);
+int lcd_random(int min, int max);
 #endif
 
-#if ARDUINO_COMPAT
+#ifdef ARDUINO_COMPAT
 
 #define LOW LCD_LOW
 #define HIGH LCD_HIGH
 #define INPUT LCD_GPIO_INPUT
 #define OUTPUT LCD_GPIO_OUTPUT
+#ifndef PROGMEM
 #define PROGMEM LCD_PROGMEM
+#endif
 
 #define digitalRead lcd_gpioRead
 #define digitalWrite lcd_gpioWrite
 #define pinMode lcd_gpioMode
 #define analogRead lcd_adcRead
 
+#if !defined(__AVR__)
 #define pgm_read_byte lcd_pgmReadByte
 #define eeprom_read_word lcd_eepromReadWord
 #define eeprom_write_word lcd_eepromWriteWord
+#endif
 
 #define millis lcd_millis
 #define micros lcd_micros
 #define delay lcd_delay
+#if !defined(__AVR__)
 #define delayMicroseconds lcd_delayUs
+#endif
 
 #define random lcd_random
 #define randomSeed lcd_randomSeed

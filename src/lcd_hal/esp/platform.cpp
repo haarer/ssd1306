@@ -32,17 +32,17 @@
 
 #if 1
 
-int  digitalRead(int pin)
+int  lcd_gpioRead(int pin)
 {
     return gpio_get_level(static_cast<gpio_num_t>(pin));
 }
 
-void digitalWrite(int pin, int level)
+void lcd_gpioWrite(int pin, int level)
 {
     gpio_set_level(static_cast<gpio_num_t>(pin), level);
 }
 
-void pinMode(int pin, int mode)
+void lcd_gpioMode(int pin, int mode)
 {
     if (mode == INPUT)
         gpio_set_direction(static_cast<gpio_num_t>(pin), GPIO_MODE_INPUT);
@@ -50,14 +50,69 @@ void pinMode(int pin, int mode)
         gpio_set_direction(static_cast<gpio_num_t>(pin), GPIO_MODE_OUTPUT);
 }
 
-uint32_t millis(void)
+uint32_t lcd_millis(void)
 {
     return xTaskGetTickCount() * portTICK_PERIOD_MS;
 }
 
-void delay(uint32_t ms)     // delay()
+void lcd_delay(unsigned long ms)
 {
     vTaskDelay(ms / portTICK_PERIOD_MS);
+}
+
+int  lcd_adcRead(int pin)
+{
+    // TODO: Not implemented
+    return 0;
+}
+
+uint32_t lcd_micros(void)
+{
+    // TODO: Not implemented
+    return 0;
+}
+
+void lcd_delayUs(unsigned long us)
+{
+    // TODO: Not implemented
+}
+
+void lcd_randomSeed(int seed)
+{
+    // TODO: Not implemented
+}
+
+void attachInterrupt(int pin, void (*interrupt)(), int level)
+{
+    // TODO: Not implemented
+}
+
+uint8_t lcd_pgmReadByte(const void *ptr)
+{
+    return *((const uint8_t *)ptr);
+}
+
+uint16_t lcd_eepromReadWord(const void *ptr)
+{
+    // TODO: Not implemented
+    return 0;
+}
+
+void lcd_eepromWriteWord(const void *ptr, uint16_t val)
+{
+    // TODO: Not implemented
+}
+
+int lcd_random(int max)
+{
+    // TODO: Not implemented
+    return 0;
+}
+
+int lcd_random(int min, int max)
+{
+    // TODO: Not implemented
+    return 0;
 }
 
 #endif

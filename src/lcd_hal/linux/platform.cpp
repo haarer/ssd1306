@@ -37,6 +37,8 @@
 #include <linux/i2c-dev.h>
 #include <linux/spi/spidev.h>
 
+//#include <cstdlib>
+
 #include <map>
 
 #if defined(CONFIG_LINUX_SPI_AVAILABLE) && defined(CONFIG_LINUX_SPI_ENABLE) \
@@ -191,7 +193,53 @@ int gpio_write(int pin, int value)
     return(0);
 }
 
-#if !defined(SDL_EMULATION)
+#if defined(__KERNEL__)      // ============== KERNEL
+
+int  lcd_gpioRead(int pin)
+{
+    // TODO: Not implemented
+    return LCD_LOW;
+}
+
+void lcd_gpioWrite(int pin, int level)
+{
+    // TODO: Not implemented
+}
+
+void lcd_delay(unsigned long ms)
+{
+    // TODO: Not implemented
+}
+
+void lcd_delayUs(unsigned long us)
+{
+    // TODO: Not implemented
+}
+
+int  lcd_adcRead(int pin)
+{
+    // TODO: Not implemented
+    return 0;
+}
+
+uint32_t lcd_millis(void)
+{
+    // TODO: Not implemented
+    return 0;
+}
+
+uint32_t lcd_micros(void)
+{
+    // TODO: Not implemented
+    return 0;
+}
+
+void lcd_gpioMode(int pin, int mode)
+{
+    // TODO: Not implemented
+}
+
+#elif !defined(SDL_EMULATION)
 
 typedef struct
 {
@@ -203,7 +251,7 @@ static uint8_t s_exported_pin[MAX_GPIO_COUNT] = {0};
 static uint8_t s_pin_mode[MAX_GPIO_COUNT] = {0};
 std::map<int, SPinEvent> s_events;
 
-void pinMode(int pin, int mode)
+void lcd_gpioMode(int pin, int mode)
 {
     if (!s_exported_pin[pin])
     {
@@ -225,7 +273,7 @@ void pinMode(int pin, int mode)
     }
 }
 
-void digitalWrite(int pin, int level)
+void lcd_gpioWrite(int pin, int level)
 {
 #ifdef LINUX_SPI_AVAILABLE
     if (s_events.find(pin) != s_events.end())
@@ -260,6 +308,123 @@ void ssd1306_unregisterPinEvent(int pin)
     s_events.erase( pin );
 }
 
+int  lcd_gpioRead(int pin)
+{
+    return LCD_LOW;
+}
+
+void lcd_delay(unsigned long ms)
+{
+    usleep(ms*1000);
+}
+
+void lcd_delayUs(unsigned long us)
+{
+    usleep(us);
+}
+
+uint32_t lcd_millis(void)
+{
+   struct timespec ts;
+   clock_gettime(CLOCK_MONOTONIC, &ts);
+   return ts.tv_sec * 1000 + ts.tv_nsec / 1000000;
+}
+
+uint32_t lcd_micros(void)
+{
+   struct timespec ts;
+   clock_gettime(CLOCK_MONOTONIC, &ts);
+   return ts.tv_sec * 1000000 + ts.tv_nsec / 1000;
+}
+
+int min(int a, int b) { return a<b?a:b; }
+int max(int a, int b) { return a>b?a:b; }
+
+#else // SDL_EMULATION
+
+int  lcd_gpioRead(int pin)
+{
+    return sdl_read_digital(pin);
+}
+
+int  lcd_adcRead(int pin)
+{
+    return sdl_read_analog(pin);
+}
+
+void lcd_gpioWrite(int pin, int level)
+{
+    sdl_write_digital(pin, level);
+}
+
+void lcd_gpioMode(int pin, int mode)
+{
+   // TODO: Not implemented
+}
+
+void lcd_delay(unsigned long ms)
+{
+    usleep(ms*1000);
+}
+
+void lcd_delayUs(unsigned long us)
+{
+    usleep(us);
+}
+
+uint32_t lcd_millis(void)
+{
+   struct timespec ts;
+   clock_gettime(CLOCK_MONOTONIC, &ts);
+   return ts.tv_sec * 1000 + ts.tv_nsec / 1000000;
+}
+
+uint32_t lcd_micros(void)
+{
+   struct timespec ts;
+   clock_gettime(CLOCK_MONOTONIC, &ts);
+   return ts.tv_sec * 1000000 + ts.tv_nsec / 1000;
+};
+
+int min(int a, int b) { return a<b?a:b; }
+int max(int a, int b) { return a>b?a:b; }
+
 #endif // SDL_EMULATION
+
+void lcd_randomSeed(int seed)
+{
+    // TODO: Not implemented
+}
+
+void attachInterrupt(int pin, void (*interrupt)(void), int level)
+{
+    // TODO: Not implemented
+}
+
+uint8_t lcd_pgmReadByte(const void *ptr)
+{
+    return *((const uint8_t *)ptr);
+}
+
+uint16_t lcd_eepromReadWord(const void *ptr)
+{
+    // TODO: Not implemented
+    return 0;
+}
+
+void lcd_eepromWriteWord(const void *ptr, uint16_t val)
+{
+    // TODO: Not implemented
+}
+
+int lcd_random(int v)
+{
+    return rand() % v;
+}
+
+int lcd_random(int min, int max)
+{
+    return rand() % (max - min + 1) + min;
+}
 
 #endif // __linux__

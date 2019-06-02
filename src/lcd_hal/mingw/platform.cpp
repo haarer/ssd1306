@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2018-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -22,24 +22,46 @@
     SOFTWARE.
 */
 
-/*
- * @file lcd_hal/esp/io.h This is stm32 platform file
- */
+#include "../io.h"
 
-#ifndef _SSD1306V2_ESP_IO_H_
-#define _SSD1306V2_ESP_IO_H_
+#if defined(__MINGW32__)
 
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cstdlib>
 
-/* Progmem attribute for data, located in Flash */
-#define LCD_PROGMEM
+int  lcd_gpioRead(int pin) { return sdl_read_digital(pin); };
+void lcd_delay(unsigned long ms) { Sleep(ms);  };
+void lcd_delayUs(unsigned long us) { Sleep((us+500)/1000); };
+uint32_t lcd_millis(void)
+{
+    return GetTickCount();
+};
 
-/** The macro is defined when ESP32 i2c implementation is available */
-#define CONFIG_ESP32_I2C_AVAILABLE
-/** The macro is defined when ESP32 spi implementation is available */
-#define CONFIG_ESP32_SPI_AVAILABLE
+uint32_t lcd_micros(void)
+{
+    return GetTickCount()*1000;
+};
+
+#if defined(SDL_EMULATION)
+int  lcd_gpioRead(int pin) { return sdl_read_analog(pin); };
+void lcd_gpioWrite(int pin, int level) {  sdl_write_digital(pin, level); };
+void lcd_gpioMode(int pin, int mode) { };
+#endif
+
+void lcd_randomSeed(int seed) { };
+void attachInterrupt(int pin, void (*interrupt)(void), int level) { };
+uint8_t lcd_pgmReadByte(const void *ptr) { return *((const uint8_t *)ptr); };
+uint16_t lcd_eepromReadWord(const void *ptr) { return 0; };
+void lcd_eepromWriteWord(const void *ptr, uint16_t val) { };
+
+int lcd_random(int v)
+{
+    return rand() % v;
+}
+
+int lcd_random(int min, int max)
+{
+    return rand() % (max - min + 1) + min;
+}
 
 #endif
 

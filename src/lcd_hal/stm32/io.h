@@ -38,10 +38,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define LOW  0
-#define HIGH 1
-#define INPUT 0
-#define OUTPUT 1
 /* Progmem attribute for data, located in Flash */
 #define PROGMEM
 

@@ -39,6 +39,7 @@ SRCS_CPP = \
 	lcd_hal/linux/linux_spi.cpp \
 	lcd_hal/linux/sdl_i2c.cpp \
 	lcd_hal/linux/sdl_spi.cpp \
+	lcd_hal/mingw/platform.cpp \
 	lcd_hal/arduino/platform.cpp \
 	lcd_hal/arduino/arduino_spi.cpp \
 	lcd_hal/arduino/arduino_wire.cpp \

@@ -125,4 +125,73 @@ void ssd1306_platform_spiInit(int8_t busId,
 }
 #endif
 
-#endif // YOUR_PLATFORM
+int  lcd_gpioRead(int pin)
+{
+    return LOW;
+}
+
+void lcd_gpioWrite(int pin, int level)
+{
+}
+
+void lcd_gpioMode(int pin, int mode)
+{
+}
+
+int  lcd_adcRead(int pin)
+{
+    return 0;
+}
+
+uint32_t lcd_millis(void)
+{
+    return 0;
+}
+
+uint32_t lcd_micros(void)
+{
+    return 0;
+};
+
+void lcd_delay(uint32_t ms)
+{
+}
+
+void lcd_delayUs(uint32_t us)
+{
+}
+
+// !!!  OPTIONAL !!!
+void lcd_randomSeed(int seed)
+{
+}
+
+void attachInterrupt(int pin, void (*interrupt)(), int level)
+{
+}
+
+uint8_t lcd_pgmReadByte(const void *ptr)
+{
+    return *((const uint8_t *)ptr);
+}
+
+uint16_t lcd_eepromReadWord(const void *ptr)
+{
+    return 0;
+}
+
+void lcd_eepromWriteWord(const void *ptr, uint16_t val)
+{
+}
+
+int lcd_random(int max)
+{
+    return 0;
+}
+
+int lcd_random(int min, int max)
+{
+    return 0;
+}
+
+#endif

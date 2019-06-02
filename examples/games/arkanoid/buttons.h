@@ -37,12 +37,15 @@
 #    endif
 #endif
 
-const uint8_t BUTTON_NONE   = 0;
-const uint8_t BUTTON_RIGHT  = 1;
-const uint8_t BUTTON_UP     = 2;
-const uint8_t BUTTON_DOWN   = 3;
-const uint8_t BUTTON_LEFT   = 4;
-const uint8_t BUTTON_SELECT = 5;
+enum class Key: uint8_t
+{
+    BT_NONE   = 0,
+    BT_RIGHT  = 1,
+    BT_UP     = 2,
+    BT_DOWN   = 3,
+    BT_LEFT   = 4,
+    BT_SELECT = 5,
+};
 
-uint8_t getPressedButton(uint8_t analogPin);
+Key getPressedButton(uint8_t analogPin);
 

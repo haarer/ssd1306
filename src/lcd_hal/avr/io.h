@@ -42,22 +42,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifndef LOW
-#define LOW  0
-#endif
-
-#ifndef HIGH
-#define HIGH 1
-#endif
-
-#ifndef INPUT
-#define INPUT 0
-#endif
-
-#ifndef OUTPUT
-#define OUTPUT 1
-#endif
-
 #if defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__) || \
     defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
     /** The macro is defined when software i2c implementation is available */
@@ -97,26 +81,21 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+// TODO:
+static inline void lcd_delayUs(unsigned long us)
+{
+    _delay_us(us);
+}
 
-void pinMode(int pin, int mode);
-static inline int  digitalRead(int pin) { return LOW; };
-void digitalWrite(int pin, int level);
-static inline int  analogRead(int pin) { return 0; };
-static inline uint32_t millis() { return 0; };
-static inline void randomSeed(int seed) { };
-static inline void attachInterrupt(int pin, void (*interrupt)(), int level) { };
-void delay(unsigned long ms);
-static inline void delayMicroseconds(unsigned long us) { _delay_us(us); };
-
-
+// TODO: Rework
+static inline void delayMicroseconds(unsigned long us)
+{
+    _delay_us(us);
+}
 #ifdef __cplusplus
 }
 #endif
 
-#ifdef __cplusplus
-static inline int random(int max) { return 0; };
-static inline int random(int min, int max) { return 0; };
-#endif
 
 #endif
 

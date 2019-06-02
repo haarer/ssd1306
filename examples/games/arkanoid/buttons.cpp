@@ -26,18 +26,18 @@
 
 #include "ssd1306v2.h"
 
-uint8_t getPressedButton(uint8_t analogPin)
+Key getPressedButton(uint8_t analogPin)
 {
 #ifdef USE_Z_KEYPAD
     int buttonValue = analogRead(analogPin);
-    if (buttonValue < 100) return BUTTON_RIGHT;  
-    if (buttonValue < 200) return BUTTON_UP;
-    if (buttonValue < 400) return BUTTON_DOWN;
-    if (buttonValue < 600) return BUTTON_LEFT;
-    if (buttonValue < 800) return BUTTON_SELECT;
+    if (buttonValue < 100) return Key::BT_RIGHT;
+    if (buttonValue < 200) return Key::BT_UP;
+    if (buttonValue < 400) return Key::BT_DOWN;
+    if (buttonValue < 600) return Key::BT_LEFT;
+    if (buttonValue < 800) return Key::BT_SELECT;
 #else
-    if (digitalRead(RIGHT_BTN) != LOW) return BUTTON_RIGHT;
-    if (digitalRead(LEFT_BTN) != LOW) return  BUTTON_LEFT;
+    if (digitalRead(RIGHT_BTN) != LOW) return Key::BT_RIGHT;
+    if (digitalRead(LEFT_BTN) != LOW) return  Key::BT_LEFT;
 #endif
-    return BUTTON_NONE;
+    return Key::BT_NONE;
 }
