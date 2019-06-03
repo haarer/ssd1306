@@ -78,24 +78,5 @@
 
 #endif
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-// TODO:
-static inline void lcd_delayUs(unsigned long us)
-{
-    _delay_us(us);
-}
-
-// TODO: Rework
-static inline void delayMicroseconds(unsigned long us)
-{
-    _delay_us(us);
-}
-#ifdef __cplusplus
-}
-#endif
-
-
 #endif
 

@@ -205,13 +205,11 @@ void attachInterrupt(int pin, void (*interrupt)(), int level);
  */
 void lcd_delay(unsigned long ms);
 
-#if !defined(__AVR__)
 /**
  * Forces current thread to sleeps for specified number of microseconds
  * @param us time in microseconds
  */
 void lcd_delayUs(unsigned long us);
-#endif
 
 /**
  * Read single data byte directly from flash. This function is valid only
@@ -279,9 +277,7 @@ int lcd_random(int min, int max);
 #define millis lcd_millis
 #define micros lcd_micros
 #define delay lcd_delay
-#if !defined(__AVR__)
 #define delayMicroseconds lcd_delayUs
-#endif
 
 #define random lcd_random
 #define randomSeed lcd_randomSeed

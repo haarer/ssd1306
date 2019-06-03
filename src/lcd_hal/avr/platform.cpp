@@ -115,14 +115,36 @@ void attachInterrupt(int pin, void (*interrupt)(), int level)
     // TODO: Not implemented
 }
 
-#if 0
+/*
+ The loop executes four CPU cycles per iteration,
+ not including the overhead the compiler requires to setup the
+ counter register pair
+*/
+void lcd_delayCycles(uint16_t __count)
+{
+    __asm__ volatile (
+        "1: sbiw %0,1" "\n\t"
+        "brne 1b"
+        : "=w" (__count)
+        : "0" (__count)
+    );
+}
 
 void lcd_delayUs(unsigned long us)
 {
-    _delay_us(us);
+    if ( us <= 8 )
+    {
+        return;
+    }
+    else if ( us < 4096 )
+    {
+        lcd_delayCycles( us / 4 * (F_CPU / 1000000) );
+    }
+    else
+    {
+        lcd_delay( us / 1000 );
+    }
 }
-
-#endif
 
 void lcd_randomSeed(int seed)
 {
