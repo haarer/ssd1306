@@ -81,7 +81,7 @@ static void bitmapDemo()
     ssd1306_drawBitmap8(0, 0, 8, 8, heartImage8);
     ssd1306_setColor(RGB_COLOR8(255,64,64));
     ssd1306_drawMonoBitmap8(0, 16, 8, 8, heartImage);
-    delay(3000);
+    lcd_delay(3000);
 }
 
 /* Sprites are not implemented for color modes.
@@ -109,7 +109,7 @@ static void spriteDemo()
     sprite.y = 0;
     for (int i=0; i<250; i++)
     {
-        delay(15);
+        lcd_delay(15);
         // Tell the engine to refresh screen at old sprite position
         engine.refresh( sprite.x, sprite.y, sprite.x + 8 - 1, sprite.y + 8 - 1 );
         sprite.x++;
@@ -143,7 +143,7 @@ static void textDemo()
     ssd1306_setColor(RGB_COLOR8(255,255,255));
     ssd1306_printFixed8(0, 32, "Inverted bold?", STYLE_BOLD);
     ssd1306_positiveMode();
-    delay(3000);
+    lcd_delay(3000);
 }
 
 static void canvasDemo()
@@ -156,13 +156,13 @@ static void canvasDemo()
     canvas.clear();
     canvas.fillRect(10, 3, 80, 5);
     canvas.blt((ssd1306_displayWidth()-64)/2, 1);
-    delay(500);
+    lcd_delay(500);
     canvas.fillRect(50, 1, 60, 15);
     canvas.blt((ssd1306_displayWidth()-64)/2, 1);
-    delay(1500);
+    lcd_delay(1500);
     canvas.printFixed(20, 1, " DEMO ", STYLE_BOLD );
     canvas.blt((ssd1306_displayWidth()-64)/2, 1);
-    delay(3000);
+    lcd_delay(3000);
 }
 
 static void drawLinesDemo()
@@ -178,7 +178,7 @@ static void drawLinesDemo()
     {
         ssd1306_drawLine8(0,0, x, ssd1306_displayHeight() - 1);
     }
-    delay(3000);
+    lcd_delay(3000);
 }
 
 void setup()
@@ -199,7 +199,7 @@ uint8_t rotation = 0;
 
 void loop()
 {
-    delay(1000);
+    lcd_delay(1000);
     switch (ssd1306_menuSelection(&menu))
     {
         case 0:
@@ -232,7 +232,7 @@ void loop()
     ssd1306_fillScreen8( 0x00 );
     ssd1306_setColor(RGB_COLOR16(255,255,255));
     ssd1306_showMenu8(&menu);
-    delay(500);
+    lcd_delay(500);
     ssd1306_menuDown(&menu);
     ssd1306_updateMenu8(&menu);
 }

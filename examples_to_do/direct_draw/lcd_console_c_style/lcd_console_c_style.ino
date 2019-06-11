@@ -49,7 +49,7 @@ void loop()
 {
     ssd1306_print( "This is console output: " );
     ssd1306_print( "go to the next line\n" );
-    delay(500);
+    lcd_delay(500);
 }
 
 

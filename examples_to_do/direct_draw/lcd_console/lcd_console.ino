@@ -54,7 +54,7 @@ void loop()
     console.print("Line ");
     console.print( i );
     i++;
-    delay(500);
+    lcd_delay(500);
     console.println("");
 }
 

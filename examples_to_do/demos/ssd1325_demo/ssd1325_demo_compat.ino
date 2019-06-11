@@ -75,7 +75,7 @@ static void bitmapDemo()
 {
     ssd1306_setColor(GRAY_COLOR4(128));
     ssd1306_drawBitmap(0, 0, 96, 64, Sova);
-    delay(3000);
+    lcd_delay(3000);
 }
 
 static void spriteDemo()
@@ -88,7 +88,7 @@ static void spriteDemo()
     sprite = ssd1306_createSprite( 0, 0, spriteWidth, heartImage );
     for (int i=0; i<250; i++)
     {
-        delay(15);
+        lcd_delay(15);
         sprite.x++;
         if (sprite.x >= ssd1306_displayWidth())
         {
@@ -120,7 +120,7 @@ static void textDemo()
     ssd1306_setColor(GRAY_COLOR4(164));
     ssd1306_printFixed(0, 32, "Inverted bold", STYLE_BOLD);
     ssd1306_positiveMode();
-    delay(3000);
+    lcd_delay(3000);
 }
 
 static void canvasDemo()
@@ -133,13 +133,13 @@ static void canvasDemo()
     canvas.clear();
     canvas.fillRect(10, 3, 80, 5, 0xFF);
     canvas.blt((ssd1306_displayWidth()-64)/2, 1);
-    delay(500);
+    lcd_delay(500);
     canvas.fillRect(50, 1, 60, 15, 0xFF);
     canvas.blt((ssd1306_displayWidth()-64)/2, 1);
-    delay(1500);
+    lcd_delay(1500);
     canvas.printFixed(20, 1, " DEMO ", STYLE_BOLD );
     canvas.blt((ssd1306_displayWidth()-64)/2, 1);
-    delay(3000);
+    lcd_delay(3000);
 }
 
 static void drawLinesDemo()
@@ -155,7 +155,7 @@ static void drawLinesDemo()
     {
         ssd1306_drawLine(0,0, x, ssd1306_displayHeight() - 1);
     }
-    delay(3000);
+    lcd_delay(3000);
 }
 
 void setup()
@@ -173,7 +173,7 @@ void setup()
 
 void loop()
 {
-    delay(1000);
+    lcd_delay(1000);
     switch (ssd1306_menuSelection(&menu))
     {
         case 0:
@@ -202,7 +202,7 @@ void loop()
     ssd1306_fillScreen( 0x00 );
     ssd1306_setColor(GRAY_COLOR4(255));
     ssd1306_showMenu(&menu);
-    delay(500);
+    lcd_delay(500);
     ssd1306_menuDown(&menu);
     ssd1306_updateMenu(&menu);
 }

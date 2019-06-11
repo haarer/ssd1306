@@ -302,7 +302,7 @@ void setup()
     engine.insert( player );
     engine.insert( ninja );
     engine.refresh();
-    pinMode(BUZZER, OUTPUT);
+    lcd_gpioMode(BUZZER, LCD_GPIO_OUTPUT);
 }
 
 void loop()
@@ -319,7 +319,7 @@ void beep(int bCount,int bDelay)
 {
     for (int i = 0; i<=bCount*2; i++)
     {
-        digitalWrite(BUZZER,i&1);
+        lcd_gpioWrite(BUZZER,i&1);
         for(int i2=0; i2<bDelay; i2++)
         {
             __asm__("nop\n\t");
@@ -330,5 +330,5 @@ void beep(int bCount,int bDelay)
 #endif
         }
     }
-    digitalWrite(BUZZER,LOW);
+    lcd_gpioWrite(BUZZER,LCD_LOW);
 }
