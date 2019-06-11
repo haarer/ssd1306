@@ -140,10 +140,10 @@ void loop()
 {
     display.fill(0x00);
     display.drawBitmap1(0, 0, 128, 64, Owl);
-    delay(3000);
+    lcd_delay(3000);
     display.fill(0x00);
     display.drawXBitmap(0, 0, 40, 32, Soba);
-    delay(3000);
+    lcd_delay(3000);
 }
 
 

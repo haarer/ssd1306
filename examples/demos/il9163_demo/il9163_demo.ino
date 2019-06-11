@@ -86,7 +86,7 @@ static void bitmapDemo()
     display.drawBitmap8(0, 0, 8, 8, heartImage8);
     display.setColor(RGB_COLOR16(255,64,64));
     display.drawBitmap1(0, 16, 8, 8, heartImage);
-    delay(3000);
+    lcd_delay(3000);
 }
 
 /* Sprites are not implemented for color modes.
@@ -114,7 +114,7 @@ static void spriteDemo()
     sprite.y = 0;
     for (int i=0; i<250; i++)
     {
-        delay(15);
+        lcd_delay(15);
         // Tell the engine to refresh screen at old sprite position
         engine.refresh( sprite.x, sprite.y, sprite.x + 8 - 1, sprite.y + 8 - 1 );
         sprite.x++;
@@ -148,7 +148,7 @@ static void textDemo()
     display.setColor(RGB_COLOR16(255,255,255));
     display.printFixed(0, 32, "Inverted bold?", STYLE_BOLD);
     display.positiveMode();
-    delay(3000);
+    lcd_delay(3000);
 }
 
 static void canvasDemo()
@@ -159,14 +159,14 @@ static void canvasDemo()
     canvas.clear();
     canvas.fillRect(10, 3, 80, 5);
     display.drawCanvas((display.width()-64)/2, 1, canvas);
-    delay(500);
+    lcd_delay(500);
     canvas.fillRect(50, 1, 60, 15);
     display.drawCanvas((display.width()-64)/2, 1, canvas);
-    delay(1500);
+    lcd_delay(1500);
     canvas.setFixedFont(ssd1306xled_font6x8);
     canvas.printFixed(20, 1, " DEMO ", STYLE_BOLD );
     display.drawCanvas((display.width()-64)/2, 1, canvas);
-    delay(3000);
+    lcd_delay(3000);
 }
 
 static void drawLinesDemo()
@@ -182,7 +182,7 @@ static void drawLinesDemo()
     {
         display.drawLine(0,0, x, display.height() - 1);
     }
-    delay(3000);
+    lcd_delay(3000);
 }
 
 void setup()
@@ -203,7 +203,7 @@ uint8_t rotation = 0;
 
 void loop()
 {
-    delay(1000);
+    lcd_delay(1000);
     switch (display.menuSelection(&menu))
     {
         case 0:
@@ -236,7 +236,7 @@ void loop()
     display.fill( 0x00 );
     display.setColor(RGB_COLOR16(255,255,255));
     display.showMenu(&menu);
-    delay(500);
+    lcd_delay(500);
     display.menuDown(&menu);
     display.updateMenu(&menu);
 }

@@ -147,15 +147,15 @@ public:
 
     void generate()
     {
-        setBitmap( &snowFlakeImage[random(8)][0] );
+        setBitmap( &snowFlakeImage[lcd_random(8)][0] );
         /* Set initial position in scaled coordinates */
         /* We do not use getTiler().getDisplay() here, because if snowflake is not placed to
            engine, it has no tiler */
-        scaled_position = { random(display.width() * 8), -8 * 8 };
+        scaled_position = { lcd_random(display.width() * 8), -8 * 8 };
         /* Use some random speed */
-        speed = { random(-16, 16), random(4, 12) };
+        speed = { lcd_random(-16, 16), lcd_random(4, 12) };
         /* After countdown timer ticks to 0, change X direction */
-        timer = random(24, 48);
+        timer = lcd_random(24, 48);
         moveTo( scaled_position/8 );
     }
 
@@ -166,8 +166,8 @@ public:
         if (0 == timer)
         {
             /* Change movement direction */
-            speed.x = random(-16, 16);
-            timer = random(24, 48);
+            speed.x = lcd_random(-16, 16);
+            timer = lcd_random(24, 48);
         }
         moveTo( scaled_position/8 );
         if (y() >= static_cast<lcdint_t>(getTiler().getDisplay().height()) )

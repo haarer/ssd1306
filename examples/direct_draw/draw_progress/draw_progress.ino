@@ -58,11 +58,11 @@ void loop()
     if ( progress > 100 )
     {
         progress = 0;
-        delay(2000);
+        lcd_delay(2000);
     }
     else
     {
-        delay(50);
+        lcd_delay(50);
     }
 }
 

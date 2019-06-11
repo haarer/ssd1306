@@ -29,15 +29,15 @@
 Key getPressedButton(uint8_t analogPin)
 {
 #ifdef USE_Z_KEYPAD
-    int buttonValue = analogRead(analogPin);
+    int buttonValue = lcd_adcRead(analogPin);
     if (buttonValue < 100) return Key::BT_RIGHT;
     if (buttonValue < 200) return Key::BT_UP;
     if (buttonValue < 400) return Key::BT_DOWN;
     if (buttonValue < 600) return Key::BT_LEFT;
     if (buttonValue < 800) return Key::BT_SELECT;
 #else
-    if (digitalRead(RIGHT_BTN) != LOW) return Key::BT_RIGHT;
-    if (digitalRead(LEFT_BTN) != LOW) return  Key::BT_LEFT;
+    if (lcd_gpioRead(RIGHT_BTN) != LCD_LOW) return Key::BT_RIGHT;
+    if (lcd_gpioRead(LEFT_BTN) != LCD_LOW) return  Key::BT_LEFT;
 #endif
     return Key::BT_NONE;
 }

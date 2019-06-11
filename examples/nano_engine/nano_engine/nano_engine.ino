@@ -97,16 +97,16 @@ uint32_t lastTs;
 
 void loop()
 {
-    uint32_t lastTs = millis();
+    uint32_t lastTs = lcd_millis();
     uint32_t updateDuration;
     engine.refresh();
     engine.display();
     if ( frames < FRAMES_CAPTURE ) 
     {
-        totalDuration += millis() - lastTs;
+        totalDuration += lcd_millis() - lastTs;
         frames++;
     }
-    delay(30);
+    lcd_delay(30);
     textx++; if (textx ==96) textx = -192;
     b_x++;
     b_y++;

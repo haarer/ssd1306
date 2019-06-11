@@ -166,7 +166,7 @@ void drawIntro()
     for (int8_t y=-24; y<16; y++)
     {
         display.gfx_drawMonoBitmap(16 - OUTPUT_OFFSET, y, 96, 24, arkanoid_2);
-        delay(20);
+        lcd_delay(20);
     }
     display.setColor(RGB_COLOR8(255,255,0));
     display.printFixed_oldStyle(40 - OUTPUT_OFFSET, 40, "BREAKOUT", STYLE_NORMAL);
@@ -301,16 +301,16 @@ void startLevel()
     display.clear();
     display.printFixed_oldStyle(40 - OUTPUT_OFFSET, 24, "LEVEL ", STYLE_BOLD);
     display.printFixed_oldStyle(76 - OUTPUT_OFFSET, 24, tempStr, STYLE_BOLD);
-    delay(2000);
+    lcd_delay(2000);
     resetBlocks();
     hSpeed = INITIAL_H_SPEED;
     vSpeed = INITIAL_V_SPEED;
-    platformPos = random(0, (RIGHT_EDGE - LEFT_EDGE - 1 - platformWidth));
+    platformPos = lcd_random(0, (RIGHT_EDGE - LEFT_EDGE - 1 - platformWidth));
     ballx = ( platformPos + ( platformWidth >> 1 ) ) << SPEED_SHIFT;
     bally = ( SCREEN_HEIGHT - PLATFORM_HEIGHT ) << SPEED_SHIFT;
     memset(&objects[0], 0, sizeof(objects));
     drawStartScreen();
-    lastDrawTimestamp = millis();
+    lastDrawTimestamp = lcd_millis();
 }
 
 void resetGame()
@@ -320,19 +320,19 @@ void resetGame()
     platformPower = 0;
     hearts = 2;
     drawIntro();
-    delay(3000);
+    lcd_delay(3000);
     startLevel();
 }
 
 void setup()
 {
     display.setFixedFont_oldStyle(ssd1306xled_font6x8_AB);
-    randomSeed(analogRead(0));
+    lcd_randomSeed(lcd_adcRead(0));
     #ifndef USE_Z_KEYPAD
-        pinMode(LEFT_BTN, INPUT);
-        pinMode(RIGHT_BTN, INPUT);
+        lcd_gpioMode(LEFT_BTN, LCD_GPIO_INPUT);
+        lcd_gpioMode(RIGHT_BTN, LCD_GPIO_INPUT);
     #endif
-    pinMode(BUZZER, OUTPUT);
+    lcd_gpioMode(BUZZER, LCD_GPIO_OUTPUT);
 #if defined(__AVR_ATmega328p__)
     sei();                      // enable all interrupts
 #elif defined(__AVR_ATtiny85__)
@@ -346,7 +346,7 @@ void setup()
 
 void loop()
 {
-    if ( (uint16_t)(((uint16_t)millis()) - lastDrawTimestamp) > 28 )
+    if ( (uint16_t)(((uint16_t)lcd_millis()) - lastDrawTimestamp) > 28 )
     {
         uint8_t lastx = (ballx >> SPEED_SHIFT);
         uint8_t lasty = (bally >> SPEED_SHIFT);
@@ -625,9 +625,9 @@ void gameOver()
     display.printFixed_oldStyle(90 - OUTPUT_OFFSET, 40, tempStr, STYLE_NORMAL);
     for (int i = 0; i<1000; i++)
     {
-       beep(1,random(0,i*2));
+       beep(1,lcd_random(0,i*2));
     }
-    delay(2000);
+    lcd_delay(2000);
 }
 
 void platformCrashAnimation()
@@ -641,7 +641,7 @@ void platformCrashAnimation()
             display.getInterface().send( 0B00000000 );
             display.getInterface().endBlock();
         }
-        delay(150);
+        lcd_delay(150);
     }
 }
 
@@ -739,7 +739,7 @@ void beep(int bCount,int bDelay)
 {
     for (int i = bCount*2; i>0; i--)
     {
-        digitalWrite(BUZZER, i & 1);
+        lcd_gpioWrite(BUZZER, i & 1);
         for(int i2 = 0; i2 < bDelay; i2++)
         {
             __asm__("nop\n\t");
@@ -755,7 +755,7 @@ void beep(int bCount,int bDelay)
 #endif
         }
     }
-    digitalWrite(BUZZER,LOW);
+    lcd_gpioWrite(BUZZER,LCD_LOW);
 }
 
 #ifdef DEEP_SLEEP_NOT_SUPPORTED

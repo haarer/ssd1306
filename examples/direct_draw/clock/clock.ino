@@ -73,15 +73,15 @@ void setup()
 {
     display.begin();
     display.fill(0x00);
-    ssd1306_setFixedFont(comic_sans_font24x32_123);
-    lastMillis = millis();
+    display.setFixedFont(comic_sans_font24x32_123);
+    lastMillis = lcd_millis();
     printHours();
     printMinutes();
 }
 
 void loop()
 {
-    if ((uint32_t)(millis() - lastMillis) >= 1000)
+    if ((uint32_t)(lcd_millis() - lastMillis) >= 1000)
     {
         lastMillis += 1000;
         if (++seconds > 59)

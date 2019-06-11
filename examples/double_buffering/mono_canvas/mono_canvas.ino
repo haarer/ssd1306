@@ -107,7 +107,7 @@ void setup()
 
 void loop()
 {
-    delay(40);
+    lcd_delay(40);
 
     /* Recalculate position and movement direction of all 4 "hearts" */
     for (uint8_t i = 0; i < spritesCount; i++)

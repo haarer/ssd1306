@@ -27,7 +27,7 @@
 
 Key getPressedButton(uint8_t analogPin)
 {
-  int buttonValue = analogRead(analogPin);
+  int buttonValue = lcd_adcRead(analogPin);
   if (buttonValue < 100) {
     return Key::BT_RIGHT;
   }

@@ -83,7 +83,7 @@ const char *menuItems[] =
 static void bitmapDemo()
 {
     display.drawBitmap1(0, 0, 128, 64, Owl);
-    delay(3000);
+    lcd_delay(3000);
 }
 
 static void spriteDemo()
@@ -93,7 +93,7 @@ static void spriteDemo()
     NanoPoint sprite = {0, 0};
     for (int i=0; i<250; i++)
     {
-        delay(15);
+        lcd_delay(15);
         /* Erase sprite on old place. The library knows old position of the sprite. */
         display.setColor( 0 );
         display.drawBitmap1( sprite.x, sprite.y, spriteWidth, 8, heartImage );
@@ -123,7 +123,7 @@ static void textDemo()
     display.negativeMode();
     display.printFixed(0, 32, "Inverted bold", STYLE_BOLD);
     display.positiveMode();
-    delay(3000);
+    lcd_delay(3000);
 }
 
 static void canvasDemo()
@@ -134,15 +134,15 @@ static void canvasDemo()
     canvas.setColor( 0xFF );
     canvas.fillRect(10, 3, 80, 5);
     display.drawCanvas((display.width()-64)/2, 1, canvas);
-    delay(500);
+    lcd_delay(500);
     canvas.setColor( 0xFF );
     canvas.fillRect(50, 1, 60, 15);
     display.drawCanvas((display.width()-64)/2, 1, canvas);
-    delay(1500);
+    lcd_delay(1500);
     canvas.setFixedFont(ssd1306xled_font6x8);
     canvas.printFixed(20, 1, " DEMO ", STYLE_BOLD );
     display.drawCanvas((display.width()-64)/2, 1, canvas);
-    delay(3000);
+    lcd_delay(3000);
 }
 
 static void drawLinesDemo()
@@ -156,7 +156,7 @@ static void drawLinesDemo()
     {
         display.drawLine(0,0, x, display.height() - 1);
     }
-    delay(3000);
+    lcd_delay(3000);
 }
 
 void setup()
@@ -172,7 +172,7 @@ void setup()
 
 void loop()
 {
-    delay(1000);
+    lcd_delay(1000);
     switch (display.menuSelection(&menu))
     {
         case 0:
@@ -200,7 +200,7 @@ void loop()
     }
     display.fill( 0x00 );
     display.showMenu(&menu);
-    delay(500);
+    lcd_delay(500);
     display.menuDown(&menu);
     display.updateMenu(&menu);
 }
