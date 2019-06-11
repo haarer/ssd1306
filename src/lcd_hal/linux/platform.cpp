@@ -261,12 +261,12 @@ void lcd_gpioMode(int pin, int mode)
         }
         s_exported_pin[pin] = 1;
     }
-    if (mode == OUTPUT)
+    if (mode == LCD_GPIO_OUTPUT)
     {
         gpio_direction(pin, OUT);
         s_pin_mode[pin] = 1;
     }
-    if (mode == INPUT)
+    if (mode == LCD_GPIO_INPUT)
     {
         gpio_direction(pin, IN);
         s_pin_mode[pin] = 0;
@@ -311,6 +311,12 @@ void ssd1306_unregisterPinEvent(int pin)
 int  lcd_gpioRead(int pin)
 {
     return LCD_LOW;
+}
+
+int  lcd_adcRead(int pin)
+{
+    // NOT IMPLEMENTED
+    return 0;
 }
 
 void lcd_delay(unsigned long ms)
