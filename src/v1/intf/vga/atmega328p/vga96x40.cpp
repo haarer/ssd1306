@@ -197,7 +197,7 @@ static inline void init_vga_crt_driver(uint8_t enable_jitter_fix)
     }
 
     // Timer 1 - vertical sync pulses
-    pinMode (V_SYNC_PIN, OUTPUT);
+    lcd_gpioMode (V_SYNC_PIN, LCD_GPIO_OUTPUT);
     TCCR1A=(1<<WGM10) | (1<<WGM11) | (1<<COM1B1);
     TCCR1B=(1<<WGM12) | (1<<WGM13) | (1<<CS12) | (1<<CS10); //1024 prescaler
     OCR1A = 259;  // 16666 / 64 us = 260 (less one)
@@ -206,7 +206,7 @@ static inline void init_vga_crt_driver(uint8_t enable_jitter_fix)
     TIMSK1 = (1<<TOIE1);  // interrupt on overflow on timer 1
 
     // Timer 2 - horizontal sync pulses
-    pinMode (H_SYNC_PIN, OUTPUT);
+    lcd_gpioMode (H_SYNC_PIN, LCD_GPIO_OUTPUT);
     TCCR2A=(1<<WGM20) | (1<<WGM21) | (1<<COM2B1); //pin3=COM2B1
     TCCR2B=(1<<WGM22) | (1<<CS21); //8 prescaler
     OCR2A = 63;   // 32 / 0.5 us = 64 (less one)
@@ -224,9 +224,9 @@ static inline void init_vga_crt_driver(uint8_t enable_jitter_fix)
 
     // Set up USART in SPI mode (MSPIM)
 
-    pinMode(14, OUTPUT);
-    pinMode(15, OUTPUT);
-    pinMode(16, OUTPUT);
+    lcd_gpioMode(14, LCD_GPIO_OUTPUT);
+    lcd_gpioMode(15, LCD_GPIO_OUTPUT);
+    lcd_gpioMode(16, LCD_GPIO_OUTPUT);
     PORTC = 0;
 
     sei();

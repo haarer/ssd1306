@@ -75,7 +75,7 @@ void InterfaceST7735<I>::spiDataMode(uint8_t mode)
 {
     if ( m_dc >= 0 )
     {
-        digitalWrite( m_dc, mode ? HIGH : LOW );
+        lcd_gpioWrite( m_dc, mode ? LCD_HIGH : LCD_LOW );
     }
 }
 
@@ -183,7 +183,7 @@ void DisplayST7735_128x128x16<I>::begin()
 {
     ssd1306_resetController2( this->m_rstPin, 20 );
     /* Give 120ms display to initialize */
-    delay(120);
+    lcd_delay(120);
     this->m_w = 128;
     this->m_h = 128;
     _configureSpiDisplay<I>(this->m_intf,
@@ -251,7 +251,7 @@ void DisplayST7735_128x160x16<I>::begin()
 {
     ssd1306_resetController2( this->m_rstPin, 20 );
     /* Give 120ms display to initialize */
-    delay(120);
+    lcd_delay(120);
     this->m_w = 128;
     this->m_h = 160;
     _configureSpiDisplay<I>(this->m_intf,

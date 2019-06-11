@@ -81,7 +81,7 @@ static void ssd1306_spiConfigure_avr(uint32_t frequency)
             ((clockDiv >> 1) & SPI_CLOCK_MASK);
     SPSR = clockDiv & SPI_2XCLOCK_MASK; // Double Clock Rate
     // Wait for some time to give SPI HW module to initialize
-    delay(10);
+    lcd_delay(10);
 }
 
 AvrSpi::AvrSpi(int8_t csPin, int8_t dcPin, uint32_t frequency)
@@ -97,8 +97,8 @@ AvrSpi::~AvrSpi()
 
 void AvrSpi::begin()
 {
-    if (m_cs >= 0) pinMode( m_cs, OUTPUT);
-    if (m_dc >= 0) pinMode( m_dc, OUTPUT);
+    if (m_cs >= 0) lcd_gpioMode( m_cs, LCD_GPIO_OUTPUT);
+    if (m_dc >= 0) lcd_gpioMode( m_dc, LCD_GPIO_OUTPUT);
     ssd1306_spiConfigure_avr( m_frequency );
 }
 
@@ -110,7 +110,7 @@ void AvrSpi::start()
 {
     if ( m_cs >= 0 )
     {
-        digitalWrite( m_cs, LOW);
+        lcd_gpioWrite( m_cs, LCD_LOW);
     }
 }
 
@@ -118,7 +118,7 @@ void AvrSpi::stop()
 {
     if ( m_cs >= 0 )
     {
-        digitalWrite( m_cs, HIGH );
+        lcd_gpioWrite( m_cs, LCD_HIGH );
     }
 }
 

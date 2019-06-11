@@ -49,7 +49,7 @@ void InterfacePCD8544<I>::spiDataMode(uint8_t mode)
 {
     if ( m_dc >= 0 )
     {
-        digitalWrite( m_dc, mode ? HIGH : LOW );
+        lcd_gpioWrite( m_dc, mode ? LCD_HIGH : LCD_LOW );
     }
 }
 

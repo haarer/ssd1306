@@ -44,9 +44,9 @@ void lcd_gpioWrite(int pin, int level)
 
 void lcd_gpioMode(int pin, int mode)
 {
-    if (mode == INPUT)
+    if (mode == LCD_GPIO_INPUT)
         gpio_set_direction(static_cast<gpio_num_t>(pin), GPIO_MODE_INPUT);
-    else if (mode == OUTPUT)
+    else if (mode == LCD_GPIO_OUTPUT)
         gpio_set_direction(static_cast<gpio_num_t>(pin), GPIO_MODE_OUTPUT);
 }
 

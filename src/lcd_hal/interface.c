@@ -40,7 +40,7 @@ void ssd1306_spiDataMode(uint8_t mode)
 {
     if (s_ssd1306_dc)
     {
-        digitalWrite(s_ssd1306_dc, mode ? HIGH : LOW);
+        lcd_gpioWrite(s_ssd1306_dc, mode ? LCD_HIGH : LCD_LOW);
     }
 }
 

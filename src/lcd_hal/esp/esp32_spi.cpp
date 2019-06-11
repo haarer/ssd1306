@@ -54,8 +54,8 @@ void EspSpi::begin()
     {
         m_cs = m_busId ? 5 : 15;
     }
-    if (m_cs >=0) pinMode( m_cs, OUTPUT );
-    if (m_dc >= 0) pinMode( m_dc, OUTPUT );
+    if (m_cs >=0) lcd_gpioMode( m_cs, LCD_GPIO_OUTPUT );
+    if (m_dc >= 0) lcd_gpioMode( m_dc, LCD_GPIO_OUTPUT );
 
     // init your interface here
     spi_bus_config_t buscfg{};

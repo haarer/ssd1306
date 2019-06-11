@@ -129,7 +129,7 @@ public:
      *
      * @note This API can be used only with ssd1331 RGB oled displays
      * @note after copy command is sent, it takes some time from oled
-     *       controller to complete operation. So, it is HIGHLY recommended
+     *       controller to complete operation. So, it is highly recommended
      *       to wait for reasonable time before send other graphics operations
      *       (for example, use 250us delay). This time is required for
      *       oled display to become ready to accept new commands.

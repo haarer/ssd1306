@@ -29,13 +29,13 @@ void ssd1306_resetController2(int8_t rstPin, uint8_t delayMs)
 {
     if ( rstPin >= 0 )
     {
-        pinMode(rstPin, OUTPUT);
-        digitalWrite(rstPin, HIGH);
+        lcd_gpioMode(rstPin, LCD_GPIO_OUTPUT);
+        lcd_gpioWrite(rstPin, LCD_HIGH);
         /* Wait at least 10ms after VCC is up for LCD */
-        delay(10);
+        lcd_delay(10);
         /* Perform reset operation of LCD display */
-        digitalWrite(rstPin, LOW);
-        delay(delayMs);
-        digitalWrite(rstPin, HIGH);
+        lcd_gpioWrite(rstPin, LCD_LOW);
+        lcd_delay(delayMs);
+        lcd_gpioWrite(rstPin, LCD_HIGH);
     }
 }

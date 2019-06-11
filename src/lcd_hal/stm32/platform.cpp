@@ -127,7 +127,7 @@ void ssd1306_platform_spiInit(int8_t busId,
 
 int  lcd_gpioRead(int pin)
 {
-    return LOW;
+    return LCD_LOW;
 }
 
 void lcd_gpioWrite(int pin, int level)
@@ -153,11 +153,11 @@ uint32_t lcd_micros(void)
     return 0;
 };
 
-void lcd_delay(uint32_t ms)
+void lcd_delay(unsigned long ms)
 {
 }
 
-void lcd_delayUs(uint32_t us)
+void lcd_delayUs(unsigned long us)
 {
 }
 

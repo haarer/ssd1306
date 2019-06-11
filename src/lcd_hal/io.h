@@ -29,8 +29,6 @@
 #ifndef _LCD_HAL_IO_H_
 #define _LCD_HAL_IO_H_
 
-// ARDUINO_COMPAT
-
 /**
  * @defgroup SSD1306_HAL_API HAL: ssd1306 library hardware abstraction layer
  * @{

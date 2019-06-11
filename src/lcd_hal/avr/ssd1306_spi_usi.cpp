@@ -49,10 +49,10 @@ void UsiSpi::begin()
 {
     if ( m_cs >=0 )
     {
-        pinMode( m_cs, OUTPUT );
-        digitalWrite( m_cs, HIGH );
+        lcd_gpioMode( m_cs, LCD_GPIO_OUTPUT );
+        lcd_gpioWrite( m_cs, LCD_HIGH );
     }
-    if ( m_dc >= 0) pinMode( m_dc, OUTPUT );
+    if ( m_dc >= 0) lcd_gpioMode( m_dc, LCD_GPIO_OUTPUT );
     DDR_SPI |= (1<<DD_DO); // as output (DO) - data out
     DDR_SPI |= (1<<DD_SCK); // as output (USISCK) - clock
     /* DI pin is still used by USI, although ssd1306 library doesn't need it */
@@ -68,7 +68,7 @@ void UsiSpi::start()
 {
     if ( m_cs >= 0)
     {
-        digitalWrite( m_cs, LOW );
+        lcd_gpioWrite( m_cs, LCD_LOW );
     }
     USICR = (0<<USIWM1) | (1<<USIWM0) |
             (1<<USICS1) | (0<<USICS0) | (1<<USICLK);
@@ -78,7 +78,7 @@ void UsiSpi::stop()
 {
     if ( m_cs >= 0)
     {
-        digitalWrite( m_cs, HIGH);
+        lcd_gpioWrite( m_cs, LCD_HIGH);
     }
 //    NOT TODO:
 //    USICR &= ~((1<<USIWM1) | (1<<USIWM0));

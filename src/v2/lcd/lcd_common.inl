@@ -39,7 +39,7 @@ void _configureSpiDisplay(I& intf, const uint8_t *config, uint8_t configSize)
             if ( command == CMD_DELAY )
             {
                 command = 1;
-                delay( data == 0xFF ? 500: data );
+                lcd_delay( data == 0xFF ? 500: data );
             }
             else
             {

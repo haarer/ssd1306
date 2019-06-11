@@ -79,7 +79,7 @@ static const uint8_t PROGMEM s_ssd1306_oled128x32_initData[] =
 template <class I>
 void InterfaceSSD1306<I>::spiDataMode(uint8_t mode)
 {
-    digitalWrite( m_dc, mode ? HIGH : LOW);
+    lcd_gpioWrite( m_dc, mode ? LCD_HIGH : LCD_LOW);
 }
 
 template <class I>

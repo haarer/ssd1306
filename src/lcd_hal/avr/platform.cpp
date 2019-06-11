@@ -63,15 +63,15 @@ void lcd_gpioWrite(int pin, int level)
     uint8_t mask = (1<<(pin & 0x7));
     if (pin<8)
     {
-        if (level == HIGH) G0_PORT |= mask; else G0_PORT &= ~mask;
+        if (level == LCD_HIGH) G0_PORT |= mask; else G0_PORT &= ~mask;
     }
     else if (pin<16)
     {
-        if (level == HIGH) G1_PORT |= mask; else G1_PORT &= ~mask;
+        if (level == LCD_HIGH) G1_PORT |= mask; else G1_PORT &= ~mask;
     }
     else
     {
-        if (level == HIGH) G2_PORT |= mask; else G2_PORT &= ~mask;
+        if (level == LCD_HIGH) G2_PORT |= mask; else G2_PORT &= ~mask;
     }
 }
 
@@ -80,22 +80,22 @@ void lcd_gpioMode(int pin, int mode)
     uint8_t mask = (1<<(pin & 0x7));
     if (pin<8)
     {
-        if (mode == OUTPUT) G0_DIR |= mask; else G0_DIR &= ~mask;
+        if (mode == LCD_GPIO_OUTPUT) G0_DIR |= mask; else G0_DIR &= ~mask;
     }
     else if (pin<16)
     {
-        if (mode == OUTPUT) G1_DIR |= mask; else G1_DIR &= ~mask;
+        if (mode == LCD_GPIO_OUTPUT) G1_DIR |= mask; else G1_DIR &= ~mask;
     }
     else
     {
-        if (mode == OUTPUT) G2_DIR |= mask; else G2_DIR &= ~mask;
+        if (mode == LCD_GPIO_OUTPUT) G2_DIR |= mask; else G2_DIR &= ~mask;
     }
 }
 
 int  lcd_gpioRead(int pin)
 {
     // TODO: Not implemented
-    return LOW;
+    return LCD_LOW;
 }
 
 int  lcd_adcRead(int pin)

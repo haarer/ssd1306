@@ -64,7 +64,7 @@ void ArduinoSpi::start()
     SPI.beginTransaction(SPISettings(m_frequency, MSBFIRST, SPI_MODE0));
     if (m_cs >= 0)
     {
-        digitalWrite(m_cs,LOW);
+        lcd_gpioWrite(m_cs,LCD_LOW);
     }
 }
 
@@ -72,7 +72,7 @@ void ArduinoSpi::stop()
 {
     if (m_cs >= 0)
     {
-        digitalWrite(m_cs, HIGH);
+        lcd_gpioWrite(m_cs, LCD_HIGH);
     }
     SPI.endTransaction();
 }
