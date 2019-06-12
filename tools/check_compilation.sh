@@ -6,9 +6,14 @@ if [ "$1" = "" ]; then
     exit 1
 fi
 
+platforms=$1
+if [ "$1" = "all" ]; then
+    platforms="arduino avr linux"
+fi
+
 # set -x
 
-for platform in $1
+for platform in $platforms
 do
 
     rm -rf ../bld
