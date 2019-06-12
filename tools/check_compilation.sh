@@ -7,17 +7,20 @@ if [ "$1" = "" ]; then
 fi
 
 # set -x
-rm -rf ../bld
 
-for topdir in `cd ../examples && ls -d */*/`
+for platform in $1
 do
-    example=${topdir%?}
-    ./build_and_run.sh -p $1 $2 $example
-    if [ $? -ne 0 ]; then
-        echo "ERROR"
-        exit 1
-    fi
+
+    rm -rf ../bld
+    for topdir in `cd ../examples && ls -d */*/`
+    do
+        example=${topdir%?}
+        ./build_and_run.sh -p $platform $2 $example
+        if [ $? -ne 0 ]; then
+            echo "ERROR"
+            exit 1
+        fi
+    done
+
 done
-
-
 

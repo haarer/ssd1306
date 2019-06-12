@@ -27,7 +27,6 @@ extra_args=
 mcu=
 flash_target=
 
-
 print_help_and_exit()
 {
     echo "Usage: ./build_and_run.sh [options] example [add_build_opts]"
@@ -83,4 +82,4 @@ if [ "$mcu" != "" ]; then
     extra_args="MCU=$mcu $extra_args"
 fi
 
-make -C ../examples -f Makefile.${platform} PROJECT=${project} ${extra_args} ${flash_target} $@
+PATH=~/arduino-1.8.5:$PATH make -C ../examples -f Makefile.${platform} PROJECT=${project} ${extra_args} ${flash_target} $@
