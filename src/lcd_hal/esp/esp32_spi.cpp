@@ -70,6 +70,11 @@ void EspSpi::begin()
 
 void EspSpi::end()
 {
+    if ( !m_first_spi_session )
+    {
+        spi_bus_remove_device( m_spi );
+    }
+    spi_bus_free( m_busId ? VSPI_HOST : HSPI_HOST );
 }
 
 void EspSpi::start()
@@ -89,11 +94,6 @@ void EspSpi::start()
 
 void EspSpi::stop()
 {
-    if ( !m_first_spi_session )
-    {
-        spi_bus_remove_device( m_spi );
-    }
-    spi_bus_free( m_busId ? VSPI_HOST : HSPI_HOST );
 }
 
 void EspSpi::send(uint8_t data)

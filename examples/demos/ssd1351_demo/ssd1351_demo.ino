@@ -33,6 +33,7 @@
 #include "owl.h"
 
 DisplaySSD1351_128x128_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
+//DisplaySSD1351_128x128_SPI display(22,{-1, 5, 21, 0,-1,-1}); // Use this line for ESP32 (VSPI)  (gpio22=RST, gpio5=CE for VSPI, gpio21=D/C
 
 /*
  * Heart image below is defined directly in flash memory.
@@ -188,7 +189,6 @@ void setup()
 //    ssd1351_128x128_spi_init(3, 4, 5);
 //    ssd1351_128x128_spi_init(24, 0, 23); // Use this line for Raspberry  (gpio24=RST, 0=CE, gpio23=D/C)
 //    ssd1351_128x128_spi_init(3, -1, 4);  // Use this line for ATTINY
-//    ssd1351_128x128_spi_init(22, 5, 21); // Use this line for ESP32 (VSPI)  (gpio22=RST, gpio5=CE for VSPI, gpio21=D/C)
 
     display.fill( 0x0000 );
     display.createMenu( &menu, menuItems, sizeof(menuItems) / sizeof(char *) );
