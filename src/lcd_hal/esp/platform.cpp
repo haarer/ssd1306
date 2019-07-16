@@ -29,8 +29,28 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
+#include <map>
 
 #if 1
+
+typedef struct
+{
+    void (*on_pin_change)(void *);
+    void *arg;
+} SPinEvent;
+
+static std::map<int, SPinEvent> s_events;
+
+void ssd1306_registerPinEvent(int pin, void (*on_pin_change)(void *), void * arg)
+{
+    s_events[pin].arg = arg;
+    s_events[pin].on_pin_change = on_pin_change;
+}
+
+void ssd1306_unregisterPinEvent(int pin)
+{
+    s_events.erase( pin );
+}
 
 int  lcd_gpioRead(int pin)
 {
@@ -39,6 +59,10 @@ int  lcd_gpioRead(int pin)
 
 void lcd_gpioWrite(int pin, int level)
 {
+    if (s_events.find(pin) != s_events.end())
+    {
+        s_events[pin].on_pin_change( s_events[pin].arg );
+    }
     gpio_set_level(static_cast<gpio_num_t>(pin), level);
 }
 

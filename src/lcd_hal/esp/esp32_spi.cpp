@@ -66,6 +66,8 @@ void EspSpi::begin()
     buscfg.quadhd_io_num = -1;
     buscfg.max_transfer_sz = 32;
     spi_bus_initialize( m_busId ? VSPI_HOST : HSPI_HOST, &buscfg, 0 ); // 0 -no dma
+    // THIS IS HACK TO GET NOTIFICATIONS ON DC PIN CHANGE
+    ssd1306_registerPinEvent(m_dc, OnDcChange, this);
 }
 
 void EspSpi::end()
@@ -94,18 +96,52 @@ void EspSpi::start()
 
 void EspSpi::stop()
 {
+    forceSpiTransfer();
 }
 
 void EspSpi::send(uint8_t data)
 {
+    m_buffer[m_data_size] = data;
+    m_data_size++;
+    if ( m_data_size == sizeof(m_buffer) )
+    {
+        forceSpiTransfer();
+    }
     // ... Send byte to spi communication channel
     // We do not care here about DC line state, because
     // ssd1306 library already set DC pin via ssd1306_spiDataMode() before call to send().
-    spi_transaction_t t;
-    memset(&t, 0, sizeof(t));
-    t.length = 8;          // 8 bits
-    t.tx_buffer=&data;
-    spi_device_transmit(m_spi, &t);  // Transmit!
+//    spi_transaction_t t;
+//    memset(&t, 0, sizeof(t));
+//    t.length = 8;          // 8 bits
+//    t.tx_buffer=&data;
+//    spi_device_transmit(m_spi, &t);  // Transmit!
+}
+
+void EspSpi::forceSpiTransfer()
+{
+    if ( !m_data_size )
+    {
+        return;
+    }
+    uint8_t *buffer = m_buffer;
+    while ( m_data_size )
+    {
+        size_t sz = m_data_size > 32 ? 32: m_data_size;
+        spi_transaction_t t;
+        memset(&t, 0, sizeof(t));
+        t.length=8*sz;          // 8 bits
+        t.tx_buffer=buffer;
+        spi_device_transmit(m_spi, &t);
+        buffer += sz;
+        m_data_size-=sz;
+    }
+    m_data_size = 0;
+}
+
+void EspSpi::OnDcChange(void *arg)
+{
+    EspSpi *obj = reinterpret_cast<EspSpi*>(arg);
+    obj->forceSpiTransfer();
 }
 
 void EspSpi::sendBuffer(const uint8_t *buffer, uint16_t size)
@@ -113,14 +149,9 @@ void EspSpi::sendBuffer(const uint8_t *buffer, uint16_t size)
     // ... Send len bytes to spi communication channel here
     while (size)
     {
-        size_t sz = size > 32 ? 32: size;
-        spi_transaction_t t;
-        memset(&t, 0, sizeof(t));
-        t.length=8*sz;          // 8 bits
-        t.tx_buffer=buffer;
-        spi_device_transmit(m_spi, &t);
-        buffer+=sz;
-        size-=sz;
+        send(*buffer);
+        size--;
+        buffer++;
     }
 }
 

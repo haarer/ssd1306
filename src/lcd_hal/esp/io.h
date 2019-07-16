@@ -41,5 +41,10 @@
 /** The macro is defined when ESP32 spi implementation is available */
 #define CONFIG_ESP32_SPI_AVAILABLE
 
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
+void ssd1306_registerPinEvent(int pin, void (*on_pin_change)(void *), void *arg);
+void ssd1306_unregisterPinEvent(int pin);
+#endif
+
 #endif
 
