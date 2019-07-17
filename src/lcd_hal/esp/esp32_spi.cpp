@@ -126,7 +126,7 @@ void EspSpi::forceSpiTransfer()
     uint8_t *buffer = m_buffer;
     while ( m_data_size )
     {
-        size_t sz = m_data_size > 32 ? 32: m_data_size;
+        size_t sz = m_data_size > 64 ? 64: m_data_size;
         spi_transaction_t t;
         memset(&t, 0, sizeof(t));
         t.length=8*sz;          // 8 bits

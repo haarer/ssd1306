@@ -93,7 +93,7 @@ private:
     bool m_first_spi_session;
     uint32_t m_frequency;
     spi_device_handle_t m_spi;
-    uint8_t m_buffer[32];
+    uint8_t m_buffer[64];
     uint16_t m_data_size = 0;
 
     void forceSpiTransfer();
