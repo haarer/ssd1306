@@ -46,6 +46,15 @@
 /** Macro to generate 8-bit color for SSD1331 OLED display */
 #define RGB_COLOR8(r,g,b)    ( (r & 0xE0) | ((g >> 3)&0x1C) | (b>>6) )
 
+/** Macro to generate 4-bit color for 4-bit monochrome displays */
+#define MONO_COLOR4(gray)    ( ((gray >> 4) & 0x0F) | (gray & 0xF0) )
+
+/** Macro to generate 4-bit color for 4-bit monochrome displays from RGB */
+#define RGB_COLOR4(r,g,b)    ( (r >> 2) + (g >> 1) + (b >> 2) )
+
+/** Macro to convert 8-bit RGB to 4-bit monochrome format */
+#define RGB8_TO_GRAY4(rgb)  ( (rgb >> 6) + ((rgb >> 2) & 0x07) + (rgb & 0x03) )
+
 /** Macro to generate 16-bit color for SSD1351 OLED display */
 #define RGB_COLOR16(r,g,b)   ( ((r<<8) & 0xF800) | ((g << 3)&0x07E0) | (b>>3) )
 

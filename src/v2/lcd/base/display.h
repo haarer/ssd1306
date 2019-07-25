@@ -272,6 +272,199 @@ protected:
 };
 
 /**
+ * NanoDisplayOps4 is template class for 4-bit monochrome operations.
+ */
+template <class I>
+class NanoDisplayOps4: public NanoDisplayBase<I>
+{
+public:
+    /** number of bits per single pixel in buffer */
+    static const uint8_t BITS_PER_PIXEL = 4;
+
+    using NanoDisplayBase<I>::NanoDisplayBase;
+
+    /**
+     * Draws pixel on specified position
+     * @param x - position X
+     * @param y - position Y
+     * @note color can be set via setColor()
+     */
+    void putPixel(lcdint_t x, lcdint_t y) __attribute__ ((noinline));
+
+    /**
+     * Draws horizontal or vertical line
+     * @param x1 - position X
+     * @param y1 - position Y
+     * @param y2 - position Y
+     * @note color can be set via setColor()
+     */
+    void drawVLine(lcdint_t x1, lcdint_t y1, lcdint_t y2);
+
+    /**
+     * Draws horizontal or vertical line
+     * @param x1 - position X
+     * @param y1 - position Y
+     * @param x2 - position X
+     * @note color can be set via setColor()
+     */
+    void drawHLine(lcdint_t x1, lcdint_t y1, lcdint_t x2);
+
+    /**
+     * Fills rectangle area
+     * @param x1 - position X
+     * @param y1 - position Y
+     * @param x2 - position X
+     * @param y2 - position Y
+     * @note color can be set via setColor()
+     */
+    void fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2) __attribute__((noinline));
+
+    /**
+     * Draws bitmap, located in Flash, on the display
+     * The bitmap should be in XBMP format
+     *
+     * @param x - horizontal position in pixels
+     * @param y - vertical position in blocks (pixels/8)
+     * @param w - width of bitmap in pixels
+     * @param h - height of bitmap in pixels (must be divided by 8)
+     * @param bitmap - pointer to data, located in Flash: each byte represents 8 vertical pixels.
+     */
+    void drawXBitmap(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+
+    /**
+     * @brief Draws monochrome bitmap in color buffer using color, specified via setColor() method
+     * Draws monochrome bitmap in color buffer using color, specified via setColor() method
+     * @param x - position X in pixels
+     * @param y - position Y in pixels
+     * @param w - width in pixels
+     * @param h - height in pixels
+     * @param bitmap - monochrome bitmap data, located in flash
+     *
+     * @note There are 2 modes: transparent and non-transparent mode, - and 2 colors available: black and white.
+     *       In non-transparent mode, when black color is selected, the monochrome image just inverted.
+     *       In transparent mode, those pixels of source monochrome image, which are black, do not overwrite pixels
+     *       in the screen buffer.
+     */
+    void drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap) __attribute__ ((noinline));
+
+    /**
+     * @brief Draws 8-bit color bitmap in color buffer.
+     * Draws 8-bit color bitmap in color buffer.
+     * @param x - position X in pixels
+     * @param y - position Y in pixels
+     * @param w - width in pixels
+     * @param h - height in pixels
+     * @param bitmap - 8-bit color bitmap data, located in flash
+     */
+    void drawBitmap8(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+
+    /**
+     * Draw 16-bit color bitmap, located in Flash, directly to OLED display GDRAM.
+     * Each pixel of the bitmap is expected in 5-6-5 format.
+     *
+     * @param xpos start horizontal position in pixels
+     * @param ypos start vertical position in pixels
+     * @param w bitmap width in pixels
+     * @param h bitmap height in pixels
+     * @param bitmap pointer to Flash data, containing 16-bit color bitmap.
+     */
+    void drawBitmap16(lcdint_t xpos, lcdint_t ypos, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+
+    /**
+     * Draws bitmap, located in RAM, on the display
+     * Each byte represents 8 vertical pixels.
+     *
+     * ~~~~~~~~~~~~~~~{.cpp}
+     * // Draw small rectangle 3x8 at position 10,8
+     * uint8_t buffer[3] = { 0xFF, 0x81, 0xFF };
+     * display.drawBuffer1(10, 1, 3, 8, buffer);
+     * ~~~~~~~~~~~~~~~
+     *
+     * @param x horizontal position in pixels
+     * @param y vertical position in pixels
+     * @param w width of bitmap in pixels
+     * @param h height of bitmap in pixels (must be divided by 8)
+     * @param buffer pointer to data, located in SRAM: each byte represents 8 vertical pixels.
+     */
+    void drawBuffer1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
+
+    /**
+     * Implements the same behavior as drawBuffer1, but much faster. This method has some limitations
+     *
+     * @param x horizontal position in pixels
+     * @param y vertical position in pixels
+     * @param w width of bitmap in pixels
+     * @param h height of bitmap in pixels (must be divided by 8)
+     * @param buffer pointer to data, located in SRAM: each byte represents 8 vertical pixels.
+     */
+    void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+
+    /**
+     * Draws 8-bit bitmap, located in RAM, on the display
+     * Each byte represents one pixel in 2-2-3 format:
+     * refer to RGB_COLOR8 to understand RGB scheme, being used.
+     *
+     * @param x horizontal position in pixels
+     * @param y vertical position in pixels
+     * @param w width of bitmap in pixels
+     * @param h height of bitmap in pixels
+     * @param buffer pointer to data, located in SRAM.
+     */
+    void drawBuffer8(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+
+    /**
+     * Draws 16-bit bitmap, located in RAM, on the display
+     * Each pixel occupies 2 bytes (5-6-5 format): refer to RGB_COLOR16 to understand RGB scheme, being used.
+     *
+     * @param xpos horizontal position in pixels
+     * @param ypos vertical position in pixels
+     * @param w width of bitmap in pixels
+     * @param h height of bitmap in pixels
+     * @param buffer pointer to data, located in RAM.
+     */
+    void drawBuffer16(lcdint_t xpos, lcdint_t ypos, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
+
+    /**
+     * Clears canvas
+     */
+    void clear();
+
+    /**
+     * Fill screen content with specified color
+     *
+     * @param color color to fill display with
+     */
+    void fill(uint16_t color);
+
+    /**
+     * Draws single character to canvas
+     * @param c - character code to print
+     * @returns 0 if char is not printed
+     */
+    uint8_t printChar(uint8_t c);
+
+    /**
+     * Writes single character to canvas
+     * @param c - character code to print
+     */
+    size_t write(uint8_t c) __attribute__ ((noinline));
+
+    /**
+     * Print text at specified position to canvas
+     *
+     * @param xpos  position in pixels
+     * @param y     position in pixels
+     * @param ch    pointer to NULL-terminated string.
+     * @param style specific font style to use
+     *
+     * @note Supports only STYLE_NORMAL and STYLE_BOLD
+     */
+    void printFixed(lcdint_t xpos, lcdint_t y, const char *ch, EFontStyle style = STYLE_NORMAL) __attribute__ ((noinline));
+
+protected:
+};
+
+/**
  * NanoDisplayOps8 is template class for 8-bit operations.
  */
 template <class I>
@@ -865,6 +1058,7 @@ protected:
 };
 
 #include "ssd1306_1bit.inl"
+#include "ssd1306_4bit.inl"
 #include "ssd1306_8bit.inl"
 #include "ssd1306_16bit.inl"
 #include "ssd1306_common.inl"
