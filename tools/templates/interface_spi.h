@@ -57,6 +57,12 @@ public:
      */
     void spiDataMode(uint8_t mode);
 
+    /**
+     * Starts communication with LCD display in command mode.
+     * To stop communication use m_intf.end().
+     */
+    void commandStart();
+
 private:
     const int8_t m_dc = -1; ///< data/command pin for SPI, -1 for i2c
     NanoDisplayBase<Interface~CONTROLLER~<I>> &m_base; ///< basic lcd display support interface

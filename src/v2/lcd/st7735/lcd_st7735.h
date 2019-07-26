@@ -97,6 +97,12 @@ public:
     void spiDataMode(uint8_t mode);
 
     /**
+     * Starts communication with LCD display in command mode.
+     * To stop communication use m_intf.end().
+     */
+    void commandStart();
+
+    /**
      * @brief Sets screen orientation (rotation)
      *
      * Sets screen orientation (rotation): 0 - normal, 1 - 90 CW, 2 - 180 CW, 3 - 270 CW

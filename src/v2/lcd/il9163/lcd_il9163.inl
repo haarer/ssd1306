@@ -81,6 +81,13 @@ void InterfaceIL9163<I>::spiDataMode(uint8_t mode)
 }
 
 template <class I>
+void InterfaceIL9163<I>::commandStart()
+{
+    this->start();
+    spiDataMode(0);
+}
+
+template <class I>
 void InterfaceIL9163<I>::setRotation(uint8_t rotation)
 {
     uint8_t ram_mode;

@@ -33,8 +33,8 @@ def print_help_and_exit():
     print "Usage: lcd_code_generator.py [args]"
     print "args:"
     print "      -c name   controller name"
-    print "      -r WxH    resolution"
     print "      -b bits   bits per pixel"
+    print "      -r WxH    resolution"
     print "      -t template path source templates, templates by default"
     exit(1)
 
@@ -52,6 +52,7 @@ g_height=""
 types=[]
 controller=""
 templates="templates"
+resolution_db = []
 
 # parse args
 idx = 1
@@ -63,13 +64,15 @@ while idx < len(sys.argv):
     elif opt == "-b":
         idx += 1
         bits = int(sys.argv[idx])
-        types.append({"bits": bits, "resolution": []})
+        types.append({"bits": bits, "resolution": resolution_db})
+        resolution_db = []
     elif opt == "-t":
         idx += 1
         templates = sys.argv[idx]
     elif opt == "-r":
         idx += 1
         resolution = sys.argv[idx]
+        resolution_db.append( resolution )
         for t in types:
             t["resolution"].append( resolution )
     else:
@@ -108,7 +111,6 @@ cpp.write( get_file_data('header.cpp') )
 
 header.write( get_file_data('interface_spi.h') )
 inl.write( get_file_data('interface_spi.inl') )
-
 
 for t in types:
     g_bits = str(t["bits"])

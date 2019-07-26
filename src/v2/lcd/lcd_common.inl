@@ -29,8 +29,7 @@ void _configureSpiDisplay(I& intf, const uint8_t *config, uint8_t configSize)
 {
     uint8_t command = 1;
     int8_t args;
-    intf.start();
-    intf.spiDataMode(0);
+    intf.commandStart();
     for( uint8_t i=0; i<configSize; i++)
     {
         uint8_t data = pgm_read_byte(&config[i]);
