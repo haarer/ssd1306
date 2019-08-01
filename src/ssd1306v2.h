@@ -29,10 +29,10 @@
 #define _SSD1306_H_
 
 #include "nano_gfx_types.h"
-#include "fonts/ssd1306_fonts.h"
+#include "canvas/fonts/fonts.h"
 
 #ifdef __cplusplus
-#include "v2/canvas/canvas.h"
+#include "canvas/canvas.h"
 #include "nano_engine_v2.h"
 
 #include "v2/lcd/pcd8544/lcd_pcd8544.h"

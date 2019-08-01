@@ -27,20 +27,17 @@
  * @brief Canvas implementation, based on Adafruit GFX.
  *
  * @details If you like canvas implementation by Adafruit, you can easily use it with
- *          ssd1306 library, including NanoEngine support. You will be able to use
+ *          the library, including NanoEngine support. You will be able to use
  *          all features of AdafruitGFX, and output result to any OLED display, supported
- *          by ssd1306 library. If you want to use this feature, define CONFIG_ADAFRUIT_GFX_ENABLE
+ *          by the library. If you want to use this feature, define CONFIG_ADAFRUIT_GFX_ENABLE
  *          in the beginning of your sketch, and include "nano_engine.h" header.
  */
-#ifndef _SSD1306_ADAFRUIT_H_
-#define _SSD1306_ADAFRUIT_H_
+#pragma once
 
 #include "lcd_hal/io.h"
 
 #if defined(CONFIG_ADAFRUIT_GFX_ENABLE)
 
-#include "ssd1306v2.h"
-#include "lcd_hal/Print_internal.h"
 #include "nano_gfx_types.h"
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
@@ -64,7 +61,7 @@
 /**
  * This is basic template class for all canvas classes,
  * based on Adafruit_GFX. This base class provides functionality
- * compatible with native NanoCanvas implementation of ssd1306
+ * compatible with native NanoCanvas implementation of the
  * library
  */
 template <uint8_t BPP>
@@ -128,7 +125,7 @@ private:
     {
         switch (getRotation()) {
         case 1:
-            ssd1306_swap_data(x, y, int16_t);
+            canvas_swap_data(x, y, int16_t);
             x = WIDTH - x - 1;
             break;
         case 2:
@@ -136,7 +133,7 @@ private:
             y = HEIGHT - y - 1;
             break;
         case 3:
-            ssd1306_swap_data(x, y, int16_t);
+            canvas_swap_data(x, y, int16_t);
             y = HEIGHT - y - 1;
             break;
         }
@@ -175,30 +172,11 @@ public:
 /**
  * AdafruitCanvas1 represents objects for drawing in memory buffer
  * AdafruitCanvas1 represents each pixel as single bit: 0/1
- * For details refer to SSD1306 datasheet
  */
 class AdafruitCanvas1 : public AdafruitCanvasBase<1>
 {
 public:
     using AdafruitCanvasBase::AdafruitCanvasBase;
-
-    /**
-     * Draws canvas on the LCD display
-     * @param x - horizontal position in pixels
-     * @param y - vertical position in pixels
-     */
-    void blt(lcdint_t x, lcdint_t y) override
-    {
-        ssd1306_drawBufferFast(x, y, WIDTH, HEIGHT, m_buffer);
-    }
-
-    /**
-     * Draws canvas on the LCD display using offset values.
-     */
-    void blt() override
-    {
-        ssd1306_drawBufferFast(offset.x, offset.y, WIDTH, HEIGHT, m_buffer);
-    }
 };
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
@@ -237,24 +215,6 @@ class AdafruitCanvas8 : public AdafruitCanvasBase<8>
 {
 public:
     using AdafruitCanvasBase::AdafruitCanvasBase;
-
-    /**
-     * Draws canvas on the LCD display
-     * @param x - horizontal position in pixels
-     * @param y - vertical position in pixels
-     */
-    void blt(lcdint_t x, lcdint_t y) override
-    {
-        ssd1306_drawBufferFast8(x, y, WIDTH, HEIGHT, m_buffer);
-    }
-
-    /**
-     * Draws canvas on the LCD display using offset values.
-     */
-    void blt() override
-    {
-        ssd1306_drawBufferFast8(offset.x, offset.y, WIDTH, HEIGHT, m_buffer);
-    }
 };
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
@@ -289,24 +249,6 @@ class AdafruitCanvas16 : public AdafruitCanvasBase<16>
 {
 public:
     using AdafruitCanvasBase::AdafruitCanvasBase;
-
-    /**
-     * Draws canvas on the LCD display
-     * @param x - horizontal position in pixels
-     * @param y - vertical position in pixels
-     */
-    void blt(lcdint_t x, lcdint_t y) override
-    {
-        ssd1306_drawBufferFast16(x, y, WIDTH, HEIGHT, m_buffer);
-    }
-
-    /**
-     * Draws canvas on the LCD display using offset values.
-     */
-    void blt() override
-    {
-        ssd1306_drawBufferFast16(offset.x, offset.y, WIDTH, HEIGHT, m_buffer);
-    }
 };
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
@@ -332,4 +274,3 @@ void AdafruitCanvasOps<16>::drawPixel(int16_t x, int16_t y, uint16_t color)
 
 #endif // CONFIG_ADAFRUIT_GFX_ENABLE
 
-#endif

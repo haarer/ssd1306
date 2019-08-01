@@ -36,7 +36,7 @@
  *
  */
 
-#include "ssd1306_fonts.h"
+#include "canvas/fonts/fonts.h"
 
 /* Standard ASCII 6x8 font */
 const PROGMEM uint8_t ssd1306xled_font6x8 []=

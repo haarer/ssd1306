@@ -23,6 +23,8 @@
 */
 
 #include "canvas.h"
+#include "canvas/internal/canvas_types.h"
+#include <string.h>
 
 /////////////////////////////////////////////////////////////////////////////////
 //
@@ -61,8 +63,8 @@ void NanoCanvasOps<BPP>::drawLine(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_
     {
         if (y1 > y2)
         {
-            ssd1306_swap_data(x1, x2, lcdint_t);
-            ssd1306_swap_data(y1, y2, lcdint_t);
+            canvas_swap_data(x1, x2, lcdint_t);
+            canvas_swap_data(y1, y2, lcdint_t);
         }
         for(; y1<=y2; y1++)
         {
@@ -79,8 +81,8 @@ void NanoCanvasOps<BPP>::drawLine(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_
     {
         if (x1 > x2)
         {
-            ssd1306_swap_data(x1, x2, lcdint_t);
-            ssd1306_swap_data(y1, y2, lcdint_t);
+            canvas_swap_data(x1, x2, lcdint_t);
+            canvas_swap_data(y1, y2, lcdint_t);
         }
         for(; x1<=x2; x1++)
         {
@@ -126,9 +128,8 @@ uint8_t NanoCanvasOps<BPP>::printChar(uint8_t c)
     }
     m_textMode = mode;
     m_cursorX += (lcdint_t)(char_info.width + char_info.spacing);
-    if ( ( (m_textMode & CANVAS_TEXT_WRAP_LOCAL) &&
-           (m_cursorX > ((lcdint_t)m_w - (lcdint_t)m_font->getHeader().width) ) )
-       /* TODO: || ( (m_textMode & CANVAS_TEXT_WRAP) && (m_cursorX > ((lcdint_t)ssd1306_lcd.width - (lcdint_t)s_fixedFont.h.width)) )*/ )
+    if ( (m_textMode & CANVAS_TEXT_WRAP_LOCAL) &&
+           (m_cursorX > (lcdint_t)m_w - (lcdint_t)m_font->getHeader().width) )
     {
         m_cursorY += (lcdint_t)m_font->getHeader().height;
         m_cursorX = 0;
@@ -222,7 +223,7 @@ void NanoCanvasOps<1>::putPixel(lcdint_t x, lcdint_t y)
 template <>
 void NanoCanvasOps<1>::drawHLine(lcdint_t x1, lcdint_t y1, lcdint_t x2)
 {
-    if (x2 < x1) ssd1306_swap_data(x2, x1, lcdint_t);
+    if (x2 < x1) canvas_swap_data(x2, x1, lcdint_t);
     x1 -= offset.x;
     x2 -= offset.x;
     y1 -= offset.y;
@@ -245,7 +246,7 @@ void NanoCanvasOps<1>::drawHLine(lcdint_t x1, lcdint_t y1, lcdint_t x2)
 template <>
 void NanoCanvasOps<1>::drawVLine(lcdint_t x1, lcdint_t y1, lcdint_t y2)
 {
-    if (y2 < y1) ssd1306_swap_data(y2, y1, lcdint_t);
+    if (y2 < y1) canvas_swap_data(y2, y1, lcdint_t);
     x1 -= offset.x;
     y1 -= offset.y;
     y2 -= offset.y;
@@ -291,8 +292,8 @@ void NanoCanvasOps<1>::drawVLine(lcdint_t x1, lcdint_t y1, lcdint_t y2)
 template <>
 void NanoCanvasOps<1>::fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2)
 {
-    if (x2 < x1) ssd1306_swap_data(x2, x1, lcdint_t);
-    if (y2 < y1) ssd1306_swap_data(y2, y1, lcdint_t);
+    if (x2 < x1) canvas_swap_data(x2, x1, lcdint_t);
+    if (y2 < y1) canvas_swap_data(y2, y1, lcdint_t);
     x1 -= offset.x;
     x2 -= offset.x;
     y1 -= offset.y;
@@ -454,7 +455,7 @@ void NanoCanvasOps<8>::drawVLine(lcdint_t x1, lcdint_t y1, lcdint_t y2)
     y2 -= offset.y;
     if (y1 > y2)
     {
-        ssd1306_swap_data(y1, y2, lcdint_t);
+        canvas_swap_data(y1, y2, lcdint_t);
     }
     if ((x1 < 0) || (x1 >= (lcdint_t)m_w)) return;
     if ((y2 < 0) || (y1 >= (lcdint_t)m_h)) return;
@@ -477,7 +478,7 @@ void NanoCanvasOps<8>::drawHLine(lcdint_t x1, lcdint_t y1, lcdint_t x2)
     x2 -= offset.x;
     if (x1 > x2)
     {
-        ssd1306_swap_data(x1, x2, lcdint_t);
+        canvas_swap_data(x1, x2, lcdint_t);
     }
     if ((x2 < 0) || (x1 >= (lcdint_t)m_w)) return;
     if ((y1 < 0) || (y1 >= (lcdint_t)m_h)) return;
@@ -496,11 +497,11 @@ void NanoCanvasOps<8>::fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t 
 {
     if (y1 > y2)
     {
-        ssd1306_swap_data(y1, y2, lcdint_t);
+        canvas_swap_data(y1, y2, lcdint_t);
     }
     if (x1 > x2)
     {
-        ssd1306_swap_data(x1, x2, lcdint_t);
+        canvas_swap_data(x1, x2, lcdint_t);
     }
     x1 -= offset.x;
     y1 -= offset.y;
@@ -680,7 +681,7 @@ void NanoCanvasOps<16>::drawVLine(lcdint_t x1, lcdint_t y1, lcdint_t y2)
     y2 -= offset.y;
     if (y1 > y2)
     {
-        ssd1306_swap_data(y1, y2, lcdint_t);
+        canvas_swap_data(y1, y2, lcdint_t);
     }
     if ((x1 < 0) || (x1 >= (lcdint_t)m_w)) return;
     if ((y2 < 0) || (y1 >= (lcdint_t)m_h)) return;
@@ -704,7 +705,7 @@ void NanoCanvasOps<16>::drawHLine(lcdint_t x1, lcdint_t y1, lcdint_t x2)
     x2 -= offset.x;
     if (x1 > x2)
     {
-        ssd1306_swap_data(x1, x2, lcdint_t);
+        canvas_swap_data(x1, x2, lcdint_t);
     }
     if ((x2 < 0) || (x1 >= (lcdint_t)m_w)) return;
     if ((y1 < 0) || (y1 >= (lcdint_t)m_h)) return;
@@ -724,11 +725,11 @@ void NanoCanvasOps<16>::fillRect(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t
 {
     if (y1 > y2)
     {
-        ssd1306_swap_data(y1, y2, lcdint_t);
+        canvas_swap_data(y1, y2, lcdint_t);
     }
     if (x1 > x2)
     {
-        ssd1306_swap_data(x1, x2, lcdint_t);
+        canvas_swap_data(x1, x2, lcdint_t);
     }
     x1 -= offset.x;
     y1 -= offset.y;

@@ -30,9 +30,9 @@
 
 #include "lcd_hal/io.h"
 #include "nano_gfx_types.h"
-#include "v2/canvas/point.h"
-#include "v2/canvas/rect.h"
-#include "v2/canvas/font.h"
+#include "canvas/point.h"
+#include "canvas/rect.h"
+#include "canvas/font.h"
 
 /**
  * @ingroup LCD_GENERIC_API
@@ -152,15 +152,15 @@ public:
      */
     void setFixedFont( const uint8_t *progmemFont )
     {
-        g_ssd1306_font.loadFixedFont( progmemFont );
-        setFont( g_ssd1306_font );
+        g_canvas_font.loadFixedFont( progmemFont );
+        setFont( g_canvas_font );
     }
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
     void setFixedFont_oldStyle( const uint8_t *progmemFont )
     {
-        g_ssd1306_font.loadFixedFont_oldStyle( progmemFont );
-        setFont( g_ssd1306_font );
+        g_canvas_font.loadFixedFont_oldStyle( progmemFont );
+        setFont( g_canvas_font );
     }
 #endif
 
@@ -176,12 +176,12 @@ public:
      */
     void setFixedFont( const uint8_t *progmemFont, const uint8_t *secondaryFont )
     {
-        g_ssd1306_font.loadFixedFont( progmemFont );
+        g_canvas_font.loadFixedFont( progmemFont );
         if ( secondaryFont )
         {
-            g_ssd1306_font.loadSecondaryFont( secondaryFont );
+            g_canvas_font.loadSecondaryFont( secondaryFont );
         }
-        setFont( g_ssd1306_font );
+        setFont( g_canvas_font );
     }
 
     /**
@@ -196,12 +196,12 @@ public:
      */
     void setFreeFont( const uint8_t *progmemFont, const uint8_t *secondaryFont = nullptr )
     {
-        g_ssd1306_font.loadFreeFont( progmemFont );
+        g_canvas_font.loadFreeFont( progmemFont );
         if ( secondaryFont )
         {
-            g_ssd1306_font.loadSecondaryFont( secondaryFont );
+            g_canvas_font.loadSecondaryFont( secondaryFont );
         }
-        setFont( g_ssd1306_font );
+        setFont( g_canvas_font );
     }
 
 protected:

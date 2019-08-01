@@ -29,7 +29,7 @@
 #ifndef _NANO_POINT_H_
 #define _NANO_POINT_H_
 
-#include "lcd_hal/io.h"
+#include "canvas_types.h"
 
 /**
  * @ingroup NANO_ENGINE_API_V2

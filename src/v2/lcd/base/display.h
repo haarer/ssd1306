@@ -28,10 +28,10 @@
 #ifndef _NANO_DISPLAY_H_
 #define _NANO_DISPLAY_H_
 
-#include "v2/canvas/point.h"
-#include "v2/canvas/rect.h"
-#include "v2/canvas/canvas.h"
-#include "v2/canvas/font.h"
+#include "canvas/point.h"
+#include "canvas/rect.h"
+#include "canvas/canvas.h"
+#include "canvas/font.h"
 #include "lcd_hal/io.h"
 #include "nano_gfx_types.h"
 #include "display_base.h"

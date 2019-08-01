@@ -22,14 +22,12 @@
     SOFTWARE.
 */
 /**
- * @file ssd1306_fonts.h Fonts for monochrome/rgb oled display
+ * @file fonts.h Fonts for monochrome/rgb oled display
  */
 
-#ifndef SSD1306_FONTS_H
-#define SSD1306_FONTS_H
+#pragma once
 
-#include "lcd_hal/io.h"
-#include "nano_gfx_types.h"
+#include "canvas/canvas_types.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -97,4 +95,3 @@ extern const PROGMEM uint8_t comic_sans_font24x32_123 [];
 }
 #endif
 
-#endif // SSD1306_FONTS_H

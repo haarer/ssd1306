@@ -29,7 +29,7 @@
 #define _NANO_RECT_H_
 
 #include "point.h"
-#include "lcd_hal/io.h"
+#include "canvas_types.h"
 
 /**
  * @ingroup NANO_ENGINE_API_V2

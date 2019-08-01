@@ -29,9 +29,7 @@
 #define _NANO_GFX_TYPES_H_
 
 #include "lcd_hal/io.h"
-
-/** Flag means that more chars are required to decode utf-8 */
-#define SSD1306_MORE_CHARS_REQUIRED  0xffff
+#include "canvas/canvas_types.h"
 
 #ifndef min
 /** Macros returning minimum of 2 numbers */
@@ -42,103 +40,6 @@
 /** Macros returning maximum of 2 numbers */
 #define max(a,b) ((a)>(b)?(a):(b))
 #endif
-
-/** Macro to generate 8-bit color for SSD1331 OLED display */
-#define RGB_COLOR8(r,g,b)    ( (r & 0xE0) | ((g >> 3)&0x1C) | (b>>6) )
-
-/** Macro to generate 4-bit color for 4-bit monochrome displays */
-#define MONO_COLOR4(gray)    ( ((gray >> 4) & 0x0F) | (gray & 0xF0) )
-
-/** Macro to generate 4-bit color for 4-bit monochrome displays from RGB */
-#define RGB_COLOR4(r,g,b)    ( (r >> 2) + (g >> 1) + (b >> 2) )
-
-/** Macro to convert 8-bit RGB to 4-bit monochrome format */
-#define RGB8_TO_GRAY4(rgb)  ( (rgb >> 6) + ((rgb >> 2) & 0x07) + (rgb & 0x03) )
-
-/** Macro to generate 16-bit color for SSD1351 OLED display */
-#define RGB_COLOR16(r,g,b)   ( ((r<<8) & 0xF800) | ((g << 3)&0x07E0) | (b>>3) )
-
-/** Macro to convert 3-3-2 color to 5-6-5 color */
-#define RGB8_TO_RGB16(c)     ( (((uint16_t)c & 0b11100000) << 8) | \
-                               (((uint16_t)c & 0b00011100) << 6) | \
-                               (((uint16_t)c & 0b00000011) << 3) )
-
-/** Macro to convert 5-6-5 color to 3-3-2 color */
-#define RGB16_TO_RGB8(c)     ( ((uint16_t)(c >> 8) & 0b11100000) | \
-                               ((uint16_t)(c >> 6) & 0b00011100) | \
-                               ((uint16_t)(c >> 3) & 0b00000011) )
-
-/** Pointer type to LCD display initialization function */
-typedef void (*InitFunction)(void);
-
-/** Supported font styles */
-typedef enum
-{
-    STYLE_NORMAL,
-    STYLE_BOLD,
-    STYLE_ITALIC,
-} EFontStyle;
-
-enum
-{
-    CANVAS_MODE_BASIC           = 0x00,
-    /** If the flag is specified, text cursor is moved to new line when end of screen is reached */
-    CANVAS_TEXT_WRAP            = 0x01,
-    /** This flag make bitmaps transparent (Black color) */
-    CANVAS_MODE_TRANSPARENT     = 0x02,
-    /** If the flag is specified, text cursor is moved to new line when end of canvas is reached */
-    CANVAS_TEXT_WRAP_LOCAL      = 0x04,
-};
-
-/** Supported scale font values */
-typedef enum
-{
-    FONT_SIZE_NORMAL = 0,
-    FONT_SIZE_2X     = 1,
-    FONT_SIZE_4X     = 2,
-    FONT_SIZE_8X     = 3,
-} EFontSize;
-
-#pragma pack(push, 1)
-/** Structure describes font format in memory */
-typedef struct
-{
-    uint8_t type;         ///< font type: 0 - Fixed Font
-    uint8_t width;        ///< width in pixels
-    uint8_t height;       ///< height in pixels
-    uint8_t ascii_offset; ///< ascii offset
-} SFontHeaderRecord;
-
-/** Structure describes unicode block in font data */
-typedef struct
-{
-    uint16_t start_code;  ///< unicode start code
-    uint8_t count;        ///< count of unicode chars in block
-} SUnicodeBlockRecord;
-
-#pragma pack(pop)
-
-/** Structure is used for internal font presentation */
-typedef struct
-{
-    SFontHeaderRecord h; ///< record, containing information on font
-    uint8_t count; ///< count of characters
-    uint8_t pages; ///< height in pages (each page height is 8-pixels)
-    uint8_t glyph_size;  ///< glyph size in bytes
-    const uint8_t *primary_table; ///< font chars bits
-#ifdef CONFIG_SSD1306_UNICODE_ENABLE
-    const uint8_t *secondary_table; ///< font chars bits
-#endif
-} SFixedFontInfo;
-
-/** Structure describes single char information */
-typedef struct
-{
-    uint8_t width;      ///< char width in pixels
-    uint8_t height;     ///< char height in pixels
-    uint8_t spacing;      ///< additional spaces after char in pixels
-    const uint8_t *glyph; ///< char data, located in progmem.
-} SCharInfo;
 
 /**
  * Rectangle region. not used now
@@ -271,23 +172,6 @@ typedef struct SPRITE
     };
 #endif
 } SPRITE;
-
-/**
- * Describes menu object
- */
-typedef struct
-{
-    /// list of menu items of the menu
-    const char **items;
-    /// count of menu items in the menu
-    uint8_t     count;
-    /// currently selected item. Internally updated.
-    uint8_t     selection;
-    /// selected item, when last redraw operation was performed. Internally updated.
-    uint8_t     oldSelection;
-    /// position of menu scrolling. Internally updated
-    uint8_t     scrollPosition;
-} SAppMenu;
 
 // ----------------------------------------------------------------------------
 #endif // _NANO_GFX_TYPES_H_
