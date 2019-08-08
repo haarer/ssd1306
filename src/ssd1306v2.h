@@ -38,6 +38,7 @@
 #include "v2/lcd/pcd8544/lcd_pcd8544.h"
 #include "v2/lcd/sh1106/oled_sh1106.h"
 #include "v2/lcd/ssd1306/oled_ssd1306.h"
+#include "v2/lcd/ssd1327/lcd_ssd1327.h"
 #include "v2/lcd/ssd1331/oled_ssd1331.h"
 #include "v2/lcd/ssd1351/oled_ssd1351.h"
 #include "v2/lcd/st7735/lcd_st7735.h"

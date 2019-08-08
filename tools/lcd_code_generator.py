@@ -34,6 +34,7 @@ def print_help_and_exit():
     print "args:"
     print "      -c name   controller name"
     print "      -b bits   bits per pixel"
+    print "      -B        Do not add bits to screen class name"
     print "      -r WxH    resolution"
     print "      -t template path source templates, templates by default"
     exit(1)
@@ -53,6 +54,7 @@ types=[]
 controller=""
 templates="templates"
 resolution_db = []
+no_bits = False
 
 # parse args
 idx = 1
@@ -66,6 +68,8 @@ while idx < len(sys.argv):
         bits = int(sys.argv[idx])
         types.append({"bits": bits, "resolution": resolution_db})
         resolution_db = []
+    elif opt == "-B":
+        no_bits = True
     elif opt == "-t":
         idx += 1
         templates = sys.argv[idx]
@@ -114,7 +118,8 @@ inl.write( get_file_data('interface_spi.inl') )
 
 for t in types:
     g_bits = str(t["bits"])
-    g_exbits = "x" + g_bits
+    if not no_bits:
+        g_exbits = "x" + g_bits
     header.write( get_file_data( 'display.h' ) )
     inl.write( get_file_data( 'display.inl' ) )
     for res in t["resolution"]:

@@ -204,6 +204,12 @@ void NanoDisplayOps8<I>::drawBitmap1(lcdint_t xpos, lcdint_t ypos, lcduint_t w, 
 }
 
 template <class I>
+void NanoDisplayOps8<I>::drawBitmap4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap)
+{
+    // NOT IMPLEMENTED
+}
+
+template <class I>
 void NanoDisplayOps8<I>::drawBitmap8(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap)
 {
     this->m_intf.startBlock(x, y, w);
@@ -258,6 +264,12 @@ template <class I>
 void NanoDisplayOps8<I>::drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buf)
 {
     this->drawBuffer1( x, y, w, h, buf );
+}
+
+template <class I>
+void NanoDisplayOps8<I>::drawBuffer4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer)
+{
+    // NOT IMPLEMENTED
 }
 
 template <class I>

@@ -2,7 +2,7 @@
 static const PROGMEM uint8_t s_~CONTROLLER~_lcd~RESOLUTION~_initData[] =
 {
 #ifdef SDL_EMULATION
-    // TODO: Add SDL_LCD_~CONTROLLER~ enum value to enum list in tools/sdl/sdl_core.h 
+    // TODO: Add SDL_LCD_~CONTROLLER~ enum value to enum list in tools/sdl/sdl_core.h
     SDL_LCD_~CONTROLLER~, 0x00,
     // TODO: Add initialization argument for SDL emulator (display specific)
     0x00, 0x00,

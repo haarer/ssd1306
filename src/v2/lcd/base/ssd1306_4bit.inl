@@ -45,7 +45,7 @@ extern uint8_t s_ssd1306_invertByte;
 
 /////////////////////////////////////////////////////////////////////////////////
 //
-//                             8-BIT GRAPHICS
+//                             4-BIT GRAPHICS
 //
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -72,7 +72,7 @@ void NanoDisplayOps4<I>::drawHLine(lcdint_t x1, lcdint_t y1, lcdint_t x2)
         }
         x1++;
     }
-    if (!(x1 & 1))
+    if (x1 & 1)
     {
         this->m_intf.send( data );
     }
@@ -86,7 +86,7 @@ void NanoDisplayOps4<I>::drawVLine(lcdint_t x1, lcdint_t y1, lcdint_t y2)
     while (y1<=y2)
     {
         this->m_intf.send( (this->m_color & 0x0F) << (4*(x1 & 1)) );
-        y1 += 2;
+        y1++;
     }
     this->m_intf.endBlock();
 }
@@ -116,11 +116,11 @@ template <class I>
 void NanoDisplayOps4<I>::fill(uint16_t color)
 {
     this->m_intf.startBlock(0, 0, 0);
-    uint32_t count = (uint32_t)this->m_w * (uint32_t)this->m_h;
-    while (count > 1)
+    uint32_t count = (uint32_t)this->m_w * (uint32_t)this->m_h / 2;
+    while (count > 0)
     {
         this->m_intf.send( color );
-        count -= 2;
+        count --;
     }
     this->m_intf.endBlock();
 }
@@ -171,6 +171,36 @@ void NanoDisplayOps4<I>::drawBitmap1(lcdint_t xpos, lcdint_t ypos, lcduint_t w, 
         else
         {
             bitmap -= w;
+        }
+    }
+    this->m_intf.endBlock();
+}
+
+template <class I>
+void NanoDisplayOps4<I>::drawBitmap4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap)
+{
+    this->m_intf.startBlock(x, y, w);
+    for (lcdint_t _y = y; _y < y + h; _y++)
+    {
+        uint8_t data = 0;
+        for (lcdint_t _x = x; _x < x + w; _x++)
+        {
+            uint8_t bmp = pgm_read_byte( bitmap );
+            if ( (_x - x) & 1 ) bmp >>=4; else bmp &= 0x0F;
+            data |= bmp << (4 * (_x & 1));
+            if ( (_x - x) & 1 )
+            {
+                bitmap++;
+            }
+            if ( _x & 1 )
+            {
+                this->m_intf.send( data );
+                data = 0;
+            }
+        }
+        if ( (x + w) & 1 )
+        {
+            this->m_intf.send( data );
         }
     }
     this->m_intf.endBlock();
@@ -240,6 +270,34 @@ template <class I>
 void NanoDisplayOps4<I>::drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buf)
 {
     this->drawBuffer1( x, y, w, h, buf );
+}
+
+template <class I>
+void NanoDisplayOps4<I>::drawBuffer4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer)
+{
+    this->m_intf.startBlock(x, y, w);
+    for (lcdint_t _y = y; _y < y + h; y++)
+    {
+        uint8_t data = 0;
+        for (lcdint_t _x = x; _x < x + w; x++)
+        {
+            data |= (*buffer << (4*(_x & 1)));
+            if ( (_x - x) & 1 )
+            {
+                buffer++;
+            }
+            if ( _x & 1 )
+            {
+                this->m_intf.send( data );
+                data = 0;
+            }
+        }
+        if ( (x + w) & 1 )
+        {
+            this->m_intf.send( data );
+        }
+    }
+    this->m_intf.endBlock();
 }
 
 template <class I>

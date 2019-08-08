@@ -53,6 +53,8 @@
 #define TILE_8x8_MONO         NanoCanvas<8,8,1>              ///< Standard 1-bit tile 8x8 for monochrome mode
 #define TILE_16x16_MONO       NanoCanvas<16,16,1>            ///< Standard 1-bit tile 16x16 for monochrome mode
 #define TILE_32x32_MONO       NanoCanvas<32,32,1>            ///< Standard 1-bit tile 32x32 for monochrome mode
+// Tiles for 4-bit displays
+#define TILE_16x16_GRAY4      NanoCanvas<16,16,4>            ///< Standard 4-bit tile 16x16 for gray-color displays
 // Tiles for 8-bit displays
 #define TILE_8x8_RGB8         NanoCanvas<8,8,8>              ///< Standard 8-bit RGB tile 8x8
 #define TILE_16x16_RGB8       NanoCanvas<16,16,8>            ///< Standard 8-bit RGB tile 16x16

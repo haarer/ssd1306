@@ -1,6 +1,6 @@
 
 /**
- * Class implements interface functions to SSD1351 displays
+ * Class implements interface functions to ~CONTROLLER~ displays
  */
 template <class I>
 class Interface~CONTROLLER~: public I

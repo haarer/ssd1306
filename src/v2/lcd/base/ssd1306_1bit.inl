@@ -542,6 +542,12 @@ void NanoDisplayOps1<I>::gfx_drawMonoBitmap(lcdint_t x, lcdint_t y, lcduint_t w,
 }
 
 template <class I>
+void NanoDisplayOps1<I>::drawBitmap4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap)
+{
+    // NOT IMPLEMENTED
+}
+
+template <class I>
 void NanoDisplayOps1<I>::drawBitmap8(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap)
 {
     // NOT IMPLEMENTED
@@ -622,6 +628,12 @@ void NanoDisplayOps1<I>::drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lc
         this->m_intf.nextBlock();
     }
     this->m_intf.endBlock();
+}
+
+template <class I>
+void NanoDisplayOps1<I>::drawBuffer4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer)
+{
+    // NOT IMPLEMENTED
 }
 
 template <class I>

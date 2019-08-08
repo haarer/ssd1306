@@ -26,7 +26,7 @@ void Interface~CONTROLLER~<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
         this->stop();
         this->start();
         this->send(0x40);
-    } 
+    }
 }
 
 template <class I>
@@ -50,7 +50,7 @@ void Interface~CONTROLLER~<I>::spiDataMode(uint8_t mode)
 }
 
 template <class I>
-void Interface~CONTROLLER~<I>::commandStart(lcduint_t x, lcduint_t y, lcduint_t w)
+void Interface~CONTROLLER~<I>::commandStart()
 {
     this->start();
     if (m_dc >= 0)

@@ -130,6 +130,17 @@ public:
     void gfx_drawMonoBitmap(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buf);
 
     /**
+     * @brief Draws 4-bit gray-color bitmap in color buffer.
+     * Draws 4-bit gray-color bitmap in color buffer.
+     * @param x - position X in pixels
+     * @param y - position Y in pixels
+     * @param w - width in pixels
+     * @param h - height in pixels
+     * @param bitmap - 4-bit gray-color bitmap data, located in flash
+     */
+    void drawBitmap4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap);
+
+    /**
      * @brief Draws 8-bit color bitmap in color buffer.
      * Draws 8-bit color bitmap in color buffer.
      * @param x - position X in pixels
@@ -180,6 +191,19 @@ public:
      * @param buffer pointer to data, located in SRAM: each byte represents 8 vertical pixels.
      */
     void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+
+    /**
+     * Draws 4-bit bitmap, located in RAM, on the display
+     * Each byte represents two pixels in 4-4 format:
+     * refer to GRAY_COLOR4 to understand scheme, being used.
+     *
+     * @param x horizontal position in pixels
+     * @param y vertical position in pixels
+     * @param w width of bitmap in pixels
+     * @param h height of bitmap in pixels
+     * @param buffer pointer to data, located in SRAM.
+     */
+    void drawBuffer4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
 
     /**
      * Draws 8-bit bitmap, located in RAM, on the display
@@ -348,6 +372,17 @@ public:
     void drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap) __attribute__ ((noinline));
 
     /**
+     * @brief Draws 4-bit gray-color bitmap in color buffer.
+     * Draws 4-bit gray-color bitmap in color buffer.
+     * @param x - position X in pixels
+     * @param y - position Y in pixels
+     * @param w - width in pixels
+     * @param h - height in pixels
+     * @param bitmap - 4-bit gray-color bitmap data, located in flash
+     */
+    void drawBitmap4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap) __attribute__ ((noinline));
+
+    /**
      * @brief Draws 8-bit color bitmap in color buffer.
      * Draws 8-bit color bitmap in color buffer.
      * @param x - position X in pixels
@@ -398,6 +433,19 @@ public:
      * @param buffer pointer to data, located in SRAM: each byte represents 8 vertical pixels.
      */
     void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+
+    /**
+     * Draws 4-bit bitmap, located in RAM, on the display
+     * Each byte represents two pixels in 4-4 format:
+     * refer to GRAY_COLOR4 to understand scheme, being used.
+     *
+     * @param x horizontal position in pixels
+     * @param y vertical position in pixels
+     * @param w width of bitmap in pixels
+     * @param h height of bitmap in pixels
+     * @param buffer pointer to data, located in SRAM.
+     */
+    void drawBuffer4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
 
     /**
      * Draws 8-bit bitmap, located in RAM, on the display
@@ -541,6 +589,17 @@ public:
     void drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap) __attribute__ ((noinline));
 
     /**
+     * @brief Draws 4-bit gray-color bitmap in color buffer.
+     * Draws 4-bit gray-color bitmap in color buffer.
+     * @param x - position X in pixels
+     * @param y - position Y in pixels
+     * @param w - width in pixels
+     * @param h - height in pixels
+     * @param bitmap - 4-bit gray-color bitmap data, located in flash
+     */
+    void drawBitmap4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap) __attribute__ ((noinline));
+
+    /**
      * @brief Draws 8-bit color bitmap in color buffer.
      * Draws 8-bit color bitmap in color buffer.
      * @param x - position X in pixels
@@ -591,6 +650,19 @@ public:
      * @param buffer pointer to data, located in SRAM: each byte represents 8 vertical pixels.
      */
     void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+
+    /**
+     * Draws 4-bit bitmap, located in RAM, on the display
+     * Each byte represents two pixels in 4-4 format:
+     * refer to GRAY_COLOR4 to understand scheme, being used.
+     *
+     * @param x horizontal position in pixels
+     * @param y vertical position in pixels
+     * @param w width of bitmap in pixels
+     * @param h height of bitmap in pixels
+     * @param buffer pointer to data, located in SRAM.
+     */
+    void drawBuffer4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
 
     /**
      * Draws 8-bit bitmap, located in RAM, on the display
@@ -734,6 +806,17 @@ public:
     void drawBitmap1(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap) __attribute__ ((noinline));
 
     /**
+     * @brief Draws 4-bit gray-color bitmap in color buffer.
+     * Draws 4-bit gray-color bitmap in color buffer.
+     * @param x - position X in pixels
+     * @param y - position Y in pixels
+     * @param w - width in pixels
+     * @param h - height in pixels
+     * @param bitmap - 4-bit gray-color bitmap data, located in flash
+     */
+    void drawBitmap4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *bitmap) __attribute__ ((noinline));
+
+    /**
      * @brief Draws 8-bit color bitmap in color buffer.
      * Draws 8-bit color bitmap in color buffer.
      * @param x - position X in pixels
@@ -784,6 +867,19 @@ public:
      * @param buffer pointer to data, located in SRAM: each byte represents 8 vertical pixels.
      */
     void drawBuffer1Fast(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer);
+
+    /**
+     * Draws 4-bit bitmap, located in RAM, on the display
+     * Each byte represents two pixels in 4-4 format:
+     * refer to GRAY_COLOR4 to understand scheme, being used.
+     *
+     * @param x horizontal position in pixels
+     * @param y vertical position in pixels
+     * @param w width of bitmap in pixels
+     * @param h height of bitmap in pixels
+     * @param buffer pointer to data, located in SRAM.
+     */
+    void drawBuffer4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer) __attribute__ ((noinline));
 
     /**
      * Draws 8-bit bitmap, located in RAM, on the display
@@ -920,6 +1016,15 @@ public:
      * @param canvas 1-bit canvas to draw on the screen.
      */
     void drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<1> &canvas) __attribute__ ((noinline));
+
+    /**
+     * Draws 4-bit canvas on lcd display
+     *
+     * @param x x position in pixels
+     * @param y y position in pixels
+     * @param canvas 4-bit canvas to draw on the screen.
+     */
+    void drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<4> &canvas) __attribute__ ((noinline));
 
     /**
      * Draws 8-bit canvas on lcd display

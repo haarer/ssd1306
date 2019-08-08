@@ -790,6 +790,12 @@ void NanoDisplayOps<O,I>::drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<1> &c
 }
 
 template <class O, class I>
+void NanoDisplayOps<O,I>::drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<4> &canvas)
+{
+    this->drawBuffer4( x, y, canvas.width(), canvas.height(), canvas.getData() );
+}
+
+template <class O, class I>
 void NanoDisplayOps<O,I>::drawCanvas(lcdint_t x, lcdint_t y, NanoCanvasOps<8> &canvas)
 {
     this->drawBuffer8( x, y, canvas.width(), canvas.height(), canvas.getData() );

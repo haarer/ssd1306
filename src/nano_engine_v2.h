@@ -67,6 +67,25 @@ template <class D>
 using NanoEngine1 = NanoEngine<TILE_16x16_MONO,D>;
 
 /**
+ * NanoEngine4 is simple graphics engine, that implements double buffering work
+ * for the systems with very low resources. That is, memory buffer for SSD1327 oled
+ * display needs at least 128x128x/2 bytes (8192 bytes), and this is inacceptable for
+ * microcontrollers like atmega328p (it has only 2KiB of RAM). So, to workaround
+ * issue with low resources, NanoEngine4 uses small tile buffer (NE_TILE_SIZE x NE_TILE_SIZE)
+ * and updates only part of oled screen at once. It makes system slow, but it is
+ * possible to run NanoEngine4 on simple controllers.
+ * For example, if tile size is 32x32, then 128x128 oled display is devided into 16 tiles: <br>
+ *    [0,0] [1,0] [2,0] [3,0] <br>
+ *    [0,1] [1,1] [2,1] [3,1] <br>
+ *    [0,2] [1,2] [2,2] [3,2] <br>
+ *    [0,3] [1,3] [2,3] [3,3] <br>
+ * In your application you can choose, if you want to refresh whole screen (refresh()), or you
+ * need to refresh only part of oled display.
+ */
+template <class D>
+using NanoEngine4 = NanoEngine<TILE_16x16_GRAY4,D>;
+
+/**
  * NanoEngine8 is simple graphics engine, that implements double buffering work
  * for the systems with very low resources. That is, memory buffer for SSD1331 oled
  * display needs at least 96x64x1 bytes (6144 bytes), and this is inacceptable for

@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2019, Alexey Dynda
+    Copyright (c) 2018, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -22,3 +22,12 @@
     SOFTWARE.
 */
 
+#ifndef _SOVA_H_
+#define _SOVA_H_
+
+#include "ssd1306v2.h"
+#include <stdint.h>
+
+extern const uint8_t Sova [] PROGMEM;
+
+#endif

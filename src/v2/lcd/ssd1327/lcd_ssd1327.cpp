@@ -22,3 +22,21 @@
     SOFTWARE.
 */
 
+#include "lcd_ssd1327.h"
+#include "lcd_hal/io.h"
+#ifdef SDL_EMULATION
+#include "sdl_core.h"
+#endif
+
+
+void DisplaySSD1327_128x128_SPI::begin()
+{
+    m_spi.begin();
+    DisplaySSD1327_128x128::begin();
+}
+
+void DisplaySSD1327_128x128_SPI::end()
+{
+    DisplaySSD1327_128x128::end();
+    m_spi.end();
+}
