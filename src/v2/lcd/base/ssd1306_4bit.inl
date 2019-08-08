@@ -53,18 +53,28 @@ template <class I>
 void NanoDisplayOps4<I>::putPixel(lcdint_t x, lcdint_t y)
 {
     this->m_intf.startBlock(x, y, 0);
-    this->m_intf.send( this->m_color );
+    this->m_intf.send( (this->m_color & 0x0F) << (4*(x & 1)) );
     this->m_intf.endBlock();
 }
 
 template <class I>
 void NanoDisplayOps4<I>::drawHLine(lcdint_t x1, lcdint_t y1, lcdint_t x2)
 {
+    uint8_t data = 0;
     this->m_intf.startBlock(x1, y1, 0);
     while (x1 < x2)
     {
-        this->m_intf.send( this->m_color );
-        x1 += 2;
+        data |= (this->m_color & 0x0F) << (4*(x1 & 1));
+        if ( x1 & 1 )
+        {
+            this->m_intf.send( data );
+            data = 0;
+        }
+        x1++;
+    }
+    if (!(x1 & 1))
+    {
+        this->m_intf.send( data );
     }
     this->m_intf.endBlock();
 }
@@ -75,7 +85,7 @@ void NanoDisplayOps4<I>::drawVLine(lcdint_t x1, lcdint_t y1, lcdint_t y2)
     this->m_intf.startBlock(x1, y1, 1);
     while (y1<=y2)
     {
-        this->m_intf.send( this->m_color );
+        this->m_intf.send( (this->m_color & 0x0F) << (4*(x1 & 1)) );
         y1 += 2;
     }
     this->m_intf.endBlock();
