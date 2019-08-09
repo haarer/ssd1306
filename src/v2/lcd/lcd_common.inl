@@ -80,3 +80,58 @@ void _configureSpiDisplay(I& intf, const uint8_t *config, uint8_t configSize)
     intf.stop();
 }
 
+
+template <class I>
+void _configureSpiDisplayCmdModeOnly(I& intf, const uint8_t *config, uint8_t configSize)
+{
+    uint8_t command = 1;
+    int8_t args;
+    intf.commandStart();
+    for( uint8_t i=0; i<configSize; i++)
+    {
+        uint8_t data = pgm_read_byte(&config[i]);
+        if ( command )
+        {
+            if ( command == CMD_DELAY )
+            {
+                command = 1;
+                lcd_delay( data == 0xFF ? 500: data );
+            }
+            else
+            {
+                intf.send(data);
+                command = 0;
+                args = -1;
+            }
+        }
+        else
+        {
+            if (args < 0)
+            {
+                if ( data >= 128 )
+                {
+                    command = data;
+                }
+                else if ( data > 0 )
+                {
+                    args = data;
+                }
+                else
+                {
+                    command = 1;
+                }
+            }
+            else
+            {
+                args--;
+                intf.send(data);
+                if ( !args )
+                {
+                    command = 1;
+                }
+            }
+        }
+    }
+    intf.stop();
+}
+

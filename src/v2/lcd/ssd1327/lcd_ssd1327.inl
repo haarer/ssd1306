@@ -39,7 +39,7 @@ void InterfaceSSD1327<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
     commandStart();
     this->send(0x15);
     this->send(x / 2);
-    this->send(((rx < m_base.width() ? rx : (m_base.width() - 1))) / 2);
+    this->send( (rx < m_base.width() ? rx : (m_base.width() - 1)) / 2);
     this->send(0x75);
     this->send(y);
     this->send(m_base.height() - 1);
@@ -134,9 +134,9 @@ void DisplaySSD1327_128x128<I>::begin()
     this->m_w = 128;
     this->m_h = 128;
     lcd_delay(100);
-    _configureSpiDisplay<I>(this->m_intf,
-                            s_SSD1327_lcd128x128_initData,
-                            sizeof(s_SSD1327_lcd128x128_initData));
+    _configureSpiDisplayCmdModeOnly<I>(this->m_intf,
+                                       s_SSD1327_lcd128x128_initData,
+                                       sizeof(s_SSD1327_lcd128x128_initData));
 }
 
 template <class I>

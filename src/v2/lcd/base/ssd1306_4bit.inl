@@ -146,9 +146,9 @@ void NanoDisplayOps4<I>::drawBitmap1(lcdint_t xpos, lcdint_t ypos, lcduint_t w, 
     this->m_intf.startBlock(xpos, ypos, w);
     while (h--)
     {
-        lcduint_t wx = w;
+        lcduint_t wx;
         uint8_t pixels = 0;
-        while ( wx-- )
+        for (wx = xpos; wx < xpos + (lcdint_t)w; wx++)
         {
             uint8_t data = pgm_read_byte( bitmap );
             uint8_t mask = wx & 0x01 ? 0xF0 : 0x0F;
@@ -157,11 +157,15 @@ void NanoDisplayOps4<I>::drawBitmap1(lcdint_t xpos, lcdint_t ypos, lcduint_t w, 
             else
                 pixels |= blackColor & mask;
             bitmap++;
-            if ( wx & 0x01 == 0x00 )
+            if ( wx & 0x01 )
             {
                 this->m_intf.send( pixels );
                 pixels = 0;
             }
+        }
+        if ( wx & 0x01 )
+        {
+            this->m_intf.send( pixels );
         }
         bit <<= 1;
         if ( bit == 0 )
@@ -276,12 +280,14 @@ template <class I>
 void NanoDisplayOps4<I>::drawBuffer4(lcdint_t x, lcdint_t y, lcduint_t w, lcduint_t h, const uint8_t *buffer)
 {
     this->m_intf.startBlock(x, y, w);
-    for (lcdint_t _y = y; _y < y + h; y++)
+    for (lcdint_t _y = y; _y < y + h; _y++)
     {
         uint8_t data = 0;
-        for (lcdint_t _x = x; _x < x + w; x++)
+        for (lcdint_t _x = x; _x < x + w; _x++)
         {
-            data |= (*buffer << (4*(_x & 1)));
+            uint8_t bmp = *buffer;
+            if ( (_x - x) & 1 ) bmp >>=4; else bmp &= 0x0F;
+            data |= bmp << (4 * (_x & 1));
             if ( (_x - x) & 1 )
             {
                 buffer++;
