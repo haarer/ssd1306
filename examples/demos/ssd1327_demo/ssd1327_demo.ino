@@ -113,7 +113,7 @@ static void spriteDemo()
     // Set function to draw our sprite
     engine.drawCallback( []()->bool {
         engine.getCanvas().clear();
-        engine.getCanvas().setColor( RGB_COLOR8(255, 32, 32) );
+        engine.getCanvas().setColor( GRAY_COLOR4(192) );
         engine.getCanvas().drawBitmap1( sprite.x, sprite.y, 8, 8, heartImage );
         return true;
     } );
@@ -162,7 +162,6 @@ static void canvasDemo()
 {
     uint8_t buffer[32*16/2];
     NanoCanvas4 canvas(32,16, buffer);
-    display.setFixedFont(ssd1306xled_font6x8);
     display.clear();
     canvas.clear();
     canvas.setColor(GRAY_COLOR4(127));
@@ -173,6 +172,7 @@ static void canvasDemo()
     canvas.fillRect(16, 1, 20, 15);
     display.drawCanvas((display.width()-64)/2, 1, canvas);
     delay(1500);
+    canvas.setFixedFont(ssd1306xled_font6x8);
     canvas.setColor(GRAY_COLOR4(64));
     canvas.printFixed(3, 1, "DEMO", STYLE_BOLD );
     display.drawCanvas((display.width()-64)/2, 1, canvas);
