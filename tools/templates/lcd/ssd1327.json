@@ -1,0 +1,15 @@
+{
+    "name": "ssd1327",
+    "bits":
+    [
+        {
+            "name": 4,
+            "resolutions":
+            [
+                {
+                    "name": "128x128"
+                }
+            ]
+        }
+    ]
+}
