@@ -123,7 +123,7 @@
         #define CONFIG_VGA_AVAILABLE
     #endif
 
-#elif defined(__AVR_ATmega328P__)
+#elif defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168P__)
     /** The macro is defined when i2c Wire library is available */
     #define CONFIG_SOFTWARE_I2C_AVAILABLE
     /** The macro is defined when i2c Wire library is available */
@@ -151,17 +151,17 @@
 
 #else
     /** The macro is defined when i2c Wire library is available */
-    #define CONFIG_SOFTWARE_I2C_AVAILABLE
+    //#define CONFIG_SOFTWARE_I2C_AVAILABLE
     /** The macro is defined when i2c Wire library is available */
     #define CONFIG_ARDUINO_I2C_AVAILABLE
     /** The macro is defined when Wire library speed can be configured */
     #define SSD1306_WIRE_CLOCK_CONFIGURABLE
     /** The macro is defined when TWI module is available (ATTINY) */
-    #define CONFIG_TWI_I2C_AVAILABLE
+    // #define CONFIG_TWI_I2C_AVAILABLE
     /** The macro is defined when SPI library is available */
     #define CONFIG_ARDUINO_SPI_AVAILABLE
     /** The macro is defined when SPI module is available (ATMEGA) */
-    #define CONFIG_AVR_SPI_AVAILABLE
+    //#define CONFIG_AVR_SPI_AVAILABLE
 #endif
 
 #endif // _SSD1306_ARDUINO_IO_H_
