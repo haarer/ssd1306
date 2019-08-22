@@ -34,7 +34,7 @@
 
 
 template <class I>
-void InterfaceSSD1327<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
+void InterfaceSSD1325<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
 {
     lcduint_t rx = w ? (x + w - 1) : (m_base.width() - 1);
     commandStart();
@@ -57,18 +57,18 @@ void InterfaceSSD1327<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
 }
 
 template <class I>
-void InterfaceSSD1327<I>::nextBlock()
+void InterfaceSSD1325<I>::nextBlock()
 {
 }
 
 template <class I>
-void InterfaceSSD1327<I>::endBlock()
+void InterfaceSSD1325<I>::endBlock()
 {
     this->stop();
 }
 
 template <class I>
-void InterfaceSSD1327<I>::spiDataMode(uint8_t mode)
+void InterfaceSSD1325<I>::spiDataMode(uint8_t mode)
 {
     if ( m_dc >= 0 )
     {
@@ -77,7 +77,7 @@ void InterfaceSSD1327<I>::spiDataMode(uint8_t mode)
 }
 
 template <class I>
-void InterfaceSSD1327<I>::commandStart()
+void InterfaceSSD1325<I>::commandStart()
 {
     this->start();
     if (m_dc >= 0)
@@ -86,62 +86,59 @@ void InterfaceSSD1327<I>::commandStart()
         this->send(0x00);
 }
 ////////////////////////////////////////////////////////////////////////////////
-//             SSD1327 basic 16-bit implementation
+//             SSD1325 basic 16-bit implementation
 ////////////////////////////////////////////////////////////////////////////////
 
 template <class I>
-void DisplaySSD1327<I>::begin()
+void DisplaySSD1325<I>::begin()
 {
 }
 
 template <class I>
-void DisplaySSD1327<I>::end()
+void DisplaySSD1325<I>::end()
 {
 }
 
-static const PROGMEM uint8_t s_SSD1327_lcd128x128_initData[] =
+static const PROGMEM uint8_t s_SSD1325_lcd128x64_initData[] =
 {
 #ifdef SDL_EMULATION
-    SDL_LCD_SSD1327, 0x00,
-    SDL_LCD_SSD1327_GENERIC, 0x00,
+    SDL_LCD_SSD1325, 0x00, 
+    SDL_LCD_SSD1325_GENERIC, 0x00, 
 #endif
-    0xFD, 0x01, 0x12,  // Unlock OLED
     0xAE, 0x00,        // OFF                         /* display off */
-    0xA8, 0x01, 0x7F,  // multiplex 128
-    0xA1, 0x01, 0x00,  // Start line
+    0xB3, 0x01, 0x91,  // CLK
+    0xA8, 0x01, 0x3F,  // multiplex 64
     0xA2, 0x01, 0x00,  // Display offset
+    0xA1, 0x01, 0x00,  // Start line
+    0xAD, 0x01, 0x02,  // VCOMH
     0xA0, 0x01, 0x40 | 0x10 | 0x00 | (0x02 | 0x01),   // REMAP: horizontal increment mode
-    0xAB, 0x01, 0x01,  // VDD internal
+    0x86, 0x00,        // CURRENT
     0x81, 0x01, 0x70,  // CONTRAST
-    0xB1, 0x01, 0x55,  // PHASE 0x51
-    0xB3, 0x01, 0x01,  // CLK
-//   0xB9,         //Reload grey scale
-    0xBC, 0x01, 0x08,  // PRECHARGE
-    0xBE, 0x01, 0x07,  // VCOMH voltage
-    0xB6, 0x01, 0x01,  // Second pre-charge
+    0xB2, 0x01, 0x51,  // FREQ
+    0xB1, 0x01, 0x55,  // PHASE
+    0xBC, 0x01, 0x10,  // PRECHARGE
+    0xBE, 0x01, 0x1C,  // VCOMH voltage
     0xA4, 0x00,        // NORMAL
-    0x2E, 0x00,        // Deactivate scroll
-    0xAF, 0x00,        // Display ON
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-//             SSD1327 basic 4-bit implementation
+//             SSD1325 basic 4-bit implementation
 ////////////////////////////////////////////////////////////////////////////////
 
 template <class I>
-void DisplaySSD1327_128x128<I>::begin()
+void DisplaySSD1325_128x64<I>::begin()
 {
     ssd1306_resetController2( this->m_rstPin, 20 );
     this->m_w = 128;
-    this->m_h = 128;
-    // Give LCD some time to initialize. Refer to SSD1327 datasheet
+    this->m_h = 64;
+    // Give LCD some time to initialize. Refer to SSD1325 datasheet
     lcd_delay(100);
     _configureSpiDisplayCmdModeOnly<I>(this->m_intf,
-                            s_SSD1327_lcd128x128_initData,
-                            sizeof(s_SSD1327_lcd128x128_initData));
+                            s_SSD1325_lcd128x64_initData,
+                            sizeof(s_SSD1325_lcd128x64_initData));
 }
 
 template <class I>
-void DisplaySSD1327_128x128<I>::end()
+void DisplaySSD1325_128x64<I>::end()
 {
 }
