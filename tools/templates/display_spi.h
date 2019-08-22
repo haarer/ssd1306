@@ -17,7 +17,7 @@ public:
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
                                      config.dc,
-                                     config.frequency ?: 4400000,
+                                     config.frequency ?: ~FREQUENCY~,
                                      config.scl,
                                      config.sda } ) {}
 

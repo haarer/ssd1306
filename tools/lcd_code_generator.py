@@ -119,7 +119,9 @@ def get_file_data(fname):
                            replace('~HEIGHT~',get_val_by_path("height","")).\
                            replace('~INIT~', get_val_by_path("init_data","")).\
                            replace('~CONFIG_FUNC~', get_val_by_path("options/config_func","_configureSpiDisplay")).\
-                           replace('~SET_BLOCK~', get_val_by_path("_set_block",""))
+                           replace('~SET_BLOCK~', get_val_by_path("_set_block","")).\
+                           replace('~FREQUENCY~', get_val_by_path("_frequency", "4400000")).\
+                           replace('~I2C_ADDR~', get_val_by_path("interfaces/i2c/addr", "0x3C"))
     return data;
 
 def get_json_controller_list(fname):
@@ -132,6 +134,7 @@ def load_data_from_json(fname, ctl):
         data = json.load(json_file)
     g_voc["bits"] = data[ctl]["bits"];
     g_voc["options"] = data[ctl]["options"]
+    g_voc["interfaces"] = data[ctl]["interfaces"]
 
 def load_init_data_from_json(fname, ctl, bits, resolution):
     with open(templates + 'lcd/' + fname) as json_file:
@@ -213,7 +216,6 @@ def generate_controller_data(ctl):
     header.write( get_file_data('interface_spi.h') )
     inl.write( get_file_data('interface_spi.inl') )
 
-
     for _bits in g_voc["bits"].keys():
         g_voc["_bits"] = _bits;
         if not get_val_by_path("options/no_bits_in_name", False):
@@ -229,8 +231,10 @@ def generate_controller_data(ctl):
             g_voc["height"] = res.split('x')[1]
             header.write( get_file_data('resolution.h') )
             inl.write( get_file_data('resolution.inl') )
-            header.write( get_file_data('display_spi.h') )
-            cpp.write( get_file_data('display_spi.cpp') )
+            for intf in g_voc["interfaces"].keys():
+                g_voc["_frequency"] = str(get_val_by_path( "interfaces/" + intf + "/frequency", 4400000 ))
+                header.write( get_file_data('display_' + intf + '.h') )
+                cpp.write( get_file_data('display_' + intf + '.cpp') )
 
     header.write( get_file_data('footer.h') )
 
