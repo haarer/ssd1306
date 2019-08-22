@@ -36,15 +36,14 @@
 #include "nano_engine_v2.h"
 
 #include "v2/lcd/pcd8544/lcd_pcd8544.h"
-#include "v2/lcd/sh1106/oled_sh1106.h"
-#include "v2/lcd/ssd1306/oled_ssd1306.h"
+#include "v2/lcd/sh1106/lcd_sh1106.h"
+#include "v2/lcd/ssd1306/lcd_ssd1306.h"
 #include "v2/lcd/ssd1325/lcd_ssd1325.h"
 #include "v2/lcd/ssd1327/lcd_ssd1327.h"
-#include "v2/lcd/ssd1331/oled_ssd1331.h"
-#include "v2/lcd/ssd1351/oled_ssd1351.h"
+#include "v2/lcd/ssd1331/lcd_ssd1331.h"
+#include "v2/lcd/ssd1351/lcd_ssd1351.h"
 #include "v2/lcd/st7735/lcd_st7735.h"
 #include "v2/lcd/il9163/lcd_il9163.h"
-#include "v2/lcd/oled_ssd1325.h"
 #include "v2/lcd/lcd_ili9341.h"
 
 extern "C" {

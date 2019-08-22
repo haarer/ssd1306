@@ -168,7 +168,7 @@ private:
     InterfaceSSD1351<PlatformSpi> m_spi;
 };
 
-#include "oled_ssd1351.inl"
+#include "lcd_ssd1351.inl"
 
 /**
  * @}

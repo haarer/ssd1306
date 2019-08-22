@@ -364,7 +364,7 @@ private:
     InterfaceSSD1306<PlatformSpi> m_spi;
 };
 
-#include "oled_ssd1306.inl"
+#include "lcd_ssd1306.inl"
 
 /**
  * @}

@@ -22,35 +22,20 @@
     SOFTWARE.
 */
 
+#include "lcd_ssd1351.h"
 #include "lcd_hal/io.h"
-#include "oled_sh1106.h"
+#ifdef SDL_EMULATION
+#include "sdl_core.h"
+#endif
 
-////////////////////////////////////////////////////////////////////
-//                        SH1106 128x64
-////////////////////////////////////////////////////////////////////
-
-void DisplaySH1106_128x64_I2C::begin()
-{
-    m_i2c.begin();
-    DisplaySH1106_128x64::begin();
-}
-
-void DisplaySH1106_128x64_I2C::end()
-{
-    DisplaySH1106_128x64::end();
-    m_i2c.end();
-}
-
-
-void DisplaySH1106_128x64_SPI::begin()
+void DisplaySSD1351_128x128_SPI::begin()
 {
     m_spi.begin();
-    DisplaySH1106_128x64::begin();
+    DisplaySSD1351::begin();
 }
 
-void DisplaySH1106_128x64_SPI::end()
+void DisplaySSD1351_128x128_SPI::end()
 {
-    DisplaySH1106_128x64::end();
+    DisplaySSD1351::end();
     m_spi.end();
 }
-

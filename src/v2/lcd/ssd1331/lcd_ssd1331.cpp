@@ -23,61 +23,38 @@
 */
 
 #include "lcd_hal/io.h"
-#include "oled_ssd1306.h"
+#include "lcd_ssd1331.h"
 
-////////////////////////////////////////////////////////////////////
-//                        SSD1306 128x64
-////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//             SSD1331 basic 8-bit implementation
+////////////////////////////////////////////////////////////////////////////////
 
-void DisplaySSD1306_128x64_SPI::begin()
+void DisplaySSD1331_96x64_SPI::begin()
 {
     m_spi.begin();
-    DisplaySSD1306_128x64::begin();
+    DisplaySSD1331::begin();
+    m_spi.setRotation( 0x00 );
 }
 
-void DisplaySSD1306_128x64_SPI::end()
+void DisplaySSD1331_96x64_SPI::end()
 {
-    DisplaySSD1306_128x64::end();
+    DisplaySSD1331::end();
     m_spi.end();
 }
 
-void DisplaySSD1306_128x64_I2C::begin()
-{
-    m_i2c.begin();
-    DisplaySSD1306_128x64::begin();
-}
+////////////////////////////////////////////////////////////////////////////////
+//             SSD1331 basic 16-bit implementation
+////////////////////////////////////////////////////////////////////////////////
 
-void DisplaySSD1306_128x64_I2C::end()
-{
-    DisplaySSD1306_128x64::end();
-    m_i2c.end();
-}
-
-////////////////////////////////////////////////////////////////////
-//                        SSD1306 128x32
-////////////////////////////////////////////////////////////////////
-
-void DisplaySSD1306_128x32_SPI::begin()
+void DisplaySSD1331_96x64x16_SPI::begin()
 {
     m_spi.begin();
-    DisplaySSD1306_128x32::begin();
+    DisplaySSD1331x16::begin();
+    m_spi.setRotation( 0x00 );
 }
 
-void DisplaySSD1306_128x32_SPI::end()
+void DisplaySSD1331_96x64x16_SPI::end()
 {
-    DisplaySSD1306_128x32::end();
+    DisplaySSD1331x16::end();
     m_spi.end();
 }
-
-void DisplaySSD1306_128x32_I2C::begin()
-{
-    m_i2c.begin();
-    DisplaySSD1306_128x32::begin();
-}
-
-void DisplaySSD1306_128x32_I2C::end()
-{
-    DisplaySSD1306_128x32::end();
-    m_i2c.end();
-}
-

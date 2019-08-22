@@ -22,20 +22,62 @@
     SOFTWARE.
 */
 
-#include "oled_ssd1351.h"
 #include "lcd_hal/io.h"
-#ifdef SDL_EMULATION
-#include "sdl_core.h"
-#endif
+#include "lcd_ssd1306.h"
 
-void DisplaySSD1351_128x128_SPI::begin()
+////////////////////////////////////////////////////////////////////
+//                        SSD1306 128x64
+////////////////////////////////////////////////////////////////////
+
+void DisplaySSD1306_128x64_SPI::begin()
 {
     m_spi.begin();
-    DisplaySSD1351::begin();
+    DisplaySSD1306_128x64::begin();
 }
 
-void DisplaySSD1351_128x128_SPI::end()
+void DisplaySSD1306_128x64_SPI::end()
 {
-    DisplaySSD1351::end();
+    DisplaySSD1306_128x64::end();
     m_spi.end();
 }
+
+void DisplaySSD1306_128x64_I2C::begin()
+{
+    m_i2c.begin();
+    DisplaySSD1306_128x64::begin();
+}
+
+void DisplaySSD1306_128x64_I2C::end()
+{
+    DisplaySSD1306_128x64::end();
+    m_i2c.end();
+}
+
+////////////////////////////////////////////////////////////////////
+//                        SSD1306 128x32
+////////////////////////////////////////////////////////////////////
+
+void DisplaySSD1306_128x32_SPI::begin()
+{
+    m_spi.begin();
+    DisplaySSD1306_128x32::begin();
+}
+
+void DisplaySSD1306_128x32_SPI::end()
+{
+    DisplaySSD1306_128x32::end();
+    m_spi.end();
+}
+
+void DisplaySSD1306_128x32_I2C::begin()
+{
+    m_i2c.begin();
+    DisplaySSD1306_128x32::begin();
+}
+
+void DisplaySSD1306_128x32_I2C::end()
+{
+    DisplaySSD1306_128x32::end();
+    m_i2c.end();
+}
+

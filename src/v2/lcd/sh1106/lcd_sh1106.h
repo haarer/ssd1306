@@ -283,7 +283,7 @@ private:
     InterfaceSH1106<PlatformSpi> m_spi;
 };
 
-#include "oled_sh1106.inl"
+#include "lcd_sh1106.inl"
 
 /**
  * @}

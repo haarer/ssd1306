@@ -280,7 +280,7 @@ private:
     InterfaceSSD1331<PlatformSpi> m_spi;
 };
 
-#include "oled_ssd1331.inl"
+#include "lcd_ssd1331.inl"
 
 /**
  * @}

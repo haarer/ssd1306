@@ -23,38 +23,34 @@
 */
 
 #include "lcd_hal/io.h"
-#include "oled_ssd1331.h"
+#include "lcd_sh1106.h"
 
-////////////////////////////////////////////////////////////////////////////////
-//             SSD1331 basic 8-bit implementation
-////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+//                        SH1106 128x64
+////////////////////////////////////////////////////////////////////
 
-void DisplaySSD1331_96x64_SPI::begin()
+void DisplaySH1106_128x64_I2C::begin()
 {
-    m_spi.begin();
-    DisplaySSD1331::begin();
-    m_spi.setRotation( 0x00 );
+    m_i2c.begin();
+    DisplaySH1106_128x64::begin();
 }
 
-void DisplaySSD1331_96x64_SPI::end()
+void DisplaySH1106_128x64_I2C::end()
 {
-    DisplaySSD1331::end();
+    DisplaySH1106_128x64::end();
+    m_i2c.end();
+}
+
+
+void DisplaySH1106_128x64_SPI::begin()
+{
+    m_spi.begin();
+    DisplaySH1106_128x64::begin();
+}
+
+void DisplaySH1106_128x64_SPI::end()
+{
+    DisplaySH1106_128x64::end();
     m_spi.end();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-//             SSD1331 basic 16-bit implementation
-////////////////////////////////////////////////////////////////////////////////
-
-void DisplaySSD1331_96x64x16_SPI::begin()
-{
-    m_spi.begin();
-    DisplaySSD1331x16::begin();
-    m_spi.setRotation( 0x00 );
-}
-
-void DisplaySSD1331_96x64x16_SPI::end()
-{
-    DisplaySSD1331x16::end();
-    m_spi.end();
-}
