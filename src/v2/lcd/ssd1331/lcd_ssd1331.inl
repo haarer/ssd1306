@@ -22,7 +22,6 @@
     SOFTWARE.
 */
 
-#include "ssd1331_commands.h"
 #include "lcd_hal/io.h"
 #ifdef SDL_EMULATION
 #include "sdl_core.h"
@@ -35,25 +34,25 @@ static const PROGMEM uint8_t s_ssd1331_oled96x64_initData[] =
     SDL_LCD_SSD1331_X8,
     0x00,
 #endif
-    SSD1331_DISPLAYOFF,             // display off
-    SSD1331_SEGREMAP, 0x00 | 0x20 | 0x10 | 0x02 | 0x01, /* 8-bit rgb color mode */
-    SSD1331_SETSTARTLINE, 0x00,    // First line to start scanning from
-    SSD1331_SETDISPLAYOFFSET, 0x00, // Set display offset
-    SSD1331_NORMALDISPLAY,
-    SSD1331_SETMULTIPLEX, 63,       // Reset to default MUX. See datasheet
-    SSD1331_SETMASTER, 0x8E,        // Set master mode
-    SSD1331_POWERMODE, 0x0B,        // Disable power-safe mode
-    SSD1331_SETPRECHARGE, 0x31,     // Phase 1 and Phase 2 periods
-    SSD1331_CLOCKDIV, 0xF0,         // 7:4 = Oscillator Frequency, 3:0 = CLK Div Ratio (A[3:0]+1 = 1..16)
-    SSD1331_PRECHARGEA, 0x64,
-    SSD1331_PRECHARGEB, 0x78,
-    SSD1331_PRECHARGELEVEL, 0x3A,
-    SSD1331_VCOMH, 0x3E,
-    SSD1331_MASTERCURRENT, 0x09,
-    SSD1331_CONTRASTA, 0x91,        // RED
-    SSD1331_CONTRASTB, 0x50,        // GREEN
-    SSD1331_CONTRASTC, 0x7D,        // BLUE
-    SSD1331_DISPLAYON,
+    0xAE,          // display off
+    0xA0, 0x00 | 0x20 | 0x10 | 0x02 | 0x01, /* 8-bit rgb color mode */
+    0xA1, 0x00,    // First line to start scanning from
+    0xA2, 0x00,    // Set display offset
+    0xA4,          // Normal display
+    0xA8, 63,      // Reset to default MUX. See datasheet
+    0xAD, 0x8E,    // Set master mode
+    0xB0, 0x0B,    // Disable power-safe mode
+    0xB1, 0x31,    // Precharge Phase 1 and Phase 2 periods
+    0xB3, 0xF0,    // CLOCKDIV 7:4 = Oscillator Frequency, 3:0 = CLK Div Ratio (A[3:0]+1 = 1..16)
+    0x8A, 0x64,    // Precharge A
+    0x8B, 0x78,    // Precharge B
+    0xBB, 0x3A,    // Precharge level
+    0xBE, 0x3E,    // VCOM
+    0x87, 0x09,    // Master current
+    0x81, 0x91,    // RED
+    0x82, 0x50,    // GREEN
+    0x83, 0x7D,    // BLUE
+    0xAF,
 };
 
 static const PROGMEM uint8_t s_ssd1331_oled96x64_initData16[] =
@@ -62,25 +61,25 @@ static const PROGMEM uint8_t s_ssd1331_oled96x64_initData16[] =
     SDL_LCD_SSD1331_X16,
     0x00,
 #endif
-    SSD1331_DISPLAYOFF,             // display off
-    SSD1331_SEGREMAP, 0x40 | 0x20 | 0x10 | 0x02 | 0x01, /* 16-bit rgb color mode */
-    SSD1331_SETSTARTLINE, 0x00,    // First line to start scanning from
-    SSD1331_SETDISPLAYOFFSET, 0x00, // Set display offset
-    SSD1331_NORMALDISPLAY,
-    SSD1331_SETMULTIPLEX, 63,       // Reset to default MUX. See datasheet
-    SSD1331_SETMASTER, 0x8E,        // Set master mode
-    SSD1331_POWERMODE, 0x0B,        // Disable power-safe mode
-    SSD1331_SETPRECHARGE, 0x31,     // Phase 1 and Phase 2 periods
-    SSD1331_CLOCKDIV, 0xF0,         // 7:4 = Oscillator Frequency, 3:0 = CLK Div Ratio (A[3:0]+1 = 1..16)
-    SSD1331_PRECHARGEA, 0x64,
-    SSD1331_PRECHARGEB, 0x78,
-    SSD1331_PRECHARGELEVEL, 0x3A,
-    SSD1331_VCOMH, 0x3E,
-    SSD1331_MASTERCURRENT, 0x09,
-    SSD1331_CONTRASTA, 0x91,        // RED
-    SSD1331_CONTRASTB, 0x50,        // GREEN
-    SSD1331_CONTRASTC, 0x7D,        // BLUE
-    SSD1331_DISPLAYON,
+    0xAE,          // display off
+    0xA0, 0x40 | 0x20 | 0x10 | 0x02 | 0x01, /* 16-bit rgb color mode */
+    0xA1, 0x00,    // First line to start scanning from
+    0xA2, 0x00,    // Set display offset
+    0xA4,          // Normal display
+    0xA8, 63,      // Reset to default MUX. See datasheet
+    0xAD, 0x8E,    // Set master mode
+    0xB0, 0x0B,    // Disable power-safe mode
+    0xB1, 0x31,    // Phase 1 and Phase 2 periods
+    0xB3, 0xF0,    // 7:4 = Oscillator Frequency, 3:0 = CLK Div Ratio (A[3:0]+1 = 1..16)
+    0x8A, 0x64,    // Precharge A
+    0x8B, 0x78,    // Precharge B
+    0xBB, 0x3A,    // Precharge level
+    0xBE, 0x3E,    // VCOM
+    0x87, 0x09,    // Master current
+    0x81, 0x91,    // RED
+    0x82, 0x50,    // GREEN
+    0x83, 0x7D,    // BLUE
+    0xAF,
 };
 
 template <class I>
@@ -98,10 +97,10 @@ void InterfaceSSD1331<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
     uint8_t rx = w ? (x + w - 1) : (m_base.width() - 1);
     this->start();
     spiDataMode(0);
-    this->send((m_rotation & 1) ? SSD1331_ROWADDR: SSD1331_COLUMNADDR);
+    this->send((m_rotation & 1) ? 0x75: 0x15);
     this->send(x);
     this->send(rx < m_base.width() ? rx : (m_base.width() - 1));
-    this->send((m_rotation & 1) ? SSD1331_COLUMNADDR: SSD1331_ROWADDR);
+    this->send((m_rotation & 1) ? 0x15: 0x75);
     this->send(y);
     this->send(m_base.height() - 1);
     spiDataMode(1);
@@ -129,7 +128,7 @@ void InterfaceSSD1331<I>::setRotation(uint8_t rotation)
     m_rotation = rotation & 0x03;
     this->start();
     spiDataMode(0);
-    this->send( SSD1331_SEGREMAP );
+    this->send( 0xA0 );
     switch (m_rotation)
     {
     // NORMAL FULL COLOR MODE
@@ -156,7 +155,7 @@ void InterfaceSSD1331<I>::drawLine(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint
 {
     this->start();
     spiDataMode(0);
-    this->send(SSD1331_DRAWLINE);
+    this->send( 0x21 );
     this->send(x1);
     this->send(y1);
     this->send(x2);
