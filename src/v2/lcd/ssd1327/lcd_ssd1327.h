@@ -187,7 +187,7 @@ public:
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
                                      config.dc,
-                                     config.frequency ?: 4400000,
+                                     config.frequency ?: 10000000,
                                      config.scl,
                                      config.sda } ) {}
 
@@ -203,6 +203,42 @@ public:
 
 private:
     InterfaceSSD1327<PlatformSpi> m_spi;
+};
+
+/**
+ * Class implements SSD1327 128x128 lcd display in 4 bit mode over I2C
+ */
+class DisplaySSD1327_128x128_I2C: public DisplaySSD1327_128x128<InterfaceSSD1327<PlatformI2c>>
+{
+public:
+    /**
+     * @brief Inits 128x128 lcd display over i2c (based on SSD1327 controller): 4-bit mode.
+     *
+     * Inits 128x128 lcd display over i2c (based on SSD1327 controller): 4-bit mode
+     * @param rstPin pin controlling LCD reset (-1 if not used)
+     * @param config platform i2c configuration. Please refer to SPlatformI2cConfig.
+     */
+    DisplaySSD1327_128x128_I2C( int8_t rstPin, const SPlatformI2cConfig &config = { -1, 0x3C, -1, -1, 0 } )
+        : DisplaySSD1327_128x128(m_i2c, rstPin)
+        , m_i2c( *this, -1,
+                 SPlatformI2cConfig{ config.busId,
+                                     config.addr ?: (uint8_t)0x3C,
+                                     config.scl,
+                                     config.sda,
+                                     config.frequency ?: 400000 } ) {}
+
+    /**
+     * Initializes SSD1327 lcd in 4-bit mode
+     */
+    void begin() override;
+
+    /**
+     * Closes connection to display
+     */
+    void end() override;
+
+private:
+    InterfaceSSD1327<PlatformI2c> m_i2c;
 };
 
 #include "lcd_ssd1327.inl"

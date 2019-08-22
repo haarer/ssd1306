@@ -40,3 +40,15 @@ void DisplaySSD1327_128x128_SPI::end()
     DisplaySSD1327_128x128::end();
     m_spi.end();
 }
+
+void DisplaySSD1327_128x128_I2C::begin()
+{
+    m_i2c.begin();
+    DisplaySSD1327_128x128::begin();
+}
+
+void DisplaySSD1327_128x128_I2C::end()
+{
+    DisplaySSD1327_128x128::end();
+    m_i2c.end();
+}
