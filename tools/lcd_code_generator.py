@@ -199,11 +199,12 @@ def generate_controller_data(ctl):
         load_data_from_json( gs_json, ctl )
     g_voc["_set_block"] = generate_set_block_content()
 
-    shutil.rmtree(controller,True)
-    os.mkdir(controller)
-    header = open(controller + "/lcd_" + controller + ".h", "w" )
-    inl = open(controller + "/lcd_" + controller + ".inl", "w" )
-    cpp = open(controller + "/lcd_" + controller + ".cpp", "w" )
+    location = "../src/v2/lcd/" + controller
+    shutil.rmtree(location,True)
+    os.mkdir(location)
+    header = open(location + "/lcd_" + controller + ".h", "w" )
+    inl = open(location + "/lcd_" + controller + ".inl", "w" )
+    cpp = open(location + "/lcd_" + controller + ".cpp", "w" )
 
     header.write( get_file_data('copyright.txt') )
     inl.write( get_file_data('copyright.txt') )
