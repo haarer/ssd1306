@@ -8,3 +8,4 @@
 #define CMD_ARG     0xFF
 #endif
 
+~FUNCS_DEF~

@@ -106,23 +106,46 @@ def get_val_by_path(path, default):
     data = g_voc;
     for i in range(0, len(nodes) - 1):
         data = data.get(nodes[i],{})
-    return data.get( nodes[-1], default )
+    # check if file exists
+    ctl_path = templates + "/" + g_voc["controller"] + "/" + path
+    base_path = templates + path
+    if len( data ) == 0 and os.path.exists(ctl_path) and os.path.isfile(ctl_path):
+        with open(ctl_path, 'r') as myfile:
+            data = myfile.read().splitlines()
+    elif len( data ) == 0 and os.path.exists(base_path) and os.path.isfile(base_path):
+        with open(base_path, 'r') as myfile:
+            data = myfile.read().splitlines()
+    else:
+        data = data.get( nodes[-1], default )
+    return data
+
+def read_template(fname):
+    with open(templates + fname, 'r') as myfile:
+        data=myfile.read()
+    return data
+
+def fill_template(temp):
+    temp = temp.replace('~CONTROLLER~', get_val_by_path("CONTROLLER",""))
+    temp = temp.replace('~controller~', get_val_by_path("controller",""))
+    temp = temp.replace('~RESOLUTION~', get_val_by_path("resolution",""))
+    temp = temp.replace('~EXBITS~', get_val_by_path("exbits",""))
+    temp = temp.replace('~BITS~', get_val_by_path("_bits",""))
+    temp = temp.replace('~WIDTH~', get_val_by_path("width",""))
+    temp = temp.replace('~HEIGHT~',get_val_by_path("height",""))
+    temp = temp.replace('~INIT~', get_val_by_path("init_data",""))
+    temp = temp.replace('~CONFIG_FUNC~', get_val_by_path("options/config_func","_configureSpiDisplay"))
+    temp = temp.replace('~SET_BLOCK~', get_val_by_path("_set_block",""))
+    temp = temp.replace('~END_BLOCK~', get_val_by_path("_end_block", "    this->stop();"))
+    temp = temp.replace('~FREQUENCY~', get_val_by_path("_frequency", "4400000"))
+    temp = temp.replace('~I2C_ADDR~', get_val_by_path("interfaces/i2c/addr", "0x3C"))
+    temp = temp.replace('~FUNCS_DECL~', get_val_by_path("FUNCS_DECL", ""))
+    temp = temp.replace('~FUNCS_DEF~', get_val_by_path("FUNCS_DEF", ""))
+    return temp
 
 def get_file_data(fname):
-    with open(templates + fname, 'r') as myfile:
-        data=myfile.read().replace('~CONTROLLER~', get_val_by_path("CONTROLLER","")).\
-                           replace('~controller~', get_val_by_path("controller","")).\
-                           replace('~RESOLUTION~', get_val_by_path("resolution","")).\
-                           replace('~EXBITS~', get_val_by_path("exbits","")).\
-                           replace('~BITS~', get_val_by_path("_bits","")).\
-                           replace('~WIDTH~', get_val_by_path("width","")).\
-                           replace('~HEIGHT~',get_val_by_path("height","")).\
-                           replace('~INIT~', get_val_by_path("init_data","")).\
-                           replace('~CONFIG_FUNC~', get_val_by_path("options/config_func","_configureSpiDisplay")).\
-                           replace('~SET_BLOCK~', get_val_by_path("_set_block","")).\
-                           replace('~FREQUENCY~', get_val_by_path("_frequency", "4400000")).\
-                           replace('~I2C_ADDR~', get_val_by_path("interfaces/i2c/addr", "0x3C"))
-    return data;
+    temp = read_template(fname)
+    temp = fill_template(temp)
+    return temp
 
 def get_json_controller_list(fname):
     with open(templates + 'lcd/' + fname) as json_file:
@@ -143,10 +166,29 @@ def load_init_data_from_json(fname, ctl, bits, resolution):
 
 templates = templates + "/"
 
+def generate_custom_decl(name, doc=["    /**", "     * DOCUMENT","     */"], type=["void",""]):
+    lines = get_val_by_path("functions/" + name + "/doc", doc)
+    decl = get_val_by_path("functions/" + name + "/decl", type)
+    lines.append( "    " + decl[0] + " " + name + "(" + ', '.join(decl[1:]) +");")
+    return fill_template('\n'.join(lines))
+
+def generate_custom_def(name, type=["void",""], code=[]):
+    delc = get_val_by_path("functions/" + name + "/decl", type)
+    lines = [ "template <class I>", delc[0] + \
+              " Interface~CONTROLLER~<I>::" + name + "(" + \
+              ', '.join(delc[1:]) +")", "{" ]
+    code = get_val_by_path("functions/" + name + "/code",code)
+    if len(code) == 0:
+        if name == "startBlock":
+            code = [generate_set_block_content()]
+    lines.append( '\n'.join(code) )
+    lines.extend( ["}", ""] )
+    return fill_template('\n'.join(lines))
+
 def generate_set_block_content():
     lines = ["    lcduint_t rx = w ? (x + w - 1) : (m_base.width() - 1);",
-             "    commandStart();",
-             "    this->send({0});".format(get_val_by_path("options/col_cmd", "0x22")) ]
+             "    commandStart();" ]
+    lines.append("    this->send({0});".format(get_val_by_path("options/col_cmd", "0x22")))
     if not get_val_by_path("options/args_in_cmd_mode", False):
         lines.append("    spiDataMode(1);  // According to datasheet all args must be passed in data mode")
     if get_val_by_path("options/rowcol_bits",8) != 8:
@@ -197,7 +239,16 @@ def generate_controller_data(ctl):
 
     if gs_json is not None:
         load_data_from_json( gs_json, ctl )
-    g_voc["_set_block"] = generate_set_block_content()
+    func_list = ["startBlock", "nextBlock", "endBlock", "spiDataMode", "commandStart"]
+    for f in get_val_by_path("functions",{}).keys():
+        if f not in func_list:
+            func_list.append( f )
+    g_voc["FUNCS_DECL"] = ""
+    for f in func_list:
+        g_voc["FUNCS_DECL"] += generate_custom_decl(f) + '\n\n'
+    g_voc["FUNCS_DEF"] = ""
+    for f in func_list:
+        g_voc["FUNCS_DEF"] += generate_custom_def(f) + '\n'
 
     location = "../src/v2/lcd/" + controller
     shutil.rmtree(location,True)
@@ -215,7 +266,6 @@ def generate_controller_data(ctl):
     cpp.write( get_file_data('header.cpp') )
 
     header.write( get_file_data('interface_spi.h') )
-    inl.write( get_file_data('interface_spi.inl') )
 
     for _bits in g_voc["bits"].keys():
         g_voc["_bits"] = _bits;
