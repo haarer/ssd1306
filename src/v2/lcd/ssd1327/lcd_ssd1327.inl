@@ -32,7 +32,6 @@
 #define CMD_ARG     0xFF
 #endif
 
-
 template <class I>
 void InterfaceSSD1327<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
 {
@@ -59,6 +58,7 @@ void InterfaceSSD1327<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
 template <class I>
 void InterfaceSSD1327<I>::nextBlock()
 {
+
 }
 
 template <class I>
@@ -85,6 +85,8 @@ void InterfaceSSD1327<I>::commandStart()
     else
         this->send(0x00);
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////
 //             SSD1327 basic 16-bit implementation
 ////////////////////////////////////////////////////////////////////////////////
