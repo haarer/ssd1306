@@ -13,7 +13,7 @@ public:
      */
     Display~CONTROLLER~_~RESOLUTION~_I2C( int8_t rstPin, const SPlatformI2cConfig &config = { -1, ~I2C_ADDR~, -1, -1, 0 } )
         : Display~CONTROLLER~_~RESOLUTION~(m_i2c, rstPin)
-        , m_i2c( *this, -1,
+        , m_i2c( ~INTERFACE_ARGS~,
                  SPlatformI2cConfig{ config.busId,
                                      config.addr ?: (uint8_t)~I2C_ADDR~,
                                      config.scl,

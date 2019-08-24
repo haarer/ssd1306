@@ -107,7 +107,7 @@ def get_val_by_path(path, default):
     for i in range(0, len(nodes) - 1):
         data = data.get(nodes[i],{})
     # check if file exists
-    ctl_path = templates + "/" + g_voc["controller"] + "/" + path
+    ctl_path = templates + "/lcd/" + g_voc["controller"] + "/" + path
     base_path = templates + path
     if len( data ) == 0 and os.path.exists(ctl_path) and os.path.isfile(ctl_path):
         with open(ctl_path, 'r') as myfile:
@@ -125,6 +125,9 @@ def read_template(fname):
     return data
 
 def fill_template(temp):
+    temp = temp.replace('~FUNCS_DECL~', get_val_by_path("FUNCS_DECL", ""))
+    temp = temp.replace('~FIELDS_DECL~', get_val_by_path("FIELDS_DECL", ""))
+    temp = temp.replace('~INTERFACE_ARGS~', get_val_by_path("interface_args", ""))
     temp = temp.replace('~CONTROLLER~', get_val_by_path("CONTROLLER",""))
     temp = temp.replace('~controller~', get_val_by_path("controller",""))
     temp = temp.replace('~RESOLUTION~', get_val_by_path("resolution",""))
@@ -138,8 +141,9 @@ def fill_template(temp):
     temp = temp.replace('~END_BLOCK~', get_val_by_path("_end_block", "    this->stop();"))
     temp = temp.replace('~FREQUENCY~', get_val_by_path("_frequency", "4400000"))
     temp = temp.replace('~I2C_ADDR~', get_val_by_path("interfaces/i2c/addr", "0x3C"))
-    temp = temp.replace('~FUNCS_DECL~', get_val_by_path("FUNCS_DECL", ""))
     temp = temp.replace('~FUNCS_DEF~', get_val_by_path("FUNCS_DEF", ""))
+    temp = temp.replace('~RESET_DURATION~', str(get_val_by_path("options/reset_duration", 20)))
+    temp = temp.replace('~RESET_DELAY~', str(get_val_by_path("options/reset_delay", 100)))
     return temp
 
 def get_file_data(fname):
@@ -158,6 +162,7 @@ def load_data_from_json(fname, ctl):
     g_voc["bits"] = data[ctl]["bits"];
     g_voc["options"] = data[ctl]["options"]
     g_voc["interfaces"] = data[ctl]["interfaces"]
+    g_voc["functions"] = data[ctl].get("functions", {})
 
 def load_init_data_from_json(fname, ctl, bits, resolution):
     with open(templates + 'lcd/' + fname) as json_file:
@@ -169,10 +174,22 @@ templates = templates + "/"
 def generate_custom_decl(name, doc=["    /**", "     * DOCUMENT","     */"], type=["void",""]):
     lines = get_val_by_path("functions/" + name + "/doc", doc)
     decl = get_val_by_path("functions/" + name + "/decl", type)
-    lines.append( "    " + decl[0] + " " + name + "(" + ', '.join(decl[1:]) +");")
+    init = get_val_by_path("functions/" + name + "/init", None)
+    if init is not None and len(init) > 0:
+        lines.append( ' '*4 + decl[0])
+        lines.append( ' '*4 + name + "(" + ', '.join(decl[1:]) +")")
+        lines.append( ' '*8 + ": " + init[0])
+        for i in init[1:]:
+            lines.append(' '*8 + ", " + i)
+        lines.extend([' '*4 + "{", ' '*4 + "}"])
+    else:
+        lines.append( "    " + decl[0] + " " + name + "(" + ', '.join(decl[1:]) +");")
     return fill_template('\n'.join(lines))
 
 def generate_custom_def(name, type=["void",""], code=[]):
+    init = get_val_by_path("functions/" + name + "/init", None)
+    if init is not None:
+        return None
     delc = get_val_by_path("functions/" + name + "/decl", type)
     lines = [ "template <class I>", delc[0] + \
               " Interface~CONTROLLER~<I>::" + name + "(" + \
@@ -239,8 +256,8 @@ def generate_controller_data(ctl):
 
     if gs_json is not None:
         load_data_from_json( gs_json, ctl )
-    func_list = ["startBlock", "nextBlock", "endBlock", "spiDataMode", "commandStart"]
-    for f in get_val_by_path("functions",{}).keys():
+    func_list = ["Interface~CONTROLLER~", "startBlock", "nextBlock", "endBlock", "spiDataMode", "commandStart"]
+    for f in get_val_by_path( "functions/interface_list",[] ):
         if f not in func_list:
             func_list.append( f )
     g_voc["FUNCS_DECL"] = ""
@@ -248,7 +265,10 @@ def generate_controller_data(ctl):
         g_voc["FUNCS_DECL"] += generate_custom_decl(f) + '\n\n'
     g_voc["FUNCS_DEF"] = ""
     for f in func_list:
-        g_voc["FUNCS_DEF"] += generate_custom_def(f) + '\n'
+        custom_def = generate_custom_def(f)
+        if custom_def is not None:
+            g_voc["FUNCS_DEF"] += custom_def + '\n'
+    g_voc["FIELDS_DECL"] = '\n'.join(get_val_by_path("fields/Interface~CONTROLLER~",[]))
 
     location = "../src/v2/lcd/" + controller
     shutil.rmtree(location,True)
@@ -283,6 +303,8 @@ def generate_controller_data(ctl):
             header.write( get_file_data('resolution.h') )
             inl.write( get_file_data('resolution.inl') )
             for intf in g_voc["interfaces"].keys():
+                g_voc["interface_args"] = get_val_by_path("bits/" + _bits + "/" + res + "/interface_args",\
+                                          "*this, -1" if intf == "i2c" else "*this, config.dc")
                 g_voc["_frequency"] = str(get_val_by_path( "interfaces/" + intf + "/frequency", 4400000 ))
                 header.write( get_file_data('display_' + intf + '.h') )
                 cpp.write( get_file_data('display_' + intf + '.cpp') )
