@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -22,39 +22,33 @@
     SOFTWARE.
 */
 
-#include "lcd_hal/io.h"
 #include "lcd_ssd1331.h"
+#include "lcd_hal/io.h"
+#ifdef SDL_EMULATION
+#include "sdl_core.h"
+#endif
 
-////////////////////////////////////////////////////////////////////////////////
-//             SSD1331 basic 8-bit implementation
-////////////////////////////////////////////////////////////////////////////////
 
 void DisplaySSD1331_96x64x8_SPI::begin()
 {
     m_spi.begin();
-    DisplaySSD1331x8::begin();
-    m_spi.setRotation( 0x00 );
+    DisplaySSD1331_96x64x8::begin();
 }
 
 void DisplaySSD1331_96x64x8_SPI::end()
 {
-    DisplaySSD1331x8::end();
+    DisplaySSD1331_96x64x8::end();
     m_spi.end();
 }
-
-////////////////////////////////////////////////////////////////////////////////
-//             SSD1331 basic 16-bit implementation
-////////////////////////////////////////////////////////////////////////////////
 
 void DisplaySSD1331_96x64x16_SPI::begin()
 {
     m_spi.begin();
-    DisplaySSD1331x16::begin();
-    m_spi.setRotation( 0x00 );
+    DisplaySSD1331_96x64x16::begin();
 }
 
 void DisplaySSD1331_96x64x16_SPI::end()
 {
-    DisplaySSD1331x16::end();
+    DisplaySSD1331_96x64x16::end();
     m_spi.end();
 }

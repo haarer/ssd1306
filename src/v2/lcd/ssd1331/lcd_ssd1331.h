@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -21,20 +21,19 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
+
 /**
- * @file oled_ssd1331.h support for RGB OLED 96x64 display
+ * @file lcd_ssd1331.h support for LCD SSD1331 display
  */
 
-
-#ifndef _OLED_SSD1331_V2_H_
-#define _OLED_SSD1331_V2_H_
+#pragma once
 
 #include "lcd_hal/io.h"
 #include "v2/lcd/lcd_common.h"
 #include "v2/lcd/base/display.h"
 
 /**
- * @ingroup LCD_INTERFACE_API
+ * @ingroup LCD_INTERFACE_API_V2
  * @{
  */
 
@@ -66,12 +65,12 @@ public:
      * @brief Sets block in RAM of lcd display controller to write data to.
      *
      * Sets block in RAM of lcd display controller to write data to.
-     * For ssd1331 it uses horizontal addressing mode, while for
+     * For SSD1331 it uses horizontal addressing mode, while for
      * sh1106 the function uses page addressing mode.
      * Width can be specified as 0, thus the library will set the right boundary to
      * region of RAM block to the right column of the display.
      * @param x - column (left region)
-     * @param y - page (top page of the block)
+     * @param y - row (top region)
      * @param w - width of the block in pixels to control
      *
      * @warning - this function initiates session (i2c or spi) and does not close it.
@@ -82,7 +81,7 @@ public:
     /**
      * Switches to the start of next RAM page for the block, specified by
      * startBlock().
-     * For ssd1331 it does nothing, while for sh1106 the function moves cursor to
+     * For SSD1331 it does nothing, while for sh1106 the function moves cursor to
      * next page.
      */
     void nextBlock();
@@ -97,6 +96,12 @@ public:
      * @param mode 1 to enable data mode, or 0 to enable command mode
      */
     void spiDataMode(uint8_t mode);
+
+    /**
+     * Starts communication with LCD display in command mode.
+     * To stop communication use m_intf.end().
+     */
+    void commandStart();
 
     /**
      * @brief Sets screen orientation (rotation)
@@ -144,8 +149,9 @@ private:
     uint8_t m_rotation = 0x00;  ///< Indicates display orientation: 0, 1, 2, 3. refer to setRotation
 };
 
+
 /**
- * Class implements basic functions for 8-bit mode of ssd1331-based displays
+ * Class implements basic functions for 8-bit mode of SSD1331-based displays
  */
 template <class I>
 class DisplaySSD1331x8: public NanoDisplayOps<NanoDisplayOps8<I>,I>
@@ -165,31 +171,60 @@ protected:
     int8_t m_rstPin; ///< indicates hardware reset pin used, -1 if it is not required
 
     /**
-     * Basic ssd1331 initialization
+     * Basic SSD1331 initialization
      */
     void begin() override;
 
     /**
-     * Basic ssd1331 deinitialization
+     * Basic SSD1331 deinitialization
      */
     void end() override;
 };
 
 /**
- * Class implements ssd1331 96x64 oled display in 8 bit mode over SPI
+ * Class implements basic functions for 8-bit mode of SSD1331-based displays
  */
-class DisplaySSD1331_96x64x8_SPI: public DisplaySSD1331x8<InterfaceSSD1331<PlatformSpi>>
+template <class I>
+class DisplaySSD1331_96x64x8: public DisplaySSD1331x8<I>
 {
 public:
     /**
-     * @brief Inits 96x64 OLED display over spi (based on SSD1331 controller): 8-bit mode.
+     * Creates instance of SSD1331 96x64x8 controller class for 8-bit mode
      *
-     * Inits 96x64 OLED display over spi (based on SSD1331 controller): 8-bit mode
+     * @param intf interface to use
+     * @param rstPin pin to use as HW reset pin for LCD display
+     */
+    DisplaySSD1331_96x64x8(I &intf, int8_t rstPin)
+        : DisplaySSD1331x8<I>(intf, rstPin) { }
+
+protected:
+
+    /**
+     * Basic SSD1331 96x64x8 initialization
+     */
+    void begin() override;
+
+    /**
+     * Basic SSD1331 deinitialization
+     */
+    void end() override;
+};
+
+/**
+ * Class implements SSD1331 96x64x8 lcd display in 8 bit mode over SPI
+ */
+class DisplaySSD1331_96x64x8_SPI: public DisplaySSD1331_96x64x8<InterfaceSSD1331<PlatformSpi>>
+{
+public:
+    /**
+     * @brief Inits 96x64x8 lcd display over spi (based on SSD1331 controller): 8-bit mode.
+     *
+     * Inits 96x64x8 lcd display over spi (based on SSD1331 controller): 8-bit mode
      * @param rstPin pin controlling LCD reset (-1 if not used)
      * @param config platform spi configuration. Please refer to SPlatformI2cConfig.
      */
     DisplaySSD1331_96x64x8_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
-        : DisplaySSD1331x8(m_spi, rstPin)
+        : DisplaySSD1331_96x64x8(m_spi, rstPin)
         , m_spi( 8, *this, config.dc,
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
@@ -199,7 +234,7 @@ public:
                                      config.sda } ) {}
 
     /**
-     * Initializes ssd1331 lcd in 8-bit mode
+     * Initializes SSD1331 lcd in 8-bit mode
      */
     void begin() override;
 
@@ -212,8 +247,9 @@ private:
     InterfaceSSD1331<PlatformSpi> m_spi;
 };
 
+
 /**
- * Class implements basic functions for 16-bit mode of ssd1331-based displays
+ * Class implements basic functions for 16-bit mode of SSD1331-based displays
  */
 template <class I>
 class DisplaySSD1331x16: public NanoDisplayOps<NanoDisplayOps16<I>,I>
@@ -230,34 +266,63 @@ public:
         , m_rstPin( rstPin ) { }
 
 protected:
-    int8_t m_rstPin; ///< reset pin number, -1 if reset pin is not used
+    int8_t m_rstPin; ///< indicates hardware reset pin used, -1 if it is not required
 
     /**
-     * Initializes ssd1331 lcd in 16-bit mode
+     * Basic SSD1331 initialization
      */
     void begin() override;
 
     /**
-     * Closes connection to display
+     * Basic SSD1331 deinitialization
      */
     void end() override;
 };
 
 /**
- * Class implements ssd1331 96x64 oled display in 16 bit mode over SPI
+ * Class implements basic functions for 16-bit mode of SSD1331-based displays
  */
-class DisplaySSD1331_96x64x16_SPI: public DisplaySSD1331x16<InterfaceSSD1331<PlatformSpi>>
+template <class I>
+class DisplaySSD1331_96x64x16: public DisplaySSD1331x16<I>
 {
 public:
     /**
-     * @brief Inits 96x64 OLED display over spi (based on SSD1331 controller): 16-bit mode.
+     * Creates instance of SSD1331 96x64x16 controller class for 16-bit mode
      *
-     * Inits 96x64 OLED display over spi (based on SSD1331 controller): 16-bit mode
+     * @param intf interface to use
+     * @param rstPin pin to use as HW reset pin for LCD display
+     */
+    DisplaySSD1331_96x64x16(I &intf, int8_t rstPin)
+        : DisplaySSD1331x16<I>(intf, rstPin) { }
+
+protected:
+
+    /**
+     * Basic SSD1331 96x64x16 initialization
+     */
+    void begin() override;
+
+    /**
+     * Basic SSD1331 deinitialization
+     */
+    void end() override;
+};
+
+/**
+ * Class implements SSD1331 96x64x16 lcd display in 16 bit mode over SPI
+ */
+class DisplaySSD1331_96x64x16_SPI: public DisplaySSD1331_96x64x16<InterfaceSSD1331<PlatformSpi>>
+{
+public:
+    /**
+     * @brief Inits 96x64x16 lcd display over spi (based on SSD1331 controller): 16-bit mode.
+     *
+     * Inits 96x64x16 lcd display over spi (based on SSD1331 controller): 16-bit mode
      * @param rstPin pin controlling LCD reset (-1 if not used)
      * @param config platform spi configuration. Please refer to SPlatformI2cConfig.
      */
     DisplaySSD1331_96x64x16_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
-        : DisplaySSD1331x16(m_spi, rstPin)
+        : DisplaySSD1331_96x64x16(m_spi, rstPin)
         , m_spi( 16, *this, config.dc,
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
@@ -267,7 +332,7 @@ public:
                                      config.sda } ) {}
 
     /**
-     * Initializes ssd1331 lcd in 16-bit mode
+     * Initializes SSD1331 lcd in 16-bit mode
      */
     void begin() override;
 
@@ -286,5 +351,3 @@ private:
  * @}
  */
 
-// ----------------------------------------------------------------------------
-#endif // _OLED_SSD1331_V2_H_
