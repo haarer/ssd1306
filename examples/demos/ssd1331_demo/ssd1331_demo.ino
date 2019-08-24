@@ -32,7 +32,7 @@
 #include "ssd1306v2.h"
 #include "sova.h"
 
-DisplaySSD1331_96x64_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
+DisplaySSD1331_96x64x8_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
 
 /*
  * Heart image below is defined directly in flash memory.
@@ -103,7 +103,7 @@ static void bitmapDemo()
  * Refer to C++ documentation.
  */
 NanoPoint sprite;
-NanoEngine8<DisplaySSD1331_96x64_SPI> engine(display);
+NanoEngine8<DisplaySSD1331_96x64x8_SPI> engine(display);
 static void spriteDemo()
 {
     // We not need to clear screen, engine will do it for us

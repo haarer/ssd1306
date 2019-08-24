@@ -29,16 +29,16 @@
 //             SSD1331 basic 8-bit implementation
 ////////////////////////////////////////////////////////////////////////////////
 
-void DisplaySSD1331_96x64_SPI::begin()
+void DisplaySSD1331_96x64x8_SPI::begin()
 {
     m_spi.begin();
-    DisplaySSD1331::begin();
+    DisplaySSD1331x8::begin();
     m_spi.setRotation( 0x00 );
 }
 
-void DisplaySSD1331_96x64_SPI::end()
+void DisplaySSD1331_96x64x8_SPI::end()
 {
-    DisplaySSD1331::end();
+    DisplaySSD1331x8::end();
     m_spi.end();
 }
 

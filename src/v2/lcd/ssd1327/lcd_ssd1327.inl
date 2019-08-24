@@ -133,11 +133,11 @@ static const PROGMEM uint8_t s_SSD1327_lcd128x128_initData[] =
 template <class I>
 void DisplaySSD1327_128x128<I>::begin()
 {
-    ssd1306_resetController2( this->m_rstPin, 20 );
+    ssd1306_resetController2( this->m_rstPin, 10 );
     this->m_w = 128;
     this->m_h = 128;
     // Give LCD some time to initialize. Refer to SSD1327 datasheet
-    lcd_delay(100);
+    lcd_delay(0);
     _configureSpiDisplayCmdModeOnly<I>(this->m_intf,
                             s_SSD1327_lcd128x128_initData,
                             sizeof(s_SSD1327_lcd128x128_initData));

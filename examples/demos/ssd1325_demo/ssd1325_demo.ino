@@ -103,7 +103,7 @@ static void bitmapDemo()
  * Refer to C++ documentation.
  */
 NanoPoint sprite;
-NanoEngine4<DisplaySSD1327_128x128_SPI> engine(display);
+NanoEngine4<DisplaySSD1325_128x64_SPI> engine(display);
 static void spriteDemo()
 {
     // We not need to clear screen, engine will do it for us

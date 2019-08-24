@@ -188,7 +188,7 @@ void InterfaceSSD1331<I>::copyBlock(uint8_t left, uint8_t top,
 ////////////////////////////////////////////////////////////////////////////////
 
 template <class I>
-void DisplaySSD1331<I>::begin()
+void DisplaySSD1331x8<I>::begin()
 {
     ssd1306_resetController2( m_rstPin, 10 );
     this->m_w = 96;
@@ -203,7 +203,7 @@ void DisplaySSD1331<I>::begin()
 }
 
 template <class I>
-void DisplaySSD1331<I>::end()
+void DisplaySSD1331x8<I>::end()
 {
 }
 

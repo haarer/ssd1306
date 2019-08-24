@@ -26,8 +26,7 @@
  * @file lcd_ssd1327.h support for LCD SSD1327 display
  */
 
-#ifndef _LCD_SSD1327_V2_H_
-#define _LCD_SSD1327_V2_H_
+#pragma once
 
 #include "lcd_hal/io.h"
 #include "v2/lcd/lcd_common.h"
@@ -101,7 +100,6 @@ public:
      * To stop communication use m_intf.end().
      */
     void commandStart();
-
 
 private:
     const int8_t m_dc = -1; ///< data/command pin for SPI, -1 for i2c
@@ -248,6 +246,3 @@ private:
  * @}
  */
 
-// ----------------------------------------------------------------------------
-
-#endif // _LCD_SSD1327_V2_H_

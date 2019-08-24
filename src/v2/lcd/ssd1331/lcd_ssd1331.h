@@ -148,7 +148,7 @@ private:
  * Class implements basic functions for 8-bit mode of ssd1331-based displays
  */
 template <class I>
-class DisplaySSD1331: public NanoDisplayOps<NanoDisplayOps8<I>,I>
+class DisplaySSD1331x8: public NanoDisplayOps<NanoDisplayOps8<I>,I>
 {
 public:
     /**
@@ -157,7 +157,7 @@ public:
      * @param intf interface to use
      * @param rstPin pin to use as HW reset pin for LCD display
      */
-    DisplaySSD1331(I &intf, int8_t rstPin)
+    DisplaySSD1331x8(I &intf, int8_t rstPin)
         : NanoDisplayOps<NanoDisplayOps8<I>, I>(intf)
         , m_rstPin( rstPin ) { }
 
@@ -178,7 +178,7 @@ protected:
 /**
  * Class implements ssd1331 96x64 oled display in 8 bit mode over SPI
  */
-class DisplaySSD1331_96x64_SPI: public DisplaySSD1331<InterfaceSSD1331<PlatformSpi>>
+class DisplaySSD1331_96x64x8_SPI: public DisplaySSD1331x8<InterfaceSSD1331<PlatformSpi>>
 {
 public:
     /**
@@ -188,8 +188,8 @@ public:
      * @param rstPin pin controlling LCD reset (-1 if not used)
      * @param config platform spi configuration. Please refer to SPlatformI2cConfig.
      */
-    DisplaySSD1331_96x64_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
-        : DisplaySSD1331(m_spi, rstPin)
+    DisplaySSD1331_96x64x8_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
+        : DisplaySSD1331x8(m_spi, rstPin)
         , m_spi( 8, *this, config.dc,
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
