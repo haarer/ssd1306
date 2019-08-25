@@ -46,7 +46,6 @@ if len(sys.argv) < 2:
 
 g_voc={}
 
-gs_json=None
 controller=""
 templates="templates"
 resolution_db = []
@@ -82,14 +81,11 @@ while idx < len(sys.argv):
         bits = int(sys.argv[idx])
         g_voc["bits"].append({"bits": zip( resolution_db, [{}] * len(resolution_db) )})
         resolution_db = []
-    elif opt == "-B":
-        g_voc["options"]["no_bits_in_name"] = True
     elif opt == "-t":
         idx += 1
         templates = sys.argv[idx]
     elif opt == "-j":
         idx += 1
-        gs_json = sys.argv[idx]
     elif opt == "-r":
         idx += 1
         resolution = sys.argv[idx]
@@ -254,7 +250,7 @@ def generate_controller_data(jsonfile, ctl):
     g_voc["CONTROLLER"] = controller.upper()
     g_voc["controller"] = controller.lower()
 
-    if gs_json is not None:
+    if jsonfile is not None:
         load_data_from_json( jsonfile, ctl )
     func_list = ["Interface~CONTROLLER~", "startBlock", "nextBlock", "endBlock", "spiDataMode", "commandStart"]
     for f in get_val_by_path( "functions/interface_list",[] ):
@@ -291,12 +287,14 @@ def generate_controller_data(jsonfile, ctl):
         g_voc["_bits"] = _bits;
         if not get_val_by_path("options/no_bits_in_name", False):
             g_voc["exbits"] = "x" + g_voc["_bits"]
+        else:
+            g_voc["exbits"] = ""
         header.write( get_file_data( 'display.h' ) )
         inl.write( get_file_data( 'display.inl' ) )
         for res in g_voc["bits"][_bits].keys():
             g_voc["resolution"] = res + g_voc["exbits"]
             g_voc["init_data"] = get_file_data('init_data.inl')
-            if gs_json is not None:
+            if jsonfile is not None:
                 load_init_data_from_json(jsonfile, ctl, _bits, res)
             g_voc["width"] = res.split('x')[0]
             g_voc["height"] = res.split('x')[1]
@@ -315,11 +313,8 @@ def generate_controller_data(jsonfile, ctl):
     inl.close()
     cpp.close()
 
-if gs_json is not None:
-    display_list = [f for f in os.listdir(templates + "lcd") if len(f) > 3]
-    for display in display_list:
-        _ctl_list = get_json_controller_list(display)
-        for _ctl in _ctl_list:
-            generate_controller_data( _ctl + "/" + _ctl + ".json", _ctl)
-else:
-    generate_controller_data( None, controller )
+display_list = [f for f in os.listdir(templates + "lcd") if len(f) > 3]
+for display in display_list:
+    _ctl_list = get_json_controller_list(display)
+    for _ctl in _ctl_list:
+        generate_controller_data( _ctl + "/" + _ctl + ".json", _ctl)
