@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -32,21 +32,17 @@
 #define CMD_ARG     0xFF
 #endif
 
-
 template <class I>
 void InterfaceST7735<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
 {
-    // TODO: place code here
     lcduint_t rx = w ? (x + w - 1) : (m_base.width() - 1);
-    this->start();
-    spiDataMode(0);
+    commandStart();
     this->send(0x2A);
-
     spiDataMode(1);  // According to datasheet all args must be passed in data mode
     this->send(0);
     this->send(x);
     this->send(0);
-    this->send(rx < m_base.width() ? rx : (m_base.width() - 1));
+    this->send( rx < m_base.width() ? rx : (m_base.width() - 1) );
     spiDataMode(0);
     this->send(0x2B);
     spiDataMode(1);  // According to datasheet all args must be passed in data mode
@@ -56,12 +52,22 @@ void InterfaceST7735<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
     this->send(m_base.height() - 1);
     spiDataMode(0);
     this->send(0x2C);
-    spiDataMode(1);
+    if (m_dc >= 0)
+    {
+        spiDataMode(1);
+    }
+    else
+    {
+        this->stop();
+        this->start();
+        this->send(0x40);
+    }
 }
 
 template <class I>
 void InterfaceST7735<I>::nextBlock()
 {
+
 }
 
 template <class I>
@@ -83,7 +89,10 @@ template <class I>
 void InterfaceST7735<I>::commandStart()
 {
     this->start();
-    spiDataMode(0);
+    if (m_dc >= 0)
+        spiDataMode(0);
+    else
+        this->send(0x00);
 }
 
 template <class I>
@@ -120,6 +129,7 @@ void InterfaceST7735<I>::setRotation(uint8_t rotation)
     this->send(0x29);
     this->stop();
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //             ST7735 basic 16-bit implementation
@@ -158,10 +168,8 @@ static const PROGMEM uint8_t s_ST7735_lcd128x128x16_initData[] =
     0xC5, 0x01, 0x0E,        // VMCTR vcom control 1
     0x20, 0x00,              // INVOFF (20h): Display Inversion Off
 //    0xFC, 0x02, 0x11, 0x15,  // PWCTR6
-
     0x36, 0x01, 0b00000000,  // MADCTL
     0x3A, 0x01, 0x05,        // COLMOD set 16-bit pixel format
-
 //    0x26, 1, 0x08,        // GAMSET set gamma curve: valid values 1, 2, 4, 8
 //    0xF2, 1, 0x01,        // enable gamma adjustment, 0 - to disable
     0xE0, 0x10, // GMCTRP1 positive gamma correction
@@ -189,10 +197,10 @@ template <class I>
 void DisplayST7735_128x128x16<I>::begin()
 {
     ssd1306_resetController2( this->m_rstPin, 20 );
-    /* Give 120ms display to initialize */
-    lcd_delay(120);
     this->m_w = 128;
     this->m_h = 128;
+    // Give LCD some time to initialize. Refer to ST7735 datasheet
+    lcd_delay(120);
     _configureSpiDisplay<I>(this->m_intf,
                             s_ST7735_lcd128x128x16_initData,
                             sizeof(s_ST7735_lcd128x128x16_initData));
@@ -226,10 +234,8 @@ static const PROGMEM uint8_t s_ST7735_lcd128x160x16_initData[] =
     0xC5, 0x01, 0x0E,        // VMCTR vcom control 1
     0x20, 0x00,              // INVOFF (20h): Display Inversion Off
 //    0xFC, 0x02, 0x11, 0x15,  // PWCTR6
-
     0x36, 0x01, 0b00000000,  // MADCTL
     0x3A, 0x01, 0x05,        // COLMOD set 16-bit pixel format
-
 //    0x26, 1, 0x08,        // GAMSET set gamma curve: valid values 1, 2, 4, 8
 //    0xF2, 1, 0x01,        // enable gamma adjustment, 0 - to disable
     0xE0, 0x10, // GMCTRP1 positive gamma correction
@@ -257,10 +263,10 @@ template <class I>
 void DisplayST7735_128x160x16<I>::begin()
 {
     ssd1306_resetController2( this->m_rstPin, 20 );
-    /* Give 120ms display to initialize */
-    lcd_delay(120);
     this->m_w = 128;
     this->m_h = 160;
+    // Give LCD some time to initialize. Refer to ST7735 datasheet
+    lcd_delay(120);
     _configureSpiDisplay<I>(this->m_intf,
                             s_ST7735_lcd128x160x16_initData,
                             sizeof(s_ST7735_lcd128x160x16_initData));
