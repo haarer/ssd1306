@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -28,14 +28,15 @@
 #include "sdl_core.h"
 #endif
 
-void DisplaySSD1351_128x128_SPI::begin()
+
+void DisplaySSD1351_128x128x16_SPI::begin()
 {
     m_spi.begin();
-    DisplaySSD1351::begin();
+    DisplaySSD1351_128x128x16::begin();
 }
 
-void DisplaySSD1351_128x128_SPI::end()
+void DisplaySSD1351_128x128x16_SPI::end()
 {
-    DisplaySSD1351::end();
+    DisplaySSD1351_128x128x16::end();
     m_spi.end();
 }

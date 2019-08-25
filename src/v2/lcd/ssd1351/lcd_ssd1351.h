@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -21,19 +21,19 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
+
 /**
- * @file oled_ssd1351.h support for RGB OLED 128x128 display
+ * @file lcd_ssd1351.h support for LCD SSD1351 display
  */
 
-#ifndef _OLED_SSD1351_V2_H_
-#define _OLED_SSD1351_V2_H_
+#pragma once
 
 #include "lcd_hal/io.h"
 #include "v2/lcd/lcd_common.h"
 #include "v2/lcd/base/display.h"
 
 /**
- * @ingroup LCD_INTERFACE_API
+ * @ingroup LCD_INTERFACE_API_V2
  * @{
  */
 
@@ -63,12 +63,12 @@ public:
      * @brief Sets block in RAM of lcd display controller to write data to.
      *
      * Sets block in RAM of lcd display controller to write data to.
-     * For ssd1351 it uses horizontal addressing mode, while for
+     * For SSD1351 it uses horizontal addressing mode, while for
      * sh1106 the function uses page addressing mode.
      * Width can be specified as 0, thus the library will set the right boundary to
      * region of RAM block to the right column of the display.
      * @param x - column (left region)
-     * @param y - page (top page of the block)
+     * @param y - row (top region)
      * @param w - width of the block in pixels to control
      *
      * @warning - this function initiates session (i2c or spi) and does not close it.
@@ -79,7 +79,7 @@ public:
     /**
      * Switches to the start of next RAM page for the block, specified by
      * startBlock().
-     * For ssd1351 it does nothing, while for sh1106 the function moves cursor to
+     * For SSD1351 it does nothing, while for sh1106 the function moves cursor to
      * next page.
      */
     void nextBlock();
@@ -95,25 +95,32 @@ public:
      */
     void spiDataMode(uint8_t mode);
 
+    /**
+     * Starts communication with LCD display in command mode.
+     * To stop communication use m_intf.end().
+     */
+    void commandStart();
+
 private:
     const int8_t m_dc = -1; ///< data/command pin for SPI, -1 for i2c
     NanoDisplayBase<InterfaceSSD1351<I>> &m_base; ///< basic lcd display support interface
 };
 
+
 /**
- * Class implements basic functions for 16-bit mode of ssd1351-based displays
+ * Class implements basic functions for 16-bit mode of SSD1351-based displays
  */
 template <class I>
-class DisplaySSD1351: public NanoDisplayOps<NanoDisplayOps16<I>,I>
+class DisplaySSD1351x16: public NanoDisplayOps<NanoDisplayOps16<I>,I>
 {
 public:
     /**
-     * Creates instance of SSD1351 controller class for 8-bit mode
+     * Creates instance of SSD1351 controller class for 16-bit mode
      *
      * @param intf interface to use
      * @param rstPin pin to use as HW reset pin for LCD display
      */
-    DisplaySSD1351(I &intf, int8_t rstPin)
+    DisplaySSD1351x16(I &intf, int8_t rstPin)
         : NanoDisplayOps<NanoDisplayOps16<I>, I>(intf)
         , m_rstPin( rstPin ) { }
 
@@ -126,26 +133,55 @@ protected:
     void begin() override;
 
     /**
-     * Basic ssd1351 deinitialization
+     * Basic SSD1351 deinitialization
      */
     void end() override;
 };
 
 /**
- * Class implements ssd1351 128x128 oled display in 16 bit mode over SPI
+ * Class implements basic functions for 16-bit mode of SSD1351-based displays
  */
-class DisplaySSD1351_128x128_SPI: public DisplaySSD1351<InterfaceSSD1351<PlatformSpi>>
+template <class I>
+class DisplaySSD1351_128x128x16: public DisplaySSD1351x16<I>
 {
 public:
     /**
-     * @brief Inits 128x128 OLED display over spi (based on SSD1351 controller): 16-bit mode.
+     * Creates instance of SSD1351 128x128x16 controller class for 16-bit mode
      *
-     * Inits 128x128 OLED display over spi (based on SSD1351 controller): 16-bit mode
+     * @param intf interface to use
+     * @param rstPin pin to use as HW reset pin for LCD display
+     */
+    DisplaySSD1351_128x128x16(I &intf, int8_t rstPin)
+        : DisplaySSD1351x16<I>(intf, rstPin) { }
+
+protected:
+
+    /**
+     * Basic SSD1351 128x128x16 initialization
+     */
+    void begin() override;
+
+    /**
+     * Basic SSD1351 deinitialization
+     */
+    void end() override;
+};
+
+/**
+ * Class implements SSD1351 128x128x16 lcd display in 16 bit mode over SPI
+ */
+class DisplaySSD1351_128x128x16_SPI: public DisplaySSD1351_128x128x16<InterfaceSSD1351<PlatformSpi>>
+{
+public:
+    /**
+     * @brief Inits 128x128x16 lcd display over spi (based on SSD1351 controller): 16-bit mode.
+     *
+     * Inits 128x128x16 lcd display over spi (based on SSD1351 controller): 16-bit mode
      * @param rstPin pin controlling LCD reset (-1 if not used)
      * @param config platform spi configuration. Please refer to SPlatformI2cConfig.
      */
-    DisplaySSD1351_128x128_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
-        : DisplaySSD1351(m_spi, rstPin)
+    DisplaySSD1351_128x128x16_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
+        : DisplaySSD1351_128x128x16(m_spi, rstPin)
         , m_spi( *this, config.dc,
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
@@ -155,7 +191,7 @@ public:
                                      config.sda } ) {}
 
     /**
-     * Initializes ssd1351 lcd in 8-bit mode
+     * Initializes SSD1351 lcd in 16-bit mode
      */
     void begin() override;
 
@@ -174,5 +210,3 @@ private:
  * @}
  */
 
-// ----------------------------------------------------------------------------
-#endif // _OLED_SSD1351_V2_H_
