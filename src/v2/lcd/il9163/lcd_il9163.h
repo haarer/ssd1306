@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -26,20 +26,19 @@
  * @file lcd_il9163.h support for LCD IL9163 display
  */
 
-#ifndef _LCD_IL9163_V2_H_
-#define _LCD_IL9163_V2_H_
+#pragma once
 
 #include "lcd_hal/io.h"
 #include "v2/lcd/lcd_common.h"
 #include "v2/lcd/base/display.h"
 
 /**
- * @ingroup LCD_INTERFACE_API
+ * @ingroup LCD_INTERFACE_API_V2
  * @{
  */
 
 /**
- * Class implements interface functions to SSD1351 displays
+ * Class implements interface functions to IL9163 displays
  */
 template <class I>
 class InterfaceIL9163: public I
@@ -288,6 +287,3 @@ private:
  * @}
  */
 
-// ----------------------------------------------------------------------------
-
-#endif // _LCD_IL9163_V2_H_
