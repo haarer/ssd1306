@@ -152,7 +152,7 @@ def get_file_data(fname):
     return temp
 
 def get_json_controller_list(fname):
-    with open(templates + 'lcd/' + fname) as json_file:
+    with open(templates + 'lcd/' + fname + "/" + fname + ".json") as json_file:
         data = json.load(json_file)
     return data.keys()
 
@@ -249,13 +249,13 @@ def generate_set_block_content():
                     "    }" ] )
     return "\n".join(lines)
 
-def generate_controller_data(ctl):
+def generate_controller_data(jsonfile, ctl):
     controller = ctl.lower();
     g_voc["CONTROLLER"] = controller.upper()
     g_voc["controller"] = controller.lower()
 
     if gs_json is not None:
-        load_data_from_json( gs_json, ctl )
+        load_data_from_json( jsonfile, ctl )
     func_list = ["Interface~CONTROLLER~", "startBlock", "nextBlock", "endBlock", "spiDataMode", "commandStart"]
     for f in get_val_by_path( "functions/interface_list",[] ):
         if f not in func_list:
@@ -297,7 +297,7 @@ def generate_controller_data(ctl):
             g_voc["resolution"] = res + g_voc["exbits"]
             g_voc["init_data"] = get_file_data('init_data.inl')
             if gs_json is not None:
-                load_init_data_from_json(gs_json, ctl, _bits, res)
+                load_init_data_from_json(jsonfile, ctl, _bits, res)
             g_voc["width"] = res.split('x')[0]
             g_voc["height"] = res.split('x')[1]
             header.write( get_file_data('resolution.h') )
@@ -316,8 +316,10 @@ def generate_controller_data(ctl):
     cpp.close()
 
 if gs_json is not None:
-    _ctl_list = get_json_controller_list(gs_json)
-    for _ctl in _ctl_list:
-        generate_controller_data(_ctl)
+    display_list = [f for f in os.listdir(templates + "lcd") if len(f) > 3]
+    for display in display_list:
+        _ctl_list = get_json_controller_list(display)
+        for _ctl in _ctl_list:
+            generate_controller_data( _ctl + "/" + _ctl + ".json", _ctl)
 else:
-    generate_controller_data(controller)
+    generate_controller_data( None, controller )
