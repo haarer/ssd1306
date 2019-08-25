@@ -36,31 +36,29 @@
 static const PROGMEM uint8_t s_ssd1351_oled128x128_initData[] =
 {
 #ifdef SDL_EMULATION
-    SDL_LCD_SSD1351,
-    0x00,
+    SDL_LCD_SSD1351, 0x00,
+    0x00, 0x00,
 #endif
-    SSD1351_UNLOCK, CMD_ARG, 0x12,
-    SSD1351_UNLOCK, CMD_ARG, 0xB1,
-    SSD1351_SLEEP_ON,
-    SSD1351_CLOCKDIV, CMD_ARG, 0xF1,         // 7:4 = Oscillator Frequency, 3:0 = CLK Div Ratio (A[3:0]+1 = 1..16)
-    SSD1351_SETMULTIPLEX, CMD_ARG, 127,      // Reset to default MUX. See datasheet
-    SSD1351_SEGREMAP, CMD_ARG, 0B00110100,   // 16-bit rgb color mode
-    SSD1351_SETSTARTLINE, CMD_ARG, 0x00,     // First line to start scanning from
-    SSD1351_SETDISPLAYOFFSET, CMD_ARG, 0x00, // Set display offset
-    SSD1351_SETGPIO, CMD_ARG, 0x00,          // GPIO OFF
-    SSD1351_SETFUNCTION, CMD_ARG, 0x01,
-    SSD1351_SETPRECHARGE, CMD_ARG, 0x32,     // Phase 1 and Phase 2 periods
-    SSD1351_VCOMH, CMD_ARG, 0x05,            //
-    SSD1351_PRECHARGELEVEL, CMD_ARG, 0x17,
-    SSD1351_NORMALDISPLAY,
-    SSD1351_CONTRAST,  CMD_ARG, 0xC8,        // RED
-                       CMD_ARG, 0x80,        // GREEN
-                       CMD_ARG, 0xC8,        // BLUE
-    SSD1351_MASTERCURRENT, CMD_ARG, 0x0F,    //
-    SSD1351_EXTVSL, CMD_ARG, 0xA0, CMD_ARG, 0xB5, CMD_ARG, 0x55,
-    SSD1351_PRECHARGESECOND, CMD_ARG, 0x01,  //
-    SSD1351_SLEEP_OFF,                    // Disable power-safe mode
-    SSD1351_NORMALDISPLAY,
+    0xFD, 0x01, 0x12,     // Unlock
+    0xFD, 0x01, 0xB1,     // Unlock
+    0xAE, 0x00,           // SLEEP_ON
+    0xB3, 0x01, 0xF1,     // 7:4 = Oscillator Frequency, 3:0 = CLK Div Ratio (A[3:0]+1 = 1..16)
+    0xCA, 0x01, 127,      // Reset to default MUX. See datasheet
+    0xA0, 0x01, 0B00110100,   // 16-bit rgb color mode
+    0xA1, 0x01, 0x00,     // First line to start scanning from
+    0xA2, 0x01, 0x00,     // Set display offset
+    0xB5, 0x01, 0x00,     // GPIO OFF
+    0xAB, 0x01, 0x01,     // Set function
+    0xB1, 0x01, 0x32,     // Phase 1 and Phase 2 periods
+    0xBE, 0x01, 0x05,     // Precharge
+    0xBB, 0x01, 0x17,     // Precharge leve;=l
+    0xA6, 0x00,           // Normal display
+    0xC1, 0x03, 0xC8, 0x80, 0xC8, // Contrast RED, GREEN, BLUE
+    0xC7, 0x01, 0x0F,     // Master current
+    0xB4, 0x03, 0xA0, 0xB5, 0x55, // External VSL
+    0xB6, 0x01, 0x01,     // Precharge second
+    0xAF, 0x01,           // Disable power-safe mode
+    0xA6, 0x00,           // Normal display
 };
 
 
@@ -70,17 +68,17 @@ void InterfaceSSD1351<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
     lcduint_t rx = w ? (x + w - 1) : (m_base.width() - 1);
     this->start();
     spiDataMode(0);
-    this->send(SSD1351_COLUMNADDR);
+    this->send(0x15);
     spiDataMode(1);  // According to datasheet all args must be passed in data mode
     this->send(x);
     this->send(rx < m_base.width() ? rx : (m_base.width() - 1));
     spiDataMode(0);
-    this->send(SSD1351_ROWADDR);
+    this->send(0x75);
     spiDataMode(1);  // According to datasheet all args must be passed in data mode
     this->send(y);
     this->send(m_base.height() - 1);
     spiDataMode(0);
-    this->send(SSD1351_WRITEDATA);
+    this->send(0x5C);
     spiDataMode(1);
 }
 
@@ -115,24 +113,9 @@ void DisplaySSD1351<I>::begin()
     ssd1306_resetController2( m_rstPin, 20 );
     this->m_w = 128;
     this->m_h = 128;
-    this->m_intf.start();
-    this->m_intf.spiDataMode(0);
-    for( uint8_t i=0; i<sizeof(s_ssd1351_oled128x128_initData); i++)
-    {
-        uint8_t data = pgm_read_byte(&s_ssd1351_oled128x128_initData[i]);
-        if (data == CMD_ARG)
-        {
-            data = pgm_read_byte(&s_ssd1351_oled128x128_initData[++i]);
-            this->m_intf.spiDataMode(1);
-            this->m_intf.send(data);
-            this->m_intf.spiDataMode(0);
-        }
-        else
-        {
-            this->m_intf.send(data);
-        }
-    }
-    this->m_intf.stop();
+    _configureSpiDisplay<I>(this->m_intf,
+                            s_ssd1351_oled128x128_initData,
+                            sizeof(s_ssd1351_oled128x128_initData));
 }
 
 template <class I>
