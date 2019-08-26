@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -22,40 +22,12 @@
     SOFTWARE.
 */
 
-#include "lcd_hal/io.h"
 #include "lcd_ssd1306.h"
+#include "lcd_hal/io.h"
+#ifdef SDL_EMULATION
+#include "sdl_core.h"
+#endif
 
-////////////////////////////////////////////////////////////////////
-//                        SSD1306 128x64
-////////////////////////////////////////////////////////////////////
-
-void DisplaySSD1306_128x64_SPI::begin()
-{
-    m_spi.begin();
-    DisplaySSD1306_128x64::begin();
-}
-
-void DisplaySSD1306_128x64_SPI::end()
-{
-    DisplaySSD1306_128x64::end();
-    m_spi.end();
-}
-
-void DisplaySSD1306_128x64_I2C::begin()
-{
-    m_i2c.begin();
-    DisplaySSD1306_128x64::begin();
-}
-
-void DisplaySSD1306_128x64_I2C::end()
-{
-    DisplaySSD1306_128x64::end();
-    m_i2c.end();
-}
-
-////////////////////////////////////////////////////////////////////
-//                        SSD1306 128x32
-////////////////////////////////////////////////////////////////////
 
 void DisplaySSD1306_128x32_SPI::begin()
 {
@@ -81,3 +53,26 @@ void DisplaySSD1306_128x32_I2C::end()
     m_i2c.end();
 }
 
+void DisplaySSD1306_128x64_SPI::begin()
+{
+    m_spi.begin();
+    DisplaySSD1306_128x64::begin();
+}
+
+void DisplaySSD1306_128x64_SPI::end()
+{
+    DisplaySSD1306_128x64::end();
+    m_spi.end();
+}
+
+void DisplaySSD1306_128x64_I2C::begin()
+{
+    m_i2c.begin();
+    DisplaySSD1306_128x64::begin();
+}
+
+void DisplaySSD1306_128x64_I2C::end()
+{
+    DisplaySSD1306_128x64::end();
+    m_i2c.end();
+}
