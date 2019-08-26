@@ -21,7 +21,7 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-
+/* !!! THIS FILE IS AUTO GENERATED !!! */
 /**
  * @file lcd_sh1106.h support for LCD SH1106 display
  */

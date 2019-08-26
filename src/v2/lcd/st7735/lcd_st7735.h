@@ -21,7 +21,7 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-
+/* !!! THIS FILE IS AUTO GENERATED !!! */
 /**
  * @file lcd_st7735.h support for LCD ST7735 display
  */

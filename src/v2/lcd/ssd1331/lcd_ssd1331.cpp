@@ -21,7 +21,7 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-
+/* !!! THIS FILE IS AUTO GENERATED !!! */
 #include "lcd_ssd1331.h"
 #include "lcd_hal/io.h"
 #ifdef SDL_EMULATION

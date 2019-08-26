@@ -21,7 +21,7 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-
+/* !!! THIS FILE IS AUTO GENERATED !!! */
 /**
  * @file lcd_pcd8544.h support for LCD PCD8544 display
  */
