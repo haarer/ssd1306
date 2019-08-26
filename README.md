@@ -54,7 +54,7 @@ through API.
 
 | **Display** | **I2C** | **SPI** | **Orientation** | **Comments** |
 | :-------- |:---:|:---:|:---:|:---------|
-| sh1106 128x64 | X |   |   |   |
+| sh1106 128x64 | X | X |   |   |
 | ssd1306 128x64 | X | X |   |   |
 | ssd1306 128x32 | X | X |   |   |
 | ssd1325 128x64 | X | X |   |   |
@@ -65,8 +65,6 @@ through API.
 | st7735 128x160 |   | X | X |   |
 | ili9341 240x320 |   | X | X | planned support |
 | pcd8544 84x48 |   | X  |   | Nokia 5110 |
-| vga 96x40 color |   |   |   | direct D-sub output, atmega328p only, planned support |
-| vga 128x64 bw |   |   |   | direct D-sub output, atmega328p only, planned support |
 
 ## Supported platforms
 
