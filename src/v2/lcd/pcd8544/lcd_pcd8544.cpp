@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -28,14 +28,15 @@
 #include "sdl_core.h"
 #endif
 
+
 void DisplayPCD8544_84x48_SPI::begin()
 {
     m_spi.begin();
-    DisplayPCD8544::begin();
+    DisplayPCD8544_84x48::begin();
 }
 
 void DisplayPCD8544_84x48_SPI::end()
 {
-    DisplayPCD8544::end();
+    DisplayPCD8544_84x48::end();
     m_spi.end();
 }

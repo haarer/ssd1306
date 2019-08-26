@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2017-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -22,36 +22,15 @@
     SOFTWARE.
 */
 
-#include "pcd8544_commands.h"
 #include "lcd_hal/io.h"
 #ifdef SDL_EMULATION
 #include "sdl_core.h"
 #endif
 #include "nano_gfx_types.h"
 
-static const uint8_t PROGMEM s_pcd8544_lcd84x48_initData[] =
-{
-#ifdef SDL_EMULATION
-    SDL_LCD_PCD8544,
-    0x00,
+#ifndef CMD_ARG
+#define CMD_ARG     0xFF
 #endif
-    PCD8544_FUNCTIONSET | PCD8544_EXTENDEDINSTRUCTION, // switch to extented commands
-    PCD8544_SETVOP | 0x16,  // Set vop contrast
-    PCD8544_SETTEMP,
-    PCD8544_SETBIAS | 0x04, // Set bias mode
-    PCD8544_FUNCTIONSET, // switch to basic commands
-    PCD8544_DISPLAYCONTROL | PCD8544_DISPLAYNORMAL
-};
-
-
-template <class I>
-void InterfacePCD8544<I>::spiDataMode(uint8_t mode)
-{
-    if ( m_dc >= 0 )
-    {
-        lcd_gpioWrite( m_dc, mode ? LCD_HIGH : LCD_LOW );
-    }
-}
 
 template <class I>
 void InterfacePCD8544<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
@@ -86,29 +65,72 @@ void InterfacePCD8544<I>::endBlock()
     this->stop();
 }
 
+template <class I>
+void InterfacePCD8544<I>::spiDataMode(uint8_t mode)
+{
+    if ( m_dc >= 0 )
+    {
+        lcd_gpioWrite( m_dc, mode ? LCD_HIGH : LCD_LOW );
+    }
+}
+
+template <class I>
+void InterfacePCD8544<I>::commandStart()
+{
+    this->start();
+    if (m_dc >= 0)
+        spiDataMode(0);
+    else
+        this->send(0x00);
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
-//             PCD8544 basic 8-bit implementation
+//             PCD8544 basic 16-bit implementation
 ////////////////////////////////////////////////////////////////////////////////
 
 template <class I>
 void DisplayPCD8544<I>::begin()
 {
-    ssd1306_resetController2( m_rstPin, 20 );
-
-    this->m_w = 84;
-    this->m_h = 48;
-    this->m_intf.start();
-    this->m_intf.spiDataMode(0);
-
-    for( uint8_t i=0; i<sizeof(s_pcd8544_lcd84x48_initData); i++)
-    {
-        this->m_intf.send(pgm_read_byte(&s_pcd8544_lcd84x48_initData[i]));
-    }
-    this->m_intf.stop();
 }
 
 template <class I>
 void DisplayPCD8544<I>::end()
+{
+}
+
+static const PROGMEM uint8_t s_PCD8544_lcd84x48_initData[] =
+{
+#ifdef SDL_EMULATION
+    SDL_LCD_PCD8544, 0x00,
+    0x00, 0x00,
+#endif
+    0x20 | 0x01, 0x00, // switch to extented commands
+    0x80 | 0x16, 0x00, // Set vop contrast
+    0x04, 0x00,        // set temp
+    0x10 | 0x04, 0x00, // Set bias mode
+    0x20, 0x00,        // switch to basic commands
+    0x08 | 0x04, 0x00, // Normal display
+};
+
+////////////////////////////////////////////////////////////////////////////////
+//             PCD8544 basic 1-bit implementation
+////////////////////////////////////////////////////////////////////////////////
+
+template <class I>
+void DisplayPCD8544_84x48<I>::begin()
+{
+    ssd1306_resetController2( this->m_rstPin, 20 );
+    this->m_w = 84;
+    this->m_h = 48;
+    // Give LCD some time to initialize. Refer to PCD8544 datasheet
+    lcd_delay(0);
+    _configureSpiDisplayCmdModeOnly<I>(this->m_intf,
+                            s_PCD8544_lcd84x48_initData,
+                            sizeof(s_PCD8544_lcd84x48_initData));
+}
+
+template <class I>
+void DisplayPCD8544_84x48<I>::end()
 {
 }

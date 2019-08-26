@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2017-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -21,13 +21,12 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
+
 /**
- * @file lcd_pcd8544.h support for Monochrome lcd 84x48 display
+ * @file lcd_pcd8544.h support for LCD PCD8544 display
  */
 
-
-#ifndef _LCD_PCD8544_V2_H_
-#define _LCD_PCD8544_V2_H_
+#pragma once
 
 #include "lcd_hal/io.h"
 #include "v2/lcd/lcd_common.h"
@@ -64,12 +63,12 @@ public:
      * @brief Sets block in RAM of lcd display controller to write data to.
      *
      * Sets block in RAM of lcd display controller to write data to.
-     * For ssd1306 it uses horizontal addressing mode, while for
+     * For PCD8544 it uses horizontal addressing mode, while for
      * sh1106 the function uses page addressing mode.
      * Width can be specified as 0, thus the library will set the right boundary to
      * region of RAM block to the right column of the display.
      * @param x - column (left region)
-     * @param y - page (top page of the block)
+     * @param y - row (top region)
      * @param w - width of the block in pixels to control
      *
      * @warning - this function initiates session (i2c or spi) and does not close it.
@@ -80,7 +79,7 @@ public:
     /**
      * Switches to the start of next RAM page for the block, specified by
      * startBlock().
-     * For ssd1306 it does nothing, while for sh1106 the function moves cursor to
+     * For PCD8544 it does nothing, while for sh1106 the function moves cursor to
      * next page.
      */
     void nextBlock();
@@ -96,6 +95,12 @@ public:
      */
     void spiDataMode(uint8_t mode);
 
+    /**
+     * Starts communication with LCD display in command mode.
+     * To stop communication use m_intf.end().
+     */
+    void commandStart();
+
 private:
     const int8_t m_dc = -1; ///< data/command pin for SPI, -1 for i2c
     NanoDisplayBase<InterfacePCD8544<I>> &m_base; ///< basic lcd display support interface
@@ -105,15 +110,16 @@ private:
     uint8_t m_page;
 };
 
+
 /**
- * Class implements basic functions for 16-bit mode of pcd8544-based displays
+ * Class implements basic functions for 1-bit mode of PCD8544-based displays
  */
 template <class I>
 class DisplayPCD8544: public NanoDisplayOps<NanoDisplayOps1<I>,I>
 {
 public:
     /**
-     * Creates instance of PCD8544 controller class for 8-bit mode
+     * Creates instance of PCD8544 controller class for 1-bit mode
      *
      * @param intf interface to use
      * @param rstPin pin to use as HW reset pin for LCD display
@@ -137,20 +143,49 @@ protected:
 };
 
 /**
- * Class implements pcd8544 84x48 oled display in 16 bit mode over SPI
+ * Class implements basic functions for 1-bit mode of PCD8544-based displays
  */
-class DisplayPCD8544_84x48_SPI: public DisplayPCD8544<InterfacePCD8544<PlatformSpi>>
+template <class I>
+class DisplayPCD8544_84x48: public DisplayPCD8544<I>
 {
 public:
     /**
-     * @brief Inits 84x48 OLED display over spi (based on PCD8544 controller): 16-bit mode.
+     * Creates instance of PCD8544 84x48 controller class for 1-bit mode
      *
-     * Inits 84x48 OLED display over spi (based on PCD8544 controller): 16-bit mode
+     * @param intf interface to use
+     * @param rstPin pin to use as HW reset pin for LCD display
+     */
+    DisplayPCD8544_84x48(I &intf, int8_t rstPin)
+        : DisplayPCD8544<I>(intf, rstPin) { }
+
+protected:
+
+    /**
+     * Basic PCD8544 84x48 initialization
+     */
+    void begin() override;
+
+    /**
+     * Basic PCD8544 deinitialization
+     */
+    void end() override;
+};
+
+/**
+ * Class implements PCD8544 84x48 lcd display in 1 bit mode over SPI
+ */
+class DisplayPCD8544_84x48_SPI: public DisplayPCD8544_84x48<InterfacePCD8544<PlatformSpi>>
+{
+public:
+    /**
+     * @brief Inits 84x48 lcd display over spi (based on PCD8544 controller): 1-bit mode.
+     *
+     * Inits 84x48 lcd display over spi (based on PCD8544 controller): 1-bit mode
      * @param rstPin pin controlling LCD reset (-1 if not used)
      * @param config platform spi configuration. Please refer to SPlatformI2cConfig.
      */
     DisplayPCD8544_84x48_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
-        : DisplayPCD8544(m_spi, rstPin)
+        : DisplayPCD8544_84x48(m_spi, rstPin)
         , m_spi( *this, config.dc,
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
@@ -160,7 +195,7 @@ public:
                                      config.sda } ) {}
 
     /**
-     * Initializes pcd8544 lcd in 8-bit mode
+     * Initializes PCD8544 lcd in 1-bit mode
      */
     void begin() override;
 
@@ -179,5 +214,3 @@ private:
  * @}
  */
 
-// ----------------------------------------------------------------------------
-#endif // _LCD_PCD8544_H_
