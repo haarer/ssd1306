@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2017-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -21,17 +21,16 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
+
 /**
- * @file oled_sh1106.h support for OLED SH1106-based displays
+ * @file lcd_sh1106.h support for LCD SH1106 display
  */
 
-
-#ifndef _OLED_SH1106_V2_H_
-#define _OLED_SH1106_V2_H_
+#pragma once
 
 #include "lcd_hal/io.h"
-#include "v2/lcd/base/display.h"
 #include "v2/lcd/lcd_common.h"
+#include "v2/lcd/base/display.h"
 
 /**
  * @ingroup LCD_INTERFACE_API_V2
@@ -69,20 +68,21 @@ public:
      * Width can be specified as 0, thus the library will set the right boundary to
      * region of RAM block to the right column of the display.
      * @param x - column (left region)
-     * @param y - page (top page of the block)
+     * @param y - row (top region)
      * @param w - width of the block in pixels to control
      *
      * @warning - this function initiates session (i2c or spi) and does not close it.
      *            To close session, please, call endBlock().
      */
-    void startBlock(lcduint_t x, lcduint_t y, lcduint_t w) __attribute__ ((noinline));
+    void startBlock(lcduint_t x, lcduint_t y, lcduint_t w);
 
     /**
      * Switches to the start of next RAM page for the block, specified by
      * startBlock().
-     * For ssd1306 it does nothing, while for sh1106 the function moves cursor to
+     * For SSD1306 it does nothing, while for SH1106 the function moves cursor to
      * next page.
      */
+
     void nextBlock();
 
     /**
@@ -172,101 +172,82 @@ private:
     uint8_t m_page;
 };
 
+
 /**
- * Generic interface to SH1106-based controllers
+ * Class implements basic functions for 1-bit mode of SH1106-based displays
  */
 template <class I>
-class DisplaySH1106: public NanoDisplayOps<NanoDisplayOps1<I>, I>
+class DisplaySH1106: public NanoDisplayOps<NanoDisplayOps1<I>,I>
 {
 public:
     /**
-     * Created object instance to control SH1106-based displays
+     * Creates instance of SH1106 controller class for 1-bit mode
      *
-     * @param intf reference to communication interface to use
-     * @param rstPin reset pin number, or -1 if not used
+     * @param intf interface to use
+     * @param rstPin pin to use as HW reset pin for LCD display
      */
-    DisplaySH1106(I &intf, int8_t rstPin = -1)
+    DisplaySH1106(I &intf, int8_t rstPin)
         : NanoDisplayOps<NanoDisplayOps1<I>, I>(intf)
         , m_rstPin( rstPin ) { }
 
 protected:
-    int8_t m_rstPin; ///< Reset pin number if used
+    int8_t m_rstPin; ///< indicates hardware reset pin used, -1 if it is not required
 
+    /**
+     * Basic SH1106 initialization
+     */
+    void begin() override;
+
+    /**
+     * Basic SH1106 deinitialization
+     */
+    void end() override;
 };
 
 /**
- * Class implements interface to 128x64 SH1106 monochrome display.
+ * Class implements basic functions for 1-bit mode of SH1106-based displays
  */
 template <class I>
 class DisplaySH1106_128x64: public DisplaySH1106<I>
 {
 public:
-    using DisplaySH1106<I>::DisplaySH1106;
+    /**
+     * Creates instance of SH1106 128x64 controller class for 1-bit mode
+     *
+     * @param intf interface to use
+     * @param rstPin pin to use as HW reset pin for LCD display
+     */
+    DisplaySH1106_128x64(I &intf, int8_t rstPin)
+        : DisplaySH1106<I>(intf, rstPin) { }
+
+protected:
 
     /**
-     * Initializes 128x64 lcd display. Interface should be ready prior to
-     * this function call
+     * Basic SH1106 128x64 initialization
      */
     void begin() override;
 
     /**
-     * Closes display connection
+     * Basic SH1106 deinitialization
      */
     void end() override;
 };
 
 /**
- * Class implements interface to 128x64 SH1106 i2c monochrome display.
- */
-class DisplaySH1106_128x64_I2C: public DisplaySH1106_128x64<InterfaceSH1106<PlatformI2c>>
-{
-public:
-    /**
-     * @brief Inits 128x64 OLED display over i2c (based on SH1106 controller).
-     *
-     * Inits 128x64 OLED display over i2c (based on SH1106 controller)
-     * This function uses hardcoded pins for i2c communication, depending on your hardware.
-     *
-     * @param config platform i2c configuration. Please refer to SPlatformI2cConfig.
-     */
-    DisplaySH1106_128x64_I2C( const SPlatformI2cConfig &config = { -1, 0x3C, -1, -1, 0 } )
-        : DisplaySH1106_128x64(m_i2c, -1)
-        , m_i2c( *this, -1,
-                 SPlatformI2cConfig{ config.busId,
-                                     config.addr ?: (uint8_t)0x3C,
-                                     config.scl,
-                                     config.sda,
-                                     config.frequency } ) {}
-
-    /**
-     * Initializes LCD display over I2C.
-     */
-    void begin() override;
-
-    /**
-     * Closes display connection
-     */
-    void end() override;
-
-private:
-    InterfaceSH1106<PlatformI2c> m_i2c;
-};
-
-/**
- * Class implements interface to 128x64 SH1106 spi monochrome display.
+ * Class implements SH1106 128x64 lcd display in 1 bit mode over SPI
  */
 class DisplaySH1106_128x64_SPI: public DisplaySH1106_128x64<InterfaceSH1106<PlatformSpi>>
 {
 public:
     /**
-     * @brief Inits 128x64 OLED display over spi (based on SH1106 controller).
+     * @brief Inits 128x64 lcd display over spi (based on SH1106 controller): 1-bit mode.
      *
-     * Inits 128x64 OLED display over spi (based on SH1106 controller)
+     * Inits 128x64 lcd display over spi (based on SH1106 controller): 1-bit mode
      * @param rstPin pin controlling LCD reset (-1 if not used)
      * @param config platform spi configuration. Please refer to SPlatformI2cConfig.
      */
     DisplaySH1106_128x64_SPI( int8_t rstPin, const SPlatformSpiConfig &config = { -1, -1, -1, 0, -1, -1 } )
-        : DisplaySH1106_128x64( m_spi, rstPin )
+        : DisplaySH1106_128x64(m_spi, rstPin)
         , m_spi( *this, config.dc,
                  SPlatformSpiConfig{ config.busId,
                                      config.cs,
@@ -275,12 +256,54 @@ public:
                                      config.scl,
                                      config.sda } ) {}
 
+    /**
+     * Initializes SH1106 lcd in 1-bit mode
+     */
     void begin() override;
 
+    /**
+     * Closes connection to display
+     */
     void end() override;
 
 private:
     InterfaceSH1106<PlatformSpi> m_spi;
+};
+
+/**
+ * Class implements SH1106 128x64 lcd display in 1 bit mode over I2C
+ */
+class DisplaySH1106_128x64_I2C: public DisplaySH1106_128x64<InterfaceSH1106<PlatformI2c>>
+{
+public:
+    /**
+     * @brief Inits 128x64 lcd display over i2c (based on SH1106 controller): 1-bit mode.
+     *
+     * Inits 128x64 lcd display over i2c (based on SH1106 controller): 1-bit mode
+     * @param rstPin pin controlling LCD reset (-1 if not used)
+     * @param config platform i2c configuration. Please refer to SPlatformI2cConfig.
+     */
+    DisplaySH1106_128x64_I2C( int8_t rstPin, const SPlatformI2cConfig &config = { -1, 0x3C, -1, -1, 0 } )
+        : DisplaySH1106_128x64(m_i2c, rstPin)
+        , m_i2c( *this, -1,
+                 SPlatformI2cConfig{ config.busId,
+                                     config.addr ?: (uint8_t)0x3C,
+                                     config.scl,
+                                     config.sda,
+                                     config.frequency ?: 400000 } ) {}
+
+    /**
+     * Initializes SH1106 lcd in 1-bit mode
+     */
+    void begin() override;
+
+    /**
+     * Closes connection to display
+     */
+    void end() override;
+
+private:
+    InterfaceSH1106<PlatformI2c> m_i2c;
 };
 
 #include "lcd_sh1106.inl"
@@ -289,5 +312,3 @@ private:
  * @}
  */
 
-// ----------------------------------------------------------------------------
-#endif // _OLED_SH1106_V2_H_

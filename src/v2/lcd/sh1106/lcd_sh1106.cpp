@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -22,24 +22,11 @@
     SOFTWARE.
 */
 
-#include "lcd_hal/io.h"
 #include "lcd_sh1106.h"
-
-////////////////////////////////////////////////////////////////////
-//                        SH1106 128x64
-////////////////////////////////////////////////////////////////////
-
-void DisplaySH1106_128x64_I2C::begin()
-{
-    m_i2c.begin();
-    DisplaySH1106_128x64::begin();
-}
-
-void DisplaySH1106_128x64_I2C::end()
-{
-    DisplaySH1106_128x64::end();
-    m_i2c.end();
-}
+#include "lcd_hal/io.h"
+#ifdef SDL_EMULATION
+#include "sdl_core.h"
+#endif
 
 
 void DisplaySH1106_128x64_SPI::begin()
@@ -54,3 +41,14 @@ void DisplaySH1106_128x64_SPI::end()
     m_spi.end();
 }
 
+void DisplaySH1106_128x64_I2C::begin()
+{
+    m_i2c.begin();
+    DisplaySH1106_128x64::begin();
+}
+
+void DisplaySH1106_128x64_I2C::end()
+{
+    DisplaySH1106_128x64::end();
+    m_i2c.end();
+}

@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2017-2019, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -23,52 +23,14 @@
 */
 
 #include "lcd_hal/io.h"
-#include "../ssd1306/ssd1306_commands.h"
 #ifdef SDL_EMULATION
 #include "sdl_core.h"
 #endif
+#include "nano_gfx_types.h"
 
-static const uint8_t PROGMEM s_sh1106_oled128x64_initData[] =
-{
-#ifdef SDL_EMULATION
-    SDL_LCD_SH1106, 0x00,
-    0x00, 0x00,
+#ifndef CMD_ARG
+#define CMD_ARG     0xFF
 #endif
-    0xAE, 0x00,        // display off
-    0xC8, 0x00,        // Scan from 127 to 0 (Reverse scan)
-    0x40| 0x00, 0x00,  // First line to start scanning from
-    0x81, 0x01, 0x7F,  // contast value to 0x7F according to datasheet
-    0xA0| 0x01, 0x00,  // Use reverse mapping. 0x00 - is normal mapping 
-    0xA6, 0x00,        // Normal display
-    0xA8, 0x01, 63,    // Reset to default MUX. See datasheet
-    0xD3, 0x01, 0x00,  // no offset
-    0xD5, 0x01, 0x80,  // set to default ratio/osc frequency
-    0xD9, 0x01, 0x22,  // switch precharge to 0x22 // 0xF1
-    0xDA, 0x01, 0x12,  // set divide ratio com pins
-    0xDB, 0x01, 0x20,  // vcom deselect to 0x20 // 0x40
-    0x8D, 0x01, 0x14,  // Enable charge pump
-    0xA4, 0x00,        // Display on resume
-    0xA5, 0x00,        // Display on
-};
-
-template <class I>
-void InterfaceSH1106<I>::spiDataMode(uint8_t mode)
-{
-    if (m_dc >= 0)
-    {
-        lcd_gpioWrite( m_dc, mode ? LCD_HIGH : LCD_LOW);
-    }
-}
-
-template <class I>
-void InterfaceSH1106<I>::commandStart()
-{
-    this->start();
-    if (m_dc >= 0)
-        spiDataMode(0);
-    else
-        this->send(0x00);
-}
 
 template <class I>
 void InterfaceSH1106<I>::startBlock(lcduint_t x, lcduint_t y, lcduint_t w)
@@ -102,6 +64,25 @@ template <class I>
 void InterfaceSH1106<I>::endBlock()
 {
     this->stop();
+}
+
+template <class I>
+void InterfaceSH1106<I>::spiDataMode(uint8_t mode)
+{
+    if ( m_dc >= 0 )
+    {
+        lcd_gpioWrite( m_dc, mode ? LCD_HIGH : LCD_LOW );
+    }
+}
+
+template <class I>
+void InterfaceSH1106<I>::commandStart()
+{
+    this->start();
+    if (m_dc >= 0)
+        spiDataMode(0);
+    else
+        this->send(0x00);
 }
 
 template <class I>
@@ -176,18 +157,59 @@ void InterfaceSH1106<I>::flipVertical(uint8_t mode)
     this->stop();
 }
 
+
+////////////////////////////////////////////////////////////////////////////////
+//             SH1106 basic 1-bit implementation
+////////////////////////////////////////////////////////////////////////////////
+
+template <class I>
+void DisplaySH1106<I>::begin()
+{
+}
+
+template <class I>
+void DisplaySH1106<I>::end()
+{
+}
+
+static const PROGMEM uint8_t s_SH1106_lcd128x64_initData[] =
+{
+#ifdef SDL_EMULATION
+    SDL_LCD_SH1106, 0x00,
+    0x00, 0x00,
+#endif
+    0xAE, 0x00,        // display off
+    0xC8, 0x00,        // Scan from 127 to 0 (Reverse scan)
+    0x40| 0x00, 0x00,  // First line to start scanning from
+    0x81, 0x01, 0x7F,  // contast value to 0x7F according to datasheet
+    0xA0| 0x01, 0x00,  // Use reverse mapping. 0x00 - is normal mapping
+    0xA6, 0x00,        // Normal display
+    0xA8, 0x01, 63,    // Reset to default MUX. See datasheet
+    0xD3, 0x01, 0x00,  // no offset
+    0xD5, 0x01, 0x80,  // set to default ratio/osc frequency
+    0xD9, 0x01, 0x22,  // switch precharge to 0x22 // 0xF1
+    0xDA, 0x01, 0x12,  // set divide ratio com pins
+    0xDB, 0x01, 0x20,  // vcom deselect to 0x20 // 0x40
+    0x8D, 0x01, 0x14,  // Enable charge pump
+    0xA4, 0x00,        // Display on resume
+    0xA5, 0x00,        // Display on
+};
+
+////////////////////////////////////////////////////////////////////////////////
+//             SH1106 basic 1-bit implementation
+////////////////////////////////////////////////////////////////////////////////
+
 template <class I>
 void DisplaySH1106_128x64<I>::begin()
 {
     ssd1306_resetController2( this->m_rstPin, 10 );
     this->m_w = 128;
     this->m_h = 64;
-    for( uint8_t i=0; i < sizeof(s_sh1106_oled128x64_initData); i++)
-    {
-        this->m_intf.commandStart();
-        this->m_intf.send(pgm_read_byte(&s_sh1106_oled128x64_initData[i]));
-        this->m_intf.stop();
-    }
+    // Give LCD some time to initialize. Refer to SH1106 datasheet
+    lcd_delay(0);
+    _configureSpiDisplayCmdModeOnly<I>(this->m_intf,
+                            s_SH1106_lcd128x64_initData,
+                            sizeof(s_SH1106_lcd128x64_initData));
 }
 
 template <class I>
