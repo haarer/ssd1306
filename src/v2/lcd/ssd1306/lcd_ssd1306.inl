@@ -31,49 +31,49 @@
 static const uint8_t PROGMEM s_ssd1306_oled128x64_initData[] =
 {
 #ifdef SDL_EMULATION
-    SDL_LCD_SSD1306,
-    0x00,
+    SDL_LCD_SSD1306, 0x00,
+    0x00, 0x00,
 #endif
-    SSD1306_DISPLAYOFF, // display off
-    SSD1306_MEMORYMODE, HORIZONTAL_ADDRESSING_MODE, // Page Addressing mode
-    SSD1306_COMSCANDEC,             // Scan from 127 to 0 (Reverse scan)
-    SSD1306_SETSTARTLINE | 0x00,    // First line to start scanning from
-    SSD1306_SETCONTRAST, 0x7F,      // contast value to 0x7F according to datasheet
-    SSD1306_SEGREMAP | 0x01,        // Use reverse mapping. 0x00 - is normal mapping 
-    SSD1306_NORMALDISPLAY,
-    SSD1306_SETMULTIPLEX, 63,       // Reset to default MUX. See datasheet
-    SSD1306_SETDISPLAYOFFSET, 0x00, // no offset
-    SSD1306_SETDISPLAYCLOCKDIV, 0x80,// set to default ratio/osc frequency
-    SSD1306_SETPRECHARGE, 0x22,     // switch precharge to 0x22 // 0xF1
-    SSD1306_SETCOMPINS, 0x12,       // set divide ratio
-    SSD1306_SETVCOMDETECT, 0x20,    // vcom deselect to 0x20 // 0x40
-    SSD1306_CHARGEPUMP, 0x14,       // Enable charge pump
-    SSD1306_DISPLAYALLON_RESUME,
-    SSD1306_DISPLAYON,
+    0xAE, 0x00,          // display off
+    0x20, 0x01, 0x00,    // Page horizontal Addressing mode
+    0xC8, 0x00,          // Scan from 127 to 0 (Reverse scan)
+    0x40| 0x00, 0x00,    // First line to start scanning from
+    0x81, 0x01, 0x7F,    // contast value to 0x7F according to datasheet
+    0xA0| 0x01, 0x00,    // Use reverse mapping. 0x00 - is normal mapping 
+    0xA6, 0x00,          // Normal display
+    0xA8, 0x01, 63,      // Reset to default MUX. See datasheet
+    0xD3, 0x01, 0x00,    // no offset
+    0xD5, 0x01, 0x80,    // set to default ratio/osc frequency
+    0xD9, 0x01, 0x22,    // switch precharge to 0x22 // 0xF1
+    0xDA, 0x01, 0x12,    // set divide ratio
+    0xDB, 0x01, 0x20,    // vcom deselect to 0x20 // 0x40
+    0x8D, 0x01, 0x14,    // Enable charge pump
+    0xA4, 0x00,          // Display resume
+    0xAF, 0x00,          // Display on
 };
 
 static const uint8_t PROGMEM s_ssd1306_oled128x32_initData[] =
 {
 #ifdef SDL_EMULATION
-    SDL_LCD_SSD1306,
-    0x00,
+    SDL_LCD_SSD1306, 0x00,
+    0x00, 0x00,
 #endif
-    SSD1306_DISPLAYOFF, // display off
-    SSD1306_SETDISPLAYCLOCKDIV, 0x80,
-    SSD1306_SETMULTIPLEX, 31,
-    SSD1306_SETDISPLAYOFFSET, 0x00, // --no offset
-    SSD1306_SETSTARTLINE,
-    SSD1306_CHARGEPUMP, 0x14, // 0x10
-    SSD1306_SEGREMAP | 0x01,  // Reverse mapping
-    SSD1306_COMSCANDEC,
-    SSD1306_SETCOMPINS, 0x02,
-    SSD1306_SETCONTRAST, 0x7F, // contast value
-    SSD1306_SETPRECHARGE, 0x22, // 0x1F
-    SSD1306_SETVCOMDETECT, 0x40,
-    SSD1306_MEMORYMODE, HORIZONTAL_ADDRESSING_MODE,
-    SSD1306_DISPLAYALLON_RESUME,
-    SSD1306_NORMALDISPLAY,
-    SSD1306_DISPLAYON,
+    0xAE, 0x00,          // display off
+    0xD5, 0x01, 0x80,    // Clock div
+    0xA8, 0x01, 31,      // Set multiplex
+    0xD3, 0x01, 0x00,    // --no offset
+    0x40, 0x00,          // Set display offset
+    0x8D, 0x01, 0x14,    // Set charge pump
+    0xA0| 0x01, 0x00,    // Reverse mapping
+    0xC8, 0x00,          // Decrement
+    0xDA, 0x01, 0x02,    // Set com pins
+    0x81, 0x01, 0x7F,    // contast value
+    0xD9, 0x01, 0x22,    // 0x1F Precharge
+    0xDB, 0x01, 0x40,    // Precharge
+    0x20, 0x01, 0x00,    // Set horizontal addressing mode
+    0xA4, 0x00,          // Display resume
+    0xA6, 0x00,          // Normal display
+    0xAF, 0x00,          // Display on
 };
 
 template <class I>
