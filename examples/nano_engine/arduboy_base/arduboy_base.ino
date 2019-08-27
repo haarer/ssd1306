@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2018-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -27,9 +27,10 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "ssd1306v2.h"
-#include "nano_engine.h"
 
-NanoEngine1 engine;
+DisplaySSD1306_128x64_SPI display(6,{-1, 12, 4, 0,-1,-1});
+
+NanoEngine1<DisplaySSD1306_128x64_SPI> engine(display);
 
 /* Define rect to move on the display */
 NanoRect rect = { {15,12}, {60,35} }; 
@@ -42,16 +43,15 @@ NanoRect rect = { {15,12}, {60,35} };
  */
 bool drawAll()
 {
-    engine.canvas.clear();
-    engine.canvas.setColor(RGB_COLOR8(255,255,0));
-    engine.canvas.drawRect(rect);   // draw rect in buffer
+    engine.getCanvas().clear();
+    engine.getCanvas().setColor(RGB_COLOR8(255,255,0));
+    engine.getCanvas().drawRect(rect);   // draw rect in buffer
     return true;
 }
 
 void setup()
 {
-    /* Init Mono OLED 128x64 for Arduboy. 6 - RESET, 12 - CS, 4 - D/C */
-    ssd1306_128x64_spi_init(6, 12, 4);
+    display.begin();
     /* initialize engine */
     engine.begin();
     engine.setFrameRate(45);          // Set frame rate
