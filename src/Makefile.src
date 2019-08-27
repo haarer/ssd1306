@@ -53,7 +53,7 @@ SRCS_CPP = \
 	v2/lcd/ssd1351/lcd_ssd1351.cpp \
 	v2/lcd/st7735/lcd_st7735.cpp \
 	v2/lcd/il9163/lcd_il9163.cpp \
-	v2/lcd/lcd_ili9341.cpp \
+	v2/lcd/ili9341/lcd_ili9341.cpp \
 	v2/nano_engine/core.cpp \
 	v1/lcd/vga_monitor.cpp \
 	v1/ssd1306_console.cpp \

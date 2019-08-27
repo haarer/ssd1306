@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -21,13 +21,34 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-
-#ifndef _SOVA_H_
-#define _SOVA_H_
-
-#include "ssd1306v2.h"
-#include <stdint.h>
-
-extern const uint8_t Sova [] PROGMEM;
-
+/* !!! THIS FILE IS AUTO GENERATED !!! */
+#include "lcd_ili9341.h"
+#include "lcd_hal/io.h"
+#ifdef SDL_EMULATION
+#include "sdl_core.h"
 #endif
+
+
+void DisplayILI9341_240x320x16_SPI::begin()
+{
+    m_spi.begin();
+    DisplayILI9341_240x320x16::begin();
+}
+
+void DisplayILI9341_240x320x16_SPI::end()
+{
+    DisplayILI9341_240x320x16::end();
+    m_spi.end();
+}
+
+void DisplayILI9341_128x160x16_SPI::begin()
+{
+    m_spi.begin();
+    DisplayILI9341_128x160x16::begin();
+}
+
+void DisplayILI9341_128x160x16_SPI::end()
+{
+    DisplayILI9341_128x160x16::end();
+    m_spi.end();
+}

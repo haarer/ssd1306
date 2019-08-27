@@ -44,7 +44,7 @@
 #include "v2/lcd/ssd1351/lcd_ssd1351.h"
 #include "v2/lcd/st7735/lcd_st7735.h"
 #include "v2/lcd/il9163/lcd_il9163.h"
-#include "v2/lcd/lcd_ili9341.h"
+#include "v2/lcd/ili9341/lcd_ili9341.h"
 
 extern "C" {
 #endif
