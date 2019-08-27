@@ -74,8 +74,6 @@ through API.
 | st7735 128x160 |   | X | X |   |
 | ili9341 240x320 |   | X | X |    |
 | pcd8544 84x48 |   | X  |   | Nokia 5110 |
-| vga 96x40 color |   |   |   | direct D-sub output, atmega328p only |
-| vga 128x64 bw |   |   |   | direct D-sub output, atmega328p only |
 
 <a name="supported-platforms"></a>
 ## Supported platforms
