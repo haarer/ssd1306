@@ -25,13 +25,21 @@
 #pragma once
 
 #include "ssd1306v2.h"
-#include "nano_engine.h"
 
-#define B_WIDTH  30
+// Uncomment the line you need for your display
+typedef DisplaySSD1331_96x64x8_SPI GraphicsDisplay;
+//typedef DisplaySSD1306_128x64_I2C GraphicsDisplay;
+//typedef DisplaySSD1306_128x64_SPI GraphicsDisplay;
+//typedef DisplayPCD8544_84x48_SPI GraphicsDisplay;
+//typedef DisplayST7735_128x160_SPI GraphicsDisplay;
+//typedef DisplayIL9163_128x160_SPI GraphicsDisplay;
 
-typedef NanoEngine<TILE_16x16_RGB8> GraphicsEngine;
+typedef NanoEngine8<GraphicsDisplay> GraphicsEngine;
+//typedef NanoEngine1<GraphicsDisplay> GraphicsEngine;
+//typedef NanoEngine16<GraphicsDisplay> GraphicsEngine;
 
 extern uint8_t gameField[];
+extern GraphicsDisplay display;
 extern GraphicsEngine engine;
 
 static inline bool isWalkable(uint8_t type)          { return (type == 0) || (type == 2) || (type == 3) || (type == 4); }
@@ -42,7 +50,7 @@ static inline bool isStair(uint8_t type)             { return type == 2; }
 
 static inline uint16_t block_index(const NanoPoint& block)
 {
-    return block.x + block.y * B_WIDTH;
+    return block.x + block.y * 24;
 }
 
 static inline NanoPoint pos_to_block(const NanoPoint& pos)
@@ -63,7 +71,7 @@ static inline NanoRect rect_to_blocks(const NanoRect& rect)
 static inline uint8_t block_value(const NanoPoint& block)
 {
     uint16_t index = block_index(block);
-    if (index >= B_WIDTH*14) index = 0;
+    if (index >= 24*14) index = 0;
     return gameField[index];
 }
 
@@ -75,7 +83,7 @@ static inline uint8_t block_at(const NanoPoint& p)
 static inline void set_block_at(const NanoPoint& p, uint8_t v)
 {
     uint16_t index = block_index(pos_to_block(p));
-    if (index >= B_WIDTH*14) index = 0;
+    if (index >= 24*14) index = 0;
     gameField[index] = v;
 }
 

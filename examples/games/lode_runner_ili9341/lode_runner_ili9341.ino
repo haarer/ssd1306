@@ -45,8 +45,7 @@
 #include "game_basic.h"
 #include "ninja.h"
 #include "sprites.h"
-#include "intf/ssd1306_interface.h"
-#include "intf/spi/ssd1306_spi.h"
+
 
 // Uncomment if you want to use gpio buttons
 //#define USE_GPIO_BUTTONS
@@ -67,13 +66,12 @@ const NanoRect game_window = { {0, 64}, {239, 319} };
 // Commented line is for 90 degree
 //const NanoRect game_window = { {64, 64}, {319, 239} };
 
-uint8_t blockColors[] =
-{
-    RGB_COLOR8(255,96,0),
-    RGB_COLOR8(255,255,192),
-    RGB_COLOR8(255,255,255),
-    RGB_COLOR8(255,255,64),
-    RGB_COLOR8(128,128,128),
+uint16_t blockColors[] = {
+    RGB_COLOR16(255,96,0),
+    RGB_COLOR16(255,255,192),
+    RGB_COLOR16(255,255,255),
+    RGB_COLOR16(255,255,64),
+    RGB_COLOR16(128,128,128),
 };
 
 /**
@@ -81,15 +79,15 @@ uint8_t blockColors[] =
  */
 void beep(int bCount,int bDelay);
 
-class Player: public NanoFixedSprite<GraphicsEngine>
+class Player: public NanoFixedSprite<GraphicsEngine::TilerT>
 {
 public:
-    using NanoFixedSprite<GraphicsEngine>::NanoFixedSprite;
+    using NanoFixedSprite<GraphicsEngine::TilerT>::NanoFixedSprite;
 
     void draw() override
     {
-        getTiler()->getCanvas().setColor(RGB_COLOR8(64,255,255));
-        NanoFixedSprite<GraphicsEngine>::draw();
+        getTiler().getCanvas().setColor(RGB_COLOR16(64,255,255));
+        NanoFixedSprite<GraphicsEngine::TilerT>::draw();
     }
 };
 
@@ -109,30 +107,30 @@ uint8_t  goldCollection = 0;
 
 void showGameInfo()
 {
-    engine.canvas.setMode(CANVAS_MODE_TRANSPARENT);
-    engine.canvas.setColor(RGB_COLOR8(0,0,0));
-    engine.canvas.drawBitmap1(1, 1, 8, 8, coinImage);
-    engine.canvas.setColor(RGB_COLOR8(255,255,0));
-    engine.canvas.drawBitmap1(0, 0, 8, 8, coinImage);
+    engine.getCanvas().setMode(CANVAS_MODE_TRANSPARENT);
+    engine.getCanvas().setColor(RGB_COLOR16(0,0,0));
+    engine.getCanvas().drawBitmap1(1, 1, 8, 8, coinImage);
+    engine.getCanvas().setColor(RGB_COLOR16(255,255,0));
+    engine.getCanvas().drawBitmap1(0, 0, 8, 8, coinImage);
 
-    ssd1306_setFixedFont(digital_font5x7_AB);
-    char score[3] = {goldCollection/10 + '0', goldCollection%10 + '0', 0};
-    engine.canvas.setColor(RGB_COLOR8(0,0,0));
-    engine.canvas.printFixed(9,1,score);
-    engine.canvas.setColor(RGB_COLOR8(255,255,255));
-    engine.canvas.printFixed(8,0,score);
-    ssd1306_setFixedFont(digital_font5x7_AB);
+    engine.getCanvas().setFixedFont(digital_font5x7_AB);
+    char score[3] = { goldCollection/10 + '0', goldCollection%10 + '0', 0 };
+    engine.getCanvas().setColor(RGB_COLOR16(0,0,0));
+    engine.getCanvas().printFixed(9,1,score);
+    engine.getCanvas().setColor(RGB_COLOR16(255,255,255));
+    engine.getCanvas().printFixed(8,0,score);
+    engine.getCanvas().setFixedFont(digital_font5x7_AB);
 }
 
 static bool onDraw()
 {
-    engine.canvas.clear();
-    engine.canvas.setMode(CANVAS_MODE_BASIC);
+    engine.getCanvas().clear();
+    engine.getCanvas().setMode(CANVAS_MODE_BASIC);
     engine.localCoordinates();
-    if (game_window.containsPartOf( engine.canvas.rect() ))
+    if (game_window.containsPartOf( engine.getCanvas().rect() ))
     {
         engine.worldCoordinates();
-        NanoRect blocks = rect_to_blocks( engine.canvas.rect() );
+        NanoRect blocks = rect_to_blocks( engine.getCanvas().rect() );
         for (uint8_t row = max(0,blocks.p1.y);
                      row <= min(13,blocks.p2.y); row++)
         {
@@ -142,9 +140,9 @@ static bool onDraw()
                 uint8_t blockType = block_value({col,row});
                 if (blockType != 0)
                 {
-                    engine.canvas.setColor(blockColors[blockType - 1]);
+                    engine.getCanvas().setColor(blockColors[blockType - 1]);
                     NanoPoint pos = block_to_pos({col,row});
-                    engine.canvas.drawBitmap1(pos.x, pos.y,
+                    engine.getCanvas().drawBitmap1(pos.x, pos.y,
                                           8, 8, bgSprites[blockType - 1]);
                 }
             }
@@ -153,7 +151,7 @@ static bool onDraw()
     }
     showGameInfo();
     engine.worldCoordinates();
-    engine.canvas.setMode(CANVAS_MODE_TRANSPARENT);
+    engine.getCanvas().setMode(CANVAS_MODE_TRANSPARENT);
     return true;
 }
 
@@ -280,15 +278,12 @@ void movePlayer(uint8_t direction)
 
 void setup()
 {
-    ili9341_240x320_spi_init(3, 4, 5); // 3 RST, 4 CES, 5 DS
-
-//    ssd1306_128x64_i2c_init();
-//    pcd8544_84x48_spi_init(3, 4, 5); // 3 RST, 4 CES, 5 DS
-//    il9163_128x128_spi_init(3, 4, 5);
-//    st7735_128x160_spi_init(3, 4, 5);
+    display.begin();
+    // Set font for display notifications
+    display.setFixedFont(digital_font5x7_AB);
 
     // Commented line is for 90 degree
-//    ili9341_setRotation(1);
+//    display.setRotation(1);
     player.setBitmap( playerFlyingImage[MAN_ANIM_FLYING][playerAnimation] );
 
 #ifdef USE_GPIO_BUTTONS
@@ -298,7 +293,8 @@ void setup()
 #endif
     engine.drawCallback( onDraw );
     engine.begin();
-    engine.setFrameRate(45);
+    engine.setFrameRate( 30 );
+    engine.refresh();
     engine.insert( player );
     engine.insert( ninja );
     engine.refresh();

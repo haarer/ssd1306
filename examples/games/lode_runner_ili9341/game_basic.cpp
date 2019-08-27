@@ -43,4 +43,5 @@ uint8_t gameField[B_WIDTH*14] =
    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,
 };
 
-GraphicsEngine engine;
+GraphicsDisplay display(3,{-1, 4, 5, 0,-1,-1}); // 3 reset, 5 ces, 5 dc
+GraphicsEngine engine(display);

@@ -25,9 +25,6 @@
 #include "ninja.h"
 #include "sprites.h"
 
-#include "intf/ssd1306_interface.h"
-#include "intf/spi/ssd1306_spi.h"
-
 Ninja ninja({72, 8});
 
 void Ninja::move(const NanoPoint &target)
@@ -159,6 +156,6 @@ void Ninja::move(const NanoPoint &target)
 
 void Ninja::draw()
 {
-    getTiler()->getCanvas().setColor(RGB_COLOR8(64,64,255));
+    getTiler().getCanvas().setColor(RGB_COLOR16(64,64,255));
     NanoFixedSprite::draw();
 }

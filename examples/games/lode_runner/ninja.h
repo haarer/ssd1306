@@ -27,11 +27,11 @@
 #include "game_basic.h"
 #include "sprites.h"
 
-class Ninja: public NanoFixedSprite<GraphicsEngine>
+class Ninja: public NanoFixedSprite<GraphicsEngine::TilerT>
 {
 public:
     explicit Ninja(NanoPoint pos)
-        : NanoFixedSprite<GraphicsEngine>(pos, {8,8}, playerFlyingImage[0][0]) {}
+        : NanoFixedSprite<GraphicsEngine::TilerT>(pos, {8,8}, playerFlyingImage[0][0]) {}
 
     void move(const NanoPoint &target);
 
