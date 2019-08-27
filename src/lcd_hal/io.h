@@ -105,7 +105,9 @@ typedef unsigned int lcduint_t;
 //                   HAL Layer functions
 ////////////////////////////////////////////////////////////////////////////////
 
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
 #define ARDUINO_COMPAT
+#endif
 
 #if defined(ARDUINO)
 
@@ -143,7 +145,10 @@ typedef unsigned int lcduint_t;
 /** Consrant corresponds to output mode of gpio */
 #define LCD_GPIO_OUTPUT 1
 // LCD_PROMEM is platform specific definition
-// #define LCD_PROGMEM PROGMEM
+#ifndef LCD_PROGMEM
+/** LCD_PROGMEM constant is used to specify data stored in flash, platform specific */
+#define LCD_PROGMEM PROGMEM
+#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -181,7 +186,12 @@ int lcd_adcRead(int pin);
 /**
  * returns 32-bit timestamp from system power-up in milliseconds
  */
-uint32_t lcd_millis();
+uint32_t lcd_millis(void);
+
+/**
+ * returns 32-bit timestamp from system power-up in microseconds
+ */
+uint32_t lcd_micros(void);
 
 /**
  * Initializes RND device
@@ -252,32 +262,49 @@ int lcd_random(int min, int max);
 #endif
 
 #ifdef ARDUINO_COMPAT
-
+/** @copydoc LCD_LOW */
 #define LOW LCD_LOW
+/** @copydoc LCD_HIGH */
 #define HIGH LCD_HIGH
+/** @copydoc LCD_GPIO_INPUT */
 #define INPUT LCD_GPIO_INPUT
+/** @copydoc LCD_GPIO_OUTPUT */
 #define OUTPUT LCD_GPIO_OUTPUT
 #ifndef PROGMEM
+/** @copydoc LCD_PROGMEM */
 #define PROGMEM LCD_PROGMEM
 #endif
 
+/** @copydoc lcd_gpioRead */
 #define digitalRead lcd_gpioRead
+/** @copydoc digitalRead */
 #define digitalWrite lcd_gpioWrite
+/** @copydoc lcd_gpioMode */
 #define pinMode lcd_gpioMode
+/** @copydoc lcd_adcRead */
 #define analogRead lcd_adcRead
 
 #if !defined(__AVR__)
+/** @copydoc lcd_pgmReadByte */
 #define pgm_read_byte lcd_pgmReadByte
+/** @copydoc lcd_eepromReadWord */
 #define eeprom_read_word lcd_eepromReadWord
+/** @copydoc lcd_eepromWriteWord */
 #define eeprom_write_word lcd_eepromWriteWord
 #endif
 
+/** @copydoc lcd_millis */
 #define millis lcd_millis
+/** @copydoc lcd_micros */
 #define micros lcd_micros
+/** @copydoc lcd_delay */
 #define delay lcd_delay
+/** @copydoc lcd_delayUs */
 #define delayMicroseconds lcd_delayUs
 
+/** @copydoc lcd_random */
 #define random lcd_random
+/** @copydoc lcd_randomSeed */
 #define randomSeed lcd_randomSeed
 
 #endif

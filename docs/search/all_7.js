@@ -24,5 +24,6 @@ var searchData=
   ['gfx_5fdrawmonobitmap',['gfx_drawMonoBitmap',['../class_nano_display_ops1.html#a641c504dae7a8dbf379c4908ff8acc16',1,'NanoDisplayOps1']]],
   ['glyph',['glyph',['../struct_s_char_info.html#a63babb0e12a4d2b08ececeb39abb6ed0',1,'SCharInfo']]],
   ['glyph_5fsize',['glyph_size',['../struct_s_fixed_font_info.html#a16b1ae2c599c2e8c1634a372f4c550b8',1,'SFixedFontInfo']]],
+  ['gray_5fcolor4',['GRAY_COLOR4',['../canvas__types_8h.html#afd58e53d7074f56bbd024730c0f24067',1,'canvas_types.h']]],
   ['generic_20api_20functions_2c_20common_20for_20all_20displays_20and_20all_20display_20modes_2e',['Generic API functions, common for all displays and all display modes.',['../group___l_c_d___g_e_n_e_r_i_c___a_p_i.html',1,'']]]
 ];

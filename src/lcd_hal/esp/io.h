@@ -33,7 +33,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-/* Progmem attribute for data, located in Flash */
+/** Progmem attribute for data, located in Flash */
 #define LCD_PROGMEM
 
 /** The macro is defined when ESP32 i2c implementation is available */

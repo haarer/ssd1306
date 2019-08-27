@@ -1,6 +1,7 @@
 var searchData=
 [
   ['tile_5f128x64_5fmono',['TILE_128x64_MONO',['../group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#gaec88d192410f9265c43f44411c32f597',1,'tiler.h']]],
+  ['tile_5f16x16_5fgray4',['TILE_16x16_GRAY4',['../group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga9ad2b135825e684353ce439416c0a48e',1,'tiler.h']]],
   ['tile_5f16x16_5fmono',['TILE_16x16_MONO',['../group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga645f33eeb27590c2eaa57938d8ccb091',1,'tiler.h']]],
   ['tile_5f16x16_5fmono_5f8',['TILE_16x16_MONO_8',['../group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#gad9d62a705bcfef030bb6eb2ad56e3b04',1,'tiler.h']]],
   ['tile_5f16x16_5frgb16',['TILE_16x16_RGB16',['../group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga7fe804b85fe0edd8f1e0ca2027c9cf9f',1,'tiler.h']]],

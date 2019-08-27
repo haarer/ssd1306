@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 /**
- * @file UserSettings.h SSD1306 modules configuration.
+ * @file lcd_hal/UserSettings.h SSD1306 modules configuration.
  */
 
 #ifndef _USER_SETTINGS_V2_H_

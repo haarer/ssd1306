@@ -5,5 +5,6 @@ var searchData=
   ['refreshworld',['refreshWorld',['../class_nano_engine_tiler.html#a42e2b5d5aa4f8a1be2c337ebca9e0155',1,'NanoEngineTiler::refreshWorld(const NanoRect &amp;rect)'],['../class_nano_engine_tiler.html#a6c5593aba4a6a4c00f09bf16cb4c56a2',1,'NanoEngineTiler::refreshWorld(lcdint_t x1, lcdint_t y1, lcdint_t x2, lcdint_t y2) __attribute__((noinline))'],['../class_nano_engine_tiler.html#ab0371405f9553a8cd762a7765f9a9768',1,'NanoEngineTiler::refreshWorld(const NanoPoint &amp;point)']]],
   ['remove',['remove',['../class_nano_object_list.html#abfc10cd6dbfed3324dbd6775bd6c2f85',1,'NanoObjectList::remove()'],['../class_nano_engine_tiler.html#acc4520540d1d9038e5247ab170423fe1',1,'NanoEngineTiler::remove()']]],
   ['resize',['resize',['../class_nano_object.html#af37bc51285a058d4a951686236259677',1,'NanoObject']]],
-  ['right',['right',['../class_nano_object.html#a538a6ff968016bf7f258810bda5e8ffb',1,'NanoObject']]]
+  ['right',['right',['../class_nano_object.html#a538a6ff968016bf7f258810bda5e8ffb',1,'NanoObject']]],
+  ['rotateoutput',['rotateOutput',['../class_interface_i_l_i9341.html#a2e337f0a8d7280269bca773b90fb045c',1,'InterfaceILI9341']]]
 ];

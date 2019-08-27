@@ -68,21 +68,21 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="ssd1306__interface_8h_source.html">ssd1306_interface.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="interface_8h_source.html">interface.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a7e6951f894b3b7349464b08a9ee940dd"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_platform_spi_config.html#a7e6951f894b3b7349464b08a9ee940dd">busId</a></td></tr>
 <tr class="separator:a7e6951f894b3b7349464b08a9ee940dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68cad38ff9495d7ebc916869495969e3"><td class="memItemLeft" >union {</td></tr>
-<tr class="memitem:a520cea31eee98efb9aa6ff13519cd518"><td class="memItemLeft" >
+<tr class="memitem:a81335428805634ea47fd1328eda78656"><td class="memItemLeft" >union {</td></tr>
+<tr class="memitem:ac92eca0e56d81d3766b2a3c6026ff329"><td class="memItemLeft" >
 &#160;&#160;&#160;int8_t&#160;&#160;&#160;<b>cs</b></td></tr>
-<tr class="separator:a520cea31eee98efb9aa6ff13519cd518"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a339cf76b93afbf761fd9f2068b1365fe"><td class="memItemLeft" >
+<tr class="separator:ac92eca0e56d81d3766b2a3c6026ff329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1657eb9c05086a7c66bf7d3b275152d"><td class="memItemLeft" >
 &#160;&#160;&#160;int8_t&#160;&#160;&#160;<b>devId</b></td></tr>
-<tr class="separator:a339cf76b93afbf761fd9f2068b1365fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68cad38ff9495d7ebc916869495969e3"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:a68cad38ff9495d7ebc916869495969e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:af1657eb9c05086a7c66bf7d3b275152d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81335428805634ea47fd1328eda78656"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:a81335428805634ea47fd1328eda78656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adee7ca6a2c67537243aa6365dc364015"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_platform_spi_config.html#adee7ca6a2c67537243aa6365dc364015">dc</a></td></tr>
 <tr class="separator:adee7ca6a2c67537243aa6365dc364015"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29ab1966cccc5bc568b973f0fe136546"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_platform_spi_config.html#a29ab1966cccc5bc568b973f0fe136546">frequency</a></td></tr>
@@ -96,10 +96,10 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>Structure describes spi platform configuration</p>
 <dl class="section warning"><dt>Warning</dt><dd>Not all fields are used by specific platforms </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8h_source.html#l00092">92</a> of file <a class="el" href="ssd1306__interface_8h_source.html">ssd1306_interface.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8h_source.html#l00092">92</a> of file <a class="el" href="interface_8h_source.html">interface.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="a68cad38ff9495d7ebc916869495969e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68cad38ff9495d7ebc916869495969e3">&#9670;&nbsp;</a></span>@2</h2>
+<a id="a81335428805634ea47fd1328eda78656"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81335428805634ea47fd1328eda78656">&#9670;&nbsp;</a></span>@3</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -126,7 +126,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>bus id number. this parameter is valid for Linux, ESP32. If -1 is pointed, it defaults to platform specific i2c bus (Linux spidev1.X, esp32 VSPI_HOST). </p>
 
-<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8h_source.html#l00098">98</a> of file <a class="el" href="ssd1306__interface_8h_source.html">ssd1306_interface.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8h_source.html#l00098">98</a> of file <a class="el" href="interface_8h_source.html">interface.h</a>.</p>
 
 </div>
 </div>
@@ -143,7 +143,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Data command control pin number. This pin assignment is mandatory </p>
 
-<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8h_source.html#l00114">114</a> of file <a class="el" href="ssd1306__interface_8h_source.html">ssd1306_interface.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8h_source.html#l00114">114</a> of file <a class="el" href="interface_8h_source.html">interface.h</a>.</p>
 
 </div>
 </div>
@@ -160,7 +160,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Frequency in HZ to run spi bus at. If 0, it defaults to max frequency, supported by platform </p>
 
-<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8h_source.html#l00120">120</a> of file <a class="el" href="ssd1306__interface_8h_source.html">ssd1306_interface.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8h_source.html#l00120">120</a> of file <a class="el" href="interface_8h_source.html">interface.h</a>.</p>
 
 </div>
 </div>
@@ -177,7 +177,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Optional - spi clock pin number. -1 if to use default spi clock pin. This is required for ESP32 platform only. </p>
 
-<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8h_source.html#l00126">126</a> of file <a class="el" href="ssd1306__interface_8h_source.html">ssd1306_interface.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8h_source.html#l00126">126</a> of file <a class="el" href="interface_8h_source.html">interface.h</a>.</p>
 
 </div>
 </div>
@@ -194,12 +194,12 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Optional - spi data MOSI pin number. -1 if to use default spi MOSI pin. This is required for ESP32 platform only. </p>
 
-<p class="definition">Definition at line <a class="el" href="ssd1306__interface_8h_source.html#l00132">132</a> of file <a class="el" href="ssd1306__interface_8h_source.html">ssd1306_interface.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8h_source.html#l00132">132</a> of file <a class="el" href="interface_8h_source.html">interface.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>ssd1306_hal/<a class="el" href="ssd1306__interface_8h_source.html">ssd1306_interface.h</a></li>
+<li>lcd_hal/<a class="el" href="interface_8h_source.html">interface.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
