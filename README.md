@@ -63,7 +63,7 @@ through API.
 | ssd1351 128x128 |   | X |   |   |
 | il9163 128x128 |   | X | X |   |
 | st7735 128x160 |   | X | X |   |
-| ili9341 240x320 |   | X | X | planned support |
+| ili9341 240x320 |   | X | X |   |
 | pcd8544 84x48 |   | X  |   | Nokia 5110 |
 
 ## Supported platforms
