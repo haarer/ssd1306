@@ -90,11 +90,19 @@ public:
      */
     void update() override
     {
-        if ( this->m_rect.height() <= 1 && this->hasTiler() )
+        if ( this->m_rect.height() <= 1 )
         {
-            lcduint_t height;
-            lcduint_t width = this->getTiler().getDisplay().getFont().getTextSize(m_name, &height);
-            this->setSize( {width, height} );
+            if ( this->hasTiler() )
+            {
+                lcduint_t height;
+                lcduint_t width = this->getTiler().getDisplay().getFont().getTextSize(m_name, &height);
+                this->setSize( {width, height} );
+            }
+            else
+            {
+                // At this point we don't know font to be used by a user
+                this->setSize( { this->width(), (lcduint_t)8 } );
+            }
         }
     }
 

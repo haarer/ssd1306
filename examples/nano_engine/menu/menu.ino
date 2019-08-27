@@ -74,11 +74,11 @@ void setup()
     engine.getCanvas().setFixedFont(ssd1306xled_font6x8);
     engine.getCanvas().setMode(CANVAS_MODE_TRANSPARENT);
 
-    engine.insert( menu );
     menu.add( item1 );
     menu.add( item2 );
     menu.add( item3 );
     menu.add( item4 );
+    engine.insert( menu );
 
     engine.refresh();
     lastMillis = millis();
