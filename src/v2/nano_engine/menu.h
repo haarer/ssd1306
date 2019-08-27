@@ -171,8 +171,8 @@ public:
      */
     void draw() override
     {
-        this->getTiler()->getCanvas().setColor( 0xFFFF );
-        this->getTiler()->getCanvas().drawRect( { this->m_rect.p1 + (NanoPoint){2, 2},
+        this->getTiler().getCanvas().setColor( 0xFFFF );
+        this->getTiler().getCanvas().drawRect( { this->m_rect.p1 + (NanoPoint){2, 2},
                                                 this->m_rect.p2 - (NanoPoint){2, 2} } );
         NanoMenu<T>::draw();
     }
@@ -219,8 +219,8 @@ public:
      */
     void draw() override
     {
-        this->getTiler()->getCanvas().setColor( 0xFFFF );
-        this->getTiler()->getCanvas().drawRect( { this->m_rect.p1 + (NanoPoint){2, 2},
+        this->getTiler().getCanvas().setColor( 0xFFFF );
+        this->getTiler().getCanvas().drawRect( { this->m_rect.p1 + (NanoPoint){2, 2},
                                                 this->m_rect.p2 - (NanoPoint){2, 2} } );
         NanoMenu<T>::draw();
     }
@@ -232,6 +232,7 @@ private:
         lcdint_t y_pos = this->m_rect.p1.y + 4;
         while (p)
         {
+            printf("H:%d\n", p->height());
             p->setPos( { (lcdint_t)(this->m_rect.p1.x + 4), y_pos } );
             p->setSize( { (lcdint_t)(this->m_rect.width() - 8), p->height() } );
             y_pos += p->height() + 1;

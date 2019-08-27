@@ -51,15 +51,15 @@ public:
     {
         if ( this->isFocused() )
         {
-            this->getTiler()->getCanvas().setColor( 0xFFFF );
-            this->getTiler()->getCanvas().fillRect( this->m_rect );
+            this->getTiler().getCanvas().setColor( 0xFFFF );
+            this->getTiler().getCanvas().fillRect( this->m_rect );
         }
         else
         {
-            this->getTiler()->getCanvas().setColor( 0 );
-            this->getTiler()->getCanvas().fillRect( this->m_rect );
-            this->getTiler()->getCanvas().setColor( 0xFFFF );
-            this->getTiler()->getCanvas().drawRect( this->m_rect );
+            this->getTiler().getCanvas().setColor( 0 );
+            this->getTiler().getCanvas().fillRect( this->m_rect );
+            this->getTiler().getCanvas().setColor( 0xFFFF );
+            this->getTiler().getCanvas().drawRect( this->m_rect );
         }
     }
 };
@@ -90,10 +90,10 @@ public:
      */
     void update() override
     {
-        if ( this->m_rect.width() <= 1 && this->hasTiler() )
+        if ( this->m_rect.height() <= 1 && this->hasTiler() )
         {
             lcduint_t height;
-            lcduint_t width = this->getTiler()->getDisplay().getTextSize(m_name, &height);
+            lcduint_t width = this->getTiler().getDisplay().getFont().getTextSize(m_name, &height);
             this->setSize( {width, height} );
         }
     }
@@ -105,17 +105,17 @@ public:
     {
         if ( this->isFocused() )
         {
-            this->getTiler()->getCanvas().setMode( CANVAS_MODE_TRANSPARENT );
-            this->getTiler()->getCanvas().setColor( 0xFFFF );
-            this->getTiler()->getCanvas().fillRect( this->m_rect );
-            this->getTiler()->getCanvas().setColor( 0x0000 );
-            this->getTiler()->getCanvas().printFixed( this->m_rect.p1.x, this->m_rect.p1.y, m_name );
+            this->getTiler().getCanvas().setMode( CANVAS_MODE_TRANSPARENT );
+            this->getTiler().getCanvas().setColor( 0xFFFF );
+            this->getTiler().getCanvas().fillRect( this->m_rect );
+            this->getTiler().getCanvas().setColor( 0x0000 );
+            this->getTiler().getCanvas().printFixed( this->m_rect.p1.x, this->m_rect.p1.y, m_name );
         }
         else
         {
-            this->getTiler()->getCanvas().setMode( CANVAS_MODE_BASIC );
-            this->getTiler()->getCanvas().setColor( 0xFFFF );
-            this->getTiler()->getCanvas().printFixed( this->m_rect.p1.x, this->m_rect.p1.y, m_name );
+            this->getTiler().getCanvas().setMode( CANVAS_MODE_BASIC );
+            this->getTiler().getCanvas().setColor( 0xFFFF );
+            this->getTiler().getCanvas().printFixed( this->m_rect.p1.x, this->m_rect.p1.y, m_name );
         }
     }
 

@@ -37,7 +37,8 @@
  */
 
 #include "ssd1306v2.h"
-#include "nano_engine.h"
+
+DisplaySSD1306_128x64_I2C display(-1);
 
 const PROGMEM uint8_t heartImage[8] =
 {
@@ -51,33 +52,33 @@ const PROGMEM uint8_t heartImage[8] =
     0B00001110
 };
 
-NanoEngine1 engine;
-NanoTextMenuItem<NanoEngine1> item1("First menu item");
-NanoTestMenuItem<NanoEngine1> item2;
-NanoTextMenuItem<NanoEngine1> item3("Demo");
-NanoTestMenuItem<NanoEngine1> item4;
-NanoFixedWidthMenu<NanoEngine1> menu( {0,0}, {128,64} );
+typedef NanoEngine1<DisplaySSD1306_128x64_I2C> MyEngine;
+
+MyEngine engine(display);
+NanoTextMenuItem<MyEngine::TilerT> item1("First menu item");
+NanoTestMenuItem<MyEngine::TilerT> item2;
+NanoTextMenuItem<MyEngine::TilerT> item3("Demo");
+NanoTestMenuItem<MyEngine::TilerT> item4;
+NanoFixedWidthMenu<MyEngine::TilerT> menu( {0,0}, {128,64} );
 
 uint16_t lastMillis;
 
 void setup()
 {
-    ssd1306_128x64_i2c_init();
-//    ssd1331_96x64_spi_init(3,4,5);
-//    ssd1351_128x128_spi_init(3,4,5);
-//    il9163_128x128_spi_init(3,4,5);
-    ssd1306_setFixedFont(ssd1306xled_font6x8);
+    display.begin();
+    display.setFixedFont(ssd1306xled_font6x8);
 
     engine.setFrameRate( 30 );
     engine.begin();
 
-    engine.canvas.setMode(CANVAS_MODE_TRANSPARENT);
+    engine.getCanvas().setFixedFont(ssd1306xled_font6x8);
+    engine.getCanvas().setMode(CANVAS_MODE_TRANSPARENT);
 
+    engine.insert( menu );
     menu.add( item1 );
     menu.add( item2 );
     menu.add( item3 );
     menu.add( item4 );
-    engine.insert( menu );
 
     engine.refresh();
     lastMillis = millis();
