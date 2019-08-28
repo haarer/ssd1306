@@ -26,7 +26,7 @@
 ////// GENERIC FUNCTIONS APPLICABLE FOR ALL DISPLAY TYPES /////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 #include "nano_gfx_types.h"
 #include "lcd_hal/io.h"
 

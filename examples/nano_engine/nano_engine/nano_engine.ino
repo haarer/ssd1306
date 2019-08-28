@@ -30,13 +30,13 @@
  *   ESP8266: connect LCD to D1(D/C), D2(CS), RX(RES), D7(DIN), D5(CLK)
  */
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 #include "nano_bitmaps.h"
 
 #define FRAMES_CAPTURE  128
 
-DisplaySSD1331_96x64_SPI display(3, {-1, 4, 5});
-NanoEngine8<DisplaySSD1331_96x64_SPI> engine(display);
+DisplaySSD1331_96x64x8_SPI display(3, {-1, 4, 5});
+NanoEngine8<DisplaySSD1331_96x64x8_SPI> engine(display);
 
 
 int x = 72;

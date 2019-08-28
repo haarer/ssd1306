@@ -3,6 +3,7 @@
 if [ "$1" = "" ]; then
     echo "Script compiles all demos"
     echo "Usage: check_compilation.sh [platform]"
+    echo "        platform   actual platform name or all"
     exit 1
 fi
 

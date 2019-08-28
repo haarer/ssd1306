@@ -1,6 +1,6 @@
 #    MIT License
 #
-#    Copyright (c) 2018, Alexey Dynda
+#    Copyright (c) 2018-2019, Alexey Dynda
 #
 #    Permission is hereby granted, free of charge, to any person obtaining a copy
 #    of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,7 @@
 #    SOFTWARE.
 #
 #################################################################
-# Makefile to build ssd1306 examples for different platforms
+# Makefile to build examples for different platforms
 #
 # Accept the following parameters:
 # CC
@@ -85,7 +85,7 @@ CCFLAGS += -MD -g -Os -w -ffreestanding $(INCLUDES) -Wall -Werror \
 	-Wl,--gc-sections -ffunction-sections -fdata-sections \
 	$(EXTRA_CCFLAGS)
 
-.PHONY: clean ssd1306 all help
+.PHONY: clean lcdgfx all help
 
 SRCS += main.cpp \
        $(wildcard $(PROJECT)/*.cpp) \
@@ -93,17 +93,17 @@ SRCS += main.cpp \
 
 OBJS = $(addprefix $(BLD)/, $(addsuffix .o, $(basename $(SRCS))))
 
-LDFLAGS += -L$(BLD) -lssd1306
+LDFLAGS += -L$(BLD) -llcdgfx
 
 ####################### Compiling library #########################
 
-ssd1306:
+lcdgfx:
 	$(MAKE) -C ../src -f Makefile.$(platform) MCU=$(MCU) SDL_EMULATION=$(SDL_EMULATION) \
 	                     ADAFRUIT=$(ADAFRUIT)
 
 all: $(OUTFILE)
 
-$(OUTFILE): $(OBJS) ssd1306
+$(OUTFILE): $(OBJS) lcdgfx
 	-$(MKDIR) $(call convert,$(dir $@))
 	$(CC) -o $(OUTFILE) $(CCFLAGS) $(OBJS) $(LDFLAGS)
 

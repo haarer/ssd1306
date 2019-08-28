@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2018-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,10 @@
 */
 
 /*
- * @file lcd_hal/avr/io.h SSD1306 AVR IO communication functions
+ * @file lcd_hal/avr/io.h AVR IO communication functions
  */
 
-#ifndef _SSD1306V2_AVR_IO_H_
-#define _SSD1306V2_AVR_IO_H_
+#pragma once
 
 #include "../UserSettings.h"
 #include "../interface.h"
@@ -75,8 +74,6 @@
     #define CONFIG_TWI_I2C_AVAILABLE
     /** The macro is defined when SPI module is available */
     #define CONFIG_AVR_SPI_AVAILABLE
-
-#endif
 
 #endif
 

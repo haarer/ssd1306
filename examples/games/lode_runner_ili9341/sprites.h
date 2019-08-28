@@ -24,7 +24,7 @@
 
 #pragma once
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 
 enum
 {

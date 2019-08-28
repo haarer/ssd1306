@@ -27,21 +27,19 @@
  *   ESP8266: connect LCD to D1(D/C), D2(CS), RX(RES), D7(DIN), D5(CLK)
  */
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 
 #include "arkanoid.h"
 #include "levels.h"
 
 #define PIX_BITS  2
 
-DisplaySSD1331_96x64_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
-    /* ssd1351 must be initialized in Horizontal addressing mode */
-//    ssd1351_128x128_spi_init(3, 4, 5);
-    /* il9163 must be initialized in Horizontal addressing mode */
-//    il9163_128x128_spi_init(3, 4, 5);
+DisplaySSD1331_96x64x8_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
+//DisplaySSD1351_128x128x16_SPI display(3,{-1, 4, 5, 0,-1,-1});
+//DisplayIL9163_128x128x16_SPI display(3,{-1, 4, 5, 0,-1,-1});
 
 
-NanoEngine8<DisplaySSD1331_96x64_SPI> engine(display);
+NanoEngine8<DisplaySSD1331_96x64x8_SPI> engine(display);
 
 static uint8_t g_level = 0;
 static uint8_t g_score = 0;

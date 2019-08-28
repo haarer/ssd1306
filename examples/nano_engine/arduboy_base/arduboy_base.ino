@@ -26,7 +26,7 @@
 // This sketch will run on Arduboy HW (compile for Leonardo board)
 //////////////////////////////////////////////////////////////////////
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 
 DisplaySSD1306_128x64_SPI display(6,{-1, 12, 4, 0,-1,-1});
 

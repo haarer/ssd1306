@@ -1,4 +1,4 @@
-# SSD1306/SSD1331/SSD1351/IL9163/ILI9341/ST7735/ILI9341 OLED display driver, PCD8544 LED display driver
+# LCDGFX library for display controllers
 
 [tocstart]: # (toc start)
 
@@ -14,7 +14,7 @@
 
 ## Introduction
 
-SSD1306 driver is Arduino style C++ library with unicode support. The library can be compiled for plain Linux
+lcdgfx driver is Arduino style C++ library with unicode support. The library can be compiled for plain Linux
 (for example, raspberry spi), or you can use it with plain avr-gcc compiler without Arduino IDE. It supports
 monochrome and RGB oleds and has debug mode, allowing to execute code on PC, using SDL2.0.
 Initially the library was intended to run on very small microcontrollers (with a little of RAM). It was developed to use as
@@ -32,7 +32,7 @@ It works on any powerful devices like raspberry pi, esp32; and can be easily por
    * spi (4-wire spi via Arduino SPI library, AVR Spi, AVR USI module)
  * Primitive graphics functions (lines, rectangles, pixels, bitmaps, drawing canvas)
  * Printing text to display (using fonts of different size, you can use GLCD Font Creator to create new fonts)
- * Includes [graphics engine](https://github.com/lexus2k/ssd1306/wiki/Using-NanoEngine-for-systems-with-low-resources2) to support
+ * Includes [graphics engine](https://github.com/lexus2k/lcdgfx/wiki/Using-NanoEngine-for-systems-with-low-resources2) to support
    double buffering on tiny microcontrollers.
  * Can be used for game development (bonus examples):
    * Arkanoid game ([arkanoid](examples/games/arkanoid) in old style API and [arkanoid8](examples/games/arkanoid8) in new style API)
@@ -91,15 +91,15 @@ through API.
 | ESP32 |  X  | X  |  library can be used as IDF component  |
 | **Linux**  |    |     |          |
 | Raspberry Pi |  X  |  X  | i2c-dev, spidev, sys/class/gpio  |
-| [SDL Emulation](https://github.com/lexus2k/ssd1306/wiki/How-to-run-emulator-mode) |  X  |  X  | demo code can be run without real OLED HW via SDL library |
+| [SDL Emulation](https://github.com/lexus2k/lcdgfx/wiki/How-to-run-emulator-mode) |  X  |  X  | demo code can be run without real OLED HW via SDL library |
 | **Windows**  |    |     |          |
-| [SDL Emulation](https://github.com/lexus2k/ssd1306/wiki/How-to-run-emulator-mode) |  X  |  X  | demo code can be run without real OLED HW via MinGW32 + SDL library |
+| [SDL Emulation](https://github.com/lexus2k/lcdgfx/wiki/How-to-run-emulator-mode) |  X  |  X  | demo code can be run without real OLED HW via MinGW32 + SDL library |
 
 Digispark users, please check compilation options in your Arduino prior to using this library.
-Ssd1306 library requires at least c++11 and c99 (by default Digispark package misses the options
+lcdgfx library requires at least c++11 and c99 (by default Digispark package misses the options
 -std=gnu11, -std=gnu++11).
 
-## The goals of ssd1306 library
+## The goals of lcdgfx library
 
  * To use as few RAM as possible
  * To use as few Flash as possible
@@ -108,30 +108,30 @@ Ssd1306 library requires at least c++11 and c99 (by default Digispark package mi
 
 ## Setting up
 
-*i2c Hardware setup is described [here](https://github.com/lexus2k/ssd1306/wiki/Hardware-setup)*
+*i2c Hardware setup is described [here](https://github.com/lexus2k/lcdgfx/wiki/Hardware-setup)*
 
 *Setting up for Arduino from github sources)*
- * Download source from https://github.com/lexus2k/ssd1306
- * Put the sources to Arduino/libraries/ssd1306/ folder
+ * Download source from https://github.com/lexus2k/lcdgfx
+ * Put the sources to Arduino/libraries/lcdgfx folder
 
 *Setting up for Arduino from Arduino IDE library manager*
- * Install ssd1306 library (named ssd1306 by Alexey Dynda) via Arduino IDE library manager
+ * Install lcdgfx library (named lcdgfx by Alexey Dynda) via Arduino IDE library manager
 
 *Using with plain avr-gcc:*
- * Download source from https://github.com/lexus2k/ssd1306
+ * Download source from https://github.com/lexus2k/lcdgfx
  * Build the library (variant 1)
-   * cd ssd1306/src && make -f Makefile.avr MCU=<your_mcu>
+   * cd lcdgfx/src && make -f Makefile.avr MCU=<your_mcu>
    * Link library to your project (refer to [Makefile.avr](examples/Makefile.avr) in examples folder).
  * Build demo code (variant 2)
-   * cd ssd1306/tools && ./build_and_run.sh -p avr -m <your_mcu> ssd1306_demo
+   * cd lcdgfx/tools && ./build_and_run.sh -p avr -m <your_mcu> ssd1306_demo
 
  *For esp32:*
-  * Download source from https://github.com/lexus2k/ssd1306
-  * Put downloaded sources to components/ssd1306/ folder.
+  * Download source from https://github.com/lexus2k/lcdgfx
+  * Put downloaded sources to components/lcdgfx/ folder.
   * Compile your project as described in ESP-IDF build system documentation
 
-For more information about this library, please, visit https://github.com/lexus2k/ssd1306.
-Doxygen documentation can be found at [github.io site](http://lexus2k.github.io/ssd1306).
+For more information about this library, please, visit https://github.com/lexus2k/lcdgfx.
+Doxygen documentation can be found at [github.io site](http://lexus2k.github.io/lcdgfx).
 If you found any problem or have any idea, please, report to Issues section.
 
 ## License

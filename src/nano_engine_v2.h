@@ -22,12 +22,10 @@
     SOFTWARE.
 */
 /**
- * @file nano_engine_v2.h Small graphics engine, based on SSD1331 functions
+ * @file nano_engine_v2.h Small graphics engine
  */
 
-
-#ifndef _NANO_ENGINE_V2_H_
-#define _NANO_ENGINE_V2_H_
+#pragma once
 
 #include "v2/nano_engine/tiler.h"
 #include "v2/nano_engine/object.h"
@@ -149,6 +147,4 @@ using NanoEngine16 = NanoEngine<TILE_16x16_RGB16,D>;
 /**
  * @}
  */
-
-#endif
 

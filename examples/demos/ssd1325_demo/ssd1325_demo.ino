@@ -29,7 +29,7 @@
 
 /* !!! THIS DEMO RUNS in SSD1306 COMPATIBLE MODE */
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 #include "sova.h"
 
 DisplaySSD1325_128x64_SPI display(3,{-1, 4, 5, 0,-1,-1});   // Use this line for Atmega328p (3=RST, 4=CE, 5=D/C)

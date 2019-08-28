@@ -24,7 +24,7 @@
 
 #pragma once
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 
 // Uncomment the line you need for your display
 typedef DisplaySSD1331_96x64x8_SPI GraphicsDisplay;

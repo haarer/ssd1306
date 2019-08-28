@@ -24,7 +24,7 @@
 
 #include "buttons.h"
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 
 Key getPressedButton(uint8_t analogPin)
 {

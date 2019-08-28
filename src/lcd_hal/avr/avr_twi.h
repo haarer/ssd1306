@@ -23,11 +23,10 @@
 */
 
 /*
- * @file lcd_hal/avr/avr_twi.h SSD1306 AVR I2C communication functions
+ * @file lcd_hal/avr/avr_twi.h LCDGFX AVR I2C communication functions
  */
 
-#ifndef _SSD1306V2_AVR_TWI_H_
-#define _SSD1306V2_AVR_TWI_H_
+#pragma once
 
 #if defined(CONFIG_TWI_I2C_AVAILABLE) && defined(CONFIG_TWI_I2C_ENABLE)
 
@@ -95,8 +94,6 @@ public:
 private:
     uint8_t m_sa;
 };
-
-#endif
 
 #endif
 

@@ -21,7 +21,7 @@
 #    SOFTWARE.
 #
 #################################################################
-# Makefile to build ssd1306 examples for AVR controllers
+# Makefile to build examples for ESP32 controllers
 #
 # Accept the following parameters:
 # CC
@@ -40,26 +40,27 @@ endif
 BLD ?= ../bld
 PROJECT ?= demos/ssd1306_demo
 
-prepare_esp32_library:
-	mkdir -p $(BLD)/esp32/components/ssd1306
-	cp -a ../src $(BLD)/esp32/components/ssd1306/
-	cp -a ../component.mk $(BLD)/esp32/components/ssd1306/
+$(BLD)/esp32/components/lcdgfx/component.mk:
+	mkdir -p $(BLD)/esp32/components/lcdgfx
+	cp -a ../src $(BLD)/esp32/components/lcdgfx/
+	cp -a ../component.mk $(BLD)/esp32/components/lcdgfx/
 
-prepare_esp32_sketch:
+$(BLD)/esp32/components/sketch/main.cpp:
 	mkdir -p $(BLD)/esp32/components/sketch
+	rm -rf $(BLD)/esp32/components/sketch/*
 	cp -a $(PROJECT)/* $(BLD)/esp32/components/sketch/
-	mv $(BLD)/esp32/components/sketch/$(notdir $(PROJECT)).ino $(BLD)/esp32/components/sketch/$(notdir $(PROJECT)).cpp
+	mv $(BLD)/esp32/components/sketch/$(notdir $(PROJECT)).ino $(BLD)/esp32/components/sketch/main.cpp
 	echo "COMPONENT_ADD_INCLUDEDIRS := ." > $(BLD)/esp32/components/sketch/component.mk
 
-prepare_esp32_project:
+$(BLD)/esp32/main/component.mk:
 	mkdir -p $(BLD)/esp32/main
 	cp -a ./esp32_main.cpp $(BLD)/esp32/main/
 	echo "" > $(BLD)/esp32/main/component.mk
 	echo "#" > $(BLD)/esp32/sdkconfig.defaults
 	echo "PROJECT_NAME:=$(notdir $(PROJECT))" > $(BLD)/esp32/Makefile
-	# echo "COMPONENTS:=main sketch ssd1306" >> $(BLD)/esp32/Makefile
 	echo "include \$$(IDF_PATH)/make/project.mk" >> $(BLD)/esp32/Makefile
 
-
-all: prepare_esp32_project prepare_esp32_library prepare_esp32_sketch
+all: $(BLD)/esp32/main/component.mk \
+     $(BLD)/esp32/components/lcdgfx/component.mk \
+     $(BLD)/esp32/components/sketch/main.cpp
 	$(MAKE) -C $(BLD)/esp32

@@ -23,11 +23,10 @@
 */
 
 /*
- * @file lcd_hal/avr/avr_spi.h SSD1306 AVR SPI communication functions
+ * @file lcd_hal/avr/avr_spi.h lcdgfx AVR SPI communication functions
  */
 
-#ifndef _SSD1306V2_AVR_SPI_H_
-#define _SSD1306V2_AVR_SPI_H_
+#pragma once
 
 #if defined(CONFIG_AVR_SPI_AVAILABLE) && defined(CONFIG_AVR_SPI_ENABLE)
 
@@ -91,8 +90,6 @@ private:
     int8_t m_dc;
     uint32_t m_frequency;
 };
-
-#endif
 
 #endif
 

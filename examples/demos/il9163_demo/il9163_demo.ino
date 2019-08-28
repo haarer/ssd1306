@@ -29,7 +29,7 @@
 
 /* !!! THIS DEMO RUNS in FULL COLOR MODE */
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 #include "owl.h"
 
 DisplayIL9163_128x128x16_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p

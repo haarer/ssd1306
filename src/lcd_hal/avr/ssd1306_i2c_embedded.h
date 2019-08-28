@@ -23,11 +23,10 @@
 */
 
 /**
- * @file ssd1306_i2c_embedded.h embedded SSD1306 i2c communication functions
+ * @file ssd1306_i2c_embedded.h embedded LCDGFX AVR i2c communication functions
  */
 
-#ifndef _SSD1306V2_I2C_EMBEDDED_H_
-#define _SSD1306V2_I2C_EMBEDDED_H_
+#pragma once
 
 #if defined(CONFIG_SOFTWARE_I2C_AVAILABLE) && defined(CONFIG_SOFTWARE_I2C_ENABLE)
 
@@ -102,4 +101,3 @@ private:
 
 #endif
 
-#endif /* _SSD1306_I2C_EMBEDDED_H_ */

@@ -32,7 +32,7 @@
  *   Atmega328 PINS: connect LCD to A4/A5
  */
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 
 DisplayST7735_128x160x16_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
 //DisplaySSD1331_96x64_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p

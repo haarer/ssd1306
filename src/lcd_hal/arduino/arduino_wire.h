@@ -23,11 +23,10 @@
 */
 
 /*
- * @file hal/arduino/arduino_i2c.h SSD1306 ARDUINO Interface communication functions
+ * @file hal/arduino/arduino_i2c.h LCDGFX ARDUINO Interface communication functions
  */
 
-#ifndef _SSD1306V2_ARDUINO_ARDUINO_I2C_H_
-#define _SSD1306V2_ARDUINO_ARDUINO_I2C_H_
+#pragma once
 
 #if defined(CONFIG_ARDUINO_I2C_AVAILABLE) && defined(CONFIG_ARDUINO_I2C_ENABLE)
 /**
@@ -97,6 +96,4 @@ private:
 };
 
 #endif
-
-#endif // _SSD1306_ARDUINO_ARDUINO_I2C_H_
 

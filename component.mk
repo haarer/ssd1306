@@ -5,10 +5,6 @@ COMPONENT_ADD_INCLUDEDIRS := ./src \
 COMPONENT_SRCDIRS := ./src \
                      ./src/lcd_hal \
                      ./src/lcd_hal/esp \
-                     ./src/v1 \
-                     ./src/v1/intf/uart \
-                     ./src/v1/intf/vga \
-                     ./src/v1/lcd \
                      ./src/v2 \
                      ./src/v2/lcd \
                      ./src/v2/lcd/pcd8544 \

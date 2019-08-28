@@ -23,11 +23,10 @@
 */
 
 /*
- * @file lcd_hal/arduino/io.h SSD1306 ARDUINO IO communication functions
+ * @file lcd_hal/arduino/io.h ARDUINO IO communication functions
  */
 
-#ifndef _SSD1306V2_ARDUINO_IO_H_
-#define _SSD1306V2_ARDUINO_IO_H_
+#pragma once
 
 #include "../UserSettings.h"
 #include "../interface.h"
@@ -163,6 +162,4 @@
     /** The macro is defined when SPI module is available (ATMEGA) */
     //#define CONFIG_AVR_SPI_AVAILABLE
 #endif
-
-#endif // _SSD1306_ARDUINO_IO_H_
 

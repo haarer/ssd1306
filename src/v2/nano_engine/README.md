@@ -37,8 +37,7 @@ There is no such issue for Arduboy, since it uses monochrome OLED ssd1306 with o
 ## Simple NanoEngine demo
 
 ```cpp
-#include "ssd1306v2.h"
-#include "nano_engine.h"
+#include "lcdgfx.h"
 
 NanoEngine8 engine;
 
@@ -76,8 +75,7 @@ What, if we want to move yellow rectangle. There is easy way to do this with Nan
 
 Example of using Z-keypad to move rectangle.
 ```cpp
-#include "ssd1306v2.h"
-#include "nano_engine.h"
+#include "lcdgfx.h"
 
 NanoEngine8 engine;
 
@@ -122,8 +120,7 @@ void loop()
 ## Draw monochrome bitmap
 
 ```cpp
-#include "ssd1306v2.h"
-#include "nano_engine.h"
+#include "lcdgfx.h"
 
 NanoEngine8 engine;
 
@@ -170,8 +167,7 @@ void loop()
 In some applications like games, there is need to move bitmaps. It is easy to do this with ssd1306 library using NanoSprite objects. NanoSprite object is responsible for refreshing areas, touched by sprite. So, you need only to move sprite, where you want, the engine will take care of updating display content.
 
 ```cpp
-#include "ssd1306v2.h"
-#include "nano_engine.h"
+#include "lcdgfx.h"
 
 const uint8_t heartSprite[8] PROGMEM =
 {
@@ -221,8 +217,7 @@ void loop()
 If you don't want to use draw callbacks in your application, but still need a power of NanoEngine, then there is one way for you: to use full-screen double-buffering with NanoEngine. The example, you will find below, shows how to use full-screen double buffering for monochrome 128x64 ssd1306 oled display. This example can be run on Atmega328p and more powerful micro controllers. It clears back-buffer every time engine says to redraw the frame. But you can preserve previously prepared image by removing call to `engine.canvas.clear()`.
 
 ```cpp
-#include "ssd1306v2.h"
-#include "nano_engine.h"
+#include "lcdgfx.h"
 
 NanoEngine<BUFFER_128x64_MONO> engine;
 
@@ -256,8 +251,7 @@ You need to remember only, that AdafruitGFX uses different approach, when workin
 // !!! Don't forget to install AdafruitGFX library to your Arduino IDE !!!
 #define CONFIG_ADAFRUIT_GFX_ENABLE
 
-#include "ssd1306v2.h"
-#include "nano_engine.h"
+#include "lcdgfx.h"
 
 // Now you can use AdafruitGFX by referencing engine.canvas
 NanoEngine<ADATILE_8x8_RGB8> engine;

@@ -22,11 +22,10 @@
     SOFTWARE.
 */
 /**
- * @file ssd1306v2.h SSD1306 basic draw functions
+ * @file lcdgfx.h LCDGFX main header
  */
 
-#ifndef _SSD1306_H_
-#define _SSD1306_H_
+#pragma once
 
 #include "nano_gfx_types.h"
 #include "canvas/fonts/fonts.h"
@@ -75,5 +74,3 @@ void ssd1306_enableAsciiMode2(void);
 /**
  * @}
  */
-
-#endif // _SSD1306_H_

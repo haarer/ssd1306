@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['oleds_3a_20initialization_20and_20service_20functions',['OLEDs: initialization and service functions',['../group___l_c_d___i_n_t_e_r_f_a_c_e___a_p_i.html',1,'']]],
   ['oleds_3a_20initialization_20and_20service_20functions',['OLEDs: initialization and service functions',['../group___l_c_d___i_n_t_e_r_f_a_c_e___a_p_i___v2.html',1,'']]],
   ['offset',['offset',['../class_adafruit_canvas_ops.html#aa3bc52732d31517596321f0efa40bafe',1,'AdafruitCanvasOps::offset()'],['../class_nano_canvas_ops.html#a0ff1def9b165746092c0c21adf420612',1,'NanoCanvasOps::offset()']]],
   ['offsetend',['offsetEnd',['../class_nano_canvas_ops.html#a1bc33d61da017643851937d680aefa36',1,'NanoCanvasOps::offsetEnd()'],['../class_nano_display_base.html#aa0d914baaf29f05eaab0823a3b9feed9',1,'NanoDisplayBase::offsetEnd()']]],

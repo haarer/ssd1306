@@ -22,11 +22,10 @@
     SOFTWARE.
 */
 /**
- * @file lcd_hal/UserSettings.h SSD1306 modules configuration.
+ * @file lcd_hal/UserSettings.h lcdgfx modules configuration.
  */
 
-#ifndef _USER_SETTINGS_V2_H_
-#define _USER_SETTINGS_V2_H_
+#pragma once
 
 /**
  * @defgroup SSD1306_LIBRARY_CONFIG CONFIG: ssd1306 library configuration
@@ -111,4 +110,3 @@
  * @}
  */
 
-#endif

@@ -55,7 +55,7 @@
  *  IMPORTANT!!! D6 is used instead of D3 with SSD1331 display mode
  */
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 
 #include <stdlib.h>
 
@@ -73,9 +73,9 @@
 #ifdef ARKANOID_SSD1331
 DisplaySSD1331_96x64_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
 #elif defined(__AVR_ATtiny85__)
-DisplaySSD1306_128x64_I2C display;
+DisplaySSD1306_128x64_I2C display(-1);
 #else
-DisplaySSD1306_128x64_I2C display;
+DisplaySSD1306_128x64_I2C display(-1);
 #endif
 
 typedef struct

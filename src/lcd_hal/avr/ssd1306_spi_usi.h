@@ -26,8 +26,7 @@
  * @file lcd_hal/avr/ssd1306_spi_usi.h SSD1306 SPI USI communication functions
  */
 
-#ifndef _SSD1306V2_SPI_USI_H_
-#define _SSD1306V2_SPI_USI_H_
+#pragma once
 
 #if defined(CONFIG_USI_SPI_AVAILABLE) && defined(CONFIG_USI_SPI_ENABLE)
 
@@ -98,5 +97,3 @@ private:
 
 #endif
 
-// ----------------------------------------------------------------------------
-#endif // _SSD1306_SPI_USI_H_

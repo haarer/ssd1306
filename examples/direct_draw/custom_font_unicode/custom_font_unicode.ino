@@ -32,9 +32,9 @@
  *   Atmega328 PINS: connect LCD to A4/A5
  */
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 
-DisplaySSD1306_128x64_I2C display;
+DisplaySSD1306_128x64_I2C display(-1);
 //DisplaySSD1306_128x64_SPI display(-1,{-1, 0, 1, 0, -1, -1); // Use this line for nano pi (RST not used, 0=CE, gpio1=D/C)
 //DisplaySSD1306_128x64_SPI display(3,{-1, 4, 5, 0,-1,-1});   // Use this line for Atmega328p (3=RST, 4=CE, 5=D/C)
 //DisplaySSD1306_128x64_SPI display(24,{-1, 0, 23, 0,-1,-1}); // Use this line for Raspberry  (gpio24=RST, 0=CE, gpio23=D/C)

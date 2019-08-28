@@ -19,5 +19,5 @@ var searchData=
   ['tnanoengineondraw',['TNanoEngineOnDraw',['../group___n_a_n_o___e_n_g_i_n_e___a_p_i___v2.html#ga5db298dc5fe7132d3190e5e423b6da6a',1,'tiler.h']]],
   ['top',['top',['../struct_s_s_d1306___r_e_c_t.html#ae4b7642bc9792a9eac02e19f62fe55eb',1,'SSD1306_RECT::top()'],['../class_nano_object.html#a13760c134fa30eb3f19ef2c47cb7a375',1,'NanoObject::top()']]],
   ['twii2c',['TwiI2c',['../class_twi_i2c.html',1,'TwiI2c'],['../class_twi_i2c.html#a66f812900288542c2559881898583705',1,'TwiI2c::TwiI2c()']]],
-  ['type',['type',['../struct_s_font_header_record.html#a0ea841c88936f4f4d49f6d0c4b71ce8e',1,'SFontHeaderRecord::type()'],['../structssd1306__lcd__t.html#aabe73540a354c4f959e4fe862167b482',1,'ssd1306_lcd_t::type()']]]
+  ['type',['type',['../struct_s_font_header_record.html#a0ea841c88936f4f4d49f6d0c4b71ce8e',1,'SFontHeaderRecord']]]
 ];

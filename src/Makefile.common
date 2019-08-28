@@ -81,18 +81,18 @@ ifeq ($(SDL_EMULATION),y)
     CCFLAGS += -DSDL_EMULATION -I../tools/sdl
 endif
 
-.PHONY: clean ssd1306 all help
+.PHONY: clean lcdgfx all help
 
 include Makefile.src
 
 ####################### Compiling library #########################
 
-$(BLD)/libssd1306.a: $(OBJS)
+$(BLD)/liblcdgfx.a: $(OBJS)
 	$(AR) rcs $@ $(OBJS)
 
-ssd1306: $(BLD)/libssd1306.a
+lcdgfx: $(BLD)/liblcdgfx.a
 
-all: ssd1306
+all: lcdgfx
 
 clean:
 	rm -rf $(BLD)

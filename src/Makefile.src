@@ -22,9 +22,7 @@
 #
 
 SRCS_C = \
-	v1/lcd/lcd_common.c \
 	v2/ssd1306_utf8.c \
-	v1/ssd1306_uart.c \
 	lcd_hal/interface.c \
 
 SRCS_CPP = \
@@ -55,15 +53,10 @@ SRCS_CPP = \
 	v2/lcd/il9163/lcd_il9163.cpp \
 	v2/lcd/ili9341/lcd_ili9341.cpp \
 	v2/nano_engine/core.cpp \
-	v1/lcd/vga_monitor.cpp \
-	v1/ssd1306_console.cpp \
 
 SRCS = $(SRCS_C) $(SRCS_CPP)
 
 include canvas/Makefile.src
-
-# Due to absence of Print class tiny_ssd1306.cpp cannot be compiled without Arduino libs.
-#	tiny_ssd1306.cpp \
 
 OBJS_C = $(addprefix src/, $(addsuffix .o, $(basename $(SRCS_C))))
 

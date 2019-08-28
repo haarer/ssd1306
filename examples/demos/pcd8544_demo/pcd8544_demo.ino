@@ -35,7 +35,7 @@
  *   ESP8266: GPIO4(SDA) / GPIO5( SCL )
  */
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 #include "owl.h"
 
 DisplayPCD8544_84x48_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p

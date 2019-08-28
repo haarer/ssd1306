@@ -32,9 +32,9 @@
  *   Atmega328 PINS: connect LCD to A4/A5
  */
 
-#include "ssd1306v2.h"
+#include "lcdgfx.h"
 
-DisplaySSD1306_128x64_I2C display;
+DisplaySSD1306_128x64_I2C display(-1);
 
 const uint8_t Owl [] PROGMEM = {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,

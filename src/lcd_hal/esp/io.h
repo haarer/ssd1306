@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2018, Alexey Dynda
+    Copyright (c) 2018-2019, Alexey Dynda
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,10 @@
 */
 
 /*
- * @file lcd_hal/esp/io.h This is stm32 platform file
+ * @file lcd_hal/esp/io.h This is ESP32 platform file
  */
 
-#ifndef _SSD1306V2_ESP_IO_H_
-#define _SSD1306V2_ESP_IO_H_
+#pragma once
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -44,7 +43,5 @@
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 void ssd1306_registerPinEvent(int pin, void (*on_pin_change)(void *), void *arg);
 void ssd1306_unregisterPinEvent(int pin);
-#endif
-
 #endif
 

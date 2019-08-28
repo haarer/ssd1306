@@ -21,7 +21,7 @@
 #    SOFTWARE.
 #
 #################################################################
-# Makefile to build ssd1306 examples for Linux
+# Makefile to build examples for Linux
 #
 # Accept the following parameters:
 # CC

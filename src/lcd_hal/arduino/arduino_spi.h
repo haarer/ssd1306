@@ -23,11 +23,10 @@
 */
 
 /*
- * @file hal/arduino/arduino_spi.h SSD1306 ARDUINO Interface communication functions
+ * @file hal/arduino/arduino_spi.h LCDGFX ARDUINO Interface communication functions
  */
 
-#ifndef _SSD1306V2_ARDUINO_ARDUINO_SPI_H_
-#define _SSD1306V2_ARDUINO_ARDUINO_SPI_H_
+#pragma once
 
 #if defined(CONFIG_ARDUINO_SPI_AVAILABLE) && defined(CONFIG_ARDUINO_SPI_ENABLE)
 /**
@@ -89,6 +88,4 @@ private:
 };
 
 #endif
-
-#endif // _SSD1306_ARDUINO_ARDUINO_SPI_H_
 

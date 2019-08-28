@@ -13,7 +13,6 @@ var searchData=
   ['lcd_5fpgmreadbyte',['lcd_pgmReadByte',['../group___s_s_d1306___h_a_l___a_p_i.html#ga13ffcf97f4db8fb321007c478f5226da',1,'io.h']]],
   ['lcd_5frandom',['lcd_random',['../group___s_s_d1306___h_a_l___a_p_i.html#ga5ded930b5aa5b3aa0615473c5700a420',1,'lcd_random(int max):&#160;io.h'],['../group___s_s_d1306___h_a_l___a_p_i.html#ga1a1c18200c9a4c2a8f6eebfb749ef8ec',1,'lcd_random(int min, int max):&#160;io.h']]],
   ['lcd_5frandomseed',['lcd_randomSeed',['../group___s_s_d1306___h_a_l___a_p_i.html#ga815f133e47685aca4a0271f7a56b5038',1,'io.h']]],
-  ['lcdconsole',['LcdConsole',['../class_lcd_console.html#a8d54972e9e06390b812137b54528d400',1,'LcdConsole']]],
   ['left',['left',['../class_nano_object.html#ae4a4019fa9b7c87f292edb48092580ee',1,'NanoObject']]],
   ['linuxi2c',['LinuxI2c',['../class_linux_i2c.html#a6eb86d8e0b11df79979b00e7bd0e2ce7',1,'LinuxI2c']]],
   ['linuxspi',['LinuxSpi',['../class_linux_spi.html#af3e8c2402d5f7ef7d1b63e0c7d7db097',1,'LinuxSpi']]],

@@ -21,7 +21,7 @@
 #    SOFTWARE.
 #
 #################################################################
-# Makefile to build ssd1306 library for STM32 controllers
+# Makefile to build library for STM32 controllers
 #
 # Accept the following parameters:
 # CC
