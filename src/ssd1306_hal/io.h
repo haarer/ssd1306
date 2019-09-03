@@ -39,7 +39,9 @@
  */
 
 #include "UserSettings.h"
-#if defined(ARDUINO)
+#if defined(UHAL)
+#include "uhal/io.h"
+#elif defined(ARDUINO)
 #include "arduino/io.h"
 #elif defined(__AVR__) && !defined(ARDUINO)
 #include "avr/io.h"
