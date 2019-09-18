@@ -39,13 +39,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "HAL/HAL.h"
+#include "HAL/HAL_Delay.h"
 
-/*#define LOW  0
+#define LOW  0
 #define HIGH 1
 #define INPUT 0
 #define OUTPUT 1
-*/
+
 #if defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__) || \
     defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
     /** The macro is defined when software i2c implementation is available */
@@ -85,21 +85,20 @@ extern "C" {
 #endif
 
 // not implemented functions for plain AVR
-/*
 static inline int  digitalRead(int pin) { return LOW; };
 static inline int  analogRead(int pin) { return 0; };
-static inline uint32_t millis() { return 0; };
+extern uint32_t millis();
 static inline void randomSeed(int seed) { };
 static inline void attachInterrupt(int pin, void (*interrupt)(), int level) { };
-*/
+
 // implemented functions for plain AVR
-/*
+/* is in UHAL
 void delay(unsigned long ms);
 #define delayMicroseconds(us)  _delay_us(us)
+*/
 
 void digitalWrite(int pin, int level);
 void pinMode(int pin, int mode);
-*/
 #ifdef __cplusplus
 }
 #endif

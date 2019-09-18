@@ -57,7 +57,7 @@ void delay(unsigned long ms)
     #define G2_DIR  s_stub
     #define G2_PORT s_stub
 #endif
-/*
+
 void digitalWrite(int pin, int level)
 {
     uint8_t mask = (1<<(pin & 0x7));
@@ -91,6 +91,6 @@ void pinMode(int pin, int mode)
         if (mode == OUTPUT) G2_DIR |= mask; else G2_DIR &= ~mask;
     }
 };
-*/
+
 #endif
 
