@@ -39,7 +39,7 @@
  */
 
 #include "UserSettings.h"
-#if defined(UHAL)
+#if defined(USEUHAL)
 #include "uhal/io.h"
 #elif defined(ARDUINO)
 #include "arduino/io.h"

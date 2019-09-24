@@ -24,7 +24,7 @@
 
 #include "ssd1306_hal/io.h"
 
-#if defined(__AVR__) && !defined(ARDUINO) && !defined(UHAL)
+#if defined(__AVR__) && !defined(ARDUINO) && !defined(USEUHAL)
 
 void delay(unsigned long ms)
 {
